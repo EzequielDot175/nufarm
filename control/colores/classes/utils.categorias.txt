@@ -1,0 +1,139 @@
+/* UTILS */
+
+
+/*
+
+
+<form method="post" action="n_categorias.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; categorias &nbsp; </strong></legend>
+
+
+<div class="form-item">
+
+<label for="cstrDescripcion">StrDescripcion</label>
+<p><input type="text" name="strDescripcion" id="strDescripcion" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="ctalles">Talles</label>
+<p><input type="text" name="talles" id="talles" /></p>
+
+</div>
+
+
+<div class="form-item">
+<button type="submit">Aceptar</button> <button type="reset">Borrar</button> 
+<button type="button" onClick="location.href='v_categorias.php'">Cancelar</button>
+</div>
+
+</fieldset>
+</form>
+*/
+/* rows
+Array$strDescripcion=$row[strDescripcion];
+$talles=$row[talles];
+
+*/
+
+
+//
+
+form error
+/*
+<form method="post" action="u_categorias.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; categorias &nbsp; </strong></legend>
+
+
+<div class="form-item">
+<label for="cstrDescripcion">StrDescripcion</label>
+<input type="text" name="strDescripcion" id="strDescripcion" value="<?php echo $strDescripcion;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="ctalles">Talles</label>
+<input type="text" name="talles" id="talles" value="<?php echo $talles;?>" />
+</div>
+
+
+<div class="form-item">
+<p><button type="submit">Aceptar</button> <button type="reset">Borrar</button> <button type="button" class="button" onClick="location.href='v_categorias.php'">Cancelar</button></p>
+</div>
+
+</fieldset>
+</form>
+*/
+/* POST CON ECHO
+echo '<br />'.$strDescripcion=$_POST['strDescripcion'];
+echo '<br />'.$talles=$_POST['talles'];
+
+*/
+
+/* POSTS
+$strDescripcion=$_POST['strDescripcion'];
+$talles=$_POST['talles'];
+
+*/
+
+
+/* JQUERY */
+
+$("#strDescripcion).val();
+
+$("#talles).val();
+
+
+
+
+/* JQUERY VARS */
+
+strDescripcion:$("#strDescripcion").val(),
+
+talles:$("#talles").val(),
+
+
+
+/* ARRAY */
+$all = array(strDescripcion,talles,);
+
+/* SELECT */
+include_once("classes/class.categorias.php");
+$categorias= new categorias();
+$categorias->select($id);
+$idCategorias=$categorias->getidCategorias();
+$strDescripcion=$categorias->getstrDescripcion();
+$talles=$categorias->gettalles();
+
+
+/* INSERT */
+include_once("classes/class.categorias.php");
+$categorias= new categorias();
+$categorias->idCategorias=$idCategorias;
+$categorias->strDescripcion=$strDescripcion;
+$categorias->talles=$talles;
+$categorias->insert();
+
+
+/* UPDATE */
+include_once("classes/class.categorias.php");
+$categorias= new categorias();
+
+$categorias->select($idCategorias);
+$categorias->idCategorias=$idCategorias;
+$categorias->strDescripcion=$strDescripcion;
+$categorias->talles=$talles;
+$categorias->update($idCategorias);
+ 
+/* DELETE */
+
+include_once("classes/class.categorias.php");
+$categorias= new categorias();
+$categorias->select($id);
+$categorias->delete($id);
+
+
+

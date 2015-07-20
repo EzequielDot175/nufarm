@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_MisConsultas" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+</info>

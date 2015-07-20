@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ExtraerDatosPropuestas" value="name:Idnombrecompleto;datatype:int,name:strlugar;datatype:string,name:idUsuario;datatype:int,name:strcantidadinvitados;datatype:string,name:fthfechaestimada;datatype:datetime,name:strcaracteristicas;datatype:string" />
+</info>

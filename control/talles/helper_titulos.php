@@ -1,0 +1,1 @@
+<?php $singular ='talle'; $plural='talles'; ?>

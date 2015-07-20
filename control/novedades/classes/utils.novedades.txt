@@ -1,0 +1,185 @@
+/* UTILS */
+
+
+/*
+
+
+<form method="post" action="n_novedades.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; novedades &nbsp; </strong></legend>
+
+
+<div class="form-item">
+
+<label for="ctitulo">Titulo</label>
+<p><input type="text" name="titulo" id="titulo" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="ccuerpo">Cuerpo</label>
+<p><input type="text" name="cuerpo" id="cuerpo" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cimagen">Imagen</label>
+<p><input type="text" name="imagen" id="imagen" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cfecha">Fecha</label>
+<p><input type="text" name="fecha" id="fecha" /></p>
+
+</div>
+
+
+<div class="form-item">
+<button type="submit">Aceptar</button> <button type="reset">Borrar</button> 
+<button type="button" onClick="location.href='v_novedades.php'">Cancelar</button>
+</div>
+
+</fieldset>
+</form>
+*/
+/* rows
+Array$titulo=$row[titulo];
+$cuerpo=$row[cuerpo];
+$imagen=$row[imagen];
+$fecha=$row[fecha];
+
+*/
+
+
+//
+
+form error
+/*
+<form method="post" action="u_novedades.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; novedades &nbsp; </strong></legend>
+
+
+<div class="form-item">
+<label for="ctitulo">Titulo</label>
+<input type="text" name="titulo" id="titulo" value="<?php echo $titulo;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="ccuerpo">Cuerpo</label>
+<input type="text" name="cuerpo" id="cuerpo" value="<?php echo $cuerpo;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cimagen">Imagen</label>
+<input type="text" name="imagen" id="imagen" value="<?php echo $imagen;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cfecha">Fecha</label>
+<input type="text" name="fecha" id="fecha" value="<?php echo $fecha;?>" />
+</div>
+
+
+<div class="form-item">
+<p><button type="submit">Aceptar</button> <button type="reset">Borrar</button> <button type="button" class="button" onClick="location.href='v_novedades.php'">Cancelar</button></p>
+</div>
+
+</fieldset>
+</form>
+*/
+/* POST CON ECHO
+echo '<br />'.$titulo=$_POST['titulo'];
+echo '<br />'.$cuerpo=$_POST['cuerpo'];
+echo '<br />'.$imagen=$_POST['imagen'];
+echo '<br />'.$fecha=$_POST['fecha'];
+
+*/
+
+/* POSTS
+$titulo=$_POST['titulo'];
+$cuerpo=$_POST['cuerpo'];
+$imagen=$_POST['imagen'];
+$fecha=$_POST['fecha'];
+
+*/
+
+
+/* JQUERY */
+
+$("#titulo).val();
+
+$("#cuerpo).val();
+
+$("#imagen).val();
+
+$("#fecha).val();
+
+
+
+
+/* JQUERY VARS */
+
+titulo:$("#titulo").val(),
+
+cuerpo:$("#cuerpo").val(),
+
+imagen:$("#imagen").val(),
+
+fecha:$("#fecha").val(),
+
+
+
+/* ARRAY */
+$all = array(titulo,cuerpo,imagen,fecha,);
+
+/* SELECT */
+include_once("classes/class.novedades.php");
+$novedades= new novedades();
+$novedades->select($id);
+$idNovedades=$novedades->getidNovedades();
+$titulo=$novedades->gettitulo();
+$cuerpo=$novedades->getcuerpo();
+$imagen=$novedades->getimagen();
+$fecha=$novedades->getfecha();
+
+
+/* INSERT */
+include_once("classes/class.novedades.php");
+$novedades= new novedades();
+$novedades->idNovedades=$idNovedades;
+$novedades->titulo=$titulo;
+$novedades->cuerpo=$cuerpo;
+$novedades->imagen=$imagen;
+$novedades->fecha=$fecha;
+$novedades->insert();
+
+
+/* UPDATE */
+include_once("classes/class.novedades.php");
+$novedades= new novedades();
+
+$novedades->select($idNovedades);
+$novedades->idNovedades=$idNovedades;
+$novedades->titulo=$titulo;
+$novedades->cuerpo=$cuerpo;
+$novedades->imagen=$imagen;
+$novedades->fecha=$fecha;
+$novedades->update($idNovedades);
+ 
+/* DELETE */
+
+include_once("classes/class.novedades.php");
+$novedades= new novedades();
+$novedades->select($id);
+$novedades->delete($id);
+
+
+

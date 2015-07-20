@@ -1,0 +1,1 @@
+<?php $singular ='propuesta'; $plural='propuestas'; ?>

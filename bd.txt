@@ -1,0 +1,271 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.3
+-- http://www.phpmyadmin.net
+-- 
+-- Servidor: localhost
+-- Tiempo de generación: 11-11-2013 a las 15:47:59
+-- Versión del servidor: 5.0.51
+-- Versión de PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Base de datos: `nufarm`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `admin`
+-- 
+
+CREATE TABLE `admin` (
+  `idAdmin` int(11) NOT NULL auto_increment,
+  `strEmail` varchar(100) NOT NULL,
+  `strPaswword` varchar(100) NOT NULL,
+  PRIMARY KEY  (`idAdmin`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- 
+-- Volcar la base de datos para la tabla `admin`
+-- 
+
+INSERT INTO `admin` VALUES (1, 'admin@nufarm.com', 'demo123');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `carrito`
+-- 
+
+CREATE TABLE `carrito` (
+  `intContador` int(11) NOT NULL auto_increment,
+  `idUsuario` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `intCantidad` int(11) NOT NULL,
+  `intTransaccion` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`intContador`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=158 ;
+
+-- 
+-- Volcar la base de datos para la tabla `carrito`
+-- 
+
+INSERT INTO `carrito` VALUES (153, 1, 63, 1, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `categorias`
+-- 
+
+CREATE TABLE `categorias` (
+  `idCategorias` int(11) NOT NULL auto_increment,
+  `strDescripcion` varchar(100) NOT NULL,
+  PRIMARY KEY  (`idCategorias`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+-- 
+-- Volcar la base de datos para la tabla `categorias`
+-- 
+
+INSERT INTO `categorias` VALUES (1, 'Set de Asado Estribo');
+INSERT INTO `categorias` VALUES (2, 'Herramientas');
+INSERT INTO `categorias` VALUES (3, 'Set de Asado 6 tablas');
+INSERT INTO `categorias` VALUES (4, 'Indumentaria');
+INSERT INTO `categorias` VALUES (5, 'Set de Mate');
+INSERT INTO `categorias` VALUES (6, 'Bolsos y Mochilas');
+INSERT INTO `categorias` VALUES (7, 'Set de Vino');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `compra`
+-- 
+
+CREATE TABLE `compra` (
+  `idCompra` int(11) NOT NULL auto_increment,
+  `idUsuario` int(11) NOT NULL,
+  `fthCompra` datetime NOT NULL,
+  `detalle` text NOT NULL,
+  `intTipoPago` int(11) NOT NULL,
+  `dblTotal` double NOT NULL,
+  `idCredito` int(11) NOT NULL,
+  PRIMARY KEY  (`idCompra`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
+
+-- 
+-- Volcar la base de datos para la tabla `compra`
+-- 
+
+INSERT INTO `compra` VALUES (45, 12, '2013-11-11 10:58:49', '<p> ID:63, Mochila Mountain, Cant:1 - $224 </p> <p> Sin IVA: $224, Con IVA: $271.04</p', 2, 271.04, 0);
+INSERT INTO `compra` VALUES (43, 1, '2013-11-08 18:06:43', '<p> ID:62, Mochila Futura, Cant:1 - $254 </p> <p> Sin IVA: $254, Con IVA: $307.34</p', 2, 307.34, 0);
+INSERT INTO `compra` VALUES (44, 12, '2013-11-11 10:57:42', '<p> ID:63, Mochila Mountain, Cant:1 - $224 </p> <p> ID:64, Cortapluma, Cant: NO DISPONIBLE - $ 0.00 </p><p> ID:64, Cortapluma, Cant: NO DISPONIBLE - $ 0.00 </p><p> Sin IVA: $224, Con IVA: $271.04</p', 2, 271.04, 0);
+INSERT INTO `compra` VALUES (42, 1, '2013-11-08 13:43:47', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> ID:64, Cortapluma, Cant: NO DISPONIBLE - $ 0.00 </p><p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0);
+INSERT INTO `compra` VALUES (38, 10, '2013-11-08 10:51:11', '<p> ID:64, Cortapluma, Cant:1 - $24  +IVA</p>', 2, 29.04, 0);
+INSERT INTO `compra` VALUES (41, 4, '2013-11-08 12:28:55', '<p> ID:62, Mochila Futura, Cant:1 - $254 </p> <p> Sin IVA: $254, Con IVA: $307.34</p', 2, 307.34, 0);
+INSERT INTO `compra` VALUES (39, 10, '2013-11-08 10:52:26', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0);
+INSERT INTO `compra` VALUES (40, 1, '2013-11-08 10:56:17', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0);
+INSERT INTO `compra` VALUES (37, 1, '2013-11-08 10:50:33', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0);
+INSERT INTO `compra` VALUES (36, 1, '2013-11-08 10:47:43', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `consultas`
+-- 
+
+CREATE TABLE `consultas` (
+  `idConsulta` int(11) NOT NULL auto_increment,
+  `idUsuario` int(11) NOT NULL,
+  `strAsunto` varchar(100) NOT NULL,
+  `strCampo` varchar(100) NOT NULL,
+  PRIMARY KEY  (`idConsulta`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+
+-- 
+-- Volcar la base de datos para la tabla `consultas`
+-- 
+
+INSERT INTO `consultas` VALUES (38, 0, 'Credito', 'Solicito un monto de credito para poder realizar compras...');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `creditos`
+-- 
+
+CREATE TABLE `creditos` (
+  `idCredito` int(11) NOT NULL auto_increment,
+  `idUsuario` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  PRIMARY KEY  (`idCredito`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- 
+-- Volcar la base de datos para la tabla `creditos`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `novedades`
+-- 
+
+CREATE TABLE `novedades` (
+  `idNovedades` int(11) NOT NULL auto_increment,
+  `titulo` varchar(50) NOT NULL,
+  `cuerpo` text NOT NULL,
+  `imagen` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY  (`idNovedades`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- 
+-- Volcar la base de datos para la tabla `novedades`
+-- 
+
+INSERT INTO `novedades` VALUES (1, 'Esto es el titulo de la novedad', 'Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad.', '', '2013-11-11');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `productos`
+-- 
+
+CREATE TABLE `productos` (
+  `idProducto` int(11) NOT NULL auto_increment,
+  `strNombre` varchar(50) NOT NULL,
+  `strDetalle` varchar(600) NOT NULL,
+  `intCategoria` int(11) NOT NULL,
+  `dblPrecio` double NOT NULL,
+  `intStock` int(11) NOT NULL,
+  `strImagen` varchar(50) NOT NULL,
+  `strImagen2` varchar(50) NOT NULL,
+  `strImagen3` varchar(50) NOT NULL,
+  PRIMARY KEY  (`idProducto`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
+
+-- 
+-- Volcar la base de datos para la tabla `productos`
+-- 
+
+INSERT INTO `productos` VALUES (62, 'Mochila Futura', 'Mochila Futura color negro/roja', 6, 254, 12, 'mochila.png', 'mochila-03.png', 'mochila-02.png');
+INSERT INTO `productos` VALUES (63, 'Mochila Mountain', 'Mochila Moutain blanca/negra.', 6, 224, 2, 'mochila mountain-01.png', 'mochila mountain-02.png', 'mochila mountain-03.png');
+INSERT INTO `productos` VALUES (64, 'Cortapluma', 'CortaPluma multifunciÃ³n acero inoxidable.', 6, 24, 0, 'cortaplumas multifuncion-03.png', 'cortaplumas multifuncion-02.png', 'gorros-01.png');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `propuestas`
+-- 
+
+CREATE TABLE `propuestas` (
+  `idUsuario` int(11) NOT NULL auto_increment,
+  `strnombrecompleto` varchar(50) NOT NULL,
+  `strlugar` varchar(50) NOT NULL,
+  `strcantidadinvitados` varchar(50) NOT NULL,
+  `fthfechaestimada` datetime NOT NULL,
+  `strcaracteristicas` varchar(50) NOT NULL,
+  PRIMARY KEY  (`idUsuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+
+-- 
+-- Volcar la base de datos para la tabla `propuestas`
+-- 
+
+INSERT INTO `propuestas` VALUES (30, 'lucas varela', 'a', 'a', '2007-11-13 00:00:00', 'fdasdfadsf');
+INSERT INTO `propuestas` VALUES (27, 'a', 'a', 'a', '0000-00-00 00:00:00', 'a');
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `usuarios`
+-- 
+
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL auto_increment,
+  `strNombre` varchar(30) NOT NULL,
+  `strApellido` varchar(30) NOT NULL,
+  `strEmail` varchar(50) NOT NULL,
+  `strEmpresa` varchar(50) NOT NULL,
+  `strCargo` varchar(50) NOT NULL,
+  `strPassword` varchar(30) NOT NULL,
+  `dblCredito` double NOT NULL default '0',
+  PRIMARY KEY  (`idUsuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+
+-- 
+-- Volcar la base de datos para la tabla `usuarios`
+-- 
+
+INSERT INTO `usuarios` VALUES (1, 'Lucas', 'Varela', 'lucas@dot175.com', 'Empresa', 'Empleado', 'demo123', 1692.66);
+INSERT INTO `usuarios` VALUES (4, 'Hernesto', 'Alvarez', 'hhalvarez@mail.com', 'Mi empresa', 'Marketing', 'demo123', 1678.72);
+INSERT INTO `usuarios` VALUES (3, 'Claudio', 'Gimenez', 'cgimenez@mail.com', 'Empresa2', 'ventas', 'demo123', 251);
+INSERT INTO `usuarios` VALUES (14, 'marcos', 'gerez', 'marcos@mail.com', 'mi empresa', 'nose', 'demo123', 0);
+INSERT INTO `usuarios` VALUES (10, 'Miguel', 'Lopez', 'mlopez@mail.com', 'sdfsdf', 'dsfsdf', 'demo123', 183.92);
+INSERT INTO `usuarios` VALUES (11, 'Ramon', 'Perez', 'rperez@mail.com', 'Mi empresa', 'sdsa', 'demo123', 0);
+INSERT INTO `usuarios` VALUES (12, 'Federico', 'Lopez', 'fede@mail.com', 'Coca Cola', 'Electromecanico', 'demo123', 1257.92);
+INSERT INTO `usuarios` VALUES (13, 'nicolas', 'mendez', 'nico@mail.com', 'asdfasd', 'dfsdfsdf', 'demo123', 700);
+INSERT INTO `usuarios` VALUES (16, 'cdhg dfg', 'dfg dfg dfg', 'gdfg dfg ', 'gdfg dfg ', 'dfgd fg ', '54631321', 0);
+INSERT INTO `usuarios` VALUES (17, 'jorge', 'amadeo', 'dfgfdgfdg', 'fefwe', 'efe', 'demo123', 0);
+INSERT INTO `usuarios` VALUES (20, 'facundo', 'segal', 'facusegal@mail.com', 'sdafsadfsd', 'sdfsdfsdf', 'demo123', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Estructura de tabla para la tabla `variables`
+-- 
+
+CREATE TABLE `variables` (
+  `idContador` int(11) NOT NULL auto_increment,
+  `intIVA` int(11) NOT NULL,
+  PRIMARY KEY  (`idContador`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+-- 
+-- Volcar la base de datos para la tabla `variables`
+-- 
+
+INSERT INTO `variables` VALUES (1, 21);

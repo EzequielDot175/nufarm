@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_DatosCarrito" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:strApellido;datatype:string,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+	<infoitem key="UD_DatosCarritoAdd" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+	<infoitem key="UD_Record3" value="name:idProducto;datatype:int,name:strNombre;datatype:string,name:intCategoria;datatype:int,name:dblPrecio;datatype:real,name:intStock;datatype:int,name:strImagen;datatype:string" />
+	<infoitem key="UD_RegistroUsuarios" value="name:idUsuario;datatype:int,name:strNombre;datatype:string,name:strApellido;datatype:string,name:strEmail;datatype:string,name:strEmpresa;datatype:string,name:strCargo;datatype:string,name:strPassword;datatype:string,name:dblCredito;datatype:real" />
+</info>

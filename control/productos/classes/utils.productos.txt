@@ -1,0 +1,277 @@
+/* UTILS */
+
+
+/*
+
+
+<form method="post" action="n_productos.php" id="simpleform" enctype="multipart/form-data">
+<fieldset>
+<legend><strong> &nbsp; productos &nbsp; </strong></legend>
+
+
+<div class="form-item">
+
+<label for="cstrNombre">StrNombre</label>
+<p><input type="text" name="strNombre" id="strNombre" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cstrDetalle">StrDetalle</label>
+<p><input type="text" name="strDetalle" id="strDetalle" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cintCategoria">IntCategoria</label>
+<p><input type="text" name="intCategoria" id="intCategoria" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cdblPrecio">DblPrecio</label>
+<p><input type="text" name="dblPrecio" id="dblPrecio" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cintStock">IntStock</label>
+<p><input type="text" name="intStock" id="intStock" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cstrImagen">StrImagen</label>
+<p><input type="text" name="strImagen" id="strImagen" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cstrImagen2">StrImagen2</label>
+<p><input type="text" name="strImagen2" id="strImagen2" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cstrImagen3">StrImagen3</label>
+<p><input type="text" name="strImagen3" id="strImagen3" /></p>
+
+</div>
+
+
+<div class="form-item">
+<button type="submit">Aceptar</button> <button type="reset">Borrar</button> 
+<button type="button" onClick="location.href='v_productos.php'">Cancelar</button>
+</div>
+
+</fieldset>
+</form>
+*/
+/* rows
+Array$strNombre=$row[strNombre];
+$strDetalle=$row[strDetalle];
+$intCategoria=$row[intCategoria];
+$dblPrecio=$row[dblPrecio];
+$intStock=$row[intStock];
+$strImagen=$row[strImagen];
+$strImagen2=$row[strImagen2];
+$strImagen3=$row[strImagen3];
+
+*/
+
+
+//
+
+form error
+/*
+<form method="post" action="u_productos.php" id="simpleform" enctype="multipart/form-data">
+<fieldset>
+<legend><strong> &nbsp; productos &nbsp; </strong></legend>
+
+
+<div class="form-item">
+<label for="cstrNombre">StrNombre</label>
+<input type="text" name="strNombre" id="strNombre" value="<?php echo $strNombre;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cstrDetalle">StrDetalle</label>
+<input type="text" name="strDetalle" id="strDetalle" value="<?php echo $strDetalle;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cintCategoria">IntCategoria</label>
+<input type="text" name="intCategoria" id="intCategoria" value="<?php echo $intCategoria;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cdblPrecio">DblPrecio</label>
+<input type="text" name="dblPrecio" id="dblPrecio" value="<?php echo $dblPrecio;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cintStock">IntStock</label>
+<input type="text" name="intStock" id="intStock" value="<?php echo $intStock;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cstrImagen">StrImagen</label>
+<input type="text" name="strImagen" id="strImagen" value="<?php echo $strImagen;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cstrImagen2">StrImagen2</label>
+<input type="text" name="strImagen2" id="strImagen2" value="<?php echo $strImagen2;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cstrImagen3">StrImagen3</label>
+<input type="text" name="strImagen3" id="strImagen3" value="<?php echo $strImagen3;?>" />
+</div>
+
+
+<div class="form-item">
+<p><button type="submit">Aceptar</button> <button type="reset">Borrar</button> <button type="button" class="button" onClick="location.href='v_productos.php'">Cancelar</button></p>
+</div>
+
+</fieldset>
+</form>
+*/
+/* POST CON ECHO
+echo '<br />'.$strNombre=$_POST['strNombre'];
+echo '<br />'.$strDetalle=$_POST['strDetalle'];
+echo '<br />'.$intCategoria=$_POST['intCategoria'];
+echo '<br />'.$dblPrecio=$_POST['dblPrecio'];
+echo '<br />'.$intStock=$_POST['intStock'];
+echo '<br />'.$strImagen=$_POST['strImagen'];
+echo '<br />'.$strImagen2=$_POST['strImagen2'];
+echo '<br />'.$strImagen3=$_POST['strImagen3'];
+
+*/
+
+/* POSTS
+$strNombre=$_POST['strNombre'];
+$strDetalle=$_POST['strDetalle'];
+$intCategoria=$_POST['intCategoria'];
+$dblPrecio=$_POST['dblPrecio'];
+$intStock=$_POST['intStock'];
+$strImagen=$_POST['strImagen'];
+$strImagen2=$_POST['strImagen2'];
+$strImagen3=$_POST['strImagen3'];
+
+*/
+
+
+/* JQUERY */
+
+$("#strNombre).val();
+
+$("#strDetalle).val();
+
+$("#intCategoria).val();
+
+$("#dblPrecio).val();
+
+$("#intStock).val();
+
+$("#strImagen).val();
+
+$("#strImagen2).val();
+
+$("#strImagen3).val();
+
+
+
+
+/* JQUERY VARS */
+
+strNombre:$("#strNombre").val(),
+
+strDetalle:$("#strDetalle").val(),
+
+intCategoria:$("#intCategoria").val(),
+
+dblPrecio:$("#dblPrecio").val(),
+
+intStock:$("#intStock").val(),
+
+strImagen:$("#strImagen").val(),
+
+strImagen2:$("#strImagen2").val(),
+
+strImagen3:$("#strImagen3").val(),
+
+
+
+/* ARRAY */
+$all = array(strNombre,strDetalle,intCategoria,dblPrecio,intStock,strImagen,strImagen2,strImagen3,);
+
+/* SELECT */
+include_once("classes/class.productos.php");
+$productos= new productos();
+$productos->select($id);
+$idProducto=$productos->getidProducto();
+$strNombre=$productos->getstrNombre();
+$strDetalle=$productos->getstrDetalle();
+$intCategoria=$productos->getintCategoria();
+$dblPrecio=$productos->getdblPrecio();
+$intStock=$productos->getintStock();
+$strImagen=$productos->getstrImagen();
+$strImagen2=$productos->getstrImagen2();
+$strImagen3=$productos->getstrImagen3();
+
+
+/* INSERT */
+include_once("classes/class.productos.php");
+$productos= new productos();
+$productos->idProducto=$idProducto;
+$productos->strNombre=$strNombre;
+$productos->strDetalle=$strDetalle;
+$productos->intCategoria=$intCategoria;
+$productos->dblPrecio=$dblPrecio;
+$productos->intStock=$intStock;
+$productos->strImagen=$strImagen;
+$productos->strImagen2=$strImagen2;
+$productos->strImagen3=$strImagen3;
+$productos->insert();
+
+
+/* UPDATE */
+include_once("classes/class.productos.php");
+$productos= new productos();
+
+$productos->select($idProducto);
+$productos->idProducto=$idProducto;
+$productos->strNombre=$strNombre;
+$productos->strDetalle=$strDetalle;
+$productos->intCategoria=$intCategoria;
+$productos->dblPrecio=$dblPrecio;
+$productos->intStock=$intStock;
+$productos->strImagen=$strImagen;
+$productos->strImagen2=$strImagen2;
+$productos->strImagen3=$strImagen3;
+$productos->update($idProducto);
+ 
+/* DELETE */
+
+include_once("classes/class.productos.php");
+$productos= new productos();
+$productos->select($id);
+$productos->delete($id);
+
+
+

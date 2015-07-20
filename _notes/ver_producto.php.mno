@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_DatoProducto" value="name:idProducto;datatype:int,name:strNombre;datatype:string,name:intCategoria;datatype:int,name:dblPrecio;datatype:real,name:intStock;datatype:int,name:strImagen;datatype:string" />
+	<infoitem key="UD_DatosProductos" value="name:idProducto;datatype:int,name:strNombre;datatype:string,name:strDetalle;datatype:string,name:intCategoria;datatype:int,name:dblPrecio;datatype:real,name:intStock;datatype:int,name:strImagen;datatype:string,name:strImagen2;datatype:string,name:strImagen3;datatype:string" />
+	<infoitem key="UD_DetallesCantidad" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+	<infoitem key="UD_Detalles" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+	<infoitem key="UD_DatosProductos2" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+	<infoitem key="UD_CarritoCantidad" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+</info>

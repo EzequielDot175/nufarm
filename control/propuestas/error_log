@@ -1,0 +1,3 @@
+[10-Dec-2013 14:30:51 America/Chicago] PHP Fatal error:  Call to undefined method compras::insert_detalle_productos() in /home/wpdot175/public_html/nufarm/control/propuestas/u_propuesta.php on line 72
+[10-Dec-2013 14:31:45 America/Chicago] PHP Fatal error:  Call to undefined method compras::insert_detalle_productos() in /home/wpdot175/public_html/nufarm/control/propuestas/u_propuesta.php on line 72
+[10-Dec-2013 14:35:04 America/Chicago] PHP Fatal error:  Call to undefined method compras::insert_detalle_productos() in /home/wpdot175/public_html/nufarm/control/propuestas/u_propuesta.php on line 72

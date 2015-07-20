@@ -1,0 +1,1 @@
+<?php $singular ='categoria'; $plural='categorias'; ?>

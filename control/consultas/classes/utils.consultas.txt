@@ -1,0 +1,162 @@
+/* UTILS */
+
+
+/*
+
+
+<form method="post" action="n_consultas.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; consultas &nbsp; </strong></legend>
+
+
+<div class="form-item">
+
+<label for="cidUsuario">IdUsuario</label>
+<p><input type="text" name="idUsuario" id="idUsuario" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cstrAsunto">StrAsunto</label>
+<p><input type="text" name="strAsunto" id="strAsunto" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cstrCampo">StrCampo</label>
+<p><input type="text" name="strCampo" id="strCampo" /></p>
+
+</div>
+
+
+<div class="form-item">
+<button type="submit">Aceptar</button> <button type="reset">Borrar</button> 
+<button type="button" onClick="location.href='v_consultas.php'">Cancelar</button>
+</div>
+
+</fieldset>
+</form>
+*/
+/* rows
+Array$idUsuario=$row[idUsuario];
+$strAsunto=$row[strAsunto];
+$strCampo=$row[strCampo];
+
+*/
+
+
+//
+
+form error
+/*
+<form method="post" action="u_consultas.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; consultas &nbsp; </strong></legend>
+
+
+<div class="form-item">
+<label for="cidUsuario">IdUsuario</label>
+<input type="text" name="idUsuario" id="idUsuario" value="<?php echo $idUsuario;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cstrAsunto">StrAsunto</label>
+<input type="text" name="strAsunto" id="strAsunto" value="<?php echo $strAsunto;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cstrCampo">StrCampo</label>
+<input type="text" name="strCampo" id="strCampo" value="<?php echo $strCampo;?>" />
+</div>
+
+
+<div class="form-item">
+<p><button type="submit">Aceptar</button> <button type="reset">Borrar</button> <button type="button" class="button" onClick="location.href='v_consultas.php'">Cancelar</button></p>
+</div>
+
+</fieldset>
+</form>
+*/
+/* POST CON ECHO
+echo '<br />'.$idUsuario=$_POST['idUsuario'];
+echo '<br />'.$strAsunto=$_POST['strAsunto'];
+echo '<br />'.$strCampo=$_POST['strCampo'];
+
+*/
+
+/* POSTS
+$idUsuario=$_POST['idUsuario'];
+$strAsunto=$_POST['strAsunto'];
+$strCampo=$_POST['strCampo'];
+
+*/
+
+
+/* JQUERY */
+
+$("#idUsuario).val();
+
+$("#strAsunto).val();
+
+$("#strCampo).val();
+
+
+
+
+/* JQUERY VARS */
+
+idUsuario:$("#idUsuario").val(),
+
+strAsunto:$("#strAsunto").val(),
+
+strCampo:$("#strCampo").val(),
+
+
+
+/* ARRAY */
+$all = array(idUsuario,strAsunto,strCampo,);
+
+/* SELECT */
+include_once("classes/class.consultas.php");
+$consultas= new consultas();
+$consultas->select($id);
+$idConsulta=$consultas->getidConsulta();
+$idUsuario=$consultas->getidUsuario();
+$strAsunto=$consultas->getstrAsunto();
+$strCampo=$consultas->getstrCampo();
+
+
+/* INSERT */
+include_once("classes/class.consultas.php");
+$consultas= new consultas();
+$consultas->idConsulta=$idConsulta;
+$consultas->idUsuario=$idUsuario;
+$consultas->strAsunto=$strAsunto;
+$consultas->strCampo=$strCampo;
+$consultas->insert();
+
+
+/* UPDATE */
+include_once("classes/class.consultas.php");
+$consultas= new consultas();
+
+$consultas->select($idConsulta);
+$consultas->idConsulta=$idConsulta;
+$consultas->idUsuario=$idUsuario;
+$consultas->strAsunto=$strAsunto;
+$consultas->strCampo=$strCampo;
+$consultas->update($idConsulta);
+ 
+/* DELETE */
+
+include_once("classes/class.consultas.php");
+$consultas= new consultas();
+$consultas->select($id);
+$consultas->delete($id);
+
+
+

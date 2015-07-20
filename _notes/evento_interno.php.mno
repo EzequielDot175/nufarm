@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_DatosProductos" value="name:idProducto;datatype:int,name:strNombre;datatype:string,name:strDetalle;datatype:string,name:intCategoria;datatype:int,name:dblPrecio;datatype:real,name:intStock;datatype:int,name:strImagen;datatype:string" />
+	<infoitem key="UD_Propuestas" value="name:Idnombrecompleto;datatype:int" />
+	<infoitem key="UD_datospropuesta" value="name:idusuario;datatype:int,name:strnombrecompleto;datatype:int,name:strlugar;datatype:string,name:strcantidadinvitados;datatype:string,name:fthfechaestimada;datatype:datetime,name:strcaracteristicas;datatype:string" />
+	<infoitem key="UD_DatosUsuario" value="name:idUsuario;datatype:int,name:strNombre;datatype:string,name:strApellido;datatype:string,name:strEmail;datatype:string,name:strEmpresa;datatype:string,name:strCargo;datatype:string,name:strPassword;datatype:string,name:dblCredito;datatype:real" />
+</info>

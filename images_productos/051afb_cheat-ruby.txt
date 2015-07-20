@@ -1,0 +1,99 @@
+# Comentario
+=begin...=end Comentario multilinea
+$variable_global, aplica a todo el programa
+@Variable_de_instancia
+@@variable_de_clase, aplica a clase y todas sus instancias
+Constante No puede modificarse a lo largo del programa
+self Objeto que recibe el metodo
+nil  NULL en Ruby 
+__FILE__ nombre del ficero actual
+__LINE__ Posicion actual en linea de codigo
+
+do...end == {...}
+
+> Mayor a
+< Menor a
+== Igual a
+>= Mayor o igual a 
+<= Menor o igual a
+!= Distinto de
+
+
++ Suma
+- Resta
+* Multiplicacion
+/ Division
+% ??????????????
+
+Condicionales
+if 1 == 1
+	true
+elseif 1 == 0
+	false
+else
+	true
+end
+
+puts "true" if x == x
+
+puts 1 == 1 ? "true" : "false"
+
+fruta = "naranja"
+
+case fruta
+	when "mandarina"
+        color = "naranja"		
+	when "manzana"
+        color = "rojo"
+    else
+        color = "desconocido"
+end
+
+
+
+color = case fruta 
+    when "mandarina"
+        "naranja"
+    when "manzana"
+        "rojo"
+    else
+        "desconocido"
+    end
+
+
+Iteradores
+
+contador = 0
+while contador < 5
+  puts "Hello "
+  contador += 1
+end
+
+for i in 1..10
+	puts "Hello " + i.to_s
+end
+
+5.times{puts "Hello "} 
+puts "hello " * 5
+
+i = 0 
+1.upto(6) {puts "hacia arriba #{i}"; i +=1}
+i = 10
+10.downto(1) { puts "hacia abajo #{i}"; i -= 1}
+i = 0 
+0.step(21,3){puts "cada 3 #{i}"; i += 3}
+
+
+Los metodos son los que dicen que va a hacer el objeto, por lo tanto para que exista un metodo debe existir un objeto.
+
+texto = "Soy un " + "String concatenado"
+texto = "Soy un " << "String concatenado"
+
+metodos para cadenas de texto:
+capitalize : Mayuscula primer caracter
+
+
+
+
+
+

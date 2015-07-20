@@ -1,0 +1,139 @@
+/* UTILS */
+
+
+/*
+
+
+<form method="post" action="n_creditos.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; creditos &nbsp; </strong></legend>
+
+
+<div class="form-item">
+
+<label for="cidUsuario">IdUsuario</label>
+<p><input type="text" name="idUsuario" id="idUsuario" /></p>
+
+</div>
+
+<div class="form-item">
+
+<label for="cidProducto">IdProducto</label>
+<p><input type="text" name="idProducto" id="idProducto" /></p>
+
+</div>
+
+
+<div class="form-item">
+<button type="submit">Aceptar</button> <button type="reset">Borrar</button> 
+<button type="button" onClick="location.href='v_creditos.php'">Cancelar</button>
+</div>
+
+</fieldset>
+</form>
+*/
+/* rows
+Array$idUsuario=$row[idUsuario];
+$idProducto=$row[idProducto];
+
+*/
+
+
+//
+
+form error
+/*
+<form method="post" action="u_creditos.php" id="simpleform" >
+<fieldset>
+<legend><strong> &nbsp; creditos &nbsp; </strong></legend>
+
+
+<div class="form-item">
+<label for="cidUsuario">IdUsuario</label>
+<input type="text" name="idUsuario" id="idUsuario" value="<?php echo $idUsuario;?>" />
+</div>
+
+
+<div class="form-item">
+<label for="cidProducto">IdProducto</label>
+<input type="text" name="idProducto" id="idProducto" value="<?php echo $idProducto;?>" />
+</div>
+
+
+<div class="form-item">
+<p><button type="submit">Aceptar</button> <button type="reset">Borrar</button> <button type="button" class="button" onClick="location.href='v_creditos.php'">Cancelar</button></p>
+</div>
+
+</fieldset>
+</form>
+*/
+/* POST CON ECHO
+echo '<br />'.$idUsuario=$_POST['idUsuario'];
+echo '<br />'.$idProducto=$_POST['idProducto'];
+
+*/
+
+/* POSTS
+$idUsuario=$_POST['idUsuario'];
+$idProducto=$_POST['idProducto'];
+
+*/
+
+
+/* JQUERY */
+
+$("#idUsuario).val();
+
+$("#idProducto).val();
+
+
+
+
+/* JQUERY VARS */
+
+idUsuario:$("#idUsuario").val(),
+
+idProducto:$("#idProducto").val(),
+
+
+
+/* ARRAY */
+$all = array(idUsuario,idProducto,);
+
+/* SELECT */
+include_once("classes/class.creditos.php");
+$creditos= new creditos();
+$creditos->select($id);
+$idCredito=$creditos->getidCredito();
+$idUsuario=$creditos->getidUsuario();
+$idProducto=$creditos->getidProducto();
+
+
+/* INSERT */
+include_once("classes/class.creditos.php");
+$creditos= new creditos();
+$creditos->idCredito=$idCredito;
+$creditos->idUsuario=$idUsuario;
+$creditos->idProducto=$idProducto;
+$creditos->insert();
+
+
+/* UPDATE */
+include_once("classes/class.creditos.php");
+$creditos= new creditos();
+
+$creditos->select($idCredito);
+$creditos->idCredito=$idCredito;
+$creditos->idUsuario=$idUsuario;
+$creditos->idProducto=$idProducto;
+$creditos->update($idCredito);
+ 
+/* DELETE */
+
+include_once("classes/class.creditos.php");
+$creditos= new creditos();
+$creditos->select($id);
+$creditos->delete($id);
+
+
+

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ProductosDelete" value="name:intContador;datatype:int,name:idUsuario;datatype:int,name:idProducto;datatype:int,name:intCantidad;datatype:int,name:intTransaccion;datatype:int" />
+</info>

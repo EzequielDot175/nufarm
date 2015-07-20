@@ -1,0 +1,1 @@
+<?php $singular ='usuario'; $plural='usuarios'; ?>

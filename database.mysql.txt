@@ -1,0 +1,309 @@
+
+CREATE TABLE `admin` (
+  `name_admin` varchar(40) NOT NULL,
+  `pass_admin` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`name_admin`, `pass_admin`) VALUES
+('admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `intContador` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `intCantidad` int(11) NOT NULL,
+  `intTransaccion` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`intContador`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=159 ;
+
+--
+-- Dumping data for table `carrito`
+--
+
+INSERT INTO `carrito` (`intContador`, `idUsuario`, `idProducto`, `intCantidad`, `intTransaccion`) VALUES
+(158, 1, 63, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `idCategorias` int(11) NOT NULL AUTO_INCREMENT,
+  `strDescripcion` varchar(100) NOT NULL,
+  `talles` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idCategorias`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `categorias`
+--
+
+INSERT INTO `categorias` (`idCategorias`, `strDescripcion`, `talles`) VALUES
+(1, 'Set de Asado Estribo', 0),
+(2, 'Herramientas', 0),
+(3, 'Set de Asado 6 tablas', 0),
+(4, 'Indumentaria', 1),
+(5, 'Set de Mate', 0),
+(6, 'Bolsos y Mochilas', 0),
+(7, 'Set de Vino', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compra`
+--
+
+CREATE TABLE `compra` (
+  `idCompra` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `fthCompra` datetime NOT NULL,
+  `detalle` text NOT NULL,
+  `intTipoPago` int(11) NOT NULL,
+  `dblTotal` double NOT NULL,
+  `idCredito` int(11) NOT NULL,
+  PRIMARY KEY (`idCompra`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
+
+--
+-- Dumping data for table `compra`
+--
+
+INSERT INTO `compra` (`idCompra`, `idUsuario`, `fthCompra`, `detalle`, `intTipoPago`, `dblTotal`, `idCredito`) VALUES
+(45, 12, '2013-11-11 10:58:49', '<p> ID:63, Mochila Mountain, Cant:1 - $224 </p> <p> Sin IVA: $224, Con IVA: $271.04</p', 2, 271.04, 0),
+(43, 1, '2013-11-08 18:06:43', '<p> ID:62, Mochila Futura, Cant:1 - $254 </p> <p> Sin IVA: $254, Con IVA: $307.34</p', 2, 307.34, 0),
+(44, 12, '2013-11-11 10:57:42', '<p> ID:63, Mochila Mountain, Cant:1 - $224 </p> <p> ID:64, Cortapluma, Cant: NO DISPONIBLE - $ 0.00 </p><p> ID:64, Cortapluma, Cant: NO DISPONIBLE - $ 0.00 </p><p> Sin IVA: $224, Con IVA: $271.04</p', 2, 271.04, 0),
+(42, 1, '2013-11-08 13:43:47', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> ID:64, Cortapluma, Cant: NO DISPONIBLE - $ 0.00 </p><p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0),
+(38, 10, '2013-11-08 10:51:11', '<p> ID:64, Cortapluma, Cant:1 - $24  +IVA</p>', 2, 29.04, 0),
+(41, 4, '2013-11-08 12:28:55', '<p> ID:62, Mochila Futura, Cant:1 - $254 </p> <p> Sin IVA: $254, Con IVA: $307.34</p', 2, 307.34, 0),
+(39, 10, '2013-11-08 10:52:26', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0),
+(40, 1, '2013-11-08 10:56:17', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0),
+(37, 1, '2013-11-08 10:50:33', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0),
+(36, 1, '2013-11-08 10:47:43', '<p> ID:64, Cortapluma, Cant:1 - $24 </p> <p> Sin IVA: $24, Con IVA: $29.04</p', 2, 29.04, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `consultas`
+--
+
+CREATE TABLE `consultas` (
+  `idConsulta` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `strAsunto` varchar(100) NOT NULL,
+  `strCampo` varchar(100) NOT NULL,
+  PRIMARY KEY (`idConsulta`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+
+--
+-- Dumping data for table `consultas`
+--
+
+INSERT INTO `consultas` (`idConsulta`, `idUsuario`, `strAsunto`, `strCampo`) VALUES
+(38, 0, 'Credito', 'Solicito un monto de credito para poder realizar compras...');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `creditos`
+--
+
+CREATE TABLE `creditos` (
+  `idCredito` int(11) NOT NULL AUTO_INCREMENT,
+  `idUsuario` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  PRIMARY KEY (`idCredito`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `novedades`
+--
+
+CREATE TABLE `novedades` (
+  `idNovedades` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) NOT NULL,
+  `cuerpo` text NOT NULL,
+  `imagen` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`idNovedades`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `novedades`
+--
+
+INSERT INTO `novedades` (`idNovedades`, `titulo`, `cuerpo`, `imagen`, `fecha`) VALUES
+(1, 'Esto es el titulo de la novedad', 'Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad. Esto es el cuerpo de la novedad.', '', '2013-11-11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productos`
+--
+
+CREATE TABLE `productos` (
+  `idProducto` int(11) NOT NULL AUTO_INCREMENT,
+  `strNombre` varchar(50) NOT NULL,
+  `strDetalle` varchar(600) NOT NULL,
+  `intCategoria` int(11) NOT NULL,
+  `dblPrecio` double NOT NULL,
+  `intStock` int(11) NOT NULL,
+  `strImagen` varchar(255) NOT NULL,
+  `strImagen2` varchar(255) NOT NULL,
+  `strImagen3` varchar(255) NOT NULL,
+  PRIMARY KEY (`idProducto`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`idProducto`, `strNombre`, `strDetalle`, `intCategoria`, `dblPrecio`, `intStock`, `strImagen`, `strImagen2`, `strImagen3`) VALUES
+(62, 'Mochila Futura', 'Mochila Futura color negro/roja', 6, 254, 12, 'mochila.png', 'mochila-03.png', 'mochila-02.png'),
+(63, 'Mochila Mountain', 'Mochila Moutain blanca/negra.', 6, 224, 3, 'mochila mountain-01.png', 'mochila mountain-02.png', 'mochila mountain-03.png'),
+(64, 'Cortapluma', 'CortaPluma multifunciÃ³n acero inoxidable.', 6, 24, 0, 'cortaplumas multifuncion-03.png', 'cortaplumas multifuncion-02.png', 'gorros-01.png'),
+(84, 'Remeras ', 'test con talles', 4, 120, 0, '7dad34_back-lion.jpg', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `propuestas`
+--
+
+CREATE TABLE `propuestas` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `strnombrecompleto` varchar(50) NOT NULL,
+  `strlugar` varchar(50) NOT NULL,
+  `strcantidadinvitados` varchar(50) NOT NULL,
+  `fthfechaestimada` datetime NOT NULL,
+  `strcaracteristicas` varchar(50) NOT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+
+--
+-- Dumping data for table `propuestas`
+--
+
+INSERT INTO `propuestas` (`idUsuario`, `strnombrecompleto`, `strlugar`, `strcantidadinvitados`, `fthfechaestimada`, `strcaracteristicas`) VALUES
+(30, 'lucas varela', 'a', 'a', '2007-11-13 00:00:00', 'fdasdfadsf'),
+(27, 'a', 'a', 'a', '0000-00-00 00:00:00', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talles`
+--
+
+CREATE TABLE `talles` (
+  `id_talle` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_talle` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_talle`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `talles`
+--
+
+INSERT INTO `talles` (`id_talle`, `nombre_talle`) VALUES
+(2, 'S'),
+(4, 'M'),
+(5, 'L'),
+(6, 'XL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `talles_productos`
+--
+
+CREATE TABLE `talles_productos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_producto` int(11) NOT NULL,
+  `id_talle` int(11) NOT NULL,
+  `cantidad` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=203 ;
+
+--
+-- Dumping data for table `talles_productos`
+--
+
+INSERT INTO `talles_productos` (`id`, `id_producto`, `id_talle`, `cantidad`) VALUES
+(1, 63, 3, 3),
+(2, 62, 2, 12),
+(187, 82, 2, 55),
+(188, 82, 4, 66),
+(189, 82, 5, 19),
+(190, 82, 6, 999),
+(199, 84, 2, 44),
+(200, 84, 4, 55),
+(201, 84, 5, 66),
+(202, 84, 6, 77);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `strNombre` varchar(30) NOT NULL,
+  `strApellido` varchar(30) NOT NULL,
+  `strEmail` varchar(50) NOT NULL,
+  `strEmpresa` varchar(50) NOT NULL,
+  `strCargo` varchar(50) NOT NULL,
+  `strPassword` varchar(30) NOT NULL,
+  `dblCredito` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `strNombre`, `strApellido`, `strEmail`, `strEmpresa`, `strCargo`, `strPassword`, `dblCredito`) VALUES
+(1, 'Lucas', 'Varela', 'lucas@dot175.com', 'Empresa', 'Empleado', 'demo123', 1692.66),
+(4, 'Hernesto', 'Alvarez', 'hhalvarez@mail.com', 'Mi empresa', 'Marketing', 'demo123', 1678.72),
+(3, 'Claudio', 'Gimenez', 'cgimenez@mail.com', 'Empresa2', 'ventas', 'demo123', 251),
+(14, 'marcos', 'gerez', 'marcos@mail.com', 'mi empresa', 'nose', 'demo123', 0),
+(10, 'Miguel', 'Lopez', 'mlopez@mail.com', 'sdfsdf', 'dsfsdf', 'demo123', 183.92),
+(11, 'Ramon', 'Perez', 'rperez@mail.com', 'Mi empresa', 'sdsa', 'demo123', 0),
+(12, 'Federico', 'Lopez', 'fede@mail.com', 'Coca Cola', 'Electromecanico', 'demo123', 1257.92),
+(13, 'nicolas', 'mendez', 'nico@mail.com', 'asdfasd', 'dfsdfsdf', 'demo123', 700),
+(16, 'cdhg dfg', 'dfg dfg dfg', 'gdfg dfg ', 'gdfg dfg ', 'dfgd fg ', '54631321', 0),
+(17, 'jorge', 'amadeo', 'dfgfdgfdg', 'fefwe', 'efe', 'demo123', 0),
+(20, 'facundo', 'segal', 'facusegal@mail.com', 'sdafsadfsd', 'sdfsdfsdf', 'demo123', 0),
+(21, 'sasas', 'asas', 'email@asdasd.vvv', 'as', 'as', '123123', 123123);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `variables`
+--
+
+CREATE TABLE `variables` (
+  `idContador` int(11) NOT NULL AUTO_INCREMENT,
+  `intIVA` int(11) NOT NULL,
+  PRIMARY KEY (`idContador`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `variables`
+--
+
+INSERT INTO `variables` (`idContador`, `intIVA`) VALUES
+(1, 21);

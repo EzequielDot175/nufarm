@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_RecordIva" value="name:idContador;datatype:int,name:intIVA;datatype:int" />
+	<infoitem key="UD_Recordset1" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+	<infoitem key="UD_DatosConsultas" value="name:idConsulta;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+	<infoitem key="UD_DatosConsulta" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+	<infoitem key="UD_datosusuarios" value="name:idUsuario;datatype:int,name:strNombre;datatype:string,name:strApellido;datatype:string,name:strEmail;datatype:string,name:strEmpresa;datatype:string,name:strCargo;datatype:string,name:strPassword;datatype:string,name:dblCredito;datatype:real" />
+	<infoitem key="UD_DatosUsu" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+	<infoitem key="UD_ColsultaUsuario" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+	<infoitem key="UD_MisConsultas" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+	<infoitem key="UD_misconsultas" value="name:idConsulta;datatype:int,name:idUsuario;datatype:int,name:strAsunto;datatype:string,name:strCampo;datatype:string" />
+</info>

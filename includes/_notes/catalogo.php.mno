@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:idCategorias;datatype:int,name:strDescripcion;datatype:string" />
+	<infoitem key="UD_DatoUsuarioCredito" value="name:idUsuario;datatype:int,name:strNombre;datatype:string,name:strApellido;datatype:string,name:strEmail;datatype:string,name:strEmpresa;datatype:string,name:strCargo;datatype:string,name:strPassword;datatype:string,name:dblCredito;datatype:real" />
+</info>

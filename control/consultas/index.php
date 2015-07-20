@@ -1,0 +1,1 @@
+<?php header("Location: v_consultas.php"); ?>
