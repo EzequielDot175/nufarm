@@ -235,7 +235,7 @@ function MM_validateForm() { //v4.0
     <form id="loginform" name="form1" method="post" action="">
         <label>Correo Electronico</label>
       
-        <input name="strEmail" type="text" id="email" onBlur="MM_validateForm('email','','NisEmail');return document.MM_returnValue" />
+        <input name="strEmail" type="text" id="email" />
        
         <label>Clave</label>
      

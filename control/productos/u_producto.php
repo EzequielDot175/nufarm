@@ -1,5 +1,9 @@
-<?php include_once('../resources/control.php'); 
+<?php 
+include_once('../resources/control.php'); 
+include_once("classes/class.productos.php");
+include_once("classes/class.tallesColores.php");
 
+// error_reporting(E_ALL);
 
 $idProducto = $_POST['idProducto'];
 $strNombre=$_POST['strNombre'];
@@ -7,8 +11,8 @@ $intMinCompra = (int)$_POST["intMinCompra"];
 $strDetalle=$_POST['strDetalle'];
 $intCategoria=$_POST['intCategoria'];
 $dblPrecio=$_POST['dblPrecio'];
-$intStock=$_POST['intStock'];
-$strImagen=$_POST['strImagen'];
+$intStock=	$_POST['intStock'];
+$strImagen=	$_POST['strImagen'];
 $strImagen2=$_POST['strImagen2'];
 $strImagen3=$_POST['strImagen3'];
 $destacado=$_POST['destacado'];
@@ -19,8 +23,11 @@ $color = $_POST['color'];
 
 
 
-include_once("classes/class.productos.php");
-$msg_final .="";
+
+
+
+
+
 
 if($_FILES['strImagen']['name']!=""){
 
@@ -283,7 +290,25 @@ else
 	$msg_final .= '<div class="notify"><p>producto actualizado!</p></div>';
 }
 
+// Update ]
+
+
+if (isset($_POST["color_talle"])): //IF
+	
+
+	$x = new tallesColores();
+
+	foreach($_POST["color_talle"] as $k => $v):
+		try {
+			$x->add($v,$idProducto,$v['color']);
+		} catch (Exception $e) {
+			echo($e->getMessage());
+		}
+	endforeach;
+
+endif; //ENDIF
+
+
 $_SESSION['msg_ok'] = $msg_final;
 header('Location: ./v_productos.php?activo=2&sub=d');
-
 ?>

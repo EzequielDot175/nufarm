@@ -5588,13 +5588,16 @@ a.btn-micuenta3 span {
 	display: inline;
 }
 */
-#talles {
+#talles,.talles-box {
 	width: 43px;
 	margin: 0 5px 0 0;
 	padding: 0;
 	display: block;
 	float: left;
 	opacity: 0.7;
+}
+.box-disabled{
+	opacity: 0.3;
 }
 .box-t {
 	width:40px;
@@ -5618,7 +5621,7 @@ a.btn-micuenta3 span {
 	background-repeat:repeat;
 	background-position:left;
 }
-input#caja1,input#caja2,input#caja3,input#caja4,input#caja5,input#caja6,input#caja7,input#caja8,input#caja9,input#caja10,input#caja11,input#caja12,input#caja13,input#caja14 {
+input#caja1,input#caja2,input#caja3,.boxIntInput,input#caja4,input#caja5,input#caja6,input#caja7,input#caja8,input#caja9,input#caja10,input#caja11,input#caja12,input#caja13,input#caja14 {
 	height:20px;
 	background-color:#D3D3D3;
 	border:none;
@@ -5627,9 +5630,11 @@ input#caja1,input#caja2,input#caja3,input#caja4,input#caja5,input#caja6,input#ca
 	padding:0;
 	text-align:center;
 }
-input#caja2:focus,input#caja3:focus,input#caja4:focus,input#caja5:focus,input#caja6:focus {
+input#caja2:focus,input#caja3:focus,input#caja4:focus,input#caja5:focus,input#caja6:focus,.boxIntInput:focus {
 	outline:0px;
 }
+
+
 
 input.box-colores {
 width: 43px;
@@ -5745,6 +5750,16 @@ position: relative;
 	background-color: whitesmoke;
 	height: 23px;
 }
+.stock-talle.cantidad{
+	top: 71px;
+}
+.stock-talle.custom{
+	top: 71px;
+}
+.disabledInput{
+	opacity: 0.2;
+}
+
 .stock-talle p {
 	text-align: center;
 	margin: 0;

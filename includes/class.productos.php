@@ -26,6 +26,15 @@ $this->database = new Database();
 
 }
 
+public function nombreTalle($id){
+	$sql =  "SELECT nombre_talle FROM talles WHERE id_talle = $id";
+	$result =  $this->database->query($sql);
+	$result = $this->database->result;
+
+	$row = mysql_fetch_object($result);
+	return $row->nombre_talle;
+}
+
 
 /* GETTER METHODS */
 function getidProducto(){return $this->idProducto;}
@@ -36,6 +45,7 @@ function getdblPrecio(){return $this->dblPrecio;}
 function getintStock(){return $this->intStock;}
 function getstrImagen(){return $this->strImagen;}
 
+
 /* SETTER METHODS */
 function setidProducto($val){ $this->idProducto =  $val;}
 function setstrNombre($val){ $this->strNombre =  $val;}
@@ -44,7 +54,6 @@ function setintCategoria($val){ $this->intCategoria =  $val;}
 function setdblPrecio($val){ $this->dblPrecio =  $val;}
 function setintStock($val){ $this->intStock =  $val;}
 function setstrImagen($val){ $this->strImagen =  $val;}
-
 /* SELECT METHOD / LOAD */
 function select($id){
 
@@ -53,7 +62,6 @@ $result =  $this->database->query($sql);
 $result = $this->database->result;
 
 $row = mysql_fetch_object($result);
-
 
 $this->idProducto = $row->idProducto;
 $this->strNombre = $row->strNombre;

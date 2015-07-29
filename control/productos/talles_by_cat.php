@@ -1,7 +1,9 @@
-<?php error_reporting(ALL);
+<?php 
+error_reporting(0);
 
 $idcategoria = $_GET['idcategoria']; 
 $idproducto = $_GET['idproducto'];
+
 
 				function build_boxes($talle, $nombre_talle, $idproducto){
 					
@@ -76,10 +78,10 @@ $idproducto = $_GET['idproducto'];
 				}
 				
 				
-include_once("../categorias/classes/class.categorias.php");
-$categorias= new categorias();
-$categorias->select($idcategoria);
-$talles=$categorias->gettalles();
+				include_once("../categorias/classes/class.categorias.php");
+				$categorias= new categorias();
+				$categorias->select($idcategoria);
+				$talles=$categorias->gettalles();
 
 
 				if($talles ==1)
@@ -123,6 +125,154 @@ $talles=$categorias->gettalles();
 						$nombre_color="";
 					
 					}
+				}
+				else if ($talles == 3)
+				{
+					//require colores
+					include_once("../colores/classes/class.colores.php");
+					include_once("../talles/classes/class.talles.php");
+					include_once("../resources/pdo.php");
+					include_once("../productos/classes/class.tallesColores.php");
+
+
+					$x = new tallesColores();
+					$talles = new talles();
+					$talles = $talles->all();
+					$colores = new colores();
+					$colores = $colores->all();
+					$all = $x->all();
+
+					$key = rand();
+					
+					
+					if (isset($_GET['action']) && $_GET['action'] == 'add' || empty($all)):
+					?>
+					<div class="segmentTalleColor">
+								<label for="">Color</label>
+								<select name="color_talle[<?php echo($key) ?>][color]" class="color">
+									<?php foreach($colores as $val): ?>
+									<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+									<?php endforeach; ?>
+								</select>
+								<label for="">Talles</label>
+								<div class="tipotalles">
+									<?php foreach($talles as $val): ?>
+									<div class="tallebox">
+										<p><?php echo($val['nombre_talle']) ?></p>	
+										<p><input class="inputshort valid" type="text" name="color_talle[<?php echo($key) ?>][talle][<?php echo($val['id_talle']) ?>]" value=""></p>
+									</div>
+									<?php endforeach; ?>
+								</div>
+								<div class="addColor">
+									<button class="newColor" >Agregar color</button>
+									<button class="removeColor" >Borrar color</button>
+								</div>
+							</div>
+					<?php
+					elseif (isset($_GET['action']) && $_GET['action'] == 'delete'):
+						var_dump($x->delete($_GET['idproducto'],$_GET['color']));
+					else: 
+						
+						foreach($all as $k => $v):
+						?>
+						<div class="segmentTalleColor">
+								<label for="">Color</label>
+								<select name="color_talle[<?php echo($key) ?>][color]" class="color">
+									<?php foreach($colores as $val):
+										if ($val['id_color'] == $k): ?>
+										<option selected="" value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+										<?php else: ?>
+										<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+								<?php 	endif;
+										endforeach; ?>
+								</select>
+								<label for="">Talles</label>
+								<div class="tipotalles">
+									<?php foreach($talles as $val): ?>
+									<div class="tallebox">
+										<p><?php echo($val['nombre_talle']) ?></p>	
+										<p><input class="inputshort valid" type="text" name="color_talle[<?php echo($key) ?>][talle][<?php echo($val['id_talle']) ?>]" value="<?php echo($v['talle'][$val['id_talle']]) ?>"></p>
+									</div>
+									<?php endforeach; ?>
+								</div>
+								<div class="addColor">
+									<button class="newColor" >Agregar color</button>
+									<button class="removeColor" >Borrar color</button>
+								</div>
+							</div>
+					<?php
+						endforeach;
+					endif;
+
+
+
+						/*if(	!$x->exist(array('id_producto',$_GET['idproducto'])) || isset($_GET['action'])	):
+							// SI EL PRODUCTO NO EXISTE O SI SE ENVIA UNA PETICION ACTION
+							
+							$randId = substr(strtoupper(md5(rand().rand())), 0,10);
+						?>
+							<div class="segmentTalleColor">
+								<label for="">Color</label>
+								<select name="talleColor[<?php echo($randId) ?>][color]" class="color">
+									<?php foreach($colores as $val): ?>
+									<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+									<?php endforeach; ?>
+								</select>
+								<label for="">Talles</label>
+								<div class="tipotalles">
+									<?php foreach($talles as $val): ?>
+									<div class="tallebox">
+										<p><?php echo($val['nombre_talle']) ?></p>	
+										<p><input class="inputshort valid" type="text" name="talleColor[<?php echo($randId) ?>][talle][<?php echo($val['id_talle']) ?>]" value=""></p>
+									</div>
+									<?php endforeach; ?>
+								</div>
+								<div class="addColor">
+									<button class="newColor" >Agregar color</button>
+								</div>
+							</div>
+						<?php
+						else:
+							// SI EL PRODUCTO EXISTE Y NO SE ENVIA UNA PETICION ACTION
+							$data = $x->get($_GET['idproducto']);
+							$data = json_decode($data['colores_talles']);
+
+							$count =  count($data);
+							foreach($data as $k => $v):
+							?>
+							<div class="segmentTalleColor">
+								<label for="">Color</label>
+								<select name="talleColor[<?php echo($k) ?>][color]" class="color">
+									<?php foreach($colores as $val): 
+											if($val['id_color'] == $v->color): ?>
+											<option selected="" value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+										<?php else:	?>
+												<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+										<?php endif;
+										endforeach; ?>
+								</select>
+								<label for="">Talles</label>
+								<div class="tipotalles">
+									<?php foreach($talles as $val): ?>
+									<div class="tallebox">
+										<p><?php echo($val['nombre_talle']) ?></p>	
+										<p><input class="inputshort valid" type="text" value="<?php echo $v->talle->{$val['id_talle']} ?>" name="talleColor[<?php echo($k) ?>][talle][<?php echo($val['id_talle']) ?>]" value=""></p>
+									</div>
+									<?php endforeach; ?>
+								</div>
+								<div class="addColor">
+									<?php if($count == 1): ?>
+									<button class="newColor" >Agregar color</button>
+									<?php else: ?>
+									<button class="removeColor" >Borrar color</button>
+									<?php endif; ?>
+								</div>
+							</div>
+
+							<?php
+							endforeach;
+						endif;*/
+					
 				}
 				else
 				{

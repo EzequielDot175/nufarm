@@ -440,8 +440,7 @@ while($row = mysql_fetch_array($result)){
 				<span class="nombreprod">'.$nombre.' </span>
 				<span class="cant">'.$cantidad.' </span>
 
-				<span class="talle">'.$talle .'</span>
-				<span class="talle">'.$color .'</span>
+				<span class="talle">'.$color .'   '.$talle .'</span>
 				
 			</div>
 			<div class="box_1_5" >

@@ -85,8 +85,9 @@ $(document).ready(function(){
 
 
 <p><select name="talles" id="talles-cat">
-	<option value="0" <?php if($talles==0){echo'selected';} ?>>NO requiere talles</option>
-	<option value="1"<?php if($talles==1){echo'selected';} ?>>SI requiere talles</option>
+	<option value="0">NO requiere talles</option>
+	<option value="1">SI requiere talles</option>
+	<option value="3">SI requiere talles y colores</option>
 </select>
 
 </p>

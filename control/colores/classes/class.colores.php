@@ -48,6 +48,16 @@ $this->nombre_color = $row->nombre_color;
 }
 
 /* SELECT ALL */
+function all(){
+	$sql ="SELECT * FROM colores";
+	$result = $this->database->query($sql);
+	$array = [];
+	while ($res = mysql_fetch_array($this->database->result)) {
+		$array[] = $res;
+	}
+	return $array;
+}
+
 function select_all($pagina, $orden){
 include('../resources/paginator.class.php');
 $sql ="SELECT * FROM colores ;";

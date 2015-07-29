@@ -21,6 +21,15 @@ function talles(){
 $this->database = new Database();
 
 }
+function all(){
+	$sql =  "SELECT * FROM talles";
+	$result = $this->database->query($sql);
+	$array = [];
+	while ($res = mysql_fetch_array($this->database->result)) {
+		$array[] = $res;
+	}
+	return $array;
+}
 
 
 /* GETTER METHODS */

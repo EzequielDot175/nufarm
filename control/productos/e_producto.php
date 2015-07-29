@@ -348,6 +348,36 @@ if($strImagen!=""){
 
 </form>
 
+
+
+<script>
+	$(function() {
+		$('#item-categorias').trigger('change');
+		$(document).on('click', '.newColor', function(event) {
+			event.preventDefault();
+			var cat = $('#item-categorias').val();
+			var id = window.location.search.match(/id=.*[0-9].&/ig);
+				id = parseInt(id[0].replace(/id=/ig,'').replace(/&/ig,''));
+			$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+id+'&action=add', function(data) {
+				console.log(data);
+				$('#tipotalles').append(data);
+			});
+		});
+		$(document).on('click', '.removeColor', function(event) {
+			event.preventDefault();
+			var color = $(this).parent().parent().children('select').val();
+			var cat = $('#item-categorias').val();
+			var id = window.location.search.match(/id=.*[0-9].&/ig);
+				id = parseInt(id[0].replace(/id=/ig,'').replace(/&/ig,''));
+			if (confirm('¿Esta seguro de borrar este color y talles?')) {
+				$(this).parents('.segmentTalleColor').remove();
+				$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+id+'&action=delete&color='+color, function(data) {
+					console.log(data);
+				});
+			};
+		});
+	});
+</script>
 </div><?php include_once('../inc/footer.php') ?></div>	</div>
 
 

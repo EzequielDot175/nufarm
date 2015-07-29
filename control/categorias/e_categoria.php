@@ -105,6 +105,7 @@ $talles=$categorias->gettalles();
 	<option value="0" <?php if($talles==0){echo'selected';} ?>>NO requiere talles ni colores</option>
 	<option value="1"<?php if($talles==1){echo'selected';} ?>>SI requiere talles</option>
 	<option value="2"<?php if($talles==2){echo'selected';} ?>>SI requiere colores</option>
+	<option value="3"<?php if($talles==3){echo'selected';} ?>>SI requiere talles y colores</option>
 </select>
 
 </div>
@@ -116,7 +117,9 @@ $talles=$categorias->gettalles();
 
 
 </form>
-</div>	
+</div>
+
+
 
 <?php include_once('../inc/footer.php') ?>
 </div><!-- end block -->

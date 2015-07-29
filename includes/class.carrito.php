@@ -2,6 +2,7 @@
 
 include_once("Connections/class.database.php");
 
+
 /* CLASS DECLARATION */
 
 
@@ -16,6 +17,7 @@ var $intCantidad;
 var $intTransaccion;
 var $talle;
 var $color;
+var $jsonData;
 var $database; // Instance of class database
 
 
@@ -25,6 +27,14 @@ function carrito(){
 
 $this->database = new Database();
 
+}
+
+public function talle($id){
+	$sql = "SELECT nombre_talle FROM talles WHERE id_talle = ".$id;
+
+	$result =  $this->database->query($sql);
+	$result = $this->database->result;
+	return mysql_fetch_object($result);
 }
 
 
@@ -159,6 +169,11 @@ include_once("class.colores_productos.php");
 include_once("class.talles.php");
 include_once("class.colores.php");
 include_once("class.historiales.php");
+include_once("class.historiales.php");
+require_once('control/resources/pdo.php');
+
+require_once("control/productos/classes/class.tallesColores.php");
+
 
 //variables de la sumas de valores, tanto de precios como total
 $total = 0;
@@ -196,6 +211,13 @@ $requiere_talles = $cat->gettalles();
 
 
 if($requiere_talles==1){
+
+	try {
+		$stock = new TempStock();
+		echo $stock->removeTempStock($row['idUsuario'],$row['idProducto'],$row['talle'],null,$requiere_talles);
+	} catch (Exception $e) {
+		echo($e->getMessage());
+	}
 
 	#############################################
 	// REQUIERE TALLES
@@ -236,14 +258,14 @@ if($requiere_talles==1){
 				);
 				
 			
-				$taproductos= new talles_productos();
-				$taproductos->select_by_producto($idProducto,$id_talle);
-				$id_talle_producto = $taproductos->getid();
+				// $taproductos= new talles_productos();
+				// $taproductos->select_by_producto($idProducto,$id_talle);
+				// $id_talle_producto = $taproductos->getid();
 				
-				$upcantidad = new talles_productos();
-				$upcantidad->select($id_talle_producto);
-				$upcantidad->cantidad = $cantidad_stock_con_talles - $intCantidad;
-				$upcantidad->update($id_talle_producto);
+				// $upcantidad = new talles_productos();
+				// $upcantidad->select($id_talle_producto);
+				// $upcantidad->cantidad = $cantidad_stock_con_talles - $intCantidad;
+				// $upcantidad->update($id_talle_producto);
 				
 				
 				$total = $dblPrecio * $intCantidad;
@@ -264,6 +286,13 @@ if($requiere_talles==1){
 	
 }else if($requiere_talles==2){
 
+
+	try {
+		$stock = new TempStock();
+		echo $stock->removeTempStock($row['idUsuario'],$row['idProducto'],null,$row['color'],$requiere_talles);
+	} catch (Exception $e) {
+		echo($e->getMessage());
+	}
 	#############################################
 	// REQUIERE COLORES
 	#############################################
@@ -303,14 +332,14 @@ if($requiere_talles==1){
 				);
 				
 			
-				$taproductos= new colores_productos();
-				$taproductos->select_by_producto($idProducto,$id_color);
-				$id_color_producto = $taproductos->getid();
+				// $taproductos= new colores_productos();
+				// $taproductos->select_by_producto($idProducto,$id_color);
+				// $id_color_producto = $taproductos->getid();
 				
-				$upcantidad = new colores_productos();
-				$upcantidad->select($id_color_producto);
-				$upcantidad->cantidad = $cantidad_stock_con_colores - $intCantidad;
-				$upcantidad->update($id_color_producto);
+				// $upcantidad = new colores_productos();
+				// $upcantidad->select($id_color_producto);
+				// $upcantidad->cantidad = $cantidad_stock_con_colores - $intCantidad;
+				// $upcantidad->update($id_color_producto);
 				
 				
 				$total = $dblPrecio * $intCantidad;
@@ -329,7 +358,69 @@ if($requiere_talles==1){
 			
 	
 	
+}elseif ($requiere_talles==3) {
+	
+	$x = new tallesColores();
+
+	/**
+	 * example of basic @ TempStock
+	 * @param userid 
+	 * @param product_id 
+	 * @param talle 
+	 * @param color 
+	 * @return nothing on success, throw on error 
+	 */
+
+	try {
+		$stock = new TempStock();
+		echo $stock->removeTempStock($row['idUsuario'],$row['idProducto'],$row['talle'],$row['color'],$requiere_talles);
+	} catch (Exception $e) {
+		echo($e->getMessage());
+	}
+
+
+
+	$talles = $x->talles();				
+	$colores = $x->colores();				
+	
+	$nom_talle = $talles[$row['talle']];
+	$nom_color = $colores[$row['color']];
+	
+		$detalle_productos .= '
+		<div class="purchase">
+		<img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
+		<span class="tit22"> '.$strNombre.'</span>
+		<span class="cant"> Cant: '.$intCantidad.' </span>
+		<span class="cant"> Color: '.$nom_color.' </span>
+		<span class="cant"> Talle: '.$nom_talle.' </span>
+		<span class="tot_1"> $'.$dblPrecio.'</span>
+		<span class="tot_2"> Total: $ '.$intCantidad * $dblPrecio.'</span></div>';
+				
+				//quito del stock
+		$detalle_para_guardar_por_id[] = array(
+		'id_producto' => $idProducto, 
+		'nombre' => $strNombre,
+		'color' => $nom_color,
+		'talle' => $nom_talle,
+		'estado_producto' => $estado_producto,
+		'detalle' => $strDetalle,
+		'cantidad' => $intCantidad,
+		'precio_pagado' => $intCantidad * $dblPrecio
+		);
+				
+		$total = $dblPrecio * $intCantidad;
+				
+
+
 }else{
+
+
+	try {
+		$stock = new TempStock();
+		echo $stock->removeTempStock($row['idUsuario'],$row['idProducto'],null,null,0);
+	} catch (Exception $e) {
+		echo($e->getMessage());
+	}
 	#############################################
 	//NO REQUIERE TALLES
 	#############################################
@@ -354,10 +445,10 @@ if($requiere_talles==1){
 	
 		
 		//quito del stock
-	   	$productos= new productos();
-	   	$productos->select($idProducto);
-	   	$productos->intStock=$strintStock - $intCantidad;
-	   	$productos->update($idProducto);
+	   	// $productos= new productos();
+	   	// $productos->select($idProducto);
+	   	// $productos->intStock=$strintStock - $intCantidad;
+	   	// $productos->update($idProducto);
 	   	
 	   	
 	   	$total = $dblPrecio * $intCantidad;
@@ -412,17 +503,19 @@ if($valor_general >= 1){
 
 if($valor_general >= 1){
 //Guardo compra en tabla "compras"
-$compra= new compras();
-$compra->idUsuario=$idUsuario;
-$compra->intTipoPago=$tipoDePago;
-$compra->fthCompra=date("Y-m-d H:i:s");
-$compra->dblTotal=$final_con_iva;
-#$compra->idCredito=$idCredito;
-$compra->detalle=$detalle_productos;
-$compra->detalle=$detalle_productos;
-$compra->estado=1;
-$last_compra = $compra->insert();  
-	
+
+
+
+	$compra= new compras();
+	$compra->idUsuario=$idUsuario;
+	$compra->intTipoPago=$tipoDePago;
+	$compra->fthCompra=date("Y-m-d H:i:s");
+	$compra->dblTotal=$final_con_iva;
+	#$compra->idCredito=$idCredito;
+	$compra->detalle=$detalle_productos;
+	$compra->estado=1;
+	$last_compra = $compra->insert();  
+
 //Actualizo el credito del usuario
 
 #Primero traigo el monto actual de credito del usuario
@@ -468,6 +561,9 @@ foreach($detalle_para_guardar_por_id as $item_to_save){
 
 	$compra= new compras();
 	$compra->insert_detalle_productos($last_compra, $item_to_save['id_producto'],$item_to_save['nombre'],$item_to_save['detalle'],$item_to_save['cantidad'],$item_to_save['precio_pagado'],$item_to_save['estado_producto'], $item_to_save['talle'], $item_to_save['color']);
+	$k++;
+
+	
 
 }
 

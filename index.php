@@ -1,4 +1,5 @@
-<?php require_once('Connections/conexion.php');error_reporting(1); ?>
+<?php require_once('Connections/conexion.php');error_reporting(1);?>
+<?php require_once('TempStock.php'); ?>
 <?php
 if (!isset($_SESSION)) {
   session_start();
@@ -391,7 +392,7 @@ $animation = $_GET['animation'];
 	  
 	  
 	  
-	  
+	  <!-- VEO CODIGO MUERTO -->
 	  
       <!--///////////////////////////////////////////////////////CANJES///////////////-->
       <article>
@@ -701,6 +702,8 @@ else
             <div class="cont_destacado">
 	<?php 
 	$proddesc=$row_RecordProductos_destacado['destacado'];
+
+
 	if($proddesc==1){ ?>
 		
 		<div class="sombra2345"></div>
@@ -729,26 +732,10 @@ else
 						  <?php echo $row_RecordProductos_destacado['strNombre']; ?>
 						</span>
 						<br />
-						<span>Stock <?php //STOCK
-										include("includes/class.categorias.php");
+						<span>Stock <?php echo($x->get($row_RecordProductos['idProducto'])) ?> U</span>
+            <?php 
 
-										$cat = new categorias();
-										$cat->select($row_RecordProductos_destacado['intCategoria']);
-										$requiere_talles = $cat->gettalles();
-
-										if($requiere_talles){
-
-										//traigo total de todos los talles para ese id de producto
-										include_once("includes/class.talles_productos.php");
-										$tall = new talles_productos();
-										$row_RecordProductos_destacado['idProducto'];
-										$cantidad_gral = $tall->cantidad_by_producto($row_RecordProductos_destacado['idProducto']);
-										echo $cantidad_gral;
-										}else{
-												echo $row_RecordProductos_destacado['intStock']; 
-										}
-
-										?> U</span>
+             ?>
 						<p>
 						  <?php echo $row_RecordProductos_destacado['strDetalle']; ?>
 						</p>
@@ -763,6 +750,7 @@ else
 
 	<?php 
 	$proddesc=$row_RecordProductos_destacado2['destacado'];
+
 	if($proddesc==2){ ?>
 <div class="unitcont">		
 		<div class="sombra2345"></div>
@@ -790,26 +778,7 @@ else
 						  <?php echo $row_RecordProductos_destacado2['strNombre']; ?>
 						</span>
 						<br />
-						<span>Stock <?php //STOCK
-										include_once("includes/class.categorias.php");
-
-										$cat = new categorias();
-										$cat->select($row_RecordProductos_destacado2['intCategoria']);
-										$requiere_talles = $cat->gettalles();
-
-										if($requiere_talles){
-
-										//traigo total de todos los talles para ese id de producto
-										include_once("includes/class.talles_productos.php");
-										$tall = new talles_productos();
-										$row_RecordProductos_destacado2['idProducto'];
-										$cantidad_gral = $tall->cantidad_by_producto($row_RecordProductos_destacado2['idProducto']);
-										echo $cantidad_gral;
-										}else{
-												echo $row_RecordProductos_destacado2['intStock']; 
-										}
-
-										?> U</span>
+						<span>Stock <?php echo($x->get($row_RecordProductos['idProducto'])) ?> U</span>
 						<p>
 						  <?php echo $row_RecordProductos_destacado2['strDetalle']; ?>
 						</p>
@@ -850,26 +819,8 @@ else
 						  <?php echo $row_RecordProductos_destacado3['strNombre']; ?>
 						</span>
 						<br />
-						<span>Stock <?php //STOCK
-										include_once("includes/class.categorias.php");
 
-										$cat = new categorias();
-										$cat->select($row_RecordProductos_destacado3['intCategoria']);
-										$requiere_talles = $cat->gettalles();
-
-										if($requiere_talles){
-
-										//traigo total de todos los talles para ese id de producto
-										include_once("includes/class.talles_productos.php");
-										$tall = new talles_productos();
-										$row_RecordProductos_destacado3['idProducto'];
-										$cantidad_gral = $tall->cantidad_by_producto($row_RecordProductos_destacado3['idProducto']);
-										echo $cantidad_gral;
-										}else{
-												echo $row_RecordProductos_destacado3['intStock']; 
-										}
-
-										?> U</span>
+						<span>Stock <?php echo($x->get($row_RecordProductos['idProducto'])) ?> U</span>
 						<p>
 						  <?php echo $row_RecordProductos_destacado3['strDetalle']; ?>
 						</p>
@@ -880,7 +831,20 @@ else
 					<?php } ?>  
 		</div>			
 <!--//////////////////LISTADO DE PRODUCTOS-->		
-			 <?php do { ?>
+			 <?php do { 
+
+        include_once("includes/class.categorias.php");
+        $cat = new categorias();
+        $cat->select($row_RecordProductos['intCategoria']);
+        $requiere_talles = $cat->gettalles();
+
+        include_once("includes/class.talles_productos.php");
+        $tall = new talles_productos();
+        $row_RecordProductos['idProducto'];
+        $cantidad_gral = $tall->cantidad_by_producto($row_RecordProductos['idProducto']);
+
+
+        ?>
 		<div class="unitcont">		 
 			  <div class="sombra2345"></div>
               <ul>
@@ -911,20 +875,12 @@ else
                     </span>
                     <br />
                     <span>Stock <?php //STOCK
-                                    include_once("includes/class.categorias.php");
-
-                                    $cat = new categorias();
-                                    $cat->select($row_RecordProductos['intCategoria']);
-                                    $requiere_talles = $cat->gettalles();
+                                    
                                     if($requiere_talles){
 
                                     //traigo total de todos los talles para ese id de producto
-                                    include_once("includes/class.talles_productos.php");
-                                    $tall = new talles_productos();
-                                    $row_RecordProductos['idProducto'];
-                                    $cantidad_gral = $tall->cantidad_by_producto($row_RecordProductos['idProducto']);
-                                    echo $cantidad_gral;
-                                    var_dump($cantidad_gral);
+                                   
+                                    echo $row_RecordProductos['intStock'];
                                     }else{
                                             echo $row_RecordProductos['intStock'];
                                     }

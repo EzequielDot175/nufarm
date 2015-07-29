@@ -6,9 +6,11 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
+error_reporting(0);
 
 $_SESSION["notification"] ="";
-
+require_once('/control/resources/pdo.php');
+require_once('/control/productos/classes/class.tallesColores.php');
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -238,7 +240,8 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 	 <td  class="rotate2" width="11%" height="20px" align="left">Precio</td>
      <td  width="14%" height="20px" align="left">Estado</td>
    </tr>
-    <?php  include_once('includes/class.compras.php'); ?><?php  include_once('includes/class.productos.php'); ?><?php do { ?>
+    <?php  include_once('includes/class.compras.php'); ?><?php  include_once('includes/class.productos.php'); ?>
+    <?php do { ?>
 	    
     <tr bgcolor="#FFFFFF" style="font-size: 12px;">
 			
@@ -278,7 +281,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
                    #echo '$id_compra'.$row_MisCompras['idCompra'];
                    #echo '<p>Total con IVA $'.$row_consulta2['dblTotal'].'</p>';
                    
-                   ?></td>
+        ?></td>
 
 
 					
@@ -481,7 +484,33 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
    <?php $preciototal = 0;?>
    <?php do { ?>
 
-   <tr class="line234343"  height="74px" align="center">
+        
+   <?php 
+      include_once('includes/class.productos.php');
+      $productos= new productos();
+      $productos->select($row_DatosCarrito['idProducto']);
+      $dblPrecio=$productos->getdblPrecio();
+      $strNombre=$productos->getstrNombre();
+      $strImagen=$productos->getstrImagen();
+      $categoria_producto=$productos->getintCategoria();
+
+      $nombre_talle = $productos->nombreTalle($row_DatosCarrito['talle']);
+
+    
+      include_once('includes/class.categorias.php');
+      $cat = new categorias();
+      $cat->select($categoria_producto);
+      $requiere_talles = $cat->gettalles();
+
+
+
+    
+
+    ?>
+
+
+
+   
 
    	<?php  
 
@@ -491,18 +520,6 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 	   	//verifico que haya disponibilidad de cada uno de los productos.
 	   	if($row_DatosCarrito['idProducto'])
 		{	
-			include_once('includes/class.productos.php');
-			$productos= new productos();
-			$productos->select($row_DatosCarrito['idProducto']);
-			$dblPrecio=$productos->getdblPrecio();
-			$strNombre=$productos->getstrNombre();
-			$strImagen=$productos->getstrImagen();
-			$categoria_producto=$productos->getintCategoria();
-		
-			include_once('includes/class.categorias.php');
-			$cat = new categorias();
-			$cat->select($categoria_producto);
-			$requiere_talles = $cat->gettalles();
 
 				if($requiere_talles==1)
 				{
@@ -512,7 +529,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 					echo"     ";	
 					$linea="";
 					$linea .= '
-
+            <tr class="line234343"  height="74px" align="center">
 						<!-- imagen -->
 						<td align="center" width="50"><img class="imgtable" src="images_productos/'.$strImagen.'" width="50" height="50"/></td>
 						<!-- nombre -->
@@ -539,7 +556,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						<td class="td_shadow" align="center">$'.$precio_x_cantidades.' </td>
 						
 						<!-- opciones -->
-						<td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'">Quitar <img src="imagenes/cross-08.png"/></a></td>';
+						<td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=1">Quitar <img src="imagenes/cross-08.png"/></a></td></tr>';
 					echo $linea;
 					$linea="";	
 						
@@ -552,7 +569,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 					
 					echo"     ";	
 					$linea .= '
-
+            <tr class="line234343"  height="74px" align="center">
 						<!-- imagen -->
 						<td align="center" width="50"><img class="imgtable" src="images_productos/'.$strImagen.'" width="50" height="50"/></td>
 						<!-- nombre -->
@@ -579,12 +596,58 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						<td class="td_shadow" align="center">$'.$precio_x_cantidades.' </td>
 						
 						<!-- opciones -->
-						<td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'">Quitar <img src="imagenes/cross-08.png"/></a></td>';
+						<td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=2">Quitar <img src="imagenes/cross-08.png"/></a></td></tr>';
 					echo $linea;
 				
 						
-				}
+				}elseif ($requiere_talles==3) {
+          $data = json_decode($row_DatosCarrito['jsonData']);
+         
+          $linea="";    
+            ####################
+            #REQUIERE COLORES
+         
 
+
+          echo"     ";  
+          $linea .= '
+            <tr class="line234343"  height="74px" align="center">
+            <!-- imagen -->
+            <td align="center" width="50"><img class="imgtable" src="images_productos/'.$strImagen.'" width="50" height="50"/></td>
+            <!-- nombre -->
+            <td class="td_shadow">'.$strNombre.'</td>
+            <!-- cantidad -->
+            <td class="td_shadow" align="center">'.$row_DatosCarrito['intCantidad'].'</td>';
+            $precio_x_cantidades = $row_DatosCarrito['intCantidad'] * $dblPrecio;
+            $totales[] = $precio_x_cantidades;
+            
+            //traigo el nombre del color
+            include_once('includes/class.colores.php');
+            $tall = new colores();
+            $tall->select($row_DatosCarrito['color']);  
+            $nombre_color = $tall->getnombre_color(); 
+          
+          $linea .= '
+            <!-- talle -->
+            <td class="td_shadow" align="center">'.$nombre_talle.'</td>
+            
+            <!-- color -->
+            <td class="td_shadow" align="center">'.$nombre_color.'</td>
+            
+            <!-- precio -->
+            <td class="td_shadow" align="center">$'.$precio_x_cantidades.' </td>
+            
+            <!-- opciones -->
+            <td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=3">Quitar <img src="imagenes/cross-08.png"/></a></td></tr>';
+          echo $linea;
+
+        
+
+
+
+
+         
+        }
 				else
 				{
 					####################
@@ -594,7 +657,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						if($strintStock >=1)
 					{
 							echo '
-
+            <tr class="line234343"  height="74px" align="center">
 						<!-- imagen -->
 						<td  align="center" width="50"><img class="imgtable" src="images_productos/'.$strImagen.'" width="50" height="50"/></td>
 						
@@ -611,14 +674,16 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						<td  class="td_shadow" width="100px" align="center"></td>
 
 						<!-- precio -->
-						<td class="td_shadow"  align="center">$'.$dblPrecio * $row_DatosCarrito['intCantidad'].'</td><td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'">Quitar  <img src="imagenes/cross-08.png"/></a></td>';
+						<td class="td_shadow"  align="center">$'.$dblPrecio * $row_DatosCarrito['intCantidad'].'</td><td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=0">Quitar  <img src="imagenes/cross-08.png"/></a></td></tr>';
 							$total = $dblPrecio * $row_DatosCarrito['intCantidad'];
 							$totales[] = $total;
 
 					}
 					else
 					{
-							echo '<td>'.$strNombre.'</td><td align="center">'.$row_DatosCarrito['intCantidad'].'</td><td align="center">---</td><td align="center"> <a href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'">NO DISPONIBLE</a> </td>';
+							echo '
+              <tr class="line234343"  height="74px" align="center">
+              <td>'.$strNombre.'</td><td align="center">'.$row_DatosCarrito['intCantidad'].'</td><td align="center">---</td><td align="center"> <a href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'">NO DISPONIBLE</a> </td></tr>';
 							$total =0;
 							$totales[] = $total;
 					}
@@ -662,7 +727,8 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 				}
 	   	
 	   	
-	   	}else{
+	   	}
+      else{
 
 	   	echo '<span class="nohay">No hay artículos.</span>
 

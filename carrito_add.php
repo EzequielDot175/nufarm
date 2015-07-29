@@ -1,9 +1,19 @@
 <?php 
+	require_once(dirname(__FILE__).'/TempStock.php');
+
+
+ ?>
+
+<?php 
 if (!isset($_SESSION)) {
   session_start();
 } ob_start();
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
+
+
+
+
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -44,6 +54,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 }
 
 
+
  	require_once('Connections/conexion.php');
 
  	// ================================= Cantida minima de producto ============================== //
@@ -51,9 +62,10 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
  	while ($row = mysql_fetch_array($query)) {
  		$minCantidad = $row["intMinCompra"];
  	}
- 	if ($_POST['cantidad'] < $minCantidad) {
-		header("Location: index.php?activo=1&prod=1"); 		
- 	}
+
+ 	// if ($_POST['cantidad'] < $minCantidad) {
+		// header("Location: index.php?activo=1&prod=1"); 		
+ 	// }
  	/**
  	* Objetivo : Proteger por php la cantidad minima requerida de producto a comprar
  	**/
@@ -73,10 +85,17 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 	$requiere_talles = $cat->gettalles();
 	$talles_seleccionados = $_POST['talle'];
 	$colores_seleccionados = $_POST['color'];
+
+
 	if($requiere_talles==1){
 		//requiere talles
-		
-		
+		try {
+			$stock = new TempStock();
+			$stock->setTalles($id_producto,$talles_seleccionados,$_SESSION['MM_IdUsuario']);	
+		} catch (Exception $e) {
+			echo($e->getMessage());
+		}
+
 		
 		#echo '<h1>SESSION USUSARIO'.$_SESSION['MM_IdUsuario'].'</h1>';
 	
@@ -115,7 +134,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 														}else{
 														
 															//necesito guardarlo desde cero
-															include_once("includes/class.carrito.php");
 															$carr =  new carrito();
 															$carr->idUsuario = $_SESSION['MM_IdUsuario'];
 															$carr->idProducto = $id_producto;
@@ -135,7 +153,15 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		
 	}else if($requiere_talles==2){
 		//requiere talles
-		
+
+		try {
+			$stock = new TempStock();
+			$stock->colores($id_producto,$colores_seleccionados);
+		} catch (Exception $e) {
+			echo($e->getMessage());
+		}
+
+
 		
 
 		#echo '<h1>SESSION USUSARIO'.$_SESSION['MM_IdUsuario'].'</h1>';
@@ -144,47 +170,43 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 			
 			//prevengo insert with 0
-			if($cantidad_elegida > 0 ){
-					#echo 'HERE?';
-					$id_usuario = $_SESSION['MM_IdUsuario'];
-					//primero chequeo si el producto ya existe en el carrito del usuario.
+				if($cantidad_elegida > 0 ){
+						#echo 'HERE?';
+						$id_usuario = $_SESSION['MM_IdUsuario'];
+						//primero chequeo si el producto ya existe en el carrito del usuario.
+						include_once("includes/class.carrito.php");
+						$carr =  new carrito();
+						echo $cantidad_en_carrito = $carr->chequear_producto_con_color($id_usuario,$id_producto, $id_color);
+		
+						if($cantidad_en_carrito > 0){
+																
+							//El producto ya existe en el carrito del usuario, solo actualizo la cantidad
+							$traigo_id = new carrito();
+							$traigo_id->select_by_usuario_producto_color($_SESSION['MM_IdUsuario'],$id_producto,$id_color );
+							echo $id_row = $traigo_id->getintContador();
+																
+							//Actualizo cantidad
+							$update_carrito = new carrito();
+							$update_carrito->select($id_row);
+							$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
+							$update_carrito->update($id_row);
+																
+							header("Location: mi_cuenta.php?activo=2");
+																
+															
+				}else{
+															
+															
+					//necesito guardarlo desde cero
 					include_once("includes/class.carrito.php");
 					$carr =  new carrito();
-					echo $cantidad_en_carrito = $carr->chequear_producto_con_color($id_usuario,$id_producto, $id_color);
-					
-					
-				
+					$carr->idUsuario = $_SESSION['MM_IdUsuario'];
+					$carr->idProducto = $id_producto;
+					$carr->intCantidad = $cantidad_elegida;
+					$carr->color = $id_color;
+					$carr->insert();
 
-														
-														if($cantidad_en_carrito > 0){
-															
-															//El producto ya existe en el carrito del usuario, solo actualizo la cantidad
-															$traigo_id = new carrito();
-															$traigo_id->select_by_usuario_producto_color($_SESSION['MM_IdUsuario'],$id_producto,$id_color );
-															echo $id_row = $traigo_id->getintContador();
-															
-															//Actualizo cantidad
-															$update_carrito = new carrito();
-															$update_carrito->select($id_row);
-															$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
-															$update_carrito->update($id_row);
-															
-															header("Location: mi_cuenta.php?activo=2");
-															
-														
-														}else{
-														
-														
-															//necesito guardarlo desde cero
-															include_once("includes/class.carrito.php");
-															$carr =  new carrito();
-															$carr->idUsuario = $_SESSION['MM_IdUsuario'];
-															$carr->idProducto = $id_producto;
-															$carr->intCantidad = $cantidad_elegida;
-															$carr->color = $id_color;
-															$carr->insert();
-
-														}
+				}
 														
 														//hay en stock y guarda la compra.	
 									
@@ -194,8 +216,59 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		
 		header("Location: mi_cuenta.php?activo=2");
 		
-	}else{
+	}
+	else if($requiere_talles==3){
+		require_once('/control/productos/classes/class.tallesColores.php');
+
+		try {
+			$stock = new TempStock();
+			$stock->setTallesColores($id_producto,$_POST['pedido'],$_SESSION['MM_IdUsuario']);
+		} catch (Exception $e) {
+			echo($e->getMessage());
+		}
 		
+
+		$pedido = $_POST['pedido'];
+		$id_usuario = $_SESSION['MM_IdUsuario'];
+		//primero chequeo si el producto ya existe en el carrito del usuario.
+		include_once("includes/class.carrito.php");
+		// $carr =  new carrito();
+		$x = new tallesColores();
+
+
+
+		foreach($pedido as $k => $v):
+
+			foreach($v['talle'] as $kt => $vt):
+				if (	(int)$vt > 0	) {
+					$x->usuario = $_SESSION['MM_IdUsuario'];
+					$x->producto = $id_producto;
+					$x->color = $k;
+					$x->talle = $kt;
+					$x->cantidad = $vt;
+					$x->insert();
+				}
+			endforeach;
+		endforeach;
+
+		header("Location: mi_cuenta.php?activo=2");
+
+
+	}
+	else{
+		
+
+
+
+		try {
+			$stock = new TempStock();
+			$stock->setComunes($id_producto,$cantidad_elegida,$_SESSION['MM_IdUsuario']);
+		} catch (Exception $e) {
+			echo($e->getMessage());
+		} 
+
+
+
 		//Hay stock 
 		//No requiere talles		
 	  	if($cantidad_elegida <= $StockActual){

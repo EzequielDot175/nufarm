@@ -352,7 +352,7 @@ if($talles ==1){
 		
 		if($cantidad=="" || $cantidad== 0 )
 		{
-		$cantidad=0;
+			$cantidad=0;
 		}
 		else
 		{

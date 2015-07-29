@@ -6,6 +6,7 @@ if(!$_SESSION['logged_id']){
 ini_set("memory_limit","60M");
 
 function base_url() {
+
 	 //$pageURL = 'http://localhost/marketingNet/control'; 
 	$pageURL = 'http://nufarm-maxx.com/marketingNet/control'; 
 	#$pageURL = 'http://localhost/nufarm-gabriel/control'; 
@@ -17,8 +18,17 @@ function base_url() {
 	return $pageURL;
  }
 // define('BASEURLRAIZ', 'localhost/');
-define('BASEURLRAIZ', 'http://nufarm-maxx.com/marketingNet');
-define('BASEURL', base_url());
+
+
+ if ($_SERVER["HTTP_HOST"] == "localhost") {
+ 	define('BASEURLRAIZ', 'http://localhost/ftp/nufarmMaxx');
+	define('BASEURL', 'http://localhost/ftp/nufarmMaxx/control');
+ }else{
+ 	define('BASEURLRAIZ', 'http://nufarm-maxx.com/marketingNet');
+	define('BASEURL', base_url());
+ }
+
+
 
 
 

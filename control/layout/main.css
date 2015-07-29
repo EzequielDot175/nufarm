@@ -4299,3 +4299,13 @@ button.mainbtn-save:hover {
 	text-transform: none;
 	line-height: 22px;
 }
+
+.addColor{
+	float: left;
+	width: 100%;
+	padding-bottom: 20px;
+}
+.segmentTalleColor{
+	width: 100%;
+  	float: left;
+}

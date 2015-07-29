@@ -5,6 +5,13 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
+
+require_once('TempStock.php');
+
+
+
+
+
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
   // For security, start by assuming the visitor is NOT authorized. 
@@ -82,9 +89,7 @@ if($checkout){
 	
 	#informacion del usuario
 	
-	
-	
-	
+
 	include_once("includes/class.usuarios.php");
 	$dtuser = new usuarios();
 	$dtuser->select($_SESSION["MM_IdUsuario"]);

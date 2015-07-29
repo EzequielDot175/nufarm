@@ -98,5 +98,9 @@ if(preg_match('/SELECT/',$query))
  } // Method : end	
   
  } // Class : end
- 
+
+
+
+
+
 ?>

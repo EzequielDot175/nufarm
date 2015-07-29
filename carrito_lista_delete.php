@@ -1,10 +1,17 @@
-<?php require_once('Connections/conexion.php'); ?>
+<?php 
+  require_once('Connections/conexion.php');
+  require_once(dirname(__FILE__).'/TempStock.php');
+
+ ?>
 <?php
 if (!isset($_SESSION)) {
   session_start();
 }
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
+
+require_once('/control/resources/pdo.php');
+require_once('/control/productos/classes/class.tallesColores.php');
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -76,7 +83,54 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
+$cond =  (  isset($_GET['recordID']) && !empty($_GET['recordID']) && !isset($_GET['talle_colores'])  );
+
+
+
+
+
+if ( isset($_GET['require'])) {
+    switch ($_GET['require']) {
+      case '1':
+         try {
+          $x = new TempStock();
+          $x->liberarStockTalle($_GET['recordID'],$_SESSION['MM_IdUsuario']);
+        } catch (Exception $e) {
+          echo($e->getMessage());
+        }
+
+        break;
+      case '2':
+        try {
+          $x = new TempStock();
+          $x->liberarStockColor($_GET['recordID'],$_SESSION['MM_IdUsuario']);
+        } catch (Exception $e) {
+          echo($e->getMessage());
+        }
+
+        break;
+      case '3':
+        try {
+          $x = new TempStock();
+          $x->liberarStockColorTalle($_GET['recordID'],$_SESSION['MM_IdUsuario']);
+        } catch (Exception $e) {
+          echo($e->getMessage());
+        }
+        break;
+      
+      default:
+         try {
+          $x = new TempStock();
+          $x->liberarStockComunes($_GET['recordID'],$_SESSION['MM_IdUsuario']);
+        } catch (Exception $e) {
+          echo($e->getMessage());
+        }
+        break;
+    }
+}
+
+
+if ($cond) {
   $deleteSQL = sprintf("DELETE FROM carrito WHERE intContador=%s LIMIT 1",
                        GetSQLValueString($_GET['recordID'], "int"));
 
@@ -88,15 +142,15 @@ if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
   include_once("includes/class.productos.php");
   
   //Traigo stock actual
-  $productos= new productos();
-  $productos->select($_GET['recordID']);
-  $StockActual=$productos->getintStock();
+  // $productos= new productos();
+  // $productos->select($_GET['recordID']);
+  // $StockActual=$productos->getintStock();
 
   //actualizo el stock
-  $productos= new productos();
-  $productos->select($_GET['recordID']);
-  $productos->intStock=$intStock = $StockActual + 1;
-  $productos->update($_GET['recordID']);
+  // $productos= new productos();
+  // $productos->select($_GET['recordID']);
+  // $productos->intStock=$intStock = $StockActual + 1;
+  // $productos->update($_GET['recordID']);
 
 
 
@@ -108,6 +162,14 @@ if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
     $deleteGoTo .= $_SERVER['QUERY_STRING'];
   }
   header(sprintf("Location: %s", $deleteGoTo));
+}elseif (   isset($_GET['talle_colores'])  ) {
+ 
+    $productos = new tallesColores();
+    $sub = $_GET['sub'];
+    $talle = $_GET['talle'];
+    
+    $delete = $productos->deleteItem($_GET['recordID'],$sub,$talle);
+    header('Location: mi_cuenta.php?activo=2');
 }
 ?>
 <?php include("includes/header.php"); ?>

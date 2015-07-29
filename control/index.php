@@ -1,7 +1,21 @@
-<?php  session_start(); 
-if($_SESSION['logged_id'] != ""){
-header('Location: compras/v_compras.php?activo=1&sub=c');
+<?php  session_start();
+// Requires 
+
+
+// session controller
+if (isset($_SESSION['logged_id'])) {
+  if($_SESSION['logged_id'] != ""){
+  header('Location: compras/v_compras.php?activo=1&sub=c');
+
+  }
 }
+
+
+
+
+
+
+
 ?>
 <!--[if !IE]> CONTENT <![endif]-->
 <!doctype html>
@@ -25,8 +39,8 @@ define('ROOT_PATH', realpath(__DIR__.'/../includes/'));
    <form id="login2" name="login" method="POST" action="verification.php" class="formvalid">
         <center class="center2"><label>CORREO ELECTRÓNICO</label></center>
       
-        <center class="center2"><input type="text" name="nickname" id="campo" value="<?php
-echo $_COOKIE['remember_me']; ?>"/></center>
+        <center class="center2">
+          <input type="text" name="nickname" id="campo" value="<?php echo(isset($_COOKIE['remember_me']) ? $_COOKIE['remember_me'] : '' ) ?>"/></center>
        
         <center class="center2"><label> clave</label></center>
      

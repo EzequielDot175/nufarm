@@ -60,13 +60,13 @@ $(".inicio2").hide();
 	
 	}
   if(window.location.href.indexOf("prod=1") > -1) {
-	$(".productos div").removeClass("activo");
-	$(".productosb").addClass("activo");//seccion a mostrar
- $(".welcometitle").show();
- $(".original").hide();
-$(".inicio2").hide();
-$(".productos").show();
-$("#productosb").addClass("activo");
+  	$(".productos div").removeClass("activo");
+  	$(".productosb").addClass("activo");//seccion a mostrar
+   $(".welcometitle").show();
+   $(".original").hide();
+  $(".inicio2").hide();
+  $(".productos").show();
+  $("#productosb").addClass("activo");
 }
     if(window.location.href.indexOf("eve=1") > -1) {
 	$(".productos div").removeClass("activo");

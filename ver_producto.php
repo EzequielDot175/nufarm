@@ -1,8 +1,9 @@
 <?php header('Content-Type: text/html; charset=utf-8'); ?>
 <?php require('Connections/conexion.php');?><?php
+require_once('/control/resources/pdo.php');
+require_once('/control/productos/classes/class.tallesColores.php');
 if (!isset($_SESSION)) {
   session_start();
-  error_reporting();
 }
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
@@ -10,6 +11,7 @@ $MM_donotCheckaccess = "true";
 
 $_SESSION["notification"] ="";
 
+error_reporting(0);
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -424,6 +426,9 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	<?php
 	include_once('includes/class.categorias.php');
 
+	$min_Attr =(int)$row_DatosProductos['intMinCompra'];
+	 
+	
 	
 
 	$verifcat = new categorias();
@@ -433,12 +438,10 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	$talles=$verifcat->gettalles();
 
 				$salida = '';
-
 	if($talles ==1){
 
-	
-
-	
+		
+		
 
 		//necesita talles
 
@@ -488,9 +491,10 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			$salida .=    '
 
 			     
-				<div id="talles"><a class="tooltip">'.$nombre_talle.'</a>
-        <div class="stock-talle"><p>'.$cantidad.'u</p></div>
-        <input style="width:43px;height:30px;position:relative;top:-5px" type="number" class="box-values" name="talle['.$talle.']" value="" id="caja'.$id_talle.'" 
+				<div id="talles">
+					<a class="tooltip">'.$nombre_talle.'</a>
+        			<div class="stock-talle"><p>'.$cantidad.'u</p></div>
+        			<input style="width:43px;height:30px;position:relative;top:-5px" max="'.$cantidad.'" min="'.$min_Attr.'" type="number" class="box-values" name="talle['.$talle.']" value="" id="caja'.$id_talle.'" 
 
 				onchange="checkdisp('.$cantidad.','.$id_talle.');"> <!--['.$cantidad.']--></div>
 
@@ -587,9 +591,9 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			$salida .=    '
 
 			     
-				<div id="talles">
+				<div id="talles" class="talles-box">
         <div class="stock-talle"><p>'.$cantidad.'u</p></div>
-        <input class="box-colores" id="caja_color"  type="number" name="color['.$color.']" value="" onchange="checkdisp_color('.$cantidad.','.$id_color.');"> <!--['.$cantidad.']-->
+        <input class="box-colores box-values" id="caja_color" max="'.$cantidad.'" min="'.$min_Attr.'" type="number" name="color['.$color.']" value="" onchange="checkdisp_color('.$cantidad.','.$id_color.');"> <!--['.$cantidad.']-->
 		<a class="tooltip">'.$nombre_color.'</a>
         </div>
 
@@ -604,18 +608,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	    	echo "<p class='minimo'>Minima cantidad de compra : <span>".$row_DatosProductos["intMinCompra"]."</span></p>";    	
 	    
 		
-		echo '<div id="talles" style="float: right;">
-        <div class="stock-talle" style="top:55px"><p>Total</p></div>
-        <input style="width: 43px;
-						height: 30px;
-						background-color: #D3D3D3;
-						border: none;
-						color: #333;
-						margin: 0 0 31px 0;
-						padding: 0;
-						text-align: center;"
- 		disabled="disabled" type="text" id="CountActual">
-        </div>';
+	
 		}
 
 	echo '<p>'.$salida.'</p> <div id="info" style="color:red;"></div>';
@@ -626,7 +619,42 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 		
 
-	}else{
+	}else if($talles ==3){
+
+
+		$producto = new tallesColores();
+		$all = $producto->all();
+		$colores =$producto->colores();
+		$talles =$producto->talles();
+
+	foreach($all as $k => $v):
+	
+	 ?>
+	<div style="width:100%;float:left;">
+		<a class="tooltip"><?php echo($colores[$k]) ?></a>
+		<input type="hidden"  value="">
+		<?php foreach($v['talle'] as $kt => $vt): ?>
+		<div class="talles-box <?php $producto->setClassEnabled($vt) ?>" >
+	        <div class="stock-talle custom"><p><?php echo($talles[$kt]) ?></p></div>
+	        <div class="stock-talle cantidad"><p><?php echo($vt) ?> u</p></div>
+	        <input style="width:43px;height:30px;position:relative;top:-5px" 
+	        		type="number" min="1" max="<?php echo($vt) ?>" 
+	        		class="box-values boxIntInput" 
+	        		name="pedido[<?php echo($k) ?>][talle][<?php echo($kt) ?>]" 
+					<?php $producto->setEnabled($vt) ?>
+	        		> 
+	    </div>
+	    <?php endforeach; ?>
+	   
+	</div>
+	
+
+
+	<?php 
+	endforeach;
+
+	}
+	else{
 
 		//viene de stock en la misma tabla
 
@@ -636,14 +664,14 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	*
     */
 
+
     if ($row_DatosProductos["intMinCompra"] > 0) {
     	echo "<p class='minimo'>Minima cantidad de compra : <span>".$row_DatosProductos["intMinCompra"]."</span></p>";    	
     }
-    echo '<input name="cantidad" type="number" id="cantidad" value="1">';
+    echo '<input name="cantidad" class="box-values" min="'.$min_Attr.'" max="'.$row_DatosProductos['intStock'].'" type="number" id="cantidad" value="1">';
 
 	}
 
-	
 
 	?>
 
@@ -669,7 +697,8 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
                        
 
-<?php }?> 
+	
+<?php } ?> 
 
               </div>
 
@@ -721,52 +750,33 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 </script>
 <?php }elseif ($talles == 1) { ?> 
 <script>
-	var eventhandler = function(e) {e.preventDefault()}
-	var c = parseInt($('#IntCantidad').val());
-	$('#addproduct').bind('submit', eventhandler);
-	$('.box-values').change(function(event) {
-		var box = $('.box-values');
-		var sum = 0;
-		for (var i = 0; i < box.length; i++) {
-			// console.log(box[i].value);
-			if (box[i].value != '') {sum += parseInt(box[i].value)};
-		};
-		// console.log(sum);
-		$('#CountActual').val(sum);
-		if (sum >= c) {
-			$("#CountActual").css('border', '1px solid green');
-			$('#addproduct').unbind('submit', eventhandler);}
-		else{
-			$("#CountActual").css('border', '1px solid red');			
-			$('#addproduct').bind('submit', eventhandler);
-		}
-	});
+	
 </script>
-<?php }else{ ?>
+<?php }elseif ($talles == 2) {
+
+}
+
+
+else{ ?>
+
+<?php } ?>
+
 <script>
-	var eventhandler = function(e) {e.preventDefault()}
-	var c = parseInt($('#IntCantidad').val());
-	$('#addproduct').bind('submit', eventhandler);
-	$('.box-colores').change(function(event) {
-		var box = $('.box-colores');
-		var sum = 0;
-		for (var i = 0; i < box.length; i++) {
-			// console.log(box[i].value);
-			if (box[i].value != '') {sum += parseInt(box[i].value)};
+	
+	$('.boxIntInput,.box-values').change(function(event) {
+		var min = parseInt($(this).attr('min'));
+		var max = parseInt($(this).attr('max'));
+		var val = parseInt($(this).val());
+		if (val > max) {
+			$(this).val(max);
 		};
-		// console.log(sum);
-		$('#CountActual').val(sum);
-		if (sum >= c) {
-			$("#CountActual").css('border', '1px solid green');
-			$('#addproduct').unbind('submit', eventhandler);}
-		else{
-			$("#CountActual").css('border', '1px solid red');			
-			$('#addproduct').bind('submit', eventhandler);
-		}
+		if (val < min) {
+			$(this).val(min);
+		};
 	});
 	
 </script>
-<?php } ?>
+
 
  </div><!--- Fin Productos --->
 
