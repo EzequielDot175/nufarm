@@ -62,7 +62,7 @@ if ((isset($_SESSION['MM_Username'])) &&($_SESSION['MM_Username'] != ""))
   echo  "tenes para </br> canjear  ";
   ?></h3>
   <div id="credito">
-              <h2>$<?php echo $row_DatoUsuarioCredito['dblCredito']; ?></h2>
+              <h2><?php echo $row_DatoUsuarioCredito['dblCredito']; ?></h2>
 
 <p>CRÉDITO DISPONIBLE HASTA <?php  ; 
               

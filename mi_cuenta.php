@@ -553,7 +553,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						<td class="td_shadow" align="center"></td>
 						
 						<!-- precio -->
-						<td class="td_shadow" align="center">$'.$precio_x_cantidades.' </td>
+						<td class="td_shadow" align="center">'.$precio_x_cantidades.' </td>
 						
 						<!-- opciones -->
 						<td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=1">Quitar <img src="imagenes/cross-08.png"/></a></td></tr>';
@@ -593,7 +593,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						<td class="td_shadow" align="center">'.$nombre_color.'</td>
 						
 						<!-- precio -->
-						<td class="td_shadow" align="center">$'.$precio_x_cantidades.' </td>
+						<td class="td_shadow" align="center">'.$precio_x_cantidades.' </td>
 						
 						<!-- opciones -->
 						<td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=2">Quitar <img src="imagenes/cross-08.png"/></a></td></tr>';
@@ -635,7 +635,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
             <td class="td_shadow" align="center">'.$nombre_color.'</td>
             
             <!-- precio -->
-            <td class="td_shadow" align="center">$'.$precio_x_cantidades.' </td>
+            <td class="td_shadow" align="center">'.$precio_x_cantidades.' </td>
             
             <!-- opciones -->
             <td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=3">Quitar <img src="imagenes/cross-08.png"/></a></td></tr>';
@@ -674,7 +674,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 						<td  class="td_shadow" width="100px" align="center"></td>
 
 						<!-- precio -->
-						<td class="td_shadow"  align="center">$'.$dblPrecio * $row_DatosCarrito['intCantidad'].'</td><td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=0">Quitar  <img src="imagenes/cross-08.png"/></a></td></tr>';
+						<td class="td_shadow"  align="center">'.$dblPrecio * $row_DatosCarrito['intCantidad'].'</td><td align="center"><a class="quitar" href="carrito_lista_delete.php?recordID='.$row_DatosCarrito['intContador'].'&require=0">Quitar  <img src="imagenes/cross-08.png"/></a></td></tr>';
 							$total = $dblPrecio * $row_DatosCarrito['intCantidad'];
 							$totales[] = $total;
 
@@ -755,7 +755,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 	   <td></td>
 	   <td></td>
       <td class="precio_final " height="32px" align="right" width="20%" >
-        Total final: <strong>$ <?php echo $final_con_iva ?></strong>
+        Total final: <strong><?php echo $final_con_iva ?></strong>
         </td>
      </tr>
 

@@ -712,7 +712,7 @@ else
 					
 					  <div class="tipro">
 						<div class="titlef"></div>
-						<p>$<?php echo $row_RecordProductos_destacado['dblPrecio']; ?></p>
+						<p><?php echo $row_RecordProductos_destacado['dblPrecio']; ?></p>
 						<p class="smallsub">canjear</p>
 					  </div>
 					  <div class="box-imagen_destacado1">
@@ -759,7 +759,7 @@ else
 					 <a href="ver_producto.php?recordID=<?php echo $row_RecordProductos_destacado2['idProducto']; ?>&activo=1">
 					  <div class="tipro">
 						<div class="titlef"></div>
-						<p>$<?php echo $row_RecordProductos_destacado2['dblPrecio']; ?></p>
+						<p><?php echo $row_RecordProductos_destacado2['dblPrecio']; ?></p>
 						<p class="smallsub">canjear</p>
 					  </div>
 					  <div class="box-imagen3">
@@ -800,7 +800,7 @@ else
 					<a href="ver_producto.php?recordID=<?php echo $row_RecordProductos_destacado3['idProducto']; ?>&activo=1">
 					  <div class="tipro">
 						<div class="titlef"></div>
-						<p>$<?php echo $row_RecordProductos_destacado3['dblPrecio']; ?></p>
+						<p><?php echo $row_RecordProductos_destacado3['dblPrecio']; ?></p>
 						<p class="smallsub">canjear</p>
 					  </div>
 					  <div class="box-imagen3">
@@ -852,7 +852,7 @@ else
                 <li>
                   <div class="tipro">
                     <div class="titlef"></div>
-                    <p>$<?php echo $row_RecordProductos['dblPrecio']; ?></p>
+                    <p><?php echo $row_RecordProductos['dblPrecio']; ?></p>
 					<p class="smallsub">canjear</p>
                   </div>
                   <div class="box-imagen3">

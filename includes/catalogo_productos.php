@@ -56,7 +56,7 @@ if ((isset($_SESSION['MM_Username'])) &&($_SESSION['MM_Username'] != ""))
   echo ObtenerNombreUsuario ($_SESSION['MM_IdUsuario']);
   ?></h3>
   <div id="credito">
-              <h2>$<?php echo $row_DatoUsuarioCredito['dblCredito']; ?></h2>
+              <h2><?php echo $row_DatoUsuarioCredito['dblCredito']; ?></h2>
               <p>CRÉDITO DISPONIBLE HASTA 2014/07/10</p>
               </div>
       </div>
