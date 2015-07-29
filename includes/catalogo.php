@@ -61,7 +61,7 @@ if ((isset($_SESSION['MM_Username'])) &&($_SESSION['MM_Username'] != ""))
   <div id="credito">
               <h2><?php echo $row_DatoUsuarioCredito['dblCredito']; ?></h2>
 
-<p>CRÉDITO DISPONIBLE HASTA <?php  ; 
+<p>PUNTOS DISPONIBLES HASTA <?php  ; 
               
   list($anio, $mes, $dia) = explode('-', $row_DatoUsuarioCredito['vigencia_credito']);
   $fecha = $dia.'/'.$mes.'/'.$anio;            
