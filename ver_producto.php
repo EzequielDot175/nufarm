@@ -1,7 +1,7 @@
 <?php header('Content-Type: text/html; charset=utf-8'); ?>
 <?php require('Connections/conexion.php');?><?php
-require_once('/control/resources/pdo.php');
-require_once('/control/productos/classes/class.tallesColores.php');
+require_once('control/resources/pdo.php');
+require_once('control/productos/classes/class.tallesColores.php');
 if (!isset($_SESSION)) {
   session_start();
 }
