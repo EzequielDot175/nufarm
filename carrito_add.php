@@ -1,10 +1,6 @@
 <?php 
 	require_once(dirname(__FILE__).'/TempStock.php');
 
-
- ?>
-
-<?php 
 if (!isset($_SESSION)) {
   session_start();
 } ob_start();
@@ -192,6 +188,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 							$update_carrito->update($id_row);
 																
 							header("Location: mi_cuenta.php?activo=2");
+							exit();
 																
 															
 				}else{
@@ -214,11 +211,15 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
-		header("Location: mi_cuenta.php?activo=2");
-		
+		header("location: mi_cuenta.php?activo=2");
+		exit();
+		// echo "<script>window.location.href = 'mi_cuenta.php?activo=2'</script>";
+
+
+
 	}
 	else if($requiere_talles==3){
-		require_once('control/productos/classes/class.tallesColores.php');
+		require_once('/control/productos/classes/class.tallesColores.php');
 
 		try {
 			$stock = new TempStock();
@@ -319,6 +320,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			//No hay stock disponible
 			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
 	  		header("Location: ver_producto.php?recordID=".$id_producto);
+	  		exit();
 
 			
 	  	}//end else stock
