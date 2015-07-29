@@ -10,8 +10,8 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
-require_once('/control/resources/pdo.php');
-require_once('/control/productos/classes/class.tallesColores.php');
+// require_once('/control/resources/pdo.php');
+require_once('control/productos/classes/class.tallesColores.php');
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 

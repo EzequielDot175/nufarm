@@ -9,8 +9,8 @@ $MM_donotCheckaccess = "true";
 error_reporting(0);
 
 $_SESSION["notification"] ="";
-require_once('/control/resources/pdo.php');
-require_once('/control/productos/classes/class.tallesColores.php');
+// require_once('control/resources/pdo.php');
+require_once('control/productos/classes/class.tallesColores.php');
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 

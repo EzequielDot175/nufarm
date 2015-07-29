@@ -218,7 +218,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		
 	}
 	else if($requiere_talles==3){
-		require_once('/control/productos/classes/class.tallesColores.php');
+		require_once('control/productos/classes/class.tallesColores.php');
 
 		try {
 			$stock = new TempStock();
