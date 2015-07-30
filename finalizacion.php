@@ -2,13 +2,21 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+
+
+
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
 
 require_once('TempStock.php');
 
-
+$checkVencimiento = new TempStock();
+$can = $checkVencimiento->fechaVencimiento($_SESSION['MM_IdUsuario']);
+if($can):
+	header('Location: index.php?activo=1');
+	exit();
+endif;
 
 
 

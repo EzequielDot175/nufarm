@@ -316,6 +316,17 @@
 				endif;
 			endif;
 		}
+
+
+
+
+		public function fechaVencimiento($user){
+			$result = $this->query("SELECT vigencia_credito FROM usuarios WHERE idUsuario = ".$user)->fetch(PDO::FETCH_OBJ)->vigencia_credito;
+			$actual = date('Y-m-d');
+			$vencimiento = new DateTime($result);
+			$vencimiento = $vencimiento->format('Y-m-d');
+			return ($vencimiento <  $actual ? true : false);
+		}
 	}
 
 

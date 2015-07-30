@@ -776,28 +776,40 @@ else{ ?>
 		};
 	});
 	
-	$('form').submit(function(event) {
-		// event.preventDefault();
-		// var type = parseInt($(this).find('input[name=type]').val());
-		// switch(type){
-		// 	case 1:
-		// 		var total = 0;
-		// 		// console.log($(this).serializeArray());
-		// 		$(this).serializeArray().map(function(index, elem) {
-		// 			if (index.name.search(/talle/) != -1) {
-		// 				total += parseInt("") || 0;
-		// 			};
-		// 		});
-		// 		if (true) {};
-		// 		console.log(total);
-		// 		break;
-		// 	default:
-		// 		statements_def
-		// 		break;
-		// }
-		// console.log(type);
-		// console.log(enviado);
-	});
+	// function getTotal(){
+
+	// }
+	
+
+	// $('form').submit(function(event) {
+	// 	event.preventDefault();
+	// 	var type = parseInt($(this).find('input[name=type]').val());
+	// 	switch(type){
+	// 		case 1:
+	// 			var total = 0;
+
+	// 			function count(){
+	// 				return 21;
+	// 			}
+	// 			(function(){
+	// 				console.log('asdasd');
+
+
+	// 			})(count);
+	// 			// $(this).serializeArray().map();
+
+	// 			// if (index.name.search(/talle/) != -1) {
+	// 			// 		total += parseInt("") || 0;
+	// 			// 	};
+	// 			// 	console.log(total);
+
+	// 			break;
+	// 		default:
+	// 			break;
+	// 	}
+	// 	// console.log(type);
+	// 	// console.log(enviado);
+	// });
 	
 </script>
 
