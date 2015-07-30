@@ -80,7 +80,7 @@ $strCampo = $row['strCampo'];
 $fecha = $row['fecha'];
 $respondido = $row['respondido'];
 $tipo = $row['tipo'];
-
+$mensaje = "";
 $mensaje .= '<div class="item_respuesta">
 <div class="text_res_admin">
 <p>'.$strCampo.'</p>
