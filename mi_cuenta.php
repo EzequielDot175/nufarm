@@ -6,8 +6,8 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
 $_SESSION["notification"] ="";
 // require_once('control/resources/pdo.php');
 require_once('control/productos/classes/class.tallesColores.php');
