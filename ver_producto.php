@@ -779,37 +779,76 @@ else{ ?>
 	// function getTotal(){
 
 	// }
+
+	function preventVencimiento(callback){
+
+		$.post('checkFechaVencimiento.php',{check: true}, function(data) {
+			var set = (data === 'true');
+			callback.call('result',set);
+		});
+	}
+
+	// preventVencimiento();
+	function preventEmpy(collection,miss,callback){
+		var total = 0;
+		$.each(collection, function(index, val) {
+					var regex = new RegExp(miss,'ig');
+					if (val.name.search(regex) != -1) {
+						total += parseInt(val.value) || 0;
+					};
+					if (collection.length-1 == index) {
+						if (total == 0) {
+							callback.call('isEmpty', true);
+						}else{
+							callback.call('isEmpty', true);
+						}
+					};
+				});
+	}
 	
 
-	// $('form').submit(function(event) {
-	// 	event.preventDefault();
-	// 	var type = parseInt($(this).find('input[name=type]').val());
-	// 	switch(type){
-	// 		case 1:
-	// 			var total = 0;
-
-	// 			function count(){
-	// 				return 21;
-	// 			}
-	// 			(function(){
-	// 				console.log('asdasd');
-
-
-	// 			})(count);
-	// 			// $(this).serializeArray().map();
-
-	// 			// if (index.name.search(/talle/) != -1) {
-	// 			// 		total += parseInt("") || 0;
-	// 			// 	};
-	// 			// 	console.log(total);
-
-	// 			break;
-	// 		default:
-	// 			break;
-	// 	}
-	// 	// console.log(type);
-	// 	// console.log(enviado);
-	// });
+	$('form').submit(function(event) {
+		var type = parseInt($(this).find('input[name=type]').val());
+		var collection = $(this).serializeArray();
+		event.preventDefault();
+		switch(type){
+			case 1:
+				preventVencimiento(function(result){
+					if (result) {
+						alert('Credito vencido');
+					}else{
+						preventEmpy(collection,'talle',function(isEmpty){
+							console.log(isEmpty);
+						});
+					}
+				});
+			case 2:
+				preventVencimiento(function(result){
+					if (result) {
+						alert('Credito vencido');
+					}else{
+						preventEmpy(collection,'color',function(isEmpty){
+							console.log(isEmpty);
+						});
+					}
+				});
+			case 3:
+				preventVencimiento(function(result){
+					if (result) {
+						alert('Credito vencido');
+					}else{
+						preventEmpy(collection,'pedido',function(isEmpty){
+							console.log(isEmpty);
+						});
+					}
+				});
+				break;
+			default:
+				break;
+		}
+		// console.log(type);
+		// console.log(enviado);
+	});
 	
 </script>
 

@@ -2,7 +2,7 @@
 
 	class tallesColores extends PDO
 	{
-		private $dbname = "nmaxx_productosnufarm";
+		private $dbname = "nmaxx_develop";
 		private $dbuser = "nmaxx_pnufarm";
 		private $dbpass = "K[^Xc0lsU1T(";
 

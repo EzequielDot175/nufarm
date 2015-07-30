@@ -1,5 +1,7 @@
 <?php 
 error_reporting(0);
+// ini_set('display_errors', 'on');
+
 
 $idcategoria = $_GET['idcategoria']; 
 $idproducto = $_GET['idproducto'];
@@ -131,7 +133,6 @@ $idproducto = $_GET['idproducto'];
 					//require colores
 					include_once("../colores/classes/class.colores.php");
 					include_once("../talles/classes/class.talles.php");
-					include_once("../resources/pdo.php");
 					include_once("../productos/classes/class.tallesColores.php");
 
 
@@ -143,7 +144,6 @@ $idproducto = $_GET['idproducto'];
 					$all = $x->all();
 
 					$key = rand();
-					
 					
 					if (isset($_GET['action']) && $_GET['action'] == 'add' || empty($all)):
 					?>
