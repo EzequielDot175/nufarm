@@ -78,7 +78,10 @@ $this->rows = 0;
  $this->OpenLink();
  $this->SelectDB();
  $this->query = $query;
- $this->result = mysql_query($query,$this->link) or die (print "Sin resultados");
+
+
+
+ $this->result = mysql_query($query,$this->link);
  
 // $rows=mysql_affected_rows();
 
