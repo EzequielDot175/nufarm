@@ -6,8 +6,8 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
-error_reporting(0);
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 $_SESSION["notification"] ="";
 // require_once('control/resources/pdo.php');
 require_once('control/productos/classes/class.tallesColores.php');
@@ -192,7 +192,7 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 
 
 ?>
-<?php $activo = $_GET['activo']; include("includes/header.php"); ?>
+<?php $activo = (isset($_GET['activo']) ? $_GET['activo'] : 0); include("includes/header.php"); ?>
 <!DOCTYPE html>
 
 <html>
@@ -483,9 +483,13 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
    </tr>
    <?php $preciototal = 0;?>
    <?php do { ?>
-
         
    <?php 
+      
+      if(!$row_DatosCarrito):
+        break;
+      endif;
+   // break;
       include_once('includes/class.productos.php');
       $productos= new productos();
       $productos->select($row_DatosCarrito['idProducto']);
@@ -754,19 +758,23 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
      <td></td>
 	   <td></td>
 	   <td></td>
-      <td class="precio_final " height="32px" align="right" width="20%" >
-        Total final: <strong><?php echo $final_con_iva ?></strong>
+      <?php if(isset($final_con_iva)): ?>
+        <td class="precio_final " height="32px" align="right" width="20%" >
+          Total final: <strong><?php echo $final_con_iva ?></strong>
         </td>
+      <?php endif; ?>
      </tr>
 
  </table>
  </div>
+ <?php if(isset($link_pagar)): ?>
  <table width="99%" align="left">
  <tr>
 <a class="btn-micuenta8" href="index.php?activo=1&prod=1"><span> Agregar Nuevo canje</span></a>
        <?php echo $link_pagar; ?>
        </tr>
  </table>
+<?php endif; ?>
 
 <!--FIN CARRO COMPRAS--> 
 
@@ -780,7 +788,3 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 
 </body>
 </html>
-<?php
-  mysql_free_result($consulta);
-  mysql_free_result($consulta2);
-?>

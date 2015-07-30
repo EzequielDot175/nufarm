@@ -438,6 +438,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	$talles=$verifcat->gettalles();
 
 				$salida = '';
+	echo '<input type="hidden" name="type" value="'.$talles.'">';
 	if($talles ==1){
 
 		
@@ -762,7 +763,7 @@ else{ ?>
 <?php } ?>
 
 <script>
-	
+	// Scripts para todos los tipos
 	$('.boxIntInput,.box-values').change(function(event) {
 		var min = parseInt($(this).attr('min'));
 		var max = parseInt($(this).attr('max'));
@@ -773,6 +774,29 @@ else{ ?>
 		if (val < min) {
 			$(this).val(min);
 		};
+	});
+	
+	$('form').submit(function(event) {
+		// event.preventDefault();
+		// var type = parseInt($(this).find('input[name=type]').val());
+		// switch(type){
+		// 	case 1:
+		// 		var total = 0;
+		// 		// console.log($(this).serializeArray());
+		// 		$(this).serializeArray().map(function(index, elem) {
+		// 			if (index.name.search(/talle/) != -1) {
+		// 				total += parseInt("") || 0;
+		// 			};
+		// 		});
+		// 		if (true) {};
+		// 		console.log(total);
+		// 		break;
+		// 	default:
+		// 		statements_def
+		// 		break;
+		// }
+		// console.log(type);
+		// console.log(enviado);
 	});
 	
 </script>
