@@ -7,7 +7,7 @@
  	protected $host = "localhost";
 	protected $password = "K[^Xc0lsU1T(";
 	protected $user = "nmaxx_pnufarm";
-	protected $database = "nmaxx_productosnufarm";  
+	protected $database = "nmaxx_develop";  
  	protected $db;
  	
  	public function __construct()

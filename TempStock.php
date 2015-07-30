@@ -4,7 +4,7 @@
 	class TempStock extends PDO
 	{
 		private $table = "stock";
-		private $dbname = "nmaxx_productosnufarm";
+		private $dbname = "nmaxx_develop";
 		private $dbuser = "nmaxx_pnufarm";
 		private $dbpass = "K[^Xc0lsU1T(";
 

@@ -45,7 +45,7 @@ $this->database = "nufarm";*/
 $this->host = "localhost";                  //          <<---------
 $this->password = "K[^Xc0lsU1T(";           //          <<---------
 $this->user = "nmaxx_pnufarm";                   //          <<---------
-$this->database = "nmaxx_productosnufarm"; 
+$this->database = "nmaxx_develop"; 
 
 /*
 $this->host = "localhost";                  //          <<---------

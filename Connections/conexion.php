@@ -23,7 +23,7 @@ $password_conexion = "dot175";*/
 
 // NUFARM MAX
 $hostname_conexion = "localhost";
-$database_conexion = "nmaxx_productosnufarm";
+$database_conexion = "nmaxx_develop";
 $username_conexion = "nmaxx_pnufarm";
 $password_conexion = "K[^Xc0lsU1T(";
 
