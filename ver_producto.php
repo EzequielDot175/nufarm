@@ -800,7 +800,7 @@ else{ ?>
 						if (total == 0) {
 							callback.call('isEmpty', true);
 						}else{
-							callback.call('isEmpty', true);
+							callback.call('isEmpty', false);
 						}
 					};
 				});
@@ -810,7 +810,7 @@ else{ ?>
 	$('form').submit(function(event) {
 		var type = parseInt($(this).find('input[name=type]').val());
 		var collection = $(this).serializeArray();
-		event.preventDefault();
+		var msg = 'Por favor, llene los campos vacios';
 		switch(type){
 			case 1:
 				preventVencimiento(function(result){
@@ -818,27 +818,42 @@ else{ ?>
 						alert('Credito vencido');
 					}else{
 						preventEmpy(collection,'talle',function(isEmpty){
-							console.log(isEmpty);
+							if (isEmpty) {
+								alert(msg);
+								event.preventDefault();
+							}
+
 						});
 					}
 				});
+				break;
 			case 2:
 				preventVencimiento(function(result){
 					if (result) {
 						alert('Credito vencido');
 					}else{
 						preventEmpy(collection,'color',function(isEmpty){
-							console.log(isEmpty);
+							if (isEmpty) {
+								alert(msg);
+								event.preventDefault();
+								
+							}
+							
 						});
 					}
 				});
+				break;
 			case 3:
 				preventVencimiento(function(result){
 					if (result) {
 						alert('Credito vencido');
 					}else{
 						preventEmpy(collection,'pedido',function(isEmpty){
-							console.log(isEmpty);
+							if (isEmpty) {
+								alert(msg);
+								event.preventDefault();
+							}
+							
 						});
 					}
 				});
