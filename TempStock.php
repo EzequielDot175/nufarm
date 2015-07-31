@@ -108,6 +108,10 @@
 		}
 
 		private function updateAllStocksColorTalle($prod,$talle,$color,$user){
+
+			
+
+
 			$update_productos = "UPDATE productos SET intStock = intStock + (
 					SELECT SUM(cantidad) FROM stock WHERE id_user = ".$user." && requiere_talle = 3 && id_product = ".$prod." && id_talle = ".$talle." && id_color = ".$color." LIMIT 1
 					    )

@@ -11,6 +11,7 @@ class productos{
 var $idProducto;   // KEY ATTR. WITH AUTOINCREMENT
 var $strNombre;
 var $intMinCompra;
+var $intMaxCompra;
 var $strDetalle;
 var $intCategoria;
 var $dblPrecio;
@@ -35,6 +36,7 @@ $this->database = new Database();
 function getidProducto(){return $this->idProducto;}
 function getstrNombre(){return $this->strNombre;}
 function getMinCompra(){return $this->intMinCompra;}
+function getMaxCompra(){return $this->intMaxCompra;}
 function getstrDetalle(){return $this->strDetalle;}
 function getintCategoria(){return $this->intCategoria;}
 function getdblPrecio(){return $this->dblPrecio;}
@@ -48,6 +50,7 @@ function getdestacado(){return $this->destacado;}
 function setidProducto($val){ $this->idProducto =  $val;}
 function setstrNombre($val){ $this->strNombre =  $val;}
 function setMinCompra($val){ $this->intMinCompra =  $val;}
+function setMaxCompra($val){ $this->intMaxCompra =  $val;}
 function setstrDetalle($val){ $this->strDetalle =  $val;}
 function setintCategoria($val){ $this->intCategoria =  $val;}
 function setdblPrecio($val){ $this->dblPrecio =  $val;}
@@ -68,6 +71,7 @@ $row = mysql_fetch_object($result);
 $this->idProducto = $row->idProducto;
 $this->strNombre = $row->strNombre;
 $this->intMinCompra = $row->intMinCompra;
+$this->intMaxCompra = $row->intMaxCompra;
 $this->strDetalle = $row->strDetalle;
 $this->intCategoria = $row->intCategoria;
 $this->dblPrecio = $row->dblPrecio;
@@ -599,7 +603,7 @@ return $this->idProducto = mysql_insert_id($this->database->link);
 
 function update($id){
 
-$sql = " UPDATE productos SET strNombre = '$this->strNombre', intMinCompra = $this->intMinCompra,strDetalle = '$this->strDetalle',intCategoria = '$this->intCategoria',dblPrecio = '$this->dblPrecio',intStock = '$this->intStock',strImagen = '$this->strImagen',strImagen2 = '$this->strImagen2',strImagen3 = '$this->strImagen3' ,destacado = '$this->destacado' WHERE idProducto = $id ";
+$sql = " UPDATE productos SET strNombre = '$this->strNombre',intMaxCompra = $this->intMaxCompra ,intMinCompra = $this->intMinCompra,strDetalle = '$this->strDetalle',intCategoria = '$this->intCategoria',dblPrecio = '$this->dblPrecio',intStock = '$this->intStock',strImagen = '$this->strImagen',strImagen2 = '$this->strImagen2',strImagen3 = '$this->strImagen3' ,destacado = '$this->destacado' WHERE idProducto = $id ";
 
 $result = $this->database->query($sql);
 

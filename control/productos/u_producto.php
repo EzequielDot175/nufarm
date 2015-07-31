@@ -12,6 +12,7 @@ include_once("classes/class.tallesColores.php");
 $idProducto = $_POST['idProducto'];
 $strNombre=$_POST['strNombre'];
 $intMinCompra = (int)$_POST["intMinCompra"];
+$intMaxCompra = (int)$_POST["intMaxCompra"];
 $strDetalle=$_POST['strDetalle'];
 $intCategoria=$_POST['intCategoria'];
 $dblPrecio=$_POST['dblPrecio'];
@@ -183,6 +184,8 @@ $color = $_POST['color'];
 
 // }
 // var_dump($talles);
+
+
 if($talles!=""){
 	//limpio si habia algo en stock
 	$productos= new productos();
@@ -212,6 +215,7 @@ if($talles!=""){
 	$productos->dblPrecio=$dblPrecio;
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;	
+	$productos->intMaxCompra=$intMaxCompra;	
 	$productos->update($idProducto);
 	
 	
@@ -260,6 +264,7 @@ else if($color)
 	$productos->dblPrecio=$dblPrecio;
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;		
+	$productos->intMaxCompra=$intMaxCompra;		
 	$productos->update($idProducto);
 	
 	$colours = new colores_productos();
@@ -267,8 +272,33 @@ else if($color)
 
 	$msg_final .= '<div class="notify"><p>producto actualizado! <a href="../productos/e_producto.php?id='.$idProducto.'&activo=2&sub=d">Ver</a></p></div>';
 }
+elseif (isset($_POST["color_talle"])) {
+	$x = new tallesColores();
+
+	$x->idProducto=$idProducto;
+	$x->strNombre=$strNombre;
+	$x->strDetalle=$strDetalle;
+	$x->intCategoria=$intCategoria;
+	$x->intStock=$sumatoria_colores_total;
+	$x->dblPrecio=$dblPrecio;
+	$x->destacado=$destacado;
+	$x->intMinCompra=$intMinCompra;		
+	$x->intMaxCompra=$intMaxCompra;		
+	$x->save();
+
+	foreach($_POST["color_talle"] as $k => $v):
+		try {
+			$x->add($v,$idProducto,$v['color']);
+		} catch (Exception $e) {
+			echo($e->getMessage());
+		}
+	endforeach;
+
+}
 else
 {
+	
+	
 	//guardo talles en tabla talles_productos
 	
 	//Limpio talles anteriores
@@ -290,28 +320,18 @@ else
 	$productos->intStock=$intStock;
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;
+	$productos->intMaxCompra=$intMaxCompra;
 	$productos->update($idProducto);
 
 	$msg_final .= '<div class="notify"><p>producto actualizado!</p></div>';
+
+
 }
 
-// Update ]
 
 
-if (isset($_POST["color_talle"])): //IF
-	
 
-	$x = new tallesColores();
 
-	foreach($_POST["color_talle"] as $k => $v):
-		try {
-			$x->add($v,$idProducto,$v['color']);
-		} catch (Exception $e) {
-			echo($e->getMessage());
-		}
-	endforeach;
-
-endif; //ENDIF
 
 
 $_SESSION['msg_ok'] = $msg_final;

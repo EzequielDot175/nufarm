@@ -12,6 +12,19 @@
 		public $talle;
 		public $color;
 
+		// public from prod
+		public $strNombre;
+		public $strDetalle;
+		public $dblPrecio;
+		public $intMinCompra;
+		public $intCategoria;
+		public $destacado;
+		public $idProducto;
+		public $intMaxCompra;
+		public $intStock;
+
+
+
 
 
 		public function __construct(){
@@ -108,6 +121,39 @@
 				}
 			endif;
 			
+		}
+
+		private function attributes(){
+			$attr = new ReflectionClass(__CLASS__);
+			$attr = $attr->getProperties(ReflectionProperty::IS_PUBLIC);
+			$format = new stdClass();
+			foreach ($attr as $k => $v) {
+				if (!empty($this->{$v->name})) {
+				 	$format->{$v->name} = $this->{$v->name};
+				 } 
+			}
+
+			return $format;
+			
+		}
+		public function save(){
+			$sql = "UPDATE productos ";
+			$attr = $this->attributes();
+			$id = $attr->idProducto;
+			unset($attr->idProducto);
+			$i = 0;
+			foreach ($attr as $k => $v):
+				if ($i == 0) {
+					$sql .= " SET ".$k." = '".$v."'";
+					$i++;
+				}else{
+					$sql .= ", ".$k." = '".$v."'";
+				}
+			endforeach;
+			
+			$sql .= " WHERE idProducto = ".$id;
+
+			$this->exec($sql);
 		}
 
 	}

@@ -151,6 +151,7 @@ $productos->select($id);
 $idProducto=$productos->getidProducto();
 $strNombre=$productos->getstrNombre();
 $intMinCompra = $productos->getMinCompra();
+$intMaxCompra = $productos->getMaxCompra();
 $strDetalle=$productos->getstrDetalle();
 $intCategoria=$productos->getintCategoria();
 $dblPrecio=$productos->getdblPrecio();
@@ -189,6 +190,9 @@ $destacado=$productos->getdestacado();
 
 <div class="tiform6">Minima cantidad de compra</div>
 <input type="number" name="intMinCompra" class="campo-prod" value="<?php echo $intMinCompra;?>" />
+
+<div class="tiform6">Maxima cantidad de compra</div>
+<input type="number" name="intMaxCompra" class="campo-prod" value="<?php echo $intMaxCompra;?>" />
 
 <div class="tiform6">Categoría</div>
 <select name="intCategoria" id="item-categorias" class="campo-prod" onchange="revisar_talles();">
