@@ -5,29 +5,10 @@ if(!$_SESSION['logged_id']){
 }
 ini_set("memory_limit","60M");
 
-function base_url() {
-
-	 //$pageURL = 'http://localhost/marketingNet/control'; 
-	$pageURL = 'http://nufarm-maxx.com/marketingNet/control'; 
-	#$pageURL = 'http://localhost/nufarm-gabriel/control'; 
-	/*if ($_SERVER["SERVER_PORT"] != "80") {
-		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].'/control';
-	} else {
-		$pageURL .= $_SERVER["SERVER_NAME"].'/control';
-	}*/
-	return $pageURL;
- }
-// define('BASEURLRAIZ', 'localhost/');
 
 
- if ($_SERVER["HTTP_HOST"] == "localhost") {
- 	define('BASEURLRAIZ', 'http://localhost/ftp/nufarmMaxx');
-	define('BASEURL', 'http://localhost/ftp/nufarmMaxx/control');
- }else{
- 	define('BASEURLRAIZ', 'http://nufarm-maxx.com/marketingNet');
-	define('BASEURL', base_url());
- }
-
+define('BASEURLRAIZ', $_SESSION['baseurl']);
+define('BASEURL', $_SESSION['basecontrol']);
 
 
 
@@ -130,7 +111,7 @@ function check_permission($url, $role_personal){
 		
 		if($permiso==FALSE){ 
 			$_SESSION['msg_error'] = "NO CUENTA CON PRIVILEGIOS PARA ESA ACCION.";
-			header('Location: /marketingNet/control/personal/fail_credentials.php');
+			header('Location: '.BASEURL.'personal/fail_credentials.php');
 			exit;
 		}
 	}
@@ -213,7 +194,7 @@ function check_permission($url, $role_personal){
 			
 			if($permiso==FALSE){ 
 				$_SESSION['msg_error'] = "NO CUENTA CON PRIVILEGIOS PARA ESA ACCION.";
-				header('Location: /marketingNet/control/personal/fail_credentials.php');
+				header('Location: '.BASEURL.'personal/fail_credentials.php');
 				exit;
 			}
 	}else{
@@ -295,7 +276,7 @@ function check_permission($url, $role_personal){
 			
 			if($permiso==FALSE){ 
 				$_SESSION['msg_error'] = "NO CUENTA CON PRIVILEGIOS PARA ESA ACCION.";
-				header('Location: /marketingNet/control/personal/fail_credentials.php');
+				header('Location: '.BASEURL.'personal/fail_credentials.php');
 				exit;
 			}
 	}

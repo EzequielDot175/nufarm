@@ -393,7 +393,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 				$('input[type="submit"]').attr('disabled','disabled');
 
-			}else
+			}else{
 
 				
 
@@ -413,7 +413,6 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 			
 
-			return false;
 
 		}
 	</script>
@@ -763,6 +762,17 @@ else{ ?>
 <?php } ?>
 
 <script>
+
+(function($){
+	$.fn.vencimiento = function(){
+		$data;
+
+		
+
+		return $data;
+	}
+})(jQuery);
+
 	// Scripts para todos los tipos
 	$('.boxIntInput,.box-values').change(function(event) {
 		var min = parseInt($(this).attr('min'));
@@ -781,11 +791,11 @@ else{ ?>
 	// }
 
 	function preventVencimiento(callback){
-
 		$.post('checkFechaVencimiento.php',{check: true}, function(data) {
 			var set = (data === 'true');
-			callback.call('result',set);
+			callback.call('vencimiento', set);
 		});
+		
 	}
 
 	// preventVencimiento();
@@ -806,64 +816,82 @@ else{ ?>
 				});
 	}
 	
+	
+	
 
-	$('form').submit(function(event) {
-		var type = parseInt($(this).find('input[name=type]').val());
-		var collection = $(this).serializeArray();
-		var msg = 'Por favor, llene los campos vacios';
-		switch(type){
-			case 1:
-				preventVencimiento(function(result){
-					if (result) {
-						alert('Credito vencido');
-					}else{
-						preventEmpy(collection,'talle',function(isEmpty){
-							if (isEmpty) {
-								alert(msg);
-								event.preventDefault();
-							}
+	// $(window).on('submit', '#addproduct', function(event) {
+	// 	var type = parseInt($(this).find('input[name=type]').val());
+	// 	var collection = $(this).serializeArray();
+	// 	var msg = 'Por favor, llene los campos vacios';
+	// 	// event.preventDefault();	
+	// 	var thisEv = event;
+	// 	switch(type){
+	// 		case 1:
+	// 		 event.preventDefault();
+	// 			preventVencimiento(function(result){
+	// 				if (result) {
+	// 					alert('Credito vencido');
+	// 				}else{
+	// 					preventEmpy(collection,'talle',function(isEmpty){
+	// 						if (isEmpty) {
+	// 							alert(msg);
 
-						});
-					}
-				});
-				break;
-			case 2:
-				preventVencimiento(function(result){
-					if (result) {
-						alert('Credito vencido');
-					}else{
-						preventEmpy(collection,'color',function(isEmpty){
-							if (isEmpty) {
-								alert(msg);
-								event.preventDefault();
+	// 						}
+
+	// 					});
+
+
+	// 				}
+	// 			});
+	// 			break;
+	// 		case 2:
+	// 		 event.preventDefault();
+	// 		 console.log(preventVencimiento(vencimiento));
+	// 			// preventVencimiento(function(result){
+	// 			// 	if (result) {
+	// 			// 		alert('Credito vencido');
+	// 			// 	}else{
+	// 			// 		preventEmpy(collection,'color',function(isEmpty){
+	// 			// 			if (isEmpty) {
+	// 			// 				alert(msg);
+	// 			// 				// event.preventDefault();	
+
+	// 			// 				// event.preventDefault();
+	// 			// 				// return false;
+	// 			// 				thisEv.preventDefault();
 								
-							}
+	// 			// 			}
 							
-						});
-					}
-				});
-				break;
-			case 3:
-				preventVencimiento(function(result){
-					if (result) {
-						alert('Credito vencido');
-					}else{
-						preventEmpy(collection,'pedido',function(isEmpty){
-							if (isEmpty) {
-								alert(msg);
-								event.preventDefault();
-							}
+	// 			// 		});
+	// 			// 	}
+	// 			// });
+
+	// 			break;
+	// 		case 3:
+	// 			preventVencimiento(function(result){
+	// 				if (result) {
+	// 					alert('Credito vencido');
+	// 				}else{
+	// 					preventEmpy(collection,'pedido',function(isEmpty){
+	// 						if (isEmpty) {
+	// 							alert(msg);
+	// 							// event.preventDefault();	
+
+	// 							// event.preventDefault();
+	// 							// return false;
+								
+	// 						}
 							
-						});
-					}
-				});
-				break;
-			default:
-				break;
-		}
-		// console.log(type);
-		// console.log(enviado);
-	});
+	// 					});
+	// 				}
+	// 			});
+	// 			break;
+	// 		default:
+	// 			break;
+	// 	}
+	// 	// console.log(type);
+	// 	// console.log(enviado);
+	// });
 	
 </script>
 

@@ -1,6 +1,7 @@
 <?php  session_start();
 // Requires 
-
+$_SESSION['basecontrol'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+$_SESSION['baseurl'] = str_replace('/control/', '', $_SESSION['basecontrol']);
 
 // session controller
 if (isset($_SESSION['logged_id'])) {

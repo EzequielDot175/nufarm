@@ -154,5 +154,5 @@ $usuarios->update($idUsuario);
 
 #echo '<div class="notify"><p>usuario actualizada!</p><p><a href="v_usuarios.php">Regresar</a></p></div>';
 $_SESSION['msg_ok'] = 'Cliente actualizado!';
-header('Location: '.BASEURL.'/usuarios/e_usuario.php?id='.$idUsuario);
+header('Location: '.BASEURL.'usuarios/e_usuario.php?id='.$idUsuario);
 ?>
