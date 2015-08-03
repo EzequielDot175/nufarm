@@ -97,28 +97,56 @@
 
 		private function updateAllStocksColorTalle($prod,$talle,$color,$user){
 
+			// stock original
+			$intStock = "SELECT intStock FROM productos WHERE idProducto = ".$prod;
+			$intStock = $this->result($intStock)->intStock;
+
+			// stock de la tabla stock
+			$currStock = "SELECT SUM(cantidad) as sum FROM stock WHERE id_user = ".$user." && requiere_talle = 3 && id_product = ".$prod." && id_talle = ".$talle." && id_color = ".$color;
+			$addFromStock = $this->result($currStock)->sum;
+
+			// Tomo la cantidad de stock de stocks y lo adhiero al stock principal del producto
+			$newIntStock = $intStock + $addFromStock;
+			/**
+			* Update
+			*/
+			$update_producto = "UPDATE productos SET intStock = ".$newIntStock." WHERE idProducto = ".$prod;
+
+
+			/**=====**/
+			// stock de la tabla stock
+			$stockTalleColor = "SELECT SUM(cantidad) as sum FROM stock WHERE id_user = ".$user." && requiere_talle = 3 && id_product = ".$prod." && id_talle = ".$talle." && id_color = ".$color;
+			$stockTalleColor = $this->result($stockTalleColor)->sum;
+
+			// stock original de color_talle
+			$stockTalleProd = "SELECT cantidad FROM colores_talles WHERE id_producto = ".$prod." && id_talle = ".$talle." && id_color = ".$color;
+			$stockTalleProd = $this->result($stockTalleProd)->cantidad;
+			$newStockTalleColor = $stockTalleColor+$stockTalleProd;
+
+			/**
+			* Update
+			*/
+
+			$update_talleColor = "UPDATE colores_talles SET cantidad = ".$newStockTalleColor." WHERE id_producto = ".$prod." && id_talle = ".$talle." && id_color = ".$color;
 			
+			/**
+			* Delete
+			*/
 
+			$delete_talle_stock = "DELETE FROM stock WHERE id_product = ".$prod." && id_talle = ".$talle." && id_user = ".$user." && id_color = ".$color;
 
-			$update_productos = "UPDATE productos SET intStock = intStock + (
-					SELECT SUM(cantidad) FROM stock WHERE id_user = ".$user." && requiere_talle = 3 && id_product = ".$prod." && id_talle = ".$talle." && id_color = ".$color." LIMIT 1
-					    )
-					WHERE idProducto = ".$prod;
-			$update_talle = "UPDATE colores_talles SET cantidad = cantidad + (
-					SELECT cantidad FROM stock WHERE id_user = ".$user." && requiere_talle = 3 && id_product = ".$prod." && id_talle = ".$talle." && id_color = ".$color." LIMIT 1
-					    )
-					WHERE id_producto = ".$prod." && id_talle = ".$talle." && id_color = ".$color;
-			$delete_talle_stock = "DELETE FROM stock WHERE id_product = ".$prod." && id_talle = ".$talle." && id_user = ".$user."  && id_color = ".$color;
+			if(!$this->toBoolean($this->exec($update_producto))):
+				throw new Exception("Error en update de stock del producto", 1);
+			else:
+				if(!$this->toBoolean($this->exec($update_talleColor))):
+					throw new Exception("Error en update de talle", 1);
+				else:
+					if(!$this->toBoolean($this->exec($delete_talle_stock))):
+						throw new Exception("Error en borrado temporal de stock", 1);
+					endif;
+				endif;
+			endif;
 
-			if ($this->exec($update_productos) == 0) {
-				throw new Exception("Error en update de stock", 1);
-			}
-			if ($this->exec($update_talle) == 0) {
-				throw new Exception("Error en update de talle", 1);
-			}
-			if ($this->exec($delete_talle_stock) == 0) {
-				throw new Exception("Error en borrado temporal de stock", 1);
-			}
 		}
 
 
