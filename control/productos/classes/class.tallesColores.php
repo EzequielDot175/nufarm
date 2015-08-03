@@ -64,9 +64,10 @@
 			}
 		}
 		public function delete($prod,$color){
-			$sql = "DELETE FROM colores_talles WHERE id_producto =".$prod." && id_color = ".$color;
-			echo($sql);
-			// return ($this->exec($sql) > 0 ? true : false );
+			
+			$sql = "DELETE FROM colores_talles WHERE id_producto = ".$prod." && id_color = ".$color;
+			// echo($sql);
+			return ($this->exec($sql) > 0 ? true : false );
 		}
 		public function talles(){
 			$format = array();
