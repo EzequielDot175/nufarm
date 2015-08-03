@@ -338,10 +338,6 @@ else
 
 
 
-
-
-echo "string";
-
 $_SESSION['msg_ok'] = $msg_final;
 header('Location: ./v_productos.php?activo=2&sub=d');
 exit();
