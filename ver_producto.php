@@ -267,7 +267,7 @@ $totalRows_DatosProductos = mysql_num_rows($DatosProductos);
 
             <div class="tipro3">
 						<div class="titlef"></div>
-						<div class="precio-prod">$<?php echo $row_DatosProductos['dblPrecio']; ?></div>
+						<div class="precio-prod"><?php echo $row_DatosProductos['dblPrecio']; ?></div>
 					  </div>
 
 
