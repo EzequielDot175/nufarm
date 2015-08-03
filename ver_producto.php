@@ -343,76 +343,9 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 		function checkdisp(cantidad,id_talle){
 
-			var cantidad_disp = cantidad;
-
-			var cantidad_elegida = $("#caja"+id_talle).val();
-
-			
-
-			if(isNaN(cantidad_elegida)){
-
-			    $('#info').html("Ingrese solo numeros.");
-
-				$('input[type="submit"]').attr('disabled','disabled');
-
-			}else{
-
-				
-
-				if(cantidad_disp < cantidad_elegida){
-
-					$('#info').html("Cantidad no disponible!");
-
-					$('input[type="submit"]').attr('disabled','disabled');
-
-				}else{
-
-					$('#info').html("");
-
-				}
-
-			}
-
-			
-
-			return false;
-
 		}
 		
 		function checkdisp_color(cantidad,id_color){
-
-			var cantidad_disp = cantidad;
-
-			var cantidad_elegida = $("#caja_color"+id_color).val();
-
-			
-
-			if(isNaN(cantidad_elegida)){
-
-			    $('#info').html("Ingrese solo numeros.");
-
-				$('input[type="submit"]').attr('disabled','disabled');
-
-			}else{
-
-				
-
-				if(cantidad_disp < cantidad_elegida){
-
-					$('#info').html("Cantidad no disponible!");
-
-					$('input[type="submit"]').attr('disabled','disabled');
-
-				}else{
-
-					$('#info').html("");
-
-				}
-
-			}
-
-			
-
 
 		}
 	</script>
@@ -714,64 +647,10 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
               </div>  -->
 <input type="hidden" value="<?php echo $row_DatosProductos["intMinCompra"]; ?>" id="IntCantidad">
-<?php if ($talles == 0){ ?>
-<script>
-	$(document).ready(function() {
-		var eventhandler = function(e) {
-		   e.preventDefault();      
-		}
-		var c = parseInt($('#IntCantidad').val());
-		var cc = parseInt($('#cantidad').val());
-		console.log(c);
-		console.log(cc);
-		if (cc < c) {
-				$('#cantidad').css('box-shadow', '0 0 1px #FF060D');
-				$('#addproduct').bind('submit', eventhandler);
-			}else{
-				$('#cantidad').css('box-shadow', '0 0 1px #0E963E');
-				$('#addproduct').unbind('submit', eventhandler);
-			}
-		$('#cantidad').keyup(function() {
-			str = $(this).val();
-			str.replace("/\w/g",'');
-			$(this).val(str)
-		});
-		$('#cantidad').change(function() {
-			var cc = parseInt($(this).val());
-			if (cc < c) {
-				$(this).css('box-shadow', '0 0 1px #FF060D');
-				$('#addproduct').bind('submit', eventhandler);
-			}else{
-				$(this).css('box-shadow', '0 0 1px #0E963E');
-				$('#addproduct').unbind('submit', eventhandler);
-			}
-		});
-	});
-</script>
-<?php }elseif ($talles == 1) { ?> 
-<script>
-	
-</script>
-<?php }elseif ($talles == 2) {
 
-}
-
-
-else{ ?>
-
-<?php } ?>
 
 <script>
 
-(function($){
-	$.fn.vencimiento = function(){
-		$data;
-
-		
-
-		return $data;
-	}
-})(jQuery);
 
 	// Scripts para todos los tipos
 	$('.boxIntInput,.box-values').change(function(event) {
@@ -883,6 +762,15 @@ else{ ?>
 				});
 				break;
 			default:
+				var current = parseInt($('#cantidad').val());
+				var min = parseInt($('#cantidad').attr('min'));
+
+				if (current <= min) {
+					obj.unbind(event);
+					obj.submit();
+				};
+				
+
 				break;
 		}
 	});
