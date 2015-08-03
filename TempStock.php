@@ -34,28 +34,14 @@
 				}
 			endforeach;
 
-			$stockGeneral = $this->updateStockProd($total,$prod);
+			// $stockGeneral = ;
 
-			if ((boolean)$this->exec($stockGeneral)) {
+			if ($this->updateStockProd($total,$prod)) {
 				$this->exec($insert_stock);
 				foreach($talles_update as $k => $v):
 					$this->exec($v);
 				endforeach;
 			}
-			// if ($this->exec($sql) == 0):
-			// 	throw new Exception("Error al iniciar el guardado en stock temporal", 1);
-			// else:
-			// 	if ($this->exec($sql) == 0):
-			// 		throw new Exception("Error al iniciar la actualizacion del stock en productos", 1);
-			// 	else:
-			// 		foreach($updates as $k => $v):
-			// 			if($this->exec($v) == 0):
-			// 				throw new Exception("Error al iniciar la actualizacion del stock en talles-colores", 1);
-			// 			endif;
-			// 		endforeach;
-			// 	endif;
-			// endif;
-
 		}
 		public function setTallesColores($prod, $pedido, $user){
 			
@@ -87,11 +73,12 @@
 				
 			endforeach;
 
-			if ($this->exec($sql) == 0):
-				throw new Exception("Error al iniciar el guardado en stock temporal", 1);
-			else:
+
+			
+			
+			if($this->updateStockProd($total,$prod)):
 				if ($this->exec($sql) == 0):
-					throw new Exception("Error al iniciar la actualizacion del stock en productos", 1);
+					throw new Exception("Error al iniciar el guardado en stock temporal", 1);
 				else:
 					foreach($updates as $k => $v):
 						if($this->exec($v) == 0):
@@ -100,6 +87,7 @@
 					endforeach;
 				endif;
 			endif;
+
 
 		}
 		public function liberarStockColorTalle($id_carrito, $id_user){
@@ -145,27 +133,56 @@
 
 			return $update_talle_color;
 		}
+		private function result($sql){
+			return $this->query($sql)->fetch(PDO::FETCH_OBJ);
+		}
 		private function updateStockTalle($prod,$talle,$user){
-			$update_productos = "UPDATE productos SET intStock = intStock + (
-					SELECT SUM(cantidad) FROM stock WHERE id_user = ".$user." && requiere_talle = 1 && id_product = ".$prod." && id_talle = ".$talle." LIMIT 1
-					    )
-					WHERE idProducto = ".$prod;
-			$update_talle = "UPDATE talles_productos SET cantidad = cantidad + (
-					SELECT SUM(cantidad) FROM stock WHERE id_user = ".$user." && requiere_talle = 1 && id_product = ".$prod." && id_talle = ".$talle." LIMIT 1
-					    )
-					WHERE id_producto = ".$prod." && id_talle = ".$talle;
+
+			$intStock = "SELECT intStock FROM productos WHERE idProducto = ".$prod;
+			$intStock = $this->result($intStock)->intStock;
+			$currStock = "SELECT SUM(cantidad) as sum FROM stock WHERE id_user = ".$user." && requiere_talle = 1 && id_product = ".$prod." && id_talle = ".$talle;
+			$addFromStock = $this->result($currStock)->sum;
+
+			// Tomo la cantidad de stock de stocks y lo adhiero al stock principal del producto
+			$newIntStock = $intStock + $addFromStock;
+			/**
+			* Update
+			*/
+			$update_producto = "UPDATE productos SET intStock = ".$newIntStock." WHERE idProducto = ".$prod;
+
+
+			/**=====**/
+
+			$stockTalle = "SELECT SUM(cantidad) as sum FROM stock WHERE id_user = ".$user." && requiere_talle = 1 && id_product = ".$prod." && id_talle = ".$talle;
+			$stockTalle = $this->result($stockTalle)->sum;
+
+			$stockTalleProd = "SELECT cantidad FROM talles_productos WHERE id_producto = ".$prod." && id_talle = ".$talle;
+			$stockTalleProd = $this->result($stockTalleProd)->cantidad;
+			$newStockTalle = $stockTalle+$stockTalleProd;
+
+			/**
+			* Update
+			*/
+			$update_talle = "UPDATE talles_productos SET cantidad = ".$newStockTalle." WHERE id_producto = ".$prod." && id_talle = ".$talle;
+			
+			/**
+			* Delete
+			*/
+
 			$delete_talle_stock = "DELETE FROM stock WHERE id_product = ".$prod." && id_talle = ".$talle." && id_user = ".$user;
 
-			
-			if ($this->exec($update_productos) == 0) {
-				throw new Exception("Error en update de stock", 1);
-			}
-			if ($this->exec($update_talle) == 0) {
-				throw new Exception("Error en update de talle", 1);
-			}
-			if ($this->exec($delete_talle_stock) == 0) {
-				throw new Exception("Error en borrado temporal de stock", 1);
-			}
+			if(!$this->toBoolean($this->exec($update_producto))):
+				throw new Exception("Error en update de stock del producto", 1);
+			else:
+				if(!$this->toBoolean($this->exec($update_talle))):
+					throw new Exception("Error en update de talle", 1);
+				else:
+					if(!$this->toBoolean($this->exec($delete_talle_stock))):
+						throw new Exception("Error en borrado temporal de stock", 1);
+					endif;
+				endif;
+			endif;
+		
 		}
 		public function liberarStockTalle($id_carrito,$user){
 			$carrito = $this->getCarrito($id_carrito);
@@ -205,8 +222,21 @@
 			return $sql;
 
 		}
-		private function updateStockProd($stock,$id_prod){
-			return "UPDATE productos as prod SET prod.intStock = prod.intStock - ".$stock." WHERE idProducto = ".$id_prod;
+		private function toBoolean($result){
+			return (boolean)$result;
+		}
+		private function updateStockProd($integer,$id_prod){
+			$stock = $sql = "SELECT intStock FROM productos WHERE idProducto = ".$id_prod;
+			$stock = $this->query($stock)->fetch(PDO::FETCH_OBJ)->intStock;
+			$newStock = $stock - $integer;
+			$update = "UPDATE productos as prod SET prod.intStock = ".$newStock." WHERE idProducto = ".$id_prod;
+
+
+			if($newStock >= 0):
+				return $this->toBoolean($this->exec($update));
+			else:
+				throw new Exception("Ya no hay stock de este producto", 1);
+			endif;
 		}
 		/**
 		 * example of basic @ TempStock
@@ -253,16 +283,13 @@
 
 			// create history stock
 			$sql = $sql.$values;
-			// var_dump();
-			$update = $this->updateStockProd($total,$id);
-			
-			
 		
-			if ($this->exec($sql) == 0):
+			
+			if (!$this->updateStockProd($total,$id)):
 				throw new Exception("Error al crear el stock", 1);
 			else:
-				if($this->exec($update) == 0):
-					throw new Exception("Error al editar el stock de la tabla productos", 1);
+				if($this->exec($sql) == 0):
+					throw new Exception("Error al insertar stock temporal", 1);
 				else:
 					foreach($updates as $k => $v):
 						if($this->exec($v) == 0):
