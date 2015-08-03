@@ -369,15 +369,18 @@ if($strImagen!=""){
 		});
 		$(document).on('click', '.removeColor', function(event) {
 			event.preventDefault();
-			var color = $(this).parent().parent().children('select').val();
+			var color = $(this).parent().children('input[name=id_color]').val() || null;
+			var prod = $(this).parent().children('input[name=id_prod]').val() || null;
 			var cat = $('#item-categorias').val();
-			var id = window.location.search.match(/id=.*[0-9].&/ig);
-				id = parseInt(id[0].replace(/id=/ig,'').replace(/&/ig,''));
+			
 			if (confirm('¿Esta seguro de borrar este color y talles?')) {
+				if (color != null) {
+					$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+prod+'&action=delete&color='+color, function(data) {
+						console.log(data);
+					});
+				};
 				$(this).parents('.segmentTalleColor').remove();
-				$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+id+'&action=delete&color='+color, function(data) {
-					console.log(data);
-				});
+				
 			};
 		});
 	});

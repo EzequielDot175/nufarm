@@ -171,15 +171,18 @@ $idproducto = $_GET['idproducto'];
 					<?php
 					elseif (isset($_GET['action']) && $_GET['action'] == 'delete'):
 						var_dump($x->delete($_GET['idproducto'],$_GET['color']));
+						die();
 					else: 
 						
 						foreach($all as $k => $v):
+							$current_color = null;
+							$key = rand();
 						?>
 						<div class="segmentTalleColor">
 								<label for="">Color</label>
 								<select name="color_talle[<?php echo($key) ?>][color]" class="color">
 									<?php foreach($colores as $val):
-										if ($val['id_color'] == $k): ?>
+										if ($val['id_color'] == $k): $current_color = $val['id_color']; ?>
 										<option selected="" value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
 										<?php else: ?>
 										<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
@@ -198,6 +201,9 @@ $idproducto = $_GET['idproducto'];
 								<div class="addColor">
 									<button class="newColor" >Agregar color</button>
 									<button class="removeColor" >Borrar color</button>
+									<input type="hidden" name="id_color" value="<?php echo $current_color; ?>">
+									<input type="hidden" name="id_talle" value="<?php echo $val['id_talle']; ?>">
+									<input type="hidden" name="id_prod" value="<?php echo $_GET['idproducto']; ?>">
 								</div>
 							</div>
 					<?php

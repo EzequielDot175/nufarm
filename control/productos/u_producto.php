@@ -1,7 +1,7 @@
 <?php 
 
 error_reporting(E_ALL);
-ini_set('display_error', 1);
+ini_set('display_error', 'on');
 
 include_once('../resources/control.php'); 
 include_once("classes/class.productos.php");
@@ -273,6 +273,9 @@ else if($color)
 	$msg_final .= '<div class="notify"><p>producto actualizado! <a href="../productos/e_producto.php?id='.$idProducto.'&activo=2&sub=d">Ver</a></p></div>';
 }
 elseif (isset($_POST["color_talle"])) {
+
+
+
 	$x = new tallesColores();
 
 	$x->idProducto=$idProducto;
@@ -293,6 +296,11 @@ elseif (isset($_POST["color_talle"])) {
 			echo($e->getMessage());
 		}
 	endforeach;
+	$x->execProdStock($idProducto);
+
+
+	
+
 
 }
 else
@@ -332,8 +340,9 @@ else
 
 
 
-
+echo "string";
 
 $_SESSION['msg_ok'] = $msg_final;
 header('Location: ./v_productos.php?activo=2&sub=d');
+exit();
 ?>

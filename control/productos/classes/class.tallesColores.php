@@ -1,10 +1,12 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_error', 'on');
 	class tallesColores extends PDO
 	{
 		private $dbname = "nmaxx_develop";
 		private $dbuser = "nmaxx_pnufarm";
 		private $dbpass = "K[^Xc0lsU1T(";
+		private $stockProd = 0;
 
 		public $usuario;
 		public $producto;
@@ -40,10 +42,11 @@
 			$sql = "";
 			$i = 0;
 			foreach($val as $k => $v):
+				if($v > 0):
 				$sql .= "UPDATE colores_talles SET cantidad = ".(int)$v." WHERE id_producto = ".$prod." && id_color = ".$color." && id_talle = ".$k.";";
+				endif;
 			endforeach;
-
-			return ($this->exec($sql) > 0 ? true : false );
+			return true;
 		}
 		public function all(){
 			$result = $this->query("SELECT * FROM colores_talles")->fetchAll(PDO::FETCH_OBJ);
@@ -53,21 +56,29 @@
 			endforeach;
 			return $array;
 		}
-		private function setStock($talles,$id_prod){
-			$i = 0;
-			foreach($talles as $k => $v):
-				$i += (int)$v;
-			endforeach;
-			$sql = "UPDATE productos SET intStock = ".$i." WHERE idProducto = ".$id_prod;
-			if ($this->exec($sql) == 0) {
-				throw new Exception("Error al intentar actualizar stock de producto", 1);
-			}
-		}
-		public function delete($prod,$color){
+		public function execProdStock($id_prod){
+			$sql = "UPDATE productos SET intStock = ".$this->stockProd." WHERE idProducto = ".$id_prod;
+
+			$this->query($sql);
 			
-			$sql = "DELETE FROM colores_talles WHERE id_producto = ".$prod." && id_color = ".$color;
-			// echo($sql);
-			return ($this->exec($sql) > 0 ? true : false );
+		}
+		private function setStock($talles,$id_prod){
+			foreach($talles as $k => $v):
+				$this->stockProd += (int)$v;
+			endforeach;
+
+
+		}
+		public function delete($prod,$color = null){
+
+			if(!is_null($color)):
+				$select = "SELECT COUNT(id) as cant FROM colores_talles WHERE id_color = ".$color." && id_producto = ".$prod;
+				$select = $this->query($select)->fetch(PDO::FETCH_OBJ)->cant;
+				$sql = "DELETE FROM colores_talles WHERE id_producto = ".$prod." && id_color = ".$color;
+				if($select > 0):
+					var_dump($this->exec($sql));
+				endif;
+			endif;
 		}
 		public function talles(){
 			$format = array();
@@ -111,6 +122,7 @@
 					}
 				endforeach;
 				$this->setStock($val['talle'],$prod);
+
 
 				if ($this->exec($sql) == 0):
 					throw new Exception("No se puede insertar el nuevo color y talle", 1);
