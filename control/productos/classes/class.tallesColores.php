@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_error', 'on');
+// error_reporting(E_ALL);
+// ini_set('display_error', 'on');
 	class tallesColores extends PDO
 	{
 		private $dbname = "nmaxx_develop";

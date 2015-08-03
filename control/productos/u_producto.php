@@ -1,7 +1,7 @@
 <?php 
 
-error_reporting(E_ALL);
-ini_set('display_error', 'on');
+// error_reporting(E_ALL);
+// ini_set('display_error', 'on');
 
 include_once('../resources/control.php'); 
 include_once("classes/class.productos.php");
@@ -337,8 +337,7 @@ else
 }
 
 
-
 $_SESSION['msg_ok'] = $msg_final;
 header('Location: ./v_productos.php?activo=2&sub=d');
-exit();
+
 ?>
