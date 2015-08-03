@@ -605,7 +605,6 @@ $totalRows_DatoUsuario = mysql_num_rows($DatoUsuario);
 				
 						
 				}elseif ($requiere_talles==3) {
-          $data = json_decode($row_DatosCarrito['jsonData']);
          
           $linea="";    
             ####################
