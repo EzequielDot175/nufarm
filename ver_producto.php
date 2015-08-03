@@ -765,7 +765,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 				var current = parseInt($('#cantidad').val());
 				var min = parseInt($('#cantidad').attr('min'));
 
-				if (current <= min) {
+				if (current >= min) {
 					obj.unbind(event);
 					obj.submit();
 				};
