@@ -234,7 +234,8 @@ if($checkout){
 		$mail->SMTPSecure = 'tls';                              // Enable encryption, 
 		$mail->From = 'mknet@productosnufarm.com';
 		$mail->FromName = 'MarketingNet ';
-		$mail->addAddress('mknet@productosnufarm.com', '--');
+		// $mail->addAddress('mknet@productosnufarm.com', '--');
+		$mail->addAddress('ezequiel@dot175.com', '--');
 		 // $mail->addAddress('facundo@dot175.com', '--');		// Add a recipient
 		$mail->addBCC($email_user, '--');
 		$mail->isHTML(true);                                  // Set email format to 
