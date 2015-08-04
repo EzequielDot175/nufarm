@@ -361,19 +361,58 @@
 			$carr = $this->query($carrito)->fetch(PDO::FETCH_OBJ);
 			$prod_id = $carr->idProducto;
 			
-			$update_productos = "UPDATE productos SET intStock = intStock + (
-					SELECT SUM(cantidad) FROM stock WHERE id_user = ".$userid." && requiere_talle = 0 && id_product = ".$prod_id." LIMIT 1
-					    )
-					WHERE idProducto = ".$prod_id;
-			$delete_stock = "DELETE FROM stock WHERE id_product = ".$prod_id." && requiere_talle = 0 && id_user = ".$userid;
-
+			/**
+			*	@query select from stock table
+			*/
+			$stocks_from_user = "SELECT SUM(cantidad) as sum FROM stock WHERE id_product = ".$prod_id." AND id_user = ".$userid;
+			$stocks_from_user = $this->result($stocks_from_user)->sum;
 			
-			if($this->exec($update_productos) == 0):
-				throw new Exception("Error al actualizar el stock del producto", 1);
-				if($this->exec($delete_stock) == 0):
-					throw new Exception("Error al borrar el stock temporal", 1);
+			/**
+			*	@param query select count 
+			*/
+
+			$prodIntStock = $this->query("SELECT intStock FROM productos WHERE idProducto = ".$prod_id)->fetch(PDO::FETCH_OBJ)->intStock;
+			$carritoStockSum = $carr->intCantidad;
+			
+			$resultProdStock = $prodIntStock + $stocks_from_user;
+
+			$update =  "UPDATE productos SET intStock = ".$resultProdStock." WHERE idProducto = ".$prod_id;
+
+
+			/**
+			*	@param query select count 
+			*/
+			$delete_rows_from_stock = "DELETE FROM stock WHERE id_product = ".$prod_id." && id_user = ".$userid;
+
+
+
+
+
+			// echo "<pre>";
+			// print_r($delete_rows_from_stock);
+			// echo "</pre>";
+			// die();
+			if($resultProdStock >= 0):
+				if($this->exec($update) == 0):
+					throw new Exception("Error actualizando el stock del producto", 1);
+				else:
+					$this->exec($delete_rows_from_stock);
 				endif;
 			endif;
+			
+			// $update_productos = "UPDATE productos SET intStock = intStock + (
+			// 		SELECT SUM(cantidad) FROM stock WHERE id_user = ".$userid." && requiere_talle = 0 && id_product = ".$prod_id." LIMIT 1
+			// 		    )
+			// 		WHERE idProducto = ".$prod_id;
+			// $delete_stock = "DELETE FROM stock WHERE id_product = ".$prod_id." && requiere_talle = 0 && id_user = ".$userid;
+
+			
+			// if($this->exec($update_productos) == 0):
+			// 	throw new Exception("Error al actualizar el stock del producto", 1);
+			// 	if($this->exec($delete_stock) == 0):
+			// 		throw new Exception("Error al borrar el stock temporal", 1);
+			// 	endif;
+			// endif;
 		}
 
 
