@@ -141,7 +141,7 @@ $idproducto = $_GET['idproducto'];
 					$talles = $talles->all();
 					$colores = new colores();
 					$colores = $colores->all();
-					$all = $x->all();
+					$all = $x->all($_GET['idproducto']);
 
 					$key = rand();
 					
