@@ -416,18 +416,18 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 			$cantidad = $tallprod->getcantidad();
 
-			if($cantidad=="" or $cantidad==0)
-			{
-			$cantidad=0;
-			}else{
+			// if($cantidad=="" or $cantidad==0)
+			// {
+			// $cantidad=0;
+			// }else{
 
 			$salida .=    '
 
 			     
-				<div id="talles">
+				<div id="talles" class="talles-box '.($cantidad <= 0 ? "box-disabled" : "").'">
 					<a class="tooltip">'.$nombre_talle.'</a>
         			<div class="stock-talle"><p>'.$cantidad.'u</p></div>
-        			<input style="width:43px;height:30px;position:relative;top:-5px" max="'.$cantidad.'" min="'.$min_Attr.'" type="number" class="box-values" name="talle['.$talle.']" value="" id="caja'.$id_talle.'" 
+        			<input style="width:43px;height:30px;position:relative;top:-5px" '.($cantidad <= 0 ? "disabled" : "").' max="'.$cantidad.'" min="'.$min_Attr.'" type="number" class="box-values" name="talle['.$talle.']" value="" id="caja'.$id_talle.'" 
 
 				onchange="checkdisp('.$cantidad.','.$id_talle.');"> <!--['.$cantidad.']--></div>
 
@@ -435,7 +435,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 			';
 
-			}
+			// }
 
 		}
 		if ($row_DatosProductos["intMinCompra"] > 0) {
@@ -516,17 +516,17 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 			$cantidad = $colprod->getcantidad();
 
-			if($cantidad=="" or $cantidad==0)
-			{
-			$cantidad=0;
-			}else{
+			// if($cantidad=="" or $cantidad==0)
+			// {
+			// $cantidad=0;
+			// }else{
 
 			$salida .=    '
 
 			     
-				<div id="talles" class="talles-box">
+				<div id="talles" class="talles-box '.($cantidad <= 0 ? "box-disabled" : "").'"   >
         <div class="stock-talle"><p>'.$cantidad.'u</p></div>
-        <input class="box-colores box-values" id="caja_color" max="'.$cantidad.'" min="'.$min_Attr.'" type="number" name="color['.$color.']" value="" onchange="checkdisp_color('.$cantidad.','.$id_color.');"> <!--['.$cantidad.']-->
+        <input class="box-colores box-values" id="caja_color" '.($cantidad <= 0 ? "disabled" : "").' max="'.$cantidad.'" min="'.$min_Attr.'" type="number" name="color['.$color.']" value="" onchange="checkdisp_color('.$cantidad.','.$id_color.');"> <!--['.$cantidad.']-->
 		<a class="tooltip">'.$nombre_color.'</a>
         </div>
 
@@ -534,7 +534,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 			';
 
-			}
+			// }
 
 		}
 		 if ($row_DatosProductos["intMinCompra"] > 0) {

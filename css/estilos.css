@@ -5597,7 +5597,7 @@ a.btn-micuenta3 span {
 	opacity: 0.7;
 }
 .box-disabled{
-	opacity: 0.3;
+	opacity: 0.3!important;
 }
 .box-t {
 	width:40px;
