@@ -48,8 +48,13 @@
 			endforeach;
 			return true;
 		}
-		public function all(){
-			$result = $this->query("SELECT * FROM colores_talles")->fetchAll(PDO::FETCH_OBJ);
+		public function all($prod = null){
+			if(is_null($prod)):
+				$result = $this->query("SELECT * FROM colores_talles")->fetchAll(PDO::FETCH_OBJ);
+			else:
+				$result = $this->query("SELECT * FROM colores_talles WHERE id_producto = ".$prod)->fetchAll(PDO::FETCH_OBJ);
+				
+			endif;
 			$array = array();
 			foreach($result as $k => $v):
 				$array[$v->id_color]['talle'][$v->id_talle] = $v->cantidad;

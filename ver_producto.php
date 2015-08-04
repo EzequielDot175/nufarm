@@ -556,7 +556,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 		$producto = new tallesColores();
-		$all = $producto->all();
+		$all = $producto->all($row_DatosProductos['idProducto']);
 		$colores =$producto->colores();
 		$talles =$producto->talles();
 
