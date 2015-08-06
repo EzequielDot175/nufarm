@@ -2,6 +2,16 @@
 <?php require('Connections/conexion.php');?><?php
 require_once('control/resources/pdo.php');
 require_once('control/productos/classes/class.tallesColores.php');
+require_once('libs.php');
+
+
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+
+$tempMaxCompra = new TempMaxCompra();
+
+
+$tempMaxCompra->haveMaxCompra();
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -553,6 +563,15 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		
 
 	}else if($talles ==3){
+
+		$cantMax = $row_DatosProductos['intMaxCompra'];
+
+
+		$limitCompra = $tempMaxCompra->getMaxCompra();
+		if(!is_null($limitCompra)):
+		?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+		endif;
+
 
 
 		$producto = new tallesColores();

@@ -1,5 +1,12 @@
-<?php require_once('Connections/conexion.php');error_reporting(1);?>
-<?php require_once('TempStock.php'); ?>
+<?php 
+error_reporting(0);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'on');
+
+
+require_once('Connections/conexion.php');
+require_once('libs.php');
+?>
 <?php
 if (!isset($_SESSION)) {
   session_start();
@@ -9,6 +16,12 @@ $MM_donotCheckaccess = "true";
 
 
 $_SESSION["notification"] ="";
+
+
+$TempMaxCompra = new TempMaxCompra();
+
+$TempMaxCompra->init();
+
 
 
 // *** Restrict Access To Page: Grant or deny access to this page

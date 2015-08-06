@@ -1,13 +1,13 @@
 <?php 
 	require_once(dirname(__FILE__).'/TempStock.php');
-
+	require_once('libs.php');
 if (!isset($_SESSION)) {
   session_start();
 } ob_start();
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
-
+$tempMaxCompra = new TempMaxCompra();
 
 
 
@@ -219,6 +219,23 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 	}
 	else if($requiere_talles==3){
+		$pedido = $_POST['pedido'];
+
+		$canTotal = 0;
+
+		foreach($pedido as $kz => $vz):
+			foreach($vz['talle'] as $k => $v):
+				$canTotal += (int)$v;
+			endforeach;
+		endforeach;
+
+		$limite = $tempMaxCompra->getMaxCompra($id_producto);
+		if((int)$canTotal > (int)$limite):
+			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
+	  		header("Location: index.php");
+	  		exit();
+
+		endif;
 
 		require_once('control/productos/classes/class.tallesColores.php');
 
@@ -230,7 +247,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		}
 		
 
-		$pedido = $_POST['pedido'];
 		$id_usuario = $_SESSION['MM_IdUsuario'];
 		//primero chequeo si el producto ya existe en el carrito del usuario.
 		include_once("includes/class.carrito.php");
