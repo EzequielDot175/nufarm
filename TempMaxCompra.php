@@ -71,7 +71,12 @@
 			$max->bindParam(':prod',(!empty($this->prod) ? $this->prod : $prod ), PDO::PARAM_INT);
 			$max->execute();
 			$result = $max->fetch(PDO::FETCH_OBJ);
-			return $result->max;
+
+			if($result->cant != 0 && !is_null($result->cant) ):
+				return $result->max;
+			else:
+				return 'notlimit';
+			endif;
 		}
 		/**
 		* @todo Metodo para setear la nueva cantidad del producto por usuario
@@ -86,10 +91,25 @@
 		/**
 		 * @todo  Metodo para sumar cantidad de productos pedidos por el usuario
 		 */
-		public function storeSum($prod){
-			
+		public function storeSum($prod,$cant){
+			$upd = $this->prepare(self::MAXCOMPRA_STORESUM);
+			$upd->bindParam(':used',$cant,PDO::PARAM_INT);
+			$upd->bindParam(':prod',$prod,PDO::PARAM_INT);
+			$upd->bindParam(':user',$this->user,PDO::PARAM_INT);
+			$upd->execute();
 		}
-
+		/**
+		* @todo Metodo que hace exactamente lo contrario a storeSum, resta cantidades agregadas a la cantidad de compra total
+		* @param id_carrito
+		*/	
+		public function storeRemains($carr){
+			$data = $this->storeData($carr);
+			$upd = $this->prepare(self::MAXCOMPRA_STOREMAINS);
+			$upd->bindParam(':used',$data->intCantidad,PDO::PARAM_INT);
+			$upd->bindParam(':prod',$data->idProducto,PDO::PARAM_INT);
+			$upd->bindParam(':user',$data->idUsuario,PDO::PARAM_INT);
+			$upd->execute();
+		}
 
 
 
@@ -203,7 +223,7 @@
 		 * se produsca un error, por ello, este metodo comprueba que exista el producto,
 		 * y si no existe lo setea.
 		 */
-		public function haveProductHistory($user,$prod){
+		private function haveProductHistory($user,$prod){
 			$exist = $this->prepare(self::MAXCOMPRA_PRODUCTROWEXIST);
 			$exist->bindParam(':prod',$prod,PDO::PARAM_INT);
 			$exist->bindParam(':user',$user,PDO::PARAM_INT);
@@ -217,6 +237,16 @@
 			endif;
 		}
 
+		/**
+		 * @internal obtiene datos del carrito id dado
+		 * @param carrito id
+		 */
+		private function storeData($carr){
+			$sel = $this->prepare(self::CARRITO_BYID);
+			$sel->bindParam(':id',$carr,PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetch(PDO::FETCH_OBJ);
+		}
 
 		/**
 		========= END PRIVATE METHODS =========

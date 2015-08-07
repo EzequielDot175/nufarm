@@ -404,15 +404,28 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 		$talles_disp = $tll->select_all_clean();
 
-
+		$cantMax = $row_DatosProductos['intMaxCompra'];
+		$minCompra = $row_DatosProductos['intMinCompra'];
+		if($minCompra > 0): ?>
+			<p>CANTIDAD MINIMA DE COMPRA <?php echo $minCompra; ?></p>	
+			<input type="hidden" value="<?php echo $minCompra; ?>" id="limitMin" >
+		<?php
+		else: ?> 
+		<input type="hidden" value="0" id="limitMin" >
+		<?php
+		endif;
 
 		$limitCompra = $tempMaxCompra->getMaxCompra();
-		if($limitCompra > 0):
-		?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+		if($limitCompra != 'notlimit'):
+		?> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
+		<?php
 		else:
-		?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
+		?>
+			<input type="hidden" value="100000" id="limitMax">
+		<?php
 		endif;
-		echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
 
 		foreach($talles_disp as $talle){
 
@@ -513,13 +526,28 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 			$salida = '';
+		$cantMax = $row_DatosProductos['intMaxCompra'];
+		$minCompra = $row_DatosProductos['intMinCompra'];
+		if($minCompra > 0): ?>
+			<p>CANTIDAD MINIMA DE COMPRA <?php echo $minCompra; ?></p>	
+			<input type="hidden" value="<?php echo $minCompra; ?>" id="limitMin" >
+		<?php
+		else: ?> 
+		<input type="hidden" value="0" id="limitMin" >
+		<?php
+		endif;
+
 		$limitCompra = $tempMaxCompra->getMaxCompra();
-			if($limitCompra > 0):
-			?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
-			else:
-			?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
-			endif;
-			echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
+		if($limitCompra != 'notlimit'):
+		?> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
+		<?php
+		else:
+		?>
+			<input type="hidden" value="100000" id="limitMax">
+		<?php
+		endif;
 		
 		foreach($color_disp as $color){
 
@@ -571,12 +599,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			// }
 
 		}
-		 if ($row_DatosProductos["intMinCompra"] > 0) {
-	    	echo "<p class='minimo'>Minima cantidad de compra : <span>".$row_DatosProductos["intMinCompra"]."</span></p>";    	
-	    
-		
-	
-		}
+		 
 
 	echo '<p>'.$salida.'</p> <div id="info" style="color:red;"></div>';
 
@@ -589,16 +612,28 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	}else if($talles ==3){
 
 		$cantMax = $row_DatosProductos['intMaxCompra'];
-
+		$minCompra = $row_DatosProductos['intMinCompra'];
+		if($minCompra > 0): ?>
+			<p>CANTIDAD MINIMA DE COMPRA <?php echo $minCompra; ?></p>	
+			<input type="hidden" value="<?php echo $minCompra; ?>" id="limitMin" >
+		<?php
+		else: ?> 
+		<input type="hidden" value="0" id="limitMin" >
+		<?php
+		endif;
 
 	
-	$limitCompra = $tempMaxCompra->getMaxCompra();
-	if($limitCompra > 0):
-	?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
-	else:
-	?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
-	endif;
-	echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
+		$limitCompra = $tempMaxCompra->getMaxCompra();
+		if($limitCompra != 'notlimit'):
+		?> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
+		<?php
+		else:
+		?>
+			<input type="hidden" value="100000" id="limitMax">
+		<?php
+		endif;
 
 
 
@@ -645,18 +680,32 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	*
     */
 
+	
 	$limitCompra = $tempMaxCompra->getMaxCompra();
-	if($limitCompra > 0):
-	?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+	if($limitCompra != 'notlimit'):
+	?> 
+		<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+		<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
+	<?php
 	else:
-	?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
+	?>
+		<input type="hidden" value="100000" id="limitMax">
+	<?php
 	endif;
-	echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
 	
 
-    if ($row_DatosProductos["intMinCompra"] > 0) {
-    	echo "<p class='minimo'>Minima cantidad de compra : <span>".$row_DatosProductos["intMinCompra"]."</span></p>";    	
-    }
+    
+    $cantMax = $row_DatosProductos['intMaxCompra'];
+		$minCompra = $row_DatosProductos['intMinCompra'];
+		if($minCompra > 0): ?>
+			<p>CANTIDAD MINIMA DE COMPRA <?php echo $minCompra; ?></p>	
+			<input type="hidden" value="<?php echo $minCompra; ?>" id="limitMin" >
+		<?php
+		else: ?> 
+		<input type="hidden" value="0" id="limitMin" >
+		<?php
+		endif;
+
     echo '<input name="cantidad" class="box-values" min="'.$min_Attr.'" max="'.$row_DatosProductos['intStock'].'" type="number" id="cantidad" value="1">';
 
 	}
@@ -666,6 +715,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 	<span class="line"></span>
+	<p style="color:#A94A31;opacity:0;height:10px;" id="limiteExcedido">CANTIDAD MÁXIMA DE CANJE EXCEDIDO</p>
 	<input type="hidden" name="idProducto" value="<?php echo $row_DatosProductos['idProducto']; ?>">
 
 	<a class="btn-micuenta6" href="index.php?activo=1&prod=1"><span>Cancelar</span></a>
@@ -745,7 +795,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 						if (total == 0) {
 							callback.call(this,true,parseInt(total));
 						}else{
-							callback.call(this,true,parseInt(total));
+							callback.call(this,false,parseInt(total));
 						}
 					};
 				});
@@ -759,6 +809,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		var collection = $(this).serializeArray();
 		var msg = 'Por favor, llene los campos vacios';
 		var obj = $(this);
+		var min = parseInt($('#limitMin').val());
 		var max = parseInt($('#limitMax').val());
 		event.preventDefault();
 
@@ -770,19 +821,23 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 						alert('Credito vencido');
 					}else{
 						preventEmpy(collection,'talle',function(isEmpty,total){
-							console.log(isEmpty);
-							console.log();
 							if (isEmpty) {
 								alert(msg);
 							}else{
-								if (total <= max && total > 0) {
+								if (total <= max && total > 0 && total >= min) {
 									obj.unbind(event);
 									obj.submit();	
 								}else{
 									if (total == 0) {
 										alert('Por favor complete el pedido');
-									}else{
-										alert('Cantidad maxima de compra superada, por favor, quite unidades.');
+									}else if(total < min){
+										alert('El minimo de pedidos en este producto es '+min);
+									}
+									else{
+
+										$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
+											$(this).delay(2000).animate({opacity: 0}, 800);
+										});
 									}
 								}
 								
@@ -800,16 +855,28 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 						alert('Credito vencido');
 					}else{
 						preventEmpy(collection,'color',function(isEmpty,total){
-							if (total <= max && total > 0) {
-								obj.unbind(event);
-								obj.submit();	
+							if (isEmpty) {
+								alert(msg);
 							}else{
-								if (total == 0) {
-									alert('Por favor complete el pedido');
+								if (total <= max && total > 0 && total >= min) {
+									obj.unbind(event);
+									obj.submit();	
 								}else{
-									alert('Cantidad maxima de compra superada, por favor, quite unidades.');
+									if (total == 0) {
+										alert('Por favor complete el pedido');
+									}else if(total < min){
+										alert('El minimo de pedidos en este producto es '+min);
+									}
+									else{
+
+										$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
+											$(this).delay(2000).animate({opacity: 0}, 800);
+										});
+									}
 								}
+								
 							}
+
 						});
 					}
 				});
@@ -821,16 +888,28 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 						alert('Credito vencido');
 					}else{
 						preventEmpy(collection,'pedido',function(isEmpty,total){
-							if (total <= max && total > 0) {
-								obj.unbind(event);
-								obj.submit();	
+							if (isEmpty) {
+								alert(msg);
 							}else{
-								if (total == 0) {
-									alert('Por favor complete el pedido');
+								if (total <= max && total > 0 && total >= min) {
+									obj.unbind(event);
+									obj.submit();	
 								}else{
-									alert('Cantidad maxima de compra superada, por favor, quite unidades.');
+									if (total == 0) {
+										alert('Por favor complete el pedido');
+									}else if(total < min){
+										alert('El minimo de pedidos en este producto es '+min);
+									}
+									else{
+
+										$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
+											$(this).delay(2000).animate({opacity: 0}, 800);
+										});
+									}
 								}
+								
 							}
+
 						});
 					}
 				});
@@ -839,10 +918,16 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 				var current = parseInt($('#cantidad').val());
 				var min = parseInt($('#cantidad').attr('min'));
 
-				if (current >= min) {
+				if (current >= min && current <= max ) {
 					obj.unbind(event);
 					obj.submit();
-				};
+				}else if(current > max){
+					$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
+						$(this).delay(2000).animate({opacity: 0}, 800);
+					});
+				}else if(current < min){
+					alert("La cantidad minima es "+min+" u");
+				}
 				
 
 				break;

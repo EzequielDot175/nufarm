@@ -8,11 +8,8 @@ $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
 
-echo('<pre>');
 $tempMaxCompra = new TempMaxCompra();
-$tempMaxCompra->storeSum();
-echo('</pre>');
-die();
+
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -88,7 +85,15 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 	if($requiere_talles==1){
 		//requiere talles
+
+		$total = 0;
+		foreach($talles_seleccionados as $k => $v):
+			$total += (int)$v;
+		endforeach;
+		// echo $total;
 		
+
+		$tempMaxCompra->storeSum($id_producto,$total);
 		try {
 			$stock = new TempStock();
 			$stock->setTalles($id_producto,$talles_seleccionados,$_SESSION['MM_IdUsuario']);	
@@ -153,6 +158,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		
 	}else if($requiere_talles==2){
 		//requiere talles
+
+		$total = 0;
+		foreach($colores_seleccionados as $k => $v):
+			$total += (int)$v;
+		endforeach;
+		$tempMaxCompra->storeSum($id_producto,$total);
 
 		try {
 			$stock = new TempStock();
@@ -223,6 +234,11 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 	}
 	else if($requiere_talles==3){
+
+
+
+		require_once('control/productos/classes/class.tallesColores.php');
+
 		$pedido = $_POST['pedido'];
 
 		$canTotal = 0;
@@ -238,10 +254,10 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
 	  		header("Location: index.php");
 	  		exit();
-
 		endif;
 
-		require_once('control/productos/classes/class.tallesColores.php');
+		$tempMaxCompra->storeSum($id_producto,$canTotal);
+		
 
 		try {
 			$stock = new TempStock();
@@ -280,8 +296,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 	else{
 		
 
-
-
+		$tempMaxCompra->storeSum($id_producto,$cantidad_elegida);
 		try {
 			$stock = new TempStock();
 			$stock->setComunes($id_producto,$cantidad_elegida,$_SESSION['MM_IdUsuario']);

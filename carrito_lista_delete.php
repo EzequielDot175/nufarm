@@ -1,6 +1,7 @@
 <?php 
   require_once('Connections/conexion.php');
   require_once(dirname(__FILE__).'/TempStock.php');
+  require_once('libs.php');
 
  ?>
 <?php
@@ -86,8 +87,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 $cond =  (  isset($_GET['recordID']) && !empty($_GET['recordID']) && !isset($_GET['talle_colores'])  );
 
 
-
-
+$tempMaxCompra = new TempMaxCompra();
+$tempMaxCompra->storeRemains($_GET['recordID']);
 
 if ( isset($_GET['require'])) {
     switch ($_GET['require']) {
