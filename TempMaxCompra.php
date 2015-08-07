@@ -111,6 +111,16 @@
 			$upd->execute();
 		}
 
+		/**
+		 * @todo Metodo que trae el maximo de compra desde el producto
+		 */
+		public function getMaxProd(){
+			$sel = $this->prepare(self::MAXCOMPRA_MAXPROD);
+			$sel->bindParam(':prod',$this->prod,PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetch(PDO::FETCH_OBJ)->intMaxCompra;
+		}
+
 
 
 

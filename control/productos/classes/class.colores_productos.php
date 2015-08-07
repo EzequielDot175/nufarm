@@ -135,12 +135,23 @@ function getAllCategories($id = null){
 	}
 	return $resultado;
 }
-function updateAllColours($array,$id){	
-	foreach ($array as $key => $value) {
-		$sql = "UPDATE colores_productos SET cantidad = ".$value." WHERE id_color = ".$key." AND id_producto = ".$id;
-		$this->database->query($sql);		// print($sql."<br>");
+function updateAllColours($array,$id){
 
+	foreach ($array as $key => $value) {
+		$sel = "SELECT COUNT(id) as exist FROM colores_productos WHERE id_color = ".$key." AND id_producto = ".$id;
+		$this->database->query($sel);
+		$sel = $this->database->result;
+		$sel = mysql_fetch_object($sel);
+		$sel = ($sel->exist == 0 ? false : true);
+		if(!$sel):
+			$sql = "INSERT INTO colores_productos (id_producto, id_color,cantidad) VALUES (".$id.",".$key.",".(int)$value.")";
+		else:
+			$sql = "UPDATE colores_productos SET cantidad = ".(int)$value." WHERE id_color = ".$key." AND id_producto = ".$id;
+		endif;
+		$this->database->query($sql)
 	}
+
+	
 }
 /* UPDATE */
 

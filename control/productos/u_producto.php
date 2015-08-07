@@ -232,11 +232,16 @@ if($talles!=""){
 // var_dump($color);
 else if($color)
 {	
+	include_once('classes/class.colores_productos.php');
 
+
+	include_once("classes/class.productos.php");
 	
 	//limpio si habia algo en stock
 	$productos= new productos();
 	$productos->select($idProducto);
+	
+
 	
 	$sumatoria_colores_total = array_sum($color);
 
@@ -245,12 +250,15 @@ else if($color)
 	$productos->intStock = $sumatoria_colores_total;
 		
 	$productos->update($idProducto);
+
+
 	//Limpio talles anteriores
-	include_once('classes/class.colores_productos.php');
 	// $ins_color= new colores_productos();
 	// $ins_color->clean_by_producto($idProducto);
+
+
+
 	/* UPDATE */
-	include_once("classes/class.productos.php");
 	$productos= new productos();
 	$productos->select($idProducto);
 	$productos->idProducto=$idProducto;

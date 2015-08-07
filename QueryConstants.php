@@ -38,6 +38,7 @@
 		const MAXCOMPRA_PRODUCTROWEXIST     = "SELECT COUNT(id) AS result FROM tempmaxcompra WHERE user = :user AND prod = :prod";
 		const MAXCOMPRA_STORESUM            = "UPDATE tempmaxcompra SET used = used + :used WHERE user = :user AND prod = :prod";
 		const MAXCOMPRA_STOREMAINS          = "UPDATE tempmaxcompra SET used = used - :used WHERE user = :user AND prod = :prod";
+		const MAXCOMPRA_MAXPROD				= "SELECT intMaxCompra FROM productos WHERE idProducto = :prod";
 
 
 	}

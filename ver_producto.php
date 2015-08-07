@@ -66,6 +66,20 @@ $tempMaxCompra = new TempMaxCompra();
 
 
 $tempMaxCompra->haveMaxCompra();
+/**
+ * @param $limitCompraProd
+ * numero de limite por compra desde el producto
+ */
+$limitCompraProd = $tempMaxCompra->getMaxProd();
+
+/**
+ * @param $limitCompraProd
+ * numero de limite por compra desde el usuario
+ */
+$limitCompra = $tempMaxCompra->getMaxCompra();
+
+
+
 
 
 ?>
@@ -415,10 +429,10 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		<?php
 		endif;
 
-		$limitCompra = $tempMaxCompra->getMaxCompra();
-		if($limitCompra != 'notlimit'):
+		
+		if(!is_null($limitCompraProd) && $limitCompraProd != 0):
 		?> 
-			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompraProd; ?></span></p> 
 			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
 		<?php
 		else:
@@ -465,7 +479,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 				<div id="talles" class="talles-box '.($cantidad <= 0 ? "box-disabled" : "").'">
 					<a class="tooltip">'.$nombre_talle.'</a>
         			<div class="stock-talle"><p>'.$cantidad.'u</p></div>
-        			<input style="width:43px;height:30px;position:relative;top:-5px" '.($cantidad <= 0 ? "disabled" : "").' max="'.$cantidad.'" min="1" type="number" class="box-values" name="talle['.$talle.']" value="" id="caja'.$id_talle.'" 
+        			<input style="width:43px;height:30px;position:relative;top:-5px" '.($cantidad <= 0 ? "disabled" : "").' min="1" type="number" class="box-values" name="talle['.$talle.']" max-try="'.$cantidad.'" value="" id="caja'.$id_talle.'" 
 
 				onchange="checkdisp('.$cantidad.','.$id_talle.');"> <!--['.$cantidad.']--></div>
 
@@ -476,23 +490,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			// }
 
 		}
-		if ($row_DatosProductos["intMinCompra"] > 0) {
-	    	echo "<p class='minimo'>Minima cantidad de compra : <span>".$row_DatosProductos["intMinCompra"]."</span></p>";    	
-	    
-			echo '<div id="talles" style="float: right;">
-			<a class="tooltip"></a>
-        <div class="stock-talle" style="top:55px"><p>Total</p></div>
-        <input style="width: 43px;
-						height: 30px;
-						background-color: #D3D3D3;
-						border: none;
-						color: #333;
-						margin: 0 0 31px 0;
-						padding: 0;
-						text-align: center;"
- 		disabled="disabled" type="text" id="CountActual">
-        </div>';
-		}
+		
 		
 		
 
@@ -537,10 +535,11 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		<?php
 		endif;
 
-		$limitCompra = $tempMaxCompra->getMaxCompra();
-		if($limitCompra != 'notlimit'):
+
+		
+		if(!is_null($limitCompraProd) && $limitCompraProd != 0):
 		?> 
-			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompraProd; ?></span></p> 
 			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
 		<?php
 		else:
@@ -579,7 +578,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			// {
 			// $cantidad=0;
 			// }else{
-			// $limitCompra = $tempMaxCompra->getMaxCompra();
+			// 
 			
 			
 
@@ -588,7 +587,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			     
 				<div id="talles" class="talles-box '.($cantidad <= 0 ? "box-disabled" : "").'"   >
         <div class="stock-talle"><p>'.$cantidad.'u</p></div>
-        <input class="box-colores box-values" id="caja_color" '.($cantidad <= 0 ? "disabled" : "").' max="'.$cantidad.'" min="1" type="number" name="color['.$color.']" value="" onchange="checkdisp_color('.$cantidad.','.$id_color.');"> <!--['.$cantidad.']-->
+        <input class="box-colores box-values" id="caja_color" '.($cantidad <= 0 ? "disabled" : "").' min="1" type="number" name="color['.$color.']" value="" onchange="checkdisp_color('.$cantidad.','.$id_color.'); "  max-try="'.$cantidad.'" > <!--['.$cantidad.']-->
 		<a class="tooltip">'.$nombre_color.'</a>
         </div>
 
@@ -623,10 +622,10 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		endif;
 
 	
-		$limitCompra = $tempMaxCompra->getMaxCompra();
-		if($limitCompra != 'notlimit'):
+		
+		if(!is_null($limitCompraProd) && $limitCompraProd != 0):
 		?> 
-			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompraProd; ?></span></p> 
 			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
 		<?php
 		else:
@@ -654,8 +653,9 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	        <div class="stock-talle custom"><p><?php echo($talles[$kt]) ?></p></div>
 	        <div class="stock-talle cantidad"><p><?php echo($vt) ?> u</p></div>
 	        <input style="width:43px;height:30px;position:relative;top:-5px" 
-	        		type="number" min="1" max="<?php echo($vt) ?>" 
-	        		class="box-values boxIntInput" 
+	        		type="number" min="1" 
+	        		class="box-values boxIntInput"
+	        		 max-try="<?php echo $vt; ?>"
 	        		name="pedido[<?php echo($k) ?>][talle][<?php echo($kt) ?>]" 
 					<?php $producto->setEnabled($vt) ?>
 	        		> 
@@ -681,17 +681,17 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
     */
 
 	
-	$limitCompra = $tempMaxCompra->getMaxCompra();
-	if($limitCompra != 'notlimit'):
-	?> 
-		<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> 
-		<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
-	<?php
-	else:
-	?>
-		<input type="hidden" value="100000" id="limitMax">
-	<?php
-	endif;
+	
+	if(!is_null($limitCompraProd) && $limitCompraProd != 0):
+		?> 
+			<p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompraProd; ?></span></p> 
+			<input type="hidden" value="<?php echo $limitCompra; ?>" id="limitMax">
+		<?php
+		else:
+		?>
+			<input type="hidden" value="100000" id="limitMax">
+		<?php
+		endif;
 	
 
     
@@ -706,7 +706,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		<?php
 		endif;
 
-    echo '<input name="cantidad" class="box-values" min="1" max="'.$row_DatosProductos['intStock'].'" type="number" id="cantidad" value="1">';
+    echo '<input name="cantidad" max-try="'.$cantidad.'" class="box-values" min="1" type="number" id="cantidad" value="1">';
 
 	}
 
@@ -715,7 +715,18 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 	<span class="line"></span>
-	<p style="color:#A94A31;opacity:0;height:10px;" id="limiteExcedido">CANTIDAD MÁXIMA DE CANJE EXCEDIDO</p>
+	<p style="color:#A94A31;
+				opacity:0;
+				height:10px;
+				display: block;
+			    width: 100%;
+			    float: left;" id="alert"></p>
+	<p style="color:#A94A31;
+				opacity:0;
+				height:10px;
+				display: block;
+			    width: 100%;
+			    float: left;" id="alertBoxValue"></p>
 	<input type="hidden" name="idProducto" value="<?php echo $row_DatosProductos['idProducto']; ?>">
 
 	<a class="btn-micuenta6" href="index.php?activo=1&prod=1"><span>Cancelar</span></a>
@@ -802,12 +813,47 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	}
 	
 	
+	$('.box-values').on('change', function(event) {
+		event.preventDefault();
+		var total = 0;
+		var max = parseInt($('#limitMax').val());
+		var min = parseInt($('#limitMin').val());
+		$.each($('.box-values'), function(index, val) {
+			total += parseInt($(val).val()) || 0;
+		});
 
+		if (total > max) {
+			$('#alert').css({opacity: 1}).text('CANTIDAD MÁXIMA DE CANJE EXCEDIDO, DISPONIBLES '+max+' U');
+		}
+		else if(total < min){
+			$('#alert').css({opacity: 1}).text('CANTIDAD MINIMA DE CANJE NO COMPLETADA');
+		}else{
+			$('#alert').css({opacity: 0}).text('');
+		}
+		// $('#limitMax').css({opacity: 1}).vañ
+		// console.log(total);
+	});
+
+
+	$('.box-values').change(function(event) {
+		/* Act on the event */
+		var max = parseInt($(this).attr('max-try'));
+		var val = parseInt($(this).val());
+		
+		
+		if (val > max) {
+			$(this).css('box-shadow', '0px 0px 2px 1px rgba(255,108,108,0.8)');
+			$('#alertBoxValue').css({opacity: 1}).text('CANTIDAD MÁXIMA DE STOCK SUPERADA');
+		}else{
+			$(this).css('box-shadow', '0px 0px 2px 1px rgba(255,108,108,0)');
+			$('#alertBoxValue').text('');
+		}
+	});
 
 	$(window).on('submit', '#addproduct', function(event) {
 		var type = parseInt($(this).find('input[name=type]').val());
 		var collection = $(this).serializeArray();
-		var msg = 'Por favor, llene los campos vacios';
+		var msg = '';
 		var obj = $(this);
 		var min = parseInt($('#limitMin').val());
 		var max = parseInt($('#limitMax').val());
@@ -818,26 +864,26 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			case 1:
 				preventVencimiento(function(result){
 					if (result) {
-						alert('Credito vencido');
+						msg += 'Credito vencido';
 					}else{
 						preventEmpy(collection,'talle',function(isEmpty,total){
 							if (isEmpty) {
-								alert(msg);
+								msg += "Por favor, llene los campos vacios \n";
 							}else{
+
+
 								if (total <= max && total > 0 && total >= min) {
 									obj.unbind(event);
 									obj.submit();	
 								}else{
 									if (total == 0) {
-										alert('Por favor complete el pedido');
+										msg += "Por favor complete el pedido \n";
 									}else if(total < min){
-										alert('El minimo de pedidos en este producto es '+min);
+										msg += "El minimo de pedidos en este producto es "+min+"  \n";
 									}
 									else{
+										msg += "CANTIDAD MÁXIMA DE CANJE EXCEDIDO, DISPONIBLES ("+max+" u)  \n";
 
-										$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
-											$(this).delay(2000).animate({opacity: 0}, 800);
-										});
 									}
 								}
 								
@@ -847,88 +893,103 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 					}
+					if (msg != "") {
+						$('#alert').text(msg);
+						$('#alert').animate({opacity: 1}, 1000,function(){
+							$(this).delay(2000).animate({opacity: 0}, 800);
+						});
+					};
+
 				});
 				break;
 			case 2:
 				preventVencimiento(function(result){
 					if (result) {
-						alert('Credito vencido');
+						msg += 'Credito vencido';
 					}else{
 						preventEmpy(collection,'color',function(isEmpty,total){
 							if (isEmpty) {
-								alert(msg);
+								msg += "Por favor, llene los campos vacios \n";
 							}else{
 								if (total <= max && total > 0 && total >= min) {
 									obj.unbind(event);
 									obj.submit();	
 								}else{
 									if (total == 0) {
-										alert('Por favor complete el pedido');
+										msg += "Por favor complete el pedido \n";
 									}else if(total < min){
-										alert('El minimo de pedidos en este producto es '+min);
+										msg += "El minimo de pedidos en este producto es "+min+" \n";
 									}
 									else{
+										msg += "CANTIDAD MÁXIMA DE CANJE EXCEDIDO, DISPONIBLES ("+max+" u)  \n";
 
-										$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
-											$(this).delay(2000).animate({opacity: 0}, 800);
-										});
 									}
 								}
 								
 							}
 
 						});
-					}
-				});
 
+
+					}
+					if (msg != "") {
+						$('#alert').text(msg);
+					};
+
+				});
 				break;
 			case 3:
 				preventVencimiento(function(result){
 					if (result) {
-						alert('Credito vencido');
+						msg += 'Credito vencido';
 					}else{
 						preventEmpy(collection,'pedido',function(isEmpty,total){
 							if (isEmpty) {
-								alert(msg);
+								msg += "Por favor, llene los campos vacios \n";
 							}else{
+
+
 								if (total <= max && total > 0 && total >= min) {
 									obj.unbind(event);
 									obj.submit();	
 								}else{
 									if (total == 0) {
-										alert('Por favor complete el pedido');
+										msg += "Por favor complete el pedido \n";
 									}else if(total < min){
-										alert('El minimo de pedidos en este producto es '+min);
+										msg += "El minimo de pedidos en este producto es "+min+" \n";
 									}
 									else{
+										msg += "CANTIDAD MÁXIMA DE CANJE EXCEDIDO, DISPONIBLES ("+max+" u)  \n";
 
-										$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
-											$(this).delay(2000).animate({opacity: 0}, 800);
-										});
 									}
 								}
 								
 							}
 
 						});
+
+
 					}
+					if (msg != "") {
+						$('#alert').text(msg);
+					};
+
 				});
+				if (msg != "") {
+						$('#alert').text(msg);
+					};
 				break;
 			default:
 				var current = parseInt($('#cantidad').val());
-				var min = parseInt($('#cantidad').attr('min'));
-
-				if (current >= min && current <= max ) {
+				if (current > max) {
+					msg += "CANTIDAD MÁXIMA DE CANJE EXCEDIDO \n";
+				}else if(current < min){
+					msg += "CANTIDAD MINIMA DE CANJE NO COMPLETADA \n";
+				}else if(current >= min && current <= max){
 					obj.unbind(event);
 					obj.submit();
-				}else if(current > max){
-					$('#limiteExcedido').animate({opacity: 1}, 1000,function(){
-						$(this).delay(2000).animate({opacity: 0}, 800);
-					});
-				}else if(current < min){
-					alert("La cantidad minima es "+min+" u");
 				}
-				
+				$('#alert').css({opacity: 1}).text(msg);
 
 				break;
 		}
