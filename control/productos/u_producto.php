@@ -1,7 +1,7 @@
 <?php 
 
-// error_reporting(E_ALL);
-// ini_set('display_error', 'on');
+error_reporting(E_ALL);
+ini_set('display_error', 'on');
 
 include_once('../resources/control.php'); 
 include_once("classes/class.productos.php");
@@ -12,7 +12,7 @@ include_once("classes/class.tallesColores.php");
 $idProducto = $_POST['idProducto'];
 $strNombre=$_POST['strNombre'];
 $intMinCompra = (int)$_POST["intMinCompra"];
-$intMaxCompra = (int)$_POST["intMaxCompra"];
+$intMaxCompra = ( (int)$_POST["intMaxCompra"] == 0 ? NULL : (int)$_POST["intMaxCompra"] );
 $strDetalle=$_POST['strDetalle'];
 $intCategoria=$_POST['intCategoria'];
 $dblPrecio=$_POST['dblPrecio'];
@@ -22,13 +22,8 @@ $strImagen2=$_POST['strImagen2'];
 $strImagen3=$_POST['strImagen3'];
 $destacado=$_POST['destacado'];
 
-
 $talles = $_POST['talle'];
 $color = $_POST['color'];
-
-
-
-
 
 
 
@@ -236,7 +231,9 @@ if($talles!=""){
 
 // var_dump($color);
 else if($color)
-{
+{	
+
+	
 	//limpio si habia algo en stock
 	$productos= new productos();
 	$productos->select($idProducto);

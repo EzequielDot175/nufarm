@@ -7,9 +7,12 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
+
+echo('<pre>');
 $tempMaxCompra = new TempMaxCompra();
-
-
+$tempMaxCompra->storeSum();
+echo('</pre>');
+die();
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -85,6 +88,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 	if($requiere_talles==1){
 		//requiere talles
+		
 		try {
 			$stock = new TempStock();
 			$stock->setTalles($id_producto,$talles_seleccionados,$_SESSION['MM_IdUsuario']);	

@@ -34,7 +34,7 @@
 		public function init(){
 			$this->start();
 			$this->getMax();
-			$this->verify(self::session('logged_id'));
+			$this->verify($this->user);
 		}
 		/**
 		========= PUBLIC METHODS =========
@@ -46,13 +46,20 @@
 		* vuelve a verificar en la base de datos para evitar la desactualizacion
 		*/
 		public function haveMaxCompra(){
+			/**
+			 * @internal  verifico si el producto existe en la tabla tempmaxcompra, sino, lo creo
+			 */
+			$this->haveProductHistory($this->user,$this->prod);
 			$have = $this->prepare(self::MAXCOMPRA_HAVELIMITCOMPRA);
 			$have->bindParam(':user',$this->user, PDO::PARAM_INT);
 			$have->bindParam(':prod',$this->prod, PDO::PARAM_INT);
 			$have->execute();
 			$result = $have->fetch(PDO::FETCH_OBJ);
+			
 			if(is_null($result->cant)):
-				$this->verifyProd($user,$prod);
+				$this->verifyProd($this->user,$this->prod);
+			elseif(is_numeric($result->cant)):
+				$this->verifyProdInt($this->user,$this->prod);
 			endif;
 		}
 		/**
@@ -64,7 +71,7 @@
 			$max->bindParam(':prod',(!empty($this->prod) ? $this->prod : $prod ), PDO::PARAM_INT);
 			$max->execute();
 			$result = $max->fetch(PDO::FETCH_OBJ);
-			return $result->cant;
+			return $result->max;
 		}
 		/**
 		* @todo Metodo para setear la nueva cantidad del producto por usuario
@@ -75,6 +82,12 @@
 			$upd->bindParam(':prod',$prod,PDO::PARAM_INT);
 			$upd->bindParam(':user',$this->user,PDO::PARAM_INT);
 			$upd->execute();
+		}
+		/**
+		 * @todo  Metodo para sumar cantidad de productos pedidos por el usuario
+		 */
+		public function storeSum($prod){
+			
 		}
 
 
@@ -104,6 +117,7 @@
 		* @internal Comprueba si tiene o no un registro guardado en la tabla
 		*/
 		private function verify($id){
+
 			$verify = (		$this->get(self::MAXCOMPRA_VERIFY.$id)->sum > 0 ? true : false	);
 			if(!$verify):
 				$this->set($id);
@@ -125,7 +139,7 @@
 		*/
 		private function formatInit($array){
 			$values = "";
-			$user = self::session('logged_id');
+			$user = $this->user;
 			$i = 0;
 			foreach($array as $k => $v):
 				if($i == 0):
@@ -159,11 +173,48 @@
 			endif;
 		}
 		/**
+		 * @internal metodo que verifica el limite del producto distinto de null,
+		 * si es distinto de null este verifica que el limite numerico corresponda
+		 * al actual de la base de datos, manteniendo los limites de compra en todo momento
+		 */
+		private function verifyProdInt($user,$prod){
+
+			$result = $this->prepare(self::MAXCOMPRA_VERIFYCURRENTLIMIT);
+			$result->bindParam(':prod',$prod,PDO::PARAM_INT);
+			$result->bindParam(':user',$user,PDO::PARAM_INT);
+			$result->execute();
+
+			if ( !(Boolean)$result->fetch(PDO::FETCH_OBJ)->result ) {
+				$update = $this->prepare(self::MAXCOMPRA_UPDATELIMITFROMPROD);
+				$update->bindParam(':prod',$prod,PDO::PARAM_INT);
+				$update->bindParam(':user',$user,PDO::PARAM_INT);
+				$update->execute();
+			}
+		}
+		/**
 		* @todo Metodo para iniciar @param user id y @param producto id
 		*/
 		private function setInitsData(){
-			$this->user = self::session('logged_id');
+			$this->user = self::session('MM_IdUsuario');
 			$this->prod = (isset($_GET['recordID']) ? $_GET['recordID'] : '');
+		}
+		/**
+		 * @todo Es posible que si el producto no exista en el registro de la tabla,
+		 * se produsca un error, por ello, este metodo comprueba que exista el producto,
+		 * y si no existe lo setea.
+		 */
+		public function haveProductHistory($user,$prod){
+			$exist = $this->prepare(self::MAXCOMPRA_PRODUCTROWEXIST);
+			$exist->bindParam(':prod',$prod,PDO::PARAM_INT);
+			$exist->bindParam(':user',$user,PDO::PARAM_INT);
+			$exist->execute();
+			$exist = ($exist->fetch(PDO::FETCH_OBJ)->result > 0 ? true : false);
+			if(!$exist):
+				$insert = $this->prepare(self::MAXCOMPRA_INSERTFROMPROD);
+				$insert->bindParam(':prod',$prod,PDO::PARAM_INT);
+				$insert->bindParam(':user',$user,PDO::PARAM_INT);
+				$insert->execute();
+			endif;
 		}
 
 

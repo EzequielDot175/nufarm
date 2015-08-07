@@ -18,9 +18,6 @@ $MM_donotCheckaccess = "true";
 $_SESSION["notification"] ="";
 
 
-$TempMaxCompra = new TempMaxCompra();
-
-$TempMaxCompra->init();
 
 
 
@@ -61,6 +58,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   header("Location:". $MM_restrictGoTo); 
   exit;
 }
+
+$TempMaxCompra = new TempMaxCompra();
+
+$TempMaxCompra->init();
+
+
+
+
 ?>
 <?php include("includes/header.php"); ?>
 <?php

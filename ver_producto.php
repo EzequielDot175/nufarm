@@ -8,10 +8,6 @@ require_once('libs.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 
-$tempMaxCompra = new TempMaxCompra();
-
-
-$tempMaxCompra->haveMaxCompra();
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -60,6 +56,18 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   header("Location:". $MM_restrictGoTo); 
   exit;
 }
+
+
+/**
+* @internal clase que controla la cantidad maxima de compra por cada usuario
+ */
+
+$tempMaxCompra = new TempMaxCompra();
+
+
+$tempMaxCompra->haveMaxCompra();
+
+
 ?>
 <?php
 
@@ -398,7 +406,13 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 
-
+		$limitCompra = $tempMaxCompra->getMaxCompra();
+		if($limitCompra > 0):
+		?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+		else:
+		?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
+		endif;
+		echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
 
 		foreach($talles_disp as $talle){
 
@@ -430,6 +444,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			// {
 			// $cantidad=0;
 			// }else{
+			
 
 			$salida .=    '
 
@@ -498,7 +513,13 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 
 
 			$salida = '';
-
+		$limitCompra = $tempMaxCompra->getMaxCompra();
+			if($limitCompra > 0):
+			?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+			else:
+			?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
+			endif;
+			echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
 		
 		foreach($color_disp as $color){
 
@@ -530,6 +551,9 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 			// {
 			// $cantidad=0;
 			// }else{
+			// $limitCompra = $tempMaxCompra->getMaxCompra();
+			
+			
 
 			$salida .=    '
 
@@ -567,10 +591,15 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		$cantMax = $row_DatosProductos['intMaxCompra'];
 
 
-		$limitCompra = $tempMaxCompra->getMaxCompra();
-		if(!is_null($limitCompra)):
-		?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
-		endif;
+	
+	$limitCompra = $tempMaxCompra->getMaxCompra();
+	if($limitCompra > 0):
+	?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+	else:
+	?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
+	endif;
+	echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
+
 
 
 
@@ -616,6 +645,14 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 	*
     */
 
+	$limitCompra = $tempMaxCompra->getMaxCompra();
+	if($limitCompra > 0):
+	?> <p>CANTIDAD MAXIMA DE COMPRA <span><?php echo $limitCompra; ?></span></p> <?php
+	else:
+	?> <p>NO TE QUEDAN COMPRAS DISPONIBLES PARA ESTE PRODUCTO</p> <?php
+	endif;
+	echo '<input type="hidden" value="'.$limitCompra.'" id="limitMax">';
+	
 
     if ($row_DatosProductos["intMinCompra"] > 0) {
     	echo "<p class='minimo'>Minima cantidad de compra : <span>".$row_DatosProductos["intMinCompra"]."</span></p>";    	
@@ -706,9 +743,9 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 					};
 					if (collection.length-1 == index) {
 						if (total == 0) {
-							callback.call('isEmpty', true);
+							callback.call(this,true,parseInt(total));
 						}else{
-							callback.call('isEmpty', false);
+							callback.call(this,true,parseInt(total));
 						}
 					};
 				});
@@ -722,6 +759,7 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 		var collection = $(this).serializeArray();
 		var msg = 'Por favor, llene los campos vacios';
 		var obj = $(this);
+		var max = parseInt($('#limitMax').val());
 		event.preventDefault();
 
 		var thisEv = event;
@@ -731,12 +769,23 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 					if (result) {
 						alert('Credito vencido');
 					}else{
-						preventEmpy(collection,'talle',function(isEmpty){
+						preventEmpy(collection,'talle',function(isEmpty,total){
+							console.log(isEmpty);
+							console.log();
 							if (isEmpty) {
 								alert(msg);
 							}else{
-								obj.unbind(event);
-								obj.submit();	
+								if (total <= max && total > 0) {
+									obj.unbind(event);
+									obj.submit();	
+								}else{
+									if (total == 0) {
+										alert('Por favor complete el pedido');
+									}else{
+										alert('Cantidad maxima de compra superada, por favor, quite unidades.');
+									}
+								}
+								
 							}
 
 						});
@@ -750,14 +799,17 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 					if (result) {
 						alert('Credito vencido');
 					}else{
-						preventEmpy(collection,'color',function(isEmpty){
-							if (isEmpty) {
-								alert(msg);
-							}else{
+						preventEmpy(collection,'color',function(isEmpty,total){
+							if (total <= max && total > 0) {
 								obj.unbind(event);
-								obj.submit();
+								obj.submit();	
+							}else{
+								if (total == 0) {
+									alert('Por favor complete el pedido');
+								}else{
+									alert('Cantidad maxima de compra superada, por favor, quite unidades.');
+								}
 							}
-							
 						});
 					}
 				});
@@ -768,14 +820,17 @@ echo '<img src="images_productos/default.png" alt="" width="106" height="108"/>'
 					if (result) {
 						alert('Credito vencido');
 					}else{
-						preventEmpy(collection,'pedido',function(isEmpty){
-							if (isEmpty) {
-								alert(msg);
-							}else{
+						preventEmpy(collection,'pedido',function(isEmpty,total){
+							if (total <= max && total > 0) {
 								obj.unbind(event);
-								obj.submit();
+								obj.submit();	
+							}else{
+								if (total == 0) {
+									alert('Por favor complete el pedido');
+								}else{
+									alert('Cantidad maxima de compra superada, por favor, quite unidades.');
+								}
 							}
-							
 						});
 					}
 				});

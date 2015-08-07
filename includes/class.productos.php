@@ -263,6 +263,7 @@ $this->idProducto = mysql_insert_id($this->database->link);
 
 function update($id){
 
+
 $sql = " UPDATE productos SET  strNombre = '$this->strNombre',strDetalle = '$this->strDetalle',intCategoria = '$this->intCategoria',dblPrecio = '$this->dblPrecio',intStock = '$this->intStock',strImagen = '$this->strImagen' WHERE idProducto = $id ";
 
 $result = $this->database->query($sql);
