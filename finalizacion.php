@@ -9,7 +9,10 @@ $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
 
-require_once('TempStock.php');
+require_once('QueryConstants.php');
+require_once('PDOConfig.php');
+require_once('TempStock.php'); 
+require_once('includes/class.compras.php');
 
 $checkVencimiento = new TempStock();
 $can = $checkVencimiento->fechaVencimiento($_SESSION['MM_IdUsuario']);
@@ -90,7 +93,7 @@ if($checkout){
 	//HAY PAGO REALIZADO
 	$tipoDePago = 2; //cambiar el valor a los medios de pagos posibles. puede pasarse el valor directamente a la clase en su llamado de la funcion.
 	
-	include_once("includes/class.carrito.php");
+	require_once("includes/class.carrito.php");
 	$carrito= new carrito();
 	$resultado = $carrito->select_by_user($_SESSION["MM_IdUsuario"],$tipoDePago, ObtenerIVA());
 	
@@ -98,7 +101,7 @@ if($checkout){
 	#informacion del usuario
 	
 
-	include_once("includes/class.usuarios.php");
+	require_once("includes/class.usuarios.php");
 	$dtuser = new usuarios();
 	$dtuser->select($_SESSION["MM_IdUsuario"]);
 	$nombre_user = $dtuser->getstrNombre();

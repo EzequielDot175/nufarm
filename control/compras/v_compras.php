@@ -1,6 +1,11 @@
 <?php 
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
+if(!isset($_SESSION)):
+  session_start();
+endif;
+$_SESSION['last_page'] = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -122,7 +127,8 @@ $orden = "idCompra DESC";
 }
 
 echo '
-<div class="menuorden"><a href="v_compras.php?orden=1&activo=1&sub=c"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_compras.php?orden=2&activo=1&sub=c"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>
+<div class="menuorden"><a href="v_compras.php?orden=1&activo=1&sub=c">
+<img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_compras.php?orden=2&activo=1&sub=c"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>
  <table>
  <tr class="tablacolor3">
      <td  class="rotate2" width="15%" height="5" align="left">Valor Canjeado</td>  

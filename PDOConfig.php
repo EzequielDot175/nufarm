@@ -5,7 +5,7 @@
 
 
 
-	class PDOConfig extends PDO
+	class PDOConfig extends PDO implements SqlConstant
 	{
 		private $dbname = "nmaxx_develop";
 		private $dbuser = "nmaxx_pnufarm";

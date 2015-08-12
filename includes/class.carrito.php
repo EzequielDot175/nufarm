@@ -14,6 +14,7 @@ var $intContador;
 var $idUsuario;
 var $idProducto;
 var $intCantidad;
+var $remito;
 var $intTransaccion;
 var $talle;
 var $color;

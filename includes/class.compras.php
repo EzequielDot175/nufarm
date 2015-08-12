@@ -185,7 +185,9 @@ return $recuadro;
 function insert_detalle_productos($id_compra,$id_producto,$nombre,$detalle,$cantidad,$precio_pagado, $estado_producto ,$talle, $color){
 
 #$this->idCompra = ""; // clear key for autoincrement
-$sql = "INSERT INTO detalles_compras( id_compra, id_producto, nombre, detalle, cantidad, precio_pagado, estado_producto, talle, color ) VALUES ('$id_compra', '$id_producto', '$nombre', '$detalle', '$cantidad', '$precio_pagado', '$estado_producto', '$talle', '$color')";
+$remito = $randnum = rand(1111111111,9999999999);
+
+$sql = "INSERT INTO detalles_compras( id_compra, id_producto, nombre, detalle, cantidad, precio_pagado, estado_producto, talle, color, remito ) VALUES ('$id_compra', '$id_producto', '$nombre', '$detalle', '$cantidad', '$precio_pagado', '$estado_producto', '$talle', '$color', ".$remito.")";
 $result = $this->database->query($sql);
 return $this->idCompra = mysql_insert_id($this->database->link);
 

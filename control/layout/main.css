@@ -980,9 +980,51 @@ a.btn-user span  {
 	min-height: 2px;
 	height: 53px;
 	/*background: #EBEBEB;*/
-	background-image: url(../layout/item1.png);
+	background-image: url(../layout/item: 1.png;);
 	background-repeat: repeat;
 	background-position: left;
+}
+.box_10{
+	width: 10%;
+	float: left;
+    min-height: 2px;
+    height: 53px;
+}
+.box_15{
+	width: 15%;
+	float: left;
+    min-height: 2px;
+    height: 53px;
+}
+.box_20{
+	width: 20%;
+	float: left;
+    min-height: 2px;
+    height: 53px;
+}
+.box_25{
+	width: 25%;
+	float: left;
+    min-height: 2px;
+    height: 53px;
+}
+.w10{width: 10%}
+.w15{width: 15%}
+.w20{width: 20%}
+.w15{width: 15%}
+.w30{width: 30%}
+
+.delete a{
+	display: block;
+    color: white!important;
+
+}
+.delete{
+	float: left;
+    width: 97%;
+    padding: 1em;
+    text-align: center;
+    background-color: #B7B6B5;
 }
 span.nombreprod {
 	text-transform: uppercase;
@@ -3484,6 +3526,14 @@ span.talle {
 	color: #fff;
 	background-color: #8E3289 !important;
 
+}
+.actions{
+	width: 10%;
+	float: right;
+}
+.remito{
+	width: 10%;
+	float: right;
 }
 
 /********* item-content-prod *************/

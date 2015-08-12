@@ -7,7 +7,7 @@ include_once("../resources/class.database.php");
 
 class compras{ 
 // class : begin
-/* ATTRIBUTE DECLARATION */
+	/* ATTRIBUTE DECLARATION */
 var $idCompra;   // KEY ATTR. WITH AUTOINCREMENT
 var $idUsuario;
 var $fthCompra;
@@ -23,7 +23,7 @@ var $database; // Instance of class database
 
 function compras(){
 
-$this->database = new Database();
+	$this->database = new Database();
 
 }
 
@@ -52,30 +52,30 @@ function setestado($val){ $this->estado =  $val;}
 /* SELECT METHOD / LOAD */
 function select($id){
 
-$sql =  "SELECT * FROM compra WHERE idCompra = '$id'";
-$result =  $this->database->query($sql);
-$result = $this->database->result;
-$row = mysql_fetch_object($result);
+	$sql =  "SELECT * FROM compra WHERE idCompra = '$id'";
+	$result =  $this->database->query($sql);
+	$result = $this->database->result;
+	$row = mysql_fetch_object($result);
 
-$this->idCompra = $row->idCompra;
-$this->idUsuario = $row->idUsuario;
-$this->fthCompra = $row->fthCompra;
-$this->intTipoPago = $row->intTipoPago;
-$this->dblTotal = $row->dblTotal;
-$this->idCredito = $row->idCredito;
-$this->detalle = $row->detalle;
-$this->estado = $row->estado;
+	$this->idCompra = $row->idCompra;
+	$this->idUsuario = $row->idUsuario;
+	$this->fthCompra = $row->fthCompra;
+	$this->intTipoPago = $row->intTipoPago;
+	$this->dblTotal = $row->dblTotal;
+	$this->idCredito = $row->idCredito;
+	$this->detalle = $row->detalle;
+	$this->estado = $row->estado;
 
 }
 /* SELECT METHOD / LOAD PRODUCTOS*/
 function select_productos($id){
 
-$sql =  "SELECT * FROM detalles_compras WHERE id_compra = '$id'";
-$result =  $this->database->query($sql);
-$result = $this->database->result;
-$row = mysql_fetch_object($result);
+	$sql =  "SELECT * FROM detalles_compras WHERE id_compra = '$id'";
+	$result =  $this->database->query($sql);
+	$result = $this->database->result;
+	$row = mysql_fetch_object($result);
 
-$this->estado_producto = $row->estado_producto;
+	$this->estado_producto = $row->estado_producto;
 
 }
 
@@ -83,593 +83,610 @@ $this->estado_producto = $row->estado_producto;
 /* SELECT ALL */
 function select_all($pagina, $orden)
 {
-		include('../resources/paginator.class.php');
-		$vendedor_filtro = $_GET['vendedor'];
-		$prod_state = $_GET['prod_state'];
+	include('../resources/paginator.class.php');
+	$vendedor_filtro = $_GET['vendedor'];
+	$prod_state = $_GET['prod_state'];
 
 
-		
-		
-		$vendedor_asignado = $_SESSION['logged_id'];
-		if($_SESSION['logged_role'] ==1){
-					if($vendedor_filtro >= 1){
-							$sql = "SELECT * FROM usuarios  WHERE vendedor='$vendedor_filtro'  ";
-							$result = $this->database->query($sql);
-							$result = $this->database->result;
-						
-							while($row = mysql_fetch_array($result)){
-								$clientes[] = $row['idUsuario'];
-							}
-							$clientes_d = implode(',', $clientes);
-							$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
-						
-					}else
-					{
-							$sql = "SELECT * FROM usuarios ";
-							$result = $this->database->query($sql);
-							$result = $this->database->result;
-						
-							while($row = mysql_fetch_array($result)){
-								$clientes[] = $row['idUsuario'];
-							}
-							$clientes_d = implode(',', $clientes);
-							$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
-					}
-		}elseif($_SESSION['logged_role'] ==2){
-		
-							$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
-							$result = $this->database->query($sql);
-							$result = $this->database->result;
-						
-							while($row = mysql_fetch_array($result)){
-								$clientes[] = $row['idUsuario'];
-							}
-							$clientes_d = implode(',', $clientes);
-							$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
-							
-		}elseif($_SESSION['logged_role'] ==3){
-		
-							$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
-							$result = $this->database->query($sql);
-							$result = $this->database->result;
-						
-							while($row = mysql_fetch_array($result)){
-								$clientes[] = $row['idUsuario'];
-							}
-							$clientes_d = implode(',', $clientes);
-							$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
-						
-					
-		
+
+
+	$vendedor_asignado = $_SESSION['logged_id'];
+	if($_SESSION['logged_role'] ==1){
+		if($vendedor_filtro >= 1){
+			$sql = "SELECT * FROM usuarios  WHERE vendedor='$vendedor_filtro'  ";
+			$result = $this->database->query($sql);
+			$result = $this->database->result;
+
+			while($row = mysql_fetch_array($result)){
+				$clientes[] = $row['idUsuario'];
 			}
-		
+			$clientes_d = implode(',', $clientes);
+			$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
 
-$result = $this->database->query($sql);
-$result = $this->database->result;
-$quantity= mysql_num_rows($result);
-		if($quantity < 1)
+
+			echo "<pre>";
+			print_r($sql);
+			echo "</pre>";
+			die();
+
+		}else
+		{
+			$sql = "SELECT * FROM usuarios ";
+			$result = $this->database->query($sql);
+			$result = $this->database->result;
+
+			while($row = mysql_fetch_array($result)){
+				$clientes[] = $row['idUsuario'];
+			}
+			$clientes_d = implode(',', $clientes);
+			$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
+		}
+	}elseif($_SESSION['logged_role'] ==2){
+		
+		$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
+		$result = $this->database->query($sql);
+		$result = $this->database->result;
+
+		while($row = mysql_fetch_array($result)){
+			$clientes[] = $row['idUsuario'];
+		}
+		$clientes_d = implode(',', $clientes);
+		$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
+
+	}elseif($_SESSION['logged_role'] ==3){
+		
+		$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
+		$result = $this->database->query($sql);
+		$result = $this->database->result;
+
+		while($row = mysql_fetch_array($result)){
+			$clientes[] = $row['idUsuario'];
+		}
+		$clientes_d = implode(',', $clientes);
+		$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
+
+
+		
+	}
+
+
+	$result = $this->database->query($sql);
+	$result = $this->database->result;
+	$quantity= mysql_num_rows($result);
+	if($quantity < 1)
 		{echo '<div class="notify">
-			<p>No hay compra en el sistema!</p>
-		</div>';}
-		else{
-$count=0;
+	<p>No hay compra en el sistema!</p>
+	</div>';}
+	else{
+		$count=0;
 
-			include_once('../usuarios/classes/class.usuarios.php');
-			while($row = mysql_fetch_array($result))
-			{
+		include_once('../usuarios/classes/class.usuarios.php');
+		while($row = mysql_fetch_array($result))
+		{
 
-					
-				$idCompra = $row['idCompra'];
-				$idUsuario = $row['idUsuario'];
 
-				$count++;
-			}
+			$idCompra = $row['idCompra'];
+			$idUsuario = $row['idUsuario'];
 
-$pages = new Paginator;
-$pages->items_total = $count;
-$pages->mid_range = 10;
-$pages->paginate();
-$pages->display_pages();
+			$count++;
+		}
+
+		$pages = new Paginator;
+		$pages->items_total = $count;
+		$pages->mid_range = 10;
+		$pages->paginate();
+		$pages->display_pages();
 
 
 
 		if($_SESSION['logged_role'] ==1){
-		
-								if($vendedor_filtro >= 1){
-								$sql ="SELECT * FROM compra AS com INNER JOIN usuarios AS usu ON com.idUsuario=usu.idUsuario WHERE vendedor='$vendedor_filtro' ORDER BY $orden $pages->limit;";
-								}
-								elseif ( $prod_state)
-								{$sql ="SELECT * FROM compra AS com INNER JOIN detalles_compras AS det ON com.idCompra=det.id_compra WHERE det.estado_producto = '$prod_state' GROUP BY det.id_compra ORDER BY $orden $pages->limit;";}
-								else
-								{$sql ="SELECT * FROM compra ORDER BY $orden $pages->limit;";}
-								
+
+			if($vendedor_filtro >= 1){
+				$sql ="SELECT * FROM compra AS com INNER JOIN usuarios AS usu ON com.idUsuario=usu.idUsuario WHERE vendedor='$vendedor_filtro' ORDER BY $orden $pages->limit;";
+			}
+			elseif ( $prod_state)
+				{$sql ="SELECT * FROM compra AS com INNER JOIN detalles_compras AS det ON com.idCompra=det.id_compra WHERE det.estado_producto = '$prod_state' GROUP BY det.id_compra ORDER BY $orden $pages->limit;";}
+			else
+				{$sql ="SELECT * FROM compra ORDER BY $orden $pages->limit;";}
+
 		}elseif($_SESSION['logged_role'] ==2){
-		
-								if($vendedor_filtro >= 1){
-								$sql ="SELECT * FROM compra AS com INNER JOIN usuarios AS usu ON com.idUsuario=usu.idUsuario WHERE vendedor='$vendedor_filtro' ORDER BY $orden $pages->limit;";
-								}
-								elseif ( $prod_state)
-								{$sql ="SELECT * FROM compra AS com INNER JOIN detalles_compras AS det ON com.idCompra=det.id_compra WHERE det.estado_producto = '$prod_state' GROUP BY det.id_compra ORDER BY $orden $pages->limit;";}
-								else
-								{$sql ="SELECT * FROM compra ORDER BY $orden $pages->limit;";}
-								
+
+			if($vendedor_filtro >= 1){
+				$sql ="SELECT * FROM compra AS com INNER JOIN usuarios AS usu ON com.idUsuario=usu.idUsuario WHERE vendedor='$vendedor_filtro' ORDER BY $orden $pages->limit;";
+			}
+			elseif ( $prod_state)
+				{$sql ="SELECT * FROM compra AS com INNER JOIN detalles_compras AS det ON com.idCompra=det.id_compra WHERE det.estado_producto = '$prod_state' GROUP BY det.id_compra ORDER BY $orden $pages->limit;";}
+			else
+				{$sql ="SELECT * FROM compra ORDER BY $orden $pages->limit;";}
+
 		}elseif($_SESSION['logged_role'] ==3){
-		
-								$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
-								$result = $this->database->query($sql);
-								$result = $this->database->result;
-								while($row = mysql_fetch_array($result)){
-									$clientes[] = $row['idUsuario'];
-								}
-								$clientes_d = implode(',', $clientes);
-								if ( $prod_state){
-								$sql ="SELECT * FROM compra AS com INNER JOIN detalles_compras AS det ON com.idCompra=det.id_compra WHERE  idUsuario IN ($clientes_d) AND det.estado_producto = '$prod_state' GROUP BY det.id_compra ORDER BY $orden $pages->limit;";
-								}else
-								{$sql ="SELECT * FROM compra WHERE  idUsuario IN ($clientes_d) ORDER BY $orden $pages->limit;";}
+
+			$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
+			$result = $this->database->query($sql);
+			$result = $this->database->result;
+			while($row = mysql_fetch_array($result)){
+				$clientes[] = $row['idUsuario'];
+			}
+			$clientes_d = implode(',', $clientes);
+			if ( $prod_state){
+				$sql ="SELECT * FROM compra AS com INNER JOIN detalles_compras AS det ON com.idCompra=det.id_compra WHERE  idUsuario IN ($clientes_d) AND det.estado_producto = '$prod_state' GROUP BY det.id_compra ORDER BY $orden $pages->limit;";
+			}else
+			{$sql ="SELECT * FROM compra WHERE  idUsuario IN ($clientes_d) ORDER BY $orden $pages->limit;";}
 		}
 
 
 
 
-$result = $this->database->query($sql);
-$result = $this->database->result;
-while($row = mysql_fetch_array($result)){
+		$result = $this->database->query($sql);
+		$result = $this->database->result;
+		while($row = mysql_fetch_array($result)){
 
 
-$idCompra = $row['idCompra'];
-$idUsuario = $row['idUsuario'];
-$fthCompra = $row['fthCompra'];
-$intTipoPago = $row['intTipoPago'];
-$dblTotal = $row['dblTotal'];
-$idCredito = $row['idCredito'];
-$caracteristicas = $row['caracteristicas'];
-$monto = $row['monto'];
-$aprobado = $row['aprobado'];
-$leido = $row['leido'];
-$detalle = $row['detalle'];
-$estado = $row['estado'];
+			$idCompra = $row['idCompra'];
+			$idUsuario = $row['idUsuario'];
+			$fthCompra = $row['fthCompra'];
+			$intTipoPago = $row['intTipoPago'];
+			$dblTotal = $row['dblTotal'];
+			$idCredito = $row['idCredito'];
+			$caracteristicas = $row['caracteristicas'];
+			$monto = $row['monto'];
+			$aprobado = $row['aprobado'];
+			$leido = $row['leido'];
+			$detalle = $row['detalle'];
+			$estado = $row['estado'];
 
 
-include_once('../usuarios/classes/class.usuarios.php');
+			include_once('../usuarios/classes/class.usuarios.php');
 
-$usr = new usuarios();
-$usr->select($idUsuario);
-$nombre_usr = $usr->getstrNombre();
-$apellido_usr = $usr->getstrApellido();
-$email_usr = $usr->getstrEmail();
-$monto_usuario = $usr->getdblCredito();
-$vendedor_usuario = $usr->getvendedor();
+			$usr = new usuarios();
+			$usr->select($idUsuario);
+			$nombre_usr = $usr->getstrNombre();
+			$apellido_usr = $usr->getstrApellido();
+			$email_usr = $usr->getstrEmail();
+			$monto_usuario = $usr->getdblCredito();
+			$vendedor_usuario = $usr->getvendedor();
 
 
 ////////////////////////////////////////////OPCIONES ESTADO PEDIDO
-$opciones .= '
-<option value="1" ';
-if($estado ==1){$opciones .="selected=\"selected\" ";}
-$opciones .='>Pendiente</option>';
-$opciones .='
-<option value="2" ';
-if($estado ==2){$opciones .="selected=\"selected\" ";}
-$opciones .='>Finalizado</option>';
+			$opciones .= '
+			<option value="1" ';
+			if($estado ==1){$opciones .="selected=\"selected\" ";}
+			$opciones .='>Pendiente</option>';
+			$opciones .='
+			<option value="2" ';
+			if($estado ==2){$opciones .="selected=\"selected\" ";}
+			$opciones .='>Finalizado</option>';
 
 
 ////////////////////////////////////////// PRODUCTOS CANJEADOS ITEM PEDIDO - TOTAL
-$item .= '<div class="item">
+			$item .= '<div class="item">
 
 
 
- <!-- Compra: '.$idCompra.' pertenece a vendedor : '.$vendedor_usuario.'-->
-<div class="olive-bar_new2"><span class="tit_pedido"><span class="bold">Usuario: '.utf8_decode($nombre_usr).' '.utf8_decode($apellido_usr).'</span> / '.$email_usr.'</span> <span class="fecha_tit_admin">'.$fthCompra.'</span></div>
-<form name="listado_productos" id="estform" action="update_proceso.php" method="post">
-';
+			<!-- Compra: '.$idCompra.' pertenece a vendedor : '.$vendedor_usuario.'-->
+			<div class="olive-bar_new2"><span class="tit_pedido"><span class="bold">Usuario: '.utf8_decode($nombre_usr).' '.utf8_decode($apellido_usr).'</span> / '.$email_usr.'</span> <span class="fecha_tit_admin">'.$fthCompra.'</span></div>
+			<form name="listado_productos" id="estform" action="update_proceso.php" method="post">
+			';
 ////////////////////////////////////////// SELECT ESTADO PEDIDO
-															if($_SESSION['logged_role'] == 1){
-																$item .= '
-																<div class="estadopedido_box">
+			if($_SESSION['logged_role'] == 1){
+				$item .= '
+				<div class="estadopedido_box">
 
-																
-																		
-																			<input type="hidden" name="id_compra" value="'.$idCompra.'" />
-																			<select name="estado_compra" id="estado1">
-																				'.$opciones.'
-																			</select>
-																			<button type="sybmit" class="button mainbtn">GUARDAR</button>
-																		</div>';
-															}else{
-																$item .= '
-																
-																			<div class="estadopedido_box">
-																			<input type="hidden" name="id_compra" value="'.$idCompra.'" />
-																			<select name="estado_compra" id="estado1">
-																				'.$opciones.'
-																			</select>
-																					</div>
-																		';
-															}
+
+
+				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
+				<select name="estado_compra" id="estado1">
+				'.$opciones.'
+				</select>
+				<button type="sybmit" class="button mainbtn">GUARDAR</button>
+
+				</div>
+				';
+			}else{
+				$item .= '
+
+				<div class="estadopedido_box">
+				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
+				<select name="estado_compra" id="estado1">
+				'.$opciones.'
+				</select>
+				</div>
+				</div>
+				';
+			}
 
 
 /////////////////////////////////////////////////// TABLA PRODUCTOS CANJEADOS ///ADMIN ///TOTALES///	
 
-$item .= '
+			$item .= '
 
-'.$this->bring_detalle_compra($idCompra).'
-<p>
-<!--
-<a href="d_compra.php?id='.$idCompra.'">Borrar</a>
--->
-</p>
+			'.$this->bring_detalle_compra($idCompra).'
+			<p>
+			<!--
+			<a href="d_compra.php?id='.$idCompra.'">Borrar</a>
+			-->
+			</p>
 
-<div class="total_prod_comprado">
-	<div>
-		<p><span class="precio_producto_compra green_style">$'.$dblTotal.'</span><span class="valor_total">VALOR TOTAL</span> </p>
-	</div>
-	
-	<div class="box_1_4" >
-		<div class="fth-c"><!--'.$fthCompra.'--></div>
-	</div>
+			<div class="total_prod_comprado">
+			<div>
+			<p><span class="precio_producto_compra green_style">$'.$dblTotal.'</span><span class="valor_total">VALOR TOTAL</span> </p>
+			</div>
 
-	
-</div>
+			<div class="box_1_4" >
+			<div class="fth-c"><!--'.$fthCompra.'--></div>
+			</div>
 
 
+			</div>
 
-</div>';
 
-							
 
-											if($_SESSION['logged_role'] == 1){
-												echo $item;
-											}elseif($_SESSION['logged_role'] == 2){
-												echo $item;
-											}else{
+			</div>';
+
+
+
+			if($_SESSION['logged_role'] == 1){
+				echo $item;
+			}elseif($_SESSION['logged_role'] == 2){
+				echo $item;
+			}else{
 												//chequear si el cliente pertenece a ese vendedor
-												if($_SESSION['logged_id'] == $vendedor_usuario){
-													echo $item;
-												}
-												
-											}
-$item = "";
+				if($_SESSION['logged_id'] == $vendedor_usuario){
+					echo $item;
+				}
 
-$opciones="";
-}
+			}
+			$item = "";
 
-echo '<div class="navigate">';
-echo $pages->display_pages();
+			$opciones="";
+		}
+
+		echo '<div class="navigate">';
+		echo $pages->display_pages();
 
 
  // Optional call which will display the page numbers after the results.
 //$pages->display_jump_menu(); // Optional – displays the page jump menu
 //echo $pages->display_items_per_page(); //Optional – displays the items per
 //echo  $pages->current_page . ' of ' .$pages->num_pages.'';
-echo '</div>';
-}
+		echo '</div>';
+	}
  //////////////////PODUCTOS DEL PEDIDO - NOMBRE - DETALLE - CANTIDAD - PRECIO
 }
 
 /* SELECT ALL */
 function select_busqueda($search)
 {
-		include('../resources/paginator.class.php');
-		$vendedor_filtro = $_GET['vendedor'];
-					
-
-							$sql = "SELECT * FROM detalles_compras  AS dc
-							INNER JOIN compra AS c
-							ON dc.id_compra=c.idCompra 
-							WHERE dc.nombre LIKE '%$search%'";
-						
-
-$result = $this->database->query($sql);
-$result = $this->database->result;
-while($row = mysql_fetch_array($result)){
+	include('../resources/paginator.class.php');
+	$vendedor_filtro = $_GET['vendedor'];
 
 
-$idCompra = $row['idCompra'];
-$idUsuario = $row['idUsuario'];
-$fthCompra = $row['fthCompra'];
-$intTipoPago = $row['intTipoPago'];
-$dblTotal = $row['dblTotal'];
-$idCredito = $row['idCredito'];
-$caracteristicas = $row['caracteristicas'];
-$monto = $row['precio_pagado'];
-$aprobado = $row['aprobado'];
-$leido = $row['leido'];
-$nombre = $row['nombre'];
-$detalle = $row['detalle'];
-$estado = $row['estado'];
+	$sql = "SELECT * FROM detalles_compras  AS dc
+	INNER JOIN compra AS c
+	ON dc.id_compra=c.idCompra 
+	WHERE dc.nombre LIKE '%$search%'";
+
+
+	$result = $this->database->query($sql);
+	$result = $this->database->result;
+	while($row = mysql_fetch_array($result)){
+
+
+		$idCompra = $row['idCompra'];
+		$idUsuario = $row['idUsuario'];
+		$fthCompra = $row['fthCompra'];
+		$intTipoPago = $row['intTipoPago'];
+		$dblTotal = $row['dblTotal'];
+		$idCredito = $row['idCredito'];
+		$caracteristicas = $row['caracteristicas'];
+		$monto = $row['precio_pagado'];
+		$aprobado = $row['aprobado'];
+		$leido = $row['leido'];
+		$nombre = $row['nombre'];
+		$detalle = $row['detalle'];
+		$estado = $row['estado'];
 
 
 
 
 ////////////////////////////////////////// PRODUCTOS CANJEADOS ITEM PEDIDO - TOTAL
 
-				
-echo "<div class='result_search_detail'>$detalle</div>";
-echo"$$monto";
-echo"<br>";
-}
+
+		echo "<div class='result_search_detail'>$detalle</div>";
+		echo"$$monto";
+		echo"<br>";
+	}
 }
 
-	
+
 function bring_detalle_compra($id_compra){
 /////////////////////////////////////////////////// TABLA PRODUCTOS CANJEADOS ///ADMIN
 
 
 
 
-include_once('../productos/classes/class.productos.php');
-$sql ="SELECT * FROM detalles_compras WHERE id_compra = $id_compra;";
-$result = $this->database->query($sql);
-$result = $this->database->result;
-$i=0;
+	include_once('../productos/classes/class.productos.php');
+	$sql ="SELECT * FROM detalles_compras WHERE id_compra = $id_compra;";
+	$result = $this->database->query($sql);
+	$result = $this->database->result;
+	$i=0;
 
-while($row = mysql_fetch_array($result)){
+	while($row = mysql_fetch_array($result)){
 
-	$id_compra = $row['id_compra'];
-	$id_producto = $row['id_producto'];
-	$nombre = $row['nombre'];
-	$detalle = $row['detalle'];
-	$cantidad = $row['cantidad'];
-	$precio_pagado = $row['precio_pagado'];
-	$estado_producto = $row['estado_producto'];
-	$talle = $row['talle'];
-	$color = $row['color'];
+		$id_compra = $row['id_compra'];
+		$id = $row['id'];
+		$id_producto = $row['id_producto'];
+		$nombre = $row['nombre'];
+		$detalle = $row['detalle'];
+		$remito = $row['remito'];
+		$cantidad = $row['cantidad'];
+		$precio_pagado = $row['precio_pagado'];
+		$estado_producto = $row['estado_producto'];
+		$talle = $row['talle'];
+		$color = $row['color'];
 
 
 
 /////////////////////////////////////////////SELECT ESTADO PRODUCTOS////
 	//verifico si tiene imagen
-	$prod = new productos();
-	$prod->select($id_producto);
-	$imagen_producto = $prod->getstrImagen();
-	
+		$prod = new productos();
+		$prod->select($id_producto);
+		$imagen_producto = $prod->getstrImagen();
 
-	
-	
-	if( strlen($imagen_producto) > 0 ){
+
+
+
+		if( strlen($imagen_producto) > 0 ){
 		//con imagen
-		$recuadro .= '
-		<div class="producto_comprado">
+			$recuadro .= '
+			<div class="producto_comprado">
 			<div class="box_1_4" >
-				<div class="precio_producto_compra"><span>$'.$precio_pagado.'</span></div>
+			<div class="precio_producto_compra"><span>$'.$precio_pagado.'</span></div>
 			</div>
 			
 			<div class="box_1_4" >
 			<div class="box-img4"><img src="../../images_productos/'.$imagen_producto.'"  alt="" /></div>
 			</div>
-			<div class="box_1_4" >
-				<span class="nombreprod">'.$nombre.' </span>
-				<span class="cant">'.$cantidad.' </span>
-
-				<span class="talle">'.$color .'   '.$talle .'</span>
-				
+			<div class="box_15" >
+			<span class="nombreprod">'.$nombre.' </span>
+			<span class="cant">'.$cantidad.' </span>
+			
+			<span class="talle">'.$color .'   '.$talle .'</span>
+			
+			</div>
+			<div class="box_10">
+				'.$remito.'
 			</div>
 			<div class="box_1_5" >
-
-		<p>
+			
+			<p>
 			<input type="hidden" name="num_prod" value="'.$i.'" />
 			<input type="hidden" name="id_prod'.$i.'" value="'.$id_producto.'" />
 			<input type="hidden" name="id_compra_prod'.$i.'" value="'.$id_compra.'" />
 			<select name="estado_compra_prod'.$i.'" id="estado2">
 			
-				 <option value="1"';
-				 if($estado_producto ==1){$recuadro .="selected=selected ";}
-	$recuadro .= '>Pendiente</option>
-	
-				 <option value="2"';
-				 if($estado_producto ==2){$recuadro .="selected=selected ";}
-	$recuadro .= '>En Proceso</option>	
-	
-				 <option value="3"';
-				 if($estado_producto ==3){$recuadro .="selected=selected";}
-	$recuadro .= '>Enviado</option>	
-				 <option value="4"';
-				 if($estado_producto ==4){$recuadro .="selected=selected";}
-	$recuadro .= '>Entregado</option>	
+			<option value="1"';
+			if($estado_producto ==1){$recuadro .="selected=selected ";}
+			$recuadro .= '>Pendiente</option>
+			
+			<option value="2"';
+			if($estado_producto ==2){$recuadro .="selected=selected ";}
+			$recuadro .= '>En Proceso</option>	
+			
+			<option value="3"';
+			if($estado_producto ==3){$recuadro .="selected=selected";}
+			$recuadro .= '>Enviado</option>	
+			<option value="4"';
+			if($estado_producto ==4){$recuadro .="selected=selected";}
+			$recuadro .= '>Entregado</option>	
 			</select>
+			
+			
+			
+			
+			</div>
+			<div class="delete">
+			<a href="delete_compras.php?id='.$id.'">borrar</a>
+			</div>
+			
+			</div>
 
-		
-		
-		
-			</div>
-			
-		</div>
-		
-		';
-	
-	}else{
+			';
+
+		}else{
 		//sin imagen
-		$recuadro .= '
-		<div class="producto_comprado">
+			$recuadro .= '
+			<div class="producto_comprado">
 			<div class="box_1_4" >
-				<div class="precio_producto_compra"><span>$ '.$precio_pagado.'</span></div>
-				
+			<div class="precio_producto_compra"><span>$ '.$precio_pagado.'</span></div>
+
 			</div>
 			
 			<div class="box_1_4" >
-				
-				<div class="sombra5"></div>
-                 <div class="box-img4">
-				<img  src="../../images_productos/default.png" alt=""/></div>
+
+			<div class="sombra5"></div>
+			<div class="box-img4">
+			<img  src="../../images_productos/default.png" alt=""/></div>
 			</div>
-		    	
-		<div class="box_1_4" >
-				<span class="nombreprod">'.$nombre.' </span>
-				<span class="cant">'.$cantidad.' </span>
-				<span class="talle">
-				'.$talle.'
-				</span>
+
+			<div class="box_1_4" >
+			<span class="nombreprod">'.$nombre.' </span>
+			<span class="cant">'.$cantidad.' </span>
+			<span class="talle">
+			'.$talle.'
+			</span>
 			</div>
 			<div class="box_1_4" >
-		<p>
+			<p>
 
 			<input type="hidden" name="id_prod'.$i.'" value="'.$id_producto.'" />
 			<input type="hidden" name="id_compra_prod'.$i.'" value="'.$idCompra.'" />
 			<select name="estado_compra_prod'.$i.'" id="estado1">
-				'.$opciones_prod.'
+			'.$opciones_prod.'
 			</select>
 			
-		
+
 			</div>
 			
-		</div>';
-		
+			</div>';
+
+		}
+
+		$i++;	
 	}
 
-$i++;	
-}
 
-
-echo	"</form>";
+	echo	"</form>";
 //FIN formulario PRODUCTOS
-return $recuadro;
+	return $recuadro;
 }
 
 //BY USUARIO
 /* SELECT ALL */
 function select_by_usuario($id_usuario){
 
-$sql ="SELECT * FROM compra WHERE idUsuario = $id_usuario;";
-$result = $this->database->query($sql);
-$result = $this->database->result;
-$quantity= mysql_num_rows($result);
-		if($quantity < 1)
+	$sql ="SELECT * FROM compra WHERE idUsuario = $id_usuario;";
+	$result = $this->database->query($sql);
+	$result = $this->database->result;
+	$quantity= mysql_num_rows($result);
+	if($quantity < 1)
 		{echo ' 
 	<div class="item">
 	<p  style="padding:5px 0 20px 15px">Sin compras realizadas aun.</p>
 	</div>';}
-		else{
-$count=0;
-while($row = mysql_fetch_array($result)){
-$count++;
-}
+	else{
+		$count=0;
+		while($row = mysql_fetch_array($result)){
+			$count++;
+		}
 
 
 
-$sql ="SELECT * FROM compra WHERE idUsuario = $id_usuario ORDER BY fthCompra DESC;";
-$result = $this->database->query($sql);
-$result = $this->database->result;
-while($row = mysql_fetch_array($result)){
+		$sql ="SELECT * FROM compra WHERE idUsuario = $id_usuario ORDER BY fthCompra DESC;";
+		$result = $this->database->query($sql);
+		$result = $this->database->result;
+		while($row = mysql_fetch_array($result)){
 
 
-$idCompra = $row['idCompra'];
-$idUsuario = $row['idUsuario'];
-$fthCompra = $row['fthCompra'];
-$intTipoPago = $row['intTipoPago'];
-$dblTotal = $row['dblTotal'];
-$idCredito = $row['idCredito'];
-$caracteristicas = $row['caracteristicas'];
-$monto = $row['monto'];
-$aprobado = $row['aprobado'];
-$leido = $row['leido'];
-$detalle = $row['detalle'];
-$estado = $row['estado'];
+			$idCompra = $row['idCompra'];
+			$idUsuario = $row['idUsuario'];
+			$fthCompra = $row['fthCompra'];
+			$intTipoPago = $row['intTipoPago'];
+			$dblTotal = $row['dblTotal'];
+			$idCredito = $row['idCredito'];
+			$caracteristicas = $row['caracteristicas'];
+			$monto = $row['monto'];
+			$aprobado = $row['aprobado'];
+			$leido = $row['leido'];
+			$detalle = $row['detalle'];
+			$estado = $row['estado'];
 
 
-include_once('../usuarios/classes/class.usuarios.php');
+			include_once('../usuarios/classes/class.usuarios.php');
 
-$usr = new usuarios();
-$usr->select($idUsuario);
-$nombre_usr = $usr->getstrNombre();
-$apellido_usr = $usr->getstrApellido();
-$email_usr = $usr->getstrEmail();
-$monto_usuario = $usr->getdblCredito();
+			$usr = new usuarios();
+			$usr->select($idUsuario);
+			$nombre_usr = $usr->getstrNombre();
+			$apellido_usr = $usr->getstrApellido();
+			$email_usr = $usr->getstrEmail();
+			$monto_usuario = $usr->getdblCredito();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////SELECT ESTADO PEDIDO
 #if($aprobado==1){$aprobado = 'Si';}else{$aprobado ='No';}
 
 #if($leido==1){$leido = 'Si';}else{$leido ='No';}
-$opciones .= '
-<option value="1" ';
-if($estado ==1){$opciones .="selected=\"selected\" ";}
-$opciones .='>Pendiente</option>';
-$opciones .='
-<option value="2" ';
-if($estado ==2){$opciones .="selected=\"selected\" ";}
-$opciones .='>En proceso</option>';
-$opciones .='
-<option value="3" ';
-if($estado ==3){$opciones .="selected=\"selected\" ";}
-$opciones .='>Entregado</option>';
+			$opciones .= '
+			<option value="1" ';
+			if($estado ==1){$opciones .="selected=\"selected\" ";}
+			$opciones .='>Pendiente</option>';
+			$opciones .='
+			<option value="2" ';
+			if($estado ==2){$opciones .="selected=\"selected\" ";}
+			$opciones .='>En proceso</option>';
+			$opciones .='
+			<option value="3" ';
+			if($estado ==3){$opciones .="selected=\"selected\" ";}
+			$opciones .='>Entregado</option>';
 
-echo '
-<div class="item">
-<div class="olive-bar_new2"><span class="tit_pedido"><span class="bold">Usuario: '.utf8_decode($nombre_usr).' '.utf8_decode($apellido_usr).'</span> / '.$email_usr.'</span> <span class="fecha_tit_admin">'.$fthCompra.'</span></div>
-';
+			echo '
+			<div class="item">
+			<div class="olive-bar_new2"><span class="tit_pedido"><span class="bold">Usuario: '.utf8_decode($nombre_usr).' '.utf8_decode($apellido_usr).'</span> / '.$email_usr.'</span> <span class="fecha_tit_admin">'.$fthCompra.'</span></div>
+			';
 
 
 
-if($_SESSION['logged_role'] ==1){
-	echo '<form id="estform" action="'.BASEURL.'/compras/update_proceso.php" method="post">
-			<p>
+			if($_SESSION['logged_role'] ==1){
+				echo '<form id="estform" action="'.BASEURL.'/compras/update_proceso.php" method="post">
+				<p>
 				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
 				<p><select name="estado_compra" id="estado1">
-					'.$opciones.'
+				'.$opciones.'
 				</select></p>
 				<button type="sybmit" class="mainbtn-save">ADMINISTRAR</button>
-			</form>';
-}elseif($_SESSION['logged_role'] ==2){
-	echo '<form id="estform" action="'.BASEURL.'/compras/update_proceso.php" method="post">
-			<p>
+				</form>';
+			}elseif($_SESSION['logged_role'] ==2){
+				echo '<form id="estform" action="'.BASEURL.'/compras/update_proceso.php" method="post">
+				<p>
 				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
 				<p><select name="estado_compra" id="estado1">
-					'.$opciones.'
+				'.$opciones.'
 				</select></p>
 				<button type="sybmit" class="button">GUARDAR</button>
-			</form>';
-}else{
-	echo '<form id="estform" action="#" method="post">
-			<p>
+				</form>';
+			}else{
+				echo '<form id="estform" action="#" method="post">
+				<p>
 				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
 				<p><select name="estado_compra" id="estado1">
-					'.$opciones.'
+				'.$opciones.'
 				</select></p>
-			
-			</form>';
-	
-}		
+
+				</form>';
+
+			}		
 // Aca modificar
-echo '		
+			echo '		
 
 
-'.$this->bring_detalle_compra($idCompra).'
-<div class="producto_comprado">
+			'.$this->bring_detalle_compra($idCompra).'
+			<div class="producto_comprado">
 			<div class="box_1_4" >
-				<div class="precio_producto_compra"><span>$ '.$precio_pagado.'</span></div>
-				
+			<div class="precio_producto_compra"><span>$ '.$precio_pagado.'</span></div>
+
 			</div>
 			
 			<div class="box_1_4" >
-				
-				<div class="sombra5"></div>
-                 <div class="box-img4">
-				<img  src="../../images_productos/default.png" alt=""/></div>
+
+			<div class="sombra5"></div>
+			<div class="box-img4">
+			<img  src="../../images_productos/default.png" alt=""/></div>
 			</div>
-		    	
-		<div class="box_1_4" >
-				<span class="nombreprod">'.$nombre.' </span>
-				<span class="cant">'.$cantidad.' </span>
-				<span class="talle">
-				'.$talle.'
-				</span>
+
+			<div class="box_1_4" >
+			<span class="nombreprod">'.$nombre.' </span>
+			<span class="cant">'.$cantidad.' </span>
+			<span class="talle">
+			'.$talle.'
+			</span>
 			</div>
 			<div class="box_1_4" >
-		<p>
+			<p>
 
 			<input type="hidden" name="id_prod'.$i.'" value="'.$id_producto.'" />
 			<input type="hidden" name="id_compra_prod'.$i.'" value="'.$idCompra.'" />
 			<select name="estado_compra_prod'.$i.'" id="estado1">
-				'.$opciones_prod.'
+			'.$opciones_prod.'
 			</select>
 			
-		
+
 			</div>
 			
-		</div>
-';
-$opciones="";
-}
+			</div>
+			';
+			$opciones="";
+		}
 
 
-}
+	}
 
 }
 
@@ -677,8 +694,8 @@ $opciones="";
 
 /* DELETE */
 function delete($id){
-$sql = "DELETE FROM compra WHERE idCompra = $id;";
-$result = $this->database->query($sql);
+	$sql = "DELETE FROM compra WHERE idCompra = $id;";
+	$result = $this->database->query($sql);
 
 }
 
@@ -686,64 +703,64 @@ $result = $this->database->query($sql);
 //<a href="v_compras.php?activo=1&sub=c"><div class="olive-bar_new'; if(!$link_vendedor){ echo" o_b_n_active";}  echo'"><span>VER TODOS</span></div></a>
 /* SELECT ALL */
 function select_all_vendedores(){
-$link_vendedor=$_GET['link_vendedor'];
-$vert= $_GET['vert'];
-echo '<div class="item">
-<a href="v_compras.php?activo=1&sub=c&vert=1&vendedor=0"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
-
-
-
-</div>';
-
-if($_SESSION['logged_role'] ==3){}else{
-$sql ="SELECT * FROM personal WHERE role>=3";
-$result = $this->database->query($sql);
-$result = $this->database->result;
-
-	$i=1;
-	while($row = mysql_fetch_array($result)){
-	$id = $row['id'];
-	$nombre = $row['nombre'];
-	$apellido = $row['apellido'];
-	$login = $row['login'];
-	$role = $row['role'];
-	$password = $row['password'];
-
-	switch ($role) {
-		case 1:
-			$role_nombre = "Administrador";
-			break;
-		case 2:
-			$role_nombre = "Marketing";
-			break;
-		case 3:
-			$role_nombre = "Ventas";
-			break;
-	}
-
-
+	$link_vendedor=$_GET['link_vendedor'];
+	$vert= $_GET['vert'];
 	echo '<div class="item">
-
-	<a href="v_compras.php?activo=1&sub=c&vendedor='.$id.'&link_vendedor='.$i.'"><div class="olive-bar_new'; if($link_vendedor==$i){ echo" o_b_n_active";}  echo'"><span>'.$nombre.' '.$apellido.'</span></div></a>
+	<a href="v_compras.php?activo=1&sub=c&vert=1&vendedor=0"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
 
 
 
 	</div>';
-	$i++;
+
+	if($_SESSION['logged_role'] ==3){}else{
+		$sql ="SELECT * FROM personal WHERE role>=3";
+		$result = $this->database->query($sql);
+		$result = $this->database->result;
+
+		$i=1;
+		while($row = mysql_fetch_array($result)){
+			$id = $row['id'];
+			$nombre = $row['nombre'];
+			$apellido = $row['apellido'];
+			$login = $row['login'];
+			$role = $row['role'];
+			$password = $row['password'];
+
+			switch ($role) {
+				case 1:
+				$role_nombre = "Administrador";
+				break;
+				case 2:
+				$role_nombre = "Marketing";
+				break;
+				case 3:
+				$role_nombre = "Ventas";
+				break;
+			}
+
+
+			echo '<div class="item">
+
+			<a href="v_compras.php?activo=1&sub=c&vendedor='.$id.'&link_vendedor='.$i.'"><div class="olive-bar_new'; if($link_vendedor==$i){ echo" o_b_n_active";}  echo'"><span>'.$nombre.' '.$apellido.'</span></div></a>
+
+
+
+			</div>';
+			$i++;
+		}
 	}
-}
 }
 
 
 
 function select_all_states(){
-$prod_state=$_GET['prod_state'];
-$vert= $_GET['vert'];
-echo '
-<div class="item">
-<a href="v_compras.php?activo=1&sub=c&vert=1&vendedor=0"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
-</div>
-';
+	$prod_state=$_GET['prod_state'];
+	$vert= $_GET['vert'];
+	echo '
+	<div class="item">
+	<a href="v_compras.php?activo=1&sub=c&vert=1&vendedor=0"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
+	</div>
+	';
 
 	echo '<div class="item">
 
@@ -770,12 +787,12 @@ echo '
 
 
 function select_all_vendedores_pub_eve(){
-$action_status=$_GET['action_status'];
-echo '<div class="item">
+	$action_status=$_GET['action_status'];
+	echo '<div class="item">
 
-<a href="v_propuestas.php?action_status=1&activo=1&sub=a"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
+	<a href="v_propuestas.php?action_status=1&activo=1&sub=a"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
 
-</div>';
+	</div>';
 
 
 	echo '<div class="item">
@@ -803,71 +820,71 @@ echo '<div class="item">
 
 
 function select_all_vendedores_clientes(){
-$link_vendedor=$_GET['link_vendedor'];
-$vert= $_GET['vert'];
-echo '<div class="item">
-
-<a href="v_usuarios.php?activo=1&sub=c&vert=1"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
-
-
-
-</div>';
-if($_SESSION['logged_role'] ==3){}else{
-$sql ="SELECT * FROM personal WHERE role>=3";
-$result = $this->database->query($sql);
-$result = $this->database->result;
-
-	$i=1;
-	while($row = mysql_fetch_array($result)){
-	$id = $row['id'];
-	$nombre = $row['nombre'];
-	$apellido = $row['apellido'];
-	$login = $row['login'];
-	$role = $row['role'];
-	$password = $row['password'];
-
-	switch ($role) {
-		case 1:
-			$role_nombre = "Administrador";
-			break;
-		case 2:
-			$role_nombre = "Marketing";
-			break;
-		case 3:
-			$role_nombre = "Ventas";
-			break;
-	}
-
-
+	$link_vendedor=$_GET['link_vendedor'];
+	$vert= $_GET['vert'];
 	echo '<div class="item">
 
-	<a href="v_usuarios.php?activo=2&sub=e&vendedor='.$id.'&link_vendedor='.$i.'"><div class="olive-bar_new'; if($link_vendedor==$i){ echo" o_b_n_active";}  echo'"><span>'.$nombre.' '.$apellido.'</span></div></a>
+	<a href="v_usuarios.php?activo=1&sub=c&vert=1"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
 
 
 
 	</div>';
-	$i++;
-	}
+	if($_SESSION['logged_role'] ==3){}else{
+		$sql ="SELECT * FROM personal WHERE role>=3";
+		$result = $this->database->query($sql);
+		$result = $this->database->result;
+
+		$i=1;
+		while($row = mysql_fetch_array($result)){
+			$id = $row['id'];
+			$nombre = $row['nombre'];
+			$apellido = $row['apellido'];
+			$login = $row['login'];
+			$role = $row['role'];
+			$password = $row['password'];
+
+			switch ($role) {
+				case 1:
+				$role_nombre = "Administrador";
+				break;
+				case 2:
+				$role_nombre = "Marketing";
+				break;
+				case 3:
+				$role_nombre = "Ventas";
+				break;
+			}
+
+
+			echo '<div class="item">
+
+			<a href="v_usuarios.php?activo=2&sub=e&vendedor='.$id.'&link_vendedor='.$i.'"><div class="olive-bar_new'; if($link_vendedor==$i){ echo" o_b_n_active";}  echo'"><span>'.$nombre.' '.$apellido.'</span></div></a>
+
+
+
+			</div>';
+			$i++;
+		}
 	}
 }
 
 
 
 function prod_pendientes(){
-$sql ="SELECT * FROM detalles_compras WHERE estado_producto=1;";
-$result = $this->database->query($sql);
-$result = $this->database->result;
-$quantity= mysql_num_rows($result);
-		if($quantity < 1){
+	$sql ="SELECT * FROM detalles_compras WHERE estado_producto=1;";
+	$result = $this->database->query($sql);
+	$result = $this->database->result;
+	$quantity= mysql_num_rows($result);
+	if($quantity < 1){
 		echo '<div class="noresult"><div class="notify">
-			<p>SIN CANJES PENDIENTES</p>
+		<p>SIN CANJES PENDIENTES</p>
 		</div></div>';
-		}else{
-			echo '<div class="notify">
-				<p><a href="'.BASEURL.'/compras/v_compras.php?prod_state=1&activo=1&sub=a">Canjes Pendientes  '.$quantity.'</a></p>
-			</div>';
-		}
-		
+	}else{
+		echo '<div class="notify">
+		<p><a href="'.BASEURL.'/compras/v_compras.php?prod_state=1&activo=1&sub=a">Canjes Pendientes  '.$quantity.'</a></p>
+		</div>';
+	}
+
 
 }
 
@@ -910,9 +927,9 @@ $quantity= mysql_num_rows($result);
 function insert_detalle_productos($id_compra,$id_producto,$nombre,$detalle,$cantidad,$precio_pagado){
 
 #$this->idCompra = ""; // clear key for autoincrement
-$sql = "INSERT INTO detalles_compras( id_compra, id_producto, nombre, detalle, cantidad, precio_pagado ) VALUES ('$id_compra', '$id_producto', '$nombre', '$detalle', '$cantidad', '$precio_pagado')";
-$result = $this->database->query($sql);
-return $this->idCompra = mysql_insert_id($this->database->link);
+	$sql = "INSERT INTO detalles_compras( id_compra, id_producto, nombre, detalle, cantidad, precio_pagado ) VALUES ('$id_compra', '$id_producto', '$nombre', '$detalle', '$cantidad', '$precio_pagado')";
+	$result = $this->database->query($sql);
+	return $this->idCompra = mysql_insert_id($this->database->link);
 
 }
 
@@ -933,15 +950,15 @@ return $this->idCompra = mysql_insert_id($this->database->link);
 /* UPDATE PEDIDO*/
 
 function update($id){
-$sql = " UPDATE compra SET  idUsuario = '$this->idUsuario',fthCompra = '$this->fthCompra',intTipoPago = '$this->intTipoPago',dblTotal = '$this->dblTotal',idCredito = '$this->idCredito',detalle = '$this->detalle', estado = '$this->estado' WHERE idCompra = $id ";
+	$sql = " UPDATE compra SET  idUsuario = '$this->idUsuario',fthCompra = '$this->fthCompra',intTipoPago = '$this->intTipoPago',dblTotal = '$this->dblTotal',idCredito = '$this->idCredito',detalle = '$this->detalle', estado = '$this->estado' WHERE idCompra = $id ";
 
-$result = $this->database->query($sql);
+	$result = $this->database->query($sql);
 
 }
 /* UPDATE PRODUCTOS*/
 function update_prod($id){
-$sql = " UPDATE detalles_compras SET  estado_producto = '$this->estado2' WHERE id_compra = '$id' AND id_producto='$this->id_producto' ";
-$result = $this->database->query($sql);
+	$sql = " UPDATE detalles_compras SET  estado_producto = '$this->estado2' WHERE id_compra = '$id' AND id_producto='$this->id_producto' ";
+	$result = $this->database->query($sql);
 }
 
 
