@@ -137,11 +137,11 @@
 				switch ($this->filters['typeSearch']):
 					case 'byWeek':
 						$date->modify('-7 days');
-						$byDate .= " compra.fthCompra < ".$date->format('Y-m-d');
+						$byDate .= " compra.fthCompra < '".$date->format('Y-m-d')."'";
 						break;
 					case 'byMonth':
 						$date->modify('-30 days');
-						$byDate.= " compra.fthCompra < ".$date->format('Y-m-d');
+						$byDate.= " compra.fthCompra < '".$date->format('Y-m-d')."'";
 						break;
 					
 					default:
@@ -152,7 +152,7 @@
 			elseif(		$this->e($this->filters['desde']) && $this->e($this->filters['hasta'])	):
 				$desde = new DateTime($this->filters['desde']);
 				$hasta = new DateTime($this->filters['hasta']);
-				$byDate .= "  compra.fthCompra BETWEEN ".$desde->format('Y-m-d')." AND ".$hasta->format('Y-m-d');
+				$byDate .= "  compra.fthCompra BETWEEN '".$desde->format('Y-m-d')."' AND ".$hasta->format('Y-m-d');
 			
 			elseif($this->e($this->filters['desde']) && !$this->e($this->filters['hasta']) ):
 				
