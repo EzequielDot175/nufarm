@@ -31,7 +31,6 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	 * Seteo los options de productos canjeados
 	 */
 	ajax.post({get: 'ProdOptions'},function(a){
-		console.info('ProdOptions' , a);
 		$scope.select_prod_canjeado = a;
 	});
 

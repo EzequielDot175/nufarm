@@ -35,10 +35,7 @@
 				echo json_encode($this->clientes->allCompras());
 			else:
 				$filters = array();
-				$this->setFinal();
-				
-
-				// $this->clientes->allComprasWithFilter($this->filters);
+				$this->clientes->allComprasFilter($this->setFinal());
 
 
 			endif;
@@ -65,7 +62,7 @@
 				endif;
 			endforeach;
 
-			echo $where;
+			return $where;
 		}
 
 		/**

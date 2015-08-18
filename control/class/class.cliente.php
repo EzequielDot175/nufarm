@@ -42,14 +42,20 @@
 		public function allCompras(){
 			return $this->getRows(self::CLIENTE_ALLCOMPRAS);
 		}
-		public function allComprasWithFilter($filters = array()){
+		/**
+		 * [allComprasFilter description]
+		 * Genera el sql de para realizar busquedas de compras por filtrado
+		 * @param  String  $where [description]
+		 * @return [JSON]  resultados
+		 */
+		public function allComprasFilter($where){
 			
-			if(!empty($filters)):
+			if(!empty($where)):
 				/**
 				 * @param
 				 */
 				
-				print_r($filters);
+				echo(json_encode($this->getRows(self::CLIENTE_ALLCOMPRAS.$where)));
 
 
 			endif;
