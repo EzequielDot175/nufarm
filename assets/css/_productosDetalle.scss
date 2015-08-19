@@ -1,0 +1,284 @@
+// ========================
+/******** PRODUCTOS DETALLE ********/
+// ========================
+
+.detalle-productos{
+            padding: 0px 60px 30px 60px;
+            width: 100%;
+
+            .col-a{
+                   width: 40.7%;
+                    margin-right: 2px;
+              }
+
+              .col-b{
+                     width: 58.7%;
+              }
+
+            .block{
+                    border-radius: 3px;
+                     -moz-border-radius: 3px;
+                    -webkit-border-radius: 3px;
+                    -o-border-radius: 3px;
+                    -ms-border-radius: 3px;
+                    margin-top: 2px;
+                    padding: 21px 27px 30px 27px;
+
+                        .sub-titulo{
+                                    color: $verde ; 
+                                    font-size: 16px; 
+                                    font-family: 'Brandon_reg';
+                                    font-weight: bold;
+                                    padding-right: 100px;
+                        }
+
+                        .descripcion{
+                                    font-size: 12px; 
+                                    font-family: 'Open_Sans_Regular';
+                                    font-weight: bold;
+                                    padding-right: 100px;
+                                    padding-top: 10px;
+                        }
+
+
+                        .block-puntos{
+                                        width: 107px;
+                                        height: 55px;
+                                        background-color: $verde;
+                                        color: #fff;
+                                        position: absolute;
+                                        right: -5px;
+                                        top: 20px;
+                                        text-align: center;
+                                        padding: 15px 0;
+
+                                        .num{
+                                                color:#fff;
+                                                font-family: 'BrooklynSamuelsFive-Fat';
+                                                font-size: 31px;
+                                        }
+
+                                        .text{
+                                                 color:#fff;
+                                                 font-family: 'Brandon_reg';
+                                                 font-size: 12px;
+                                                 padding-top: 5px;
+                                        }
+
+                                        p{
+                                                width: 100%;
+                                        }
+
+                           }
+
+                          .img{
+                                   width: 250px;
+                                    margin: 0 auto;
+                                    padding: 15px 15px 0 15px;
+                                    overflow: hidden;
+                                    height: 290px;
+
+                                   img{
+                                       width: 100%;
+                                    }
+
+                            }
+              }
+
+              .block-head{
+                padding: 37px 27px 30px 27px;
+            }
+
+            .background-a{
+                background-color: $grisA ;  
+             }
+
+             .background-b{
+                 background-color: $grisB;
+             }
+
+             .icon-color{
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 100%;
+                         -moz-border-radius: 100%;
+                        -webkit-border-radius: 100%;
+                        -o-border-radius: 100%;
+                        -ms-border-radius: 100%;
+                        display: inline-block;
+             }
+
+             .sub-titulo-B {
+                        position: relative;
+                        z-index: 1; 
+                        color: $gris;
+                        font-size: 12px;
+                        margin-top: 25px;
+                        font-weight: bold;
+                        font-family: 'Brandon_reg';
+
+                        span {
+                                    background: $grisB;
+                                    padding: 0 10px 0 0; 
+                                    display: inline-block;
+                                    height: 20px;
+                        }
+            }
+            
+
+            .sub-titulo-B:before {
+                        border-top: 1px solid #9F9E93;
+                        content: "";
+                        margin: 0 auto;
+                        position: absolute;
+                        top: 35%;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 95%;
+                        z-index: -1; 
+                        height: 20px;
+            }
+
+            .color:before {
+                        top: 45%;
+            }
+
+            .color {
+                        position: relative;
+                        z-index: 1; 
+                        color: $gris;
+                        font-size: 12px;
+                        margin-top: 25px;
+
+                        .icon-color{
+                                    margin-bottom: -5px;
+                                    margin-right: 5px;
+                         }
+
+                        
+            }
+
+            .block-num{
+                        font-weight: bold;
+                        font-family: 'Brandon_reg';
+                        display: inline-block;
+                        margin-right: 8px;
+
+                         p {
+                                    top: 40%;
+                                    display: inline-block;
+                                    margin-right: 5px;
+                        }
+
+                        .text{
+                                    display: inline-block;
+                                    font-size: 11px;
+                         }
+                        
+
+                        .icon-num{
+                                    width: 20px;
+                                    height: 20px;
+                                    border: 1px solid $gris;
+                                    border-radius: 100%;
+                                     -moz-border-radius: 100%;
+                                    -webkit-border-radius: 100%;
+                                    -o-border-radius: 100%;
+                                    -ms-border-radius: 100%;
+                                    display: inline-block;
+                                     font-size: 11px;
+                                     
+
+                                        p{
+                                                padding: 3px;
+                                       }
+                         }
+             }
+
+             .talles {
+                    margin-left: 15px;
+                    margin-top: 10px;
+            }
+
+}
+
+
+
+
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+
+    //detalle de productos
+    .detalle-productos .col-a {
+        width: 100%;
+        margin-right: 0%;
+    }
+
+    .detalle-productos .col-b {
+        width: 100%;
+        margin-right: 0%;
+    }
+
+
+   .detalle-productos .block .img {
+        width: 100%;
+        margin: 0;
+        height: auto;
+    }
+
+    .detalle-productos .block .block-puntos {
+        width: 100%;
+        position: relative;
+        right: 0;
+        top: 0;
+        margin-bottom: 10px;
+    }
+
+    .detalle-productos .block .sub-titulo {
+        padding-right: 0px;
+    }
+
+    .detalle-productos .block .descripcion{
+        padding-right: 0px;
+    }
+
+    
+   
+}
+
+
+/*tablet----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width : 1280px){
+  
+}
+
+/**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 771px) and (max-width : 980px){
+
+    .detalle-productos .block .img {
+        width: 100%;
+        margin: 0;
+        height: auto;
+    }
+}
+
+/*notbook------------------------------------*/
+@media screen and (min-width: 1280px) and (max-width : 1800px){
+	
+}
+
+/*desktop------------------------------*/
+@media screen and (min-width: 1801px) and (max-width : 2200px){
+
+}
+
+/*desktop large-----------------------------------------------*/
+@media screen and (min-width: 2220px) and (max-width : 4000px){
+
+}

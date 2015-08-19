@@ -9,9 +9,10 @@ $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
 
-require_once('QueryConstants.php');
-require_once('PDOConfig.php');
-require_once('TempStock.php'); 
+// require_once('QueryConstants.php');
+// require_once('PDOConfig.php');
+// require_once('TempStock.php'); 
+require_once('libs.php'); 
 require_once('includes/class.compras.php');
 
 $checkVencimiento = new TempStock();
@@ -251,6 +252,10 @@ if($checkout){
 	}	
 
 }
+
+
+header('location: confirmacion-carrito.php');
+exit();
 ?>
 <?php include("includes/header.php"); ?>
 

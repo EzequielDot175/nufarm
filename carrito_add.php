@@ -1,5 +1,4 @@
 <?php 
-	require_once(dirname(__FILE__).'/TempStock.php');
 	require_once('libs.php');
 if (!isset($_SESSION)) {
   session_start();
@@ -133,7 +132,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 															$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 															$update_carrito->update($id_row);
 															
-															header("Location: mi_cuenta.php?activo=2");
+															header("Location: carrito.php");
 															
 														
 														}else{
@@ -154,7 +153,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
-		header("Location: mi_cuenta.php?activo=2");
+		header("Location: carrito.php");
 		
 	}else if($requiere_talles==2){
 		//requiere talles
@@ -202,7 +201,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 							$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 							$update_carrito->update($id_row);
 																
-							header("Location: mi_cuenta.php?activo=2");
+							header("Location: carrito.php");
 							exit();
 																
 															
@@ -226,7 +225,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
-		header("location: mi_cuenta.php?activo=2");
+		header("Location: carrito.php");
 		exit();
 		// echo "<script>window.location.href = 'mi_cuenta.php?activo=2'</script>";
 
@@ -252,7 +251,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		$limite = $tempMaxCompra->getMaxCompra($id_producto);
 		if((int)$canTotal > (int)$limite):
 			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
-	  		header("Location: index.php");
+	  		header("Location: carrito.php");
 	  		exit();
 		endif;
 
@@ -289,7 +288,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			endforeach;
 		endforeach;
 
-		header("Location: mi_cuenta.php?activo=2");
+		header("Location: carrito.php");
 
 
 	}
@@ -332,7 +331,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 										$update_carrito->update($id_row);
 										
-										header("Location: mi_cuenta.php?activo=2");
+										header("Location: carrito.php");
 										
 									}else{
 										//No hay de este producto en el carrito, lo ingreso como nuevo
@@ -345,7 +344,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$carr->intCantidad = $cantidad_elegida;
 										$carr->insert();
 									
-										header("Location: mi_cuenta.php?activo=2");
+										header("Location: carrito.php");
 									}
 			
 			
@@ -354,8 +353,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 	  	}else{
 			
 			//No hay stock disponible
-			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
-	  		header("Location: ver_producto.php?recordID=".$id_producto);
+			// $_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
+	  		header("Location: carrito.php");
 	  		exit();
 
 			
