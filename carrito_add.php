@@ -13,8 +13,11 @@ endif;
 function redirect(){
 	echo('<script>window.location.href="carrito.php";</script>');
 }
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
+// 
 error_reporting(0);
-display_errors(false);
+ini_set('display_errors', 'Off');
 
 $tempMaxCompra = new TempMaxCompra();
 
@@ -121,7 +124,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 					//primero chequeo si el producto ya existe en el carrito del usuario.
 					include_once("includes/class.carrito.php");
 					$carr =  new carrito();
-					echo $cantidad_en_carrito = $carr->chequear_producto_con_talle($id_usuario,$id_producto, $id_talle);
+					 $cantidad_en_carrito = $carr->chequear_producto_con_talle($id_usuario,$id_producto, $id_talle);
 					
 					
 				
@@ -132,7 +135,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 															//El producto ya existe en el carrito del usuario, solo actualizo la cantidad
 															$traigo_id = new carrito();
 															$traigo_id->select_by_usuario_producto_talle($_SESSION['MM_IdUsuario'],$id_producto,$id_talle );
-															echo $id_row = $traigo_id->getintContador();
+															 $id_row = $traigo_id->getintContador();
 															
 															//Actualizo cantidad
 															$update_carrito = new carrito();
@@ -140,7 +143,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 															$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 															$update_carrito->update($id_row);
 															
+															@header('location: catalogo.php');
 															redirect();
+															exit();
 															
 															
 														
@@ -154,6 +159,11 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 															$carr->talle = $id_talle;
 															$carr->insert();
 
+
+															@header('location: catalogo.php');
+															redirect();
+															exit();
+
 														}
 														
 														//hay en stock y guarda la compra.	
@@ -162,7 +172,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
+		@header('location: catalogo.php');
 		redirect();
+		exit();
 		
 	}else if($requiere_talles==2){
 		//requiere talles
@@ -195,14 +207,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 						//primero chequeo si el producto ya existe en el carrito del usuario.
 						include_once("includes/class.carrito.php");
 						$carr =  new carrito();
-						echo $cantidad_en_carrito = $carr->chequear_producto_con_color($id_usuario,$id_producto, $id_color);
+						$cantidad_en_carrito = $carr->chequear_producto_con_color($id_usuario,$id_producto, $id_color);
 		
 						if($cantidad_en_carrito > 0){
 																
 							//El producto ya existe en el carrito del usuario, solo actualizo la cantidad
 							$traigo_id = new carrito();
 							$traigo_id->select_by_usuario_producto_color($_SESSION['MM_IdUsuario'],$id_producto,$id_color );
-							echo $id_row = $traigo_id->getintContador();
+							$id_row = $traigo_id->getintContador();
 																
 							//Actualizo cantidad
 							$update_carrito = new carrito();
@@ -210,7 +222,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 							$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 							$update_carrito->update($id_row);
 																
+							@header('location: catalogo.php');
 							redirect();
+							exit();
 							
 																
 															
@@ -234,7 +248,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
+		@header('location: catalogo.php');
 		redirect();
+		exit();
 		
 		// echo "<script>window.location.href = 'mi_cuenta.php?activo=2'</script>";
 
@@ -260,7 +276,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		$limite = $tempMaxCompra->getMaxCompra($id_producto);
 		if((int)$canTotal > (int)$limite):
 			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
+	  		@header('location: catalogo.php');
 	  		redirect();
+	  		exit();
 	  		
 		endif;
 
@@ -297,7 +315,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			endforeach;
 		endforeach;
 
+		@header('location: catalogo.php');
 		redirect();
+		exit();
 		
 
 
@@ -342,7 +362,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 										$update_carrito->update($id_row);
 										
+										@header('location: catalogo.php');
 										redirect();
+										exit();
 										
 										
 									}else{
@@ -356,7 +378,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$carr->intCantidad = $cantidad_elegida;
 										$carr->insert();
 									
+										@header('location: catalogo.php');
 										redirect();
+										exit();
 										
 									}
 			
@@ -367,7 +391,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 			//No hay stock disponible
 			// $_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
+	  		@header('location: catalogo.php');
 	  		redirect();
+	  		exit();
 	  		
 
 			
@@ -377,6 +403,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 
 	// header('location: http://nufarm-maxx.com/marketingNetDesarrollo/carrito.php');
+@header('location: catalogo.php');
 redirect();
+exit();
 
 ?>

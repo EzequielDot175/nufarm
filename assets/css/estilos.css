@@ -739,8 +739,7 @@ body {
 
 .talles-unico {
   margin: 0 auto !important;
-  display: table;
-  margin-top: 20px !important; }
+  display: table; }
   .talles-unico td {
     max-width: 94px; }
 
@@ -1275,6 +1274,8 @@ body {
   .detalle-productos .talles {
     margin-left: 15px;
     margin-top: 10px; }
+    .detalle-productos .talles td {
+      max-width: 70px; }
 
 /* RESPONSIVE  */
 /*mobile--------------------------------------------------*/
