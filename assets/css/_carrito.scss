@@ -1,0 +1,341 @@
+// ========================
+/******** CARRITO ********/
+// ========================
+
+.confirmacion-carrito{
+
+            .head-page{
+                    height: 136px;
+                    padding: 40px 10px;
+                    
+                    h3{
+                        font-size: 22px;
+                    }
+            }
+
+            .footer-carrito {
+                height: 370px;
+
+            }
+
+            .block-botones {
+                     float: left;
+
+                     .boton {
+                             width: 125px !important;
+                             margin-left: 60px;
+                             margin-top: 20px;
+                        }
+            }
+}
+
+.carrito-productos{
+            min-height: 500px;
+            width: 100%;
+
+            .footer-carrito {
+                         width: 100%;
+                        background-color: rgba(53,89,68,.45); 
+                          -webkit-background-color: rgba(53,89,68,.45); 
+                          -moz-background-color: rgba(53,89,68,.45); 
+                          -ms-background-color: rgba(53,89,68,.45); 
+                          -o-background-color: rgba(53,89,68,.45); 
+                          padding-bottom: 30px;
+                          box-sizing: border-box;
+
+                          .boton {
+                                    width: auto;
+                                    padding: 10px ;
+                                    font-size: 12px;
+                         }
+            }
+            
+
+            .tabla-detalle{
+
+
+                        
+
+                        thead , tbody{
+                                     width: 100%;
+                                    display: block;
+                        }
+                        
+                          th {
+                                    color: #fff;
+                                    text-align: center;
+                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                    font-size: 12px;
+                          }
+
+                          thead {
+                                        background-color: rgba(84,91,80,.54); 
+                                        -webkit-background-color: rgba(84,91,80,.54); 
+                                        -moz-background-color: rgba(84,91,80,.54); 
+                                        -ms-background-color: rgba(84,91,80,.54); 
+                                        -o-background-color: rgba(84,91,80,.54);   
+                                
+
+                                        th {
+                                                height: 65px;  
+                                      }
+
+                        }
+
+                        tbody{
+                                       background-color: rgba(53,89,68,.45); 
+                                        -webkit-background-color: rgba(53,89,68,.45); 
+                                        -moz-background-color: rgba(53,89,68,.45); 
+                                        -ms-background-color: rgba(53,89,68,.45); 
+                                        -o-background-color: rgba(53,89,68,.45);   
+                                        padding: 20px 20px 10px 20px;
+                        }
+                        
+                        .fecha{
+
+                                    td{
+                                                background-color: #666;
+                                    }
+                        }
+
+                         td {
+                                     color: #fff;
+                                     text-align: center;
+                                     font-family: 'BrooklynSamuelsFive-Bold';
+                                     height: 60px;
+                                     font-size: 12px;
+
+                                      .producto{
+                                                    width: 44px;
+                                                    height: 44px;
+                                                    float: left;
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                    box-sizing: border-box;
+                                                    background-color: #fff;
+                                                    border-radius: 100%;
+                                                    -moz-border-radius: 100%;
+                                                    -webkit-border-radius: 100%;
+                                                    -ms-border-radius: 100%;
+                                                    -o-border-radius: 100%;
+                                                    overflow: hidden;
+                                                    margin-top: 10px;
+                                                    top: 16px;
+
+                                                    img{
+                                                                width: 110%;
+                                                    }
+                                        }
+
+                                        .cerrar{
+                                                position: relative;
+                                                top: 50%;
+                                                transform: translateY(-50%);
+                                                padding-left: 3px;
+                                                top: 2px;
+                                                position:relative;
+                                        }
+
+                                       
+
+                                       .text {
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                    font-family: 'Brandon_reg';
+                                                    height: 15px;
+                                        }
+
+                                      .color{
+                                                   margin: 0 auto;
+                                                    height: 30px;
+
+                                                    .icon-color{
+                                                                display: inline-block;
+                                                                width: 20px;
+                                                                height: 20px;
+                                                                border-radius: 100%;
+                                                                 -moz-border-radius: 100%;
+                                                                -webkit-border-radius: 100%;
+                                                                -o-border-radius: 100%;
+                                                                -ms-border-radius: 100%;
+                                                                display: inline-block;
+                                                                padding-top: 5px;
+                                                                position: relative;
+                                                                top: 5px;
+                                                     }
+                                                     
+                                                     p{
+                                                            display: inline-block;
+                                                            
+                                                            padding-left: 5px;
+                                                            font-size: 12px;
+                                                     }
+                                         }
+                        }
+
+                        .big-text{
+                                    font-size: 18px;
+                                    height: 10px;
+                        }
+
+                        .col-Auto{
+                                        width: auto;
+                        }
+                        
+                         .col-A{
+                                        width: 100px;
+                        }
+
+                        .col-B{
+                                        width: 105px;
+                        }
+
+                        .col-C{
+                                        width: 115px;
+                        }
+
+                        .col-D{
+                                        width: 210px;
+                        }
+
+                        .col-Total{
+                                        width: 230px;
+                        }
+
+                         .quitar{
+                                    cursor: pointer;
+                                    text-align: right;
+                                    max-width: 110px;
+                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                    font-size: 14px;
+
+                                    p{
+                                        height: 10px;
+                                    }
+                            }
+
+                            .quitar:hover{
+                                    opacity: .5;
+                            }
+
+                        .item {
+                                    border-bottom: 1px solid rgba(255,255,255,.3);
+                                    -webkit-border-bottom: 1px solid rgba(255,255,255,.3);
+                                     -moz-border-bottom: 1px solid rgba(255,255,255,.3);
+                                    -ms-border-bottom: 1px solid rgba(255,255,255,.3);
+                                    -o-border-bottom: 1px solid rgba(255,255,255,.3);
+                        }
+
+                        
+            }
+
+            .total{
+                          
+                        .block-num{
+                                        display: table;
+                                        height: 97%;
+                                        width: 90%;
+                                        margin: 0 0 0 10%;
+                                        vertical-align: middle;
+                                        background-color: rgba(255,255,255,.1); 
+                                        -webkit-background-color: rgba(255,255,255,.1); 
+                                         -moz-background-color: rgba(255,255,255,.1); 
+                                        -ms-background-color: rgba(255,255,255,.1); 
+                                        -o-background-color: rgba(255,255,255,.1); 
+                                        position: relative;
+                                       min-width: 100px;
+                                       margin-bottom: 10px;
+
+                                       
+                                       .num{
+                                                    width: 100%;
+                                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                                    font-size: 29px; 
+                                                    padding: 10px;
+                                                    text-align: center;
+                                                    color: #fff;
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                        }
+                        }
+            }
+
+}
+
+
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+
+             .carrito-productos .tabla-detalle .col-B{
+                          display: none !important;
+            }
+
+            .carrito-productos .tabla-detalle .col-C{
+                          display: none !important;
+            }
+
+          /*  .carrito-productos .tabla-detalle .col-D {
+                width: 33%;
+            }
+
+            .carrito-productos .tabla-detalle .col-A {
+                width: 33%;
+            }
+
+            .carrito-productos .tabla-detalle .col-Total {
+                width: 33%;
+            }*/
+
+            .carrito-productos .tabla-detalle p {
+                    font-size: 10px;
+                    width: 100%;
+            }
+
+            .carrito-productos .tabla-detalle .col-Total {
+                width: 150px;
+            }
+
+            .carrito-productos .total .block-num .num {
+                font-size: 15px;
+            }
+
+            .carrito-productos .tabla-detalle td .producto {
+                margin-left: 20px;
+            }
+
+
+}
+
+
+/*tablet----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width : 1280px){
+  
+}
+
+/**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 771px) and (max-width : 980px){
+
+}
+
+/*notbook------------------------------------*/
+@media screen and (min-width: 1280px) and (max-width : 1800px){
+	
+}
+
+/*desktop------------------------------*/
+@media screen and (min-width: 1801px) and (max-width : 2200px){
+
+}
+
+/*desktop large-----------------------------------------------*/
+@media screen and (min-width: 2220px) and (max-width : 4000px){
+
+}

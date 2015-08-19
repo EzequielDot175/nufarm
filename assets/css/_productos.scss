@@ -1,0 +1,283 @@
+// ========================
+/******** PRODUCTOS ********/
+// ========================
+
+.color-verde{
+    background-color: $verde;
+}
+
+.color-gris{
+   background-color: $gris;
+}
+
+.lista-productos{
+            padding: 0px 60px 30px 60px;
+            box-sizing:border-box;
+            -moz-box-sizing:border-box;
+             -webkit-box-sizing:border-box;
+             -o-box-sizing:border-box;
+             -ms-box-sizing:border-box;
+            width: 103%;
+
+             .item{
+                        width: 22% !important;
+                        background-color: rgba(255,255,255,.5);
+                        -moz-background-color: rgba(255,255,255,.5);
+                         -webkit-background-color: rgba(255,255,255,.5);
+                        -o-background-color: rgba(255,255,255,.5);
+                        -ms-background-color: rgba(255,255,255,.5);
+                         margin-right: 3%;
+                         margin-bottom: 3%;
+                         cursor: pointer;
+                         border-radius: 3px;
+                         -moz-border-radius: 3px;
+                         -webkit-border-radius: 3px;
+                        -o-border-radius: 3px;
+                        -ms-border-radius: 3px;
+                        min-height: 320px;
+
+                          .img{
+                                   width: 156px;
+                                    margin: 0 auto;
+                                    padding: 15px 15px 0 15px;
+                                    overflow: hidden;
+                                    height: 170px;
+
+                                   img{
+                                       width: 100%;
+                                    }
+
+                            }
+
+                            h6{
+                                font-family: 'BrooklynSamuelsFive-Bold';
+                                color: #fff;
+                                font-size: 13px;
+                                padding:0 15px;
+                                height: 25px;
+                            }
+
+                            .descripcion{
+                                font-family: 'Open_Sans_Regular';
+                                color: #424242;
+                                font-size: 11px;
+                                padding: 0 15px 15px 15px;
+                                font-weight: bold;
+                            }
+
+                            .footer-item{
+                                        background-color: rgba(255,255,255,.2);
+                                        -moz-background-color: rgba(255,255,255,.2);
+                                        -webkit-background-color: rgba(255,255,255,.2);
+                                        -o-background-color: rgba(255,255,255,.2);
+                                        -ms-background-color: rgba(255,255,255,.2);
+                                        height: 46px;
+                                        position: absolute;
+                                        bottom: 0;
+                                        width: 100%;
+
+                                        .text-left{
+                                                    color: $verde;
+                                                    float: left;
+                                                    font-family: 'Brandon_reg';
+                                                    font-size: 11px;
+                                                    margin-top: 18px;
+                                                    padding: 0 0 0 15px;
+                                                    font-weight: bold;
+                                        }
+
+                                        .block-puntos{
+                                                    width: 44%;
+                                                    height: 44px;
+                                                    background-color: $verde;
+                                                    color: #fff;
+                                                    position: absolute;
+                                                    right: -5px;
+                                                    bottom: 11px;
+                                                    text-align: center;
+                                                    padding: 10px 0;
+
+                                                    .num{
+                                                            color:#fff;
+                                                            font-family: 'BrooklynSamuelsFive-Fat';
+                                                            font-size: 19px;
+                                                    }
+
+                                                    .text{
+                                                             color:#fff;
+                                                             font-family: 'Brandon_reg';
+                                                             font-size: 8.5px;
+                                                    }
+
+                                                    p{
+                                                            width: 100%;
+                                                    }
+
+                                       }
+                        }
+
+                        //hover productos
+                        .mask {
+                                opacity:0;
+                                overflow:visible;
+                                background-color: rgba(0,148,72,.8);
+                               // transform:translateY(-125px);
+                                transition: transform 0.2s 0.1s ease-out, opacity 0.3s ease-in-out;
+                                -moz-transition: transform 0.2s 0.1s ease-out, opacity 0.3s ease-in-out;
+                                -webkit-transition: transform 0.2s 0.1s ease-out, opacity 0.3s ease-in-out;
+                                -o-transition: transform 0.2s 0.1s ease-out, opacity 0.3s ease-in-out;
+                                -ms-transition: transform 0.2s 0.1s ease-out, opacity 0.3s ease-in-out;
+                                width: 100% !important;
+                                width: 100% !important;
+                                height: 100%;
+                                position: absolute;
+                                padding: 40% 0;
+                                border-radius: 3px;
+                                -moz-border-radius: 3px;
+                                -webkit-border-radius: 3px;
+                                -o-border-radius: 3px;
+                                -ms-border-radius: 3px;
+
+                                .text-a{
+                                        font-family: 'BrooklynSamuelsFive-Fat';
+                                        font-size: 24px;
+                                        padding-top: 10px;
+                                        width: 100%;
+                                        text-align: center;
+                                        color: #fff;
+                                }
+
+                                .text-b{
+                                        font-family: 'Brandon_reg';
+                                        font-size: 12px;
+                                        width: 100%;
+                                        text-align: center;
+                                        padding-top: 5px;
+                                        color: #fff;
+                                }
+                        }
+            }
+
+            //hover productos
+            .item:hover {
+                        .mask {
+                                opacity: 1;
+                                transform: translateY(0px);
+                         }
+
+                          .block-puntos{
+                                        background-color: #fff;
+                                        color: $verde;
+
+                                .num{
+                                        color:$verde;
+                                }
+
+                                .text{
+                                        color:$verde;
+                                }
+
+                    
+                           }
+            }
+}
+
+
+
+
+
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+
+     //listado de productos
+    .lista-productos .item {
+        width: 100% !important;
+        margin-right: 0%;
+        margin-bottom: 40px;
+        height: auto;
+        padding-bottom: 100px;
+    }
+
+    .lista-productos{
+        width: 100% !important;
+    }
+
+    .lista-productos .item .img {
+        width: 80%;
+        margin: 0 10%;
+        height: auto;
+    }
+
+    .lista-productos .item .footer-item {
+        height: 80px;
+    }
+
+    .lista-productos .item .footer-item .block-puntos {
+        height: 80px;
+    }
+
+    .lista-productos .item .footer-item .text-left {
+        font-size: 14px;
+        margin-top: 32px;
+    }
+
+    .lista-productos .item .footer-item .block-puntos .num {
+        font-size: 40px;
+        margin-top: 20px;
+    }
+
+    .lista-productos .item .footer-item .block-puntos .text {
+        font-size: 16px;
+        margin-top: 8px;
+    }
+
+    .lista-productos .item h6 {
+        font-size: 18px;
+    }
+
+    .lista-productos .item .descripcion {
+        font-size: 14px;
+    }
+
+
+
+
+    
+   
+}
+
+
+/*tablet----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width : 1280px){
+  
+}
+
+/**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 771px) and (max-width : 980px){
+    .lista-productos .item {
+        width: 30% !important;
+        margin-right: 3%;
+    }
+
+
+}
+
+/*notbook------------------------------------*/
+@media screen and (min-width: 1280px) and (max-width : 1800px){
+	
+}
+
+/*desktop------------------------------*/
+@media screen and (min-width: 1801px) and (max-width : 2200px){
+
+}
+
+/*desktop large-----------------------------------------------*/
+@media screen and (min-width: 2220px) and (max-width : 4000px){
+
+}

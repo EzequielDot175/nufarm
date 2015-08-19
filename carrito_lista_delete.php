@@ -1,6 +1,6 @@
 <?php 
   require_once('Connections/conexion.php');
-  require_once(dirname(__FILE__).'/TempStock.php');
+  // require_once(dirname(__FILE__).'/TempStock.php');
   require_once('libs.php');
 
  ?>
@@ -157,7 +157,7 @@ if ($cond) {
 
 
 
-  $deleteGoTo = "mi_cuenta.php";
+  $deleteGoTo = "carrito.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
     $deleteGoTo .= $_SERVER['QUERY_STRING'];
@@ -170,7 +170,7 @@ if ($cond) {
     $talle = $_GET['talle'];
     
     $delete = $productos->deleteItem($_GET['recordID'],$sub,$talle);
-    header('Location: mi_cuenta.php?activo=2');
+    header('Location: carrito.php');
 }
 ?>
 <?php include("includes/header.php"); ?>

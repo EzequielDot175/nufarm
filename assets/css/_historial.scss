@@ -1,0 +1,285 @@
+// ========================
+/******** HISTORIAL ********/
+// ========================
+.historial-productos{
+            width: 100%;
+            min-height: 500px;
+
+            .tabla-detalle{
+                        width: 100%;
+                        
+
+                        thead {
+                                background-color: rgba(84, 91, 80, 0.54);
+                                -webkit-background-color: rgba(84, 91, 80, 0.54);
+                                -moz-background-color: rgba(84, 91, 80, 0.54);
+                                 -ms-background-color: rgba(84, 91, 80, 0.54);
+                                -o-background-color: rgba(84, 91, 80, 0.54);
+
+                                 th {
+                                        height: 65px;
+                                        color: #fff;
+                                        text-align: center;
+                                        font-size: 12px;
+                                        font-family: 'BrooklynSamuelsFive-Bold';
+                                 }
+                        }
+
+                        td {
+                                     color: #fff;
+                                     text-align: center;
+                                     font-family: 'BrooklynSamuelsFive-Bold';
+                                     height: 60px;
+                                     font-size: 12px;
+
+                                     .producto{
+                                                    width: 44px;
+                                                    height: 44px;
+                                                    float: right;
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                    box-sizing: border-box;
+                                                    background-color: #fff;
+                                                    border-radius: 100%;
+                                                    -moz-border-radius: 100%;
+                                                    -webkit-border-radius: 100%;
+                                                    -ms-border-radius: 100%;
+                                                    -o-border-radius: 100%;
+                                                    overflow: hidden;
+                                                    margin-top: 10px;
+                                                    top: 16px;
+                                                    margin-right: 20px;
+                                                    box-sizing: border-box;
+
+                                                    img{
+                                                                width: 110%;
+                                                    }
+                                        }
+
+
+
+                                        .puntos{
+                                                  float: left;
+                                                  width: 80px;
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                    height: 15px;
+                                                    padding-left: 10px;
+                                                    box-sizing: border-box;
+                                                    text-align: center;
+                                                    height: 30px;
+                                                    vertical-align: top;
+
+                                                    .num{
+                                                                width: 100%;
+                                                                font-family: 'BrooklynSamuelsFive-Bold';
+                                                                font-size: 21px;
+                                                    }
+
+                                                    span{
+                                                                width: 100%;
+                                                                 font-family: 'Brandon_reg';
+                                                                 font-size: 9px;
+                                                    }
+                                        
+                                        }
+
+                                       
+                                       .text {
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                    font-family: 'Brandon_reg';
+                                                    height: 15px;
+                                        }
+
+                                        .color{
+                                                   margin: 0 auto;
+                                                    height: 30px;
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+
+                                                    .icon-color{
+                                                                display: inline-block;
+                                                                width: 20px;
+                                                                height: 20px;
+                                                                border-radius: 100%;
+                                                                 -moz-border-radius: 100%;
+                                                                -webkit-border-radius: 100%;
+                                                                -o-border-radius: 100%;
+                                                                -ms-border-radius: 100%;
+                                                                display: inline-block;
+                                                                padding-top: 5px;
+                                                                position: relative;
+                                                                top: 5px;
+                                                     }
+                                                     
+                                                     p{
+                                                            display: inline-block;
+                                                            
+                                                            padding-left: 5px;
+                                                            font-size: 12px;
+                                                     }
+                                         }
+                        }
+
+                         .big-text{
+                                    font-size: 18px;
+                                    height: 10px;
+                                    position: relative;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    height: 15px;
+                        }
+
+                        .medium-text{
+                                    font-size: 13px;
+                                    height: 10px;
+                                    position: relative;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    height: 15px;
+                            }
+
+                        .col-Auto{
+                                        width: auto;
+                        }
+
+                        .col-A{
+                                        width: 150px;
+                        }
+
+                        .col-B{
+                                        width: 110px;
+                        }
+
+                        .col-C{
+                                        width: 120px;
+                        }
+
+                        .col-D{
+                                        width: 110px;
+                        }
+
+                        .col-Total{
+                                        width: 230px;
+                        }
+
+                        .background-1{
+                                        height: 45px;
+                                        margin-left: 3px;
+                                        background-color: rgba(255, 255, 255, 0.14);
+                                         -moz-background-color: rgba(255, 255, 255, 0.14);
+                                         -webkit-background-color: rgba(255, 255, 255, 0.14);
+                                        -o-background-color: rgba(255, 255, 255, 0.14);
+                                        -ms-background-color: rgba(255, 255, 255, 0.14);
+                        }
+
+                        .background-2{
+                                        height: 45px;
+                                        background-color: rgba(255, 255, 255, 0.07);
+                                         -moz-background-color: rgba(255, 255, 255, 0.07);
+                                         -webkit-background-color: rgba(255, 255, 255, 0.07);
+                                        -o-background-color: rgba(255, 255, 255, 0.07);
+                                        -ms-background-color: rgba(255, 255, 255, 0.07);
+                        }
+
+                         .pendiente{
+                                        cursor: pointer;
+                                        text-align: right;
+                                        max-width: 110px;
+                                        font-size: 14px;
+                                        padding:10px;
+
+                                        img{
+                                                float :left;
+                                                position: relative;
+                                                top: 50%;
+                                                transform: translateY(-50%);
+                                                height: 16px;
+                                                width: 16px;
+                                                margin-top: -2px;
+
+                                        }
+                                       
+                                       p{
+                                                float :left;
+                                                font-family: 'BrooklynSamuelsFive-Bold';
+                                                font-size: 11px;
+                                                padding-left:5px;
+                                                height: 12px;
+                                        }
+                            }
+
+                        .vertical-align-top{
+                                     vertical-align: top;
+                        }
+            }
+
+}
+
+
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+            .historial-productos .tabla-detalle .col-B{
+                          display: none !important;
+            }
+
+            .historial-productos .tabla-detalle .col-C{
+                          display: none !important;
+            }
+
+            .historial-productos .tabla-detalle .col-Auto{
+                          display: none !important;
+            }
+
+            .historial-productos .tabla-detalle .col-A {
+                width: 33%;
+            }
+
+            .historial-productos .tabla-detalle .col-D {
+                width: 33%;
+            }
+
+            .historial-productos .tabla-detalle .pendiente {
+                max-width: none; 
+            }
+
+
+}
+
+
+/*tablet----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width : 1280px){
+  
+}
+
+/**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 771px) and (max-width : 980px){
+
+
+
+}
+
+/*notbook------------------------------------*/
+@media screen and (min-width: 1280px) and (max-width : 1800px){
+	
+}
+
+/*desktop------------------------------*/
+@media screen and (min-width: 1801px) and (max-width : 2200px){
+
+}
+
+/*desktop large-----------------------------------------------*/
+@media screen and (min-width: 2220px) and (max-width : 4000px){
+
+}

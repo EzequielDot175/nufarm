@@ -1,0 +1,795 @@
+// ========================
+/******** LAYOUT ********/
+// ========================
+
+@font-face {
+    font-family: 'BrooklynSamuelsFive-Bold';
+    src: url('../fonts/samuelstype_-_brooklynsamuelsfive-bold-webfont.eot');
+    src: url('../fonts/samuelstype_-_brooklynsamuelsfive-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-bold-webfont.woff2') format('woff2'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-bold-webfont.woff') format('woff'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-bold-webfont.ttf') format('truetype'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-bold-webfont.svg#brooklyn_samuelsno5_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'BrooklynSamuelsFive-Fat';
+    src: url('../fonts/samuelstype_-_brooklynsamuelsfive-fat-webfont.eot');
+    src: url('../fonts/samuelstype_-_brooklynsamuelsfive-fat-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-fat-webfont.woff2') format('woff2'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-fat-webfont.woff') format('woff'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-fat-webfont.ttf') format('truetype'),
+         url('../fonts/samuelstype_-_brooklynsamuelsfive-fat-webfont.svg#brooklyn_samuelsno5_fat') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Brandon_reg';
+    src: url('../fonts/brandon_reg-webfont.eot');
+    src: url('../fonts/brandon_reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/brandon_reg-webfont.woff2') format('woff2'),
+         url('../fonts/brandon_reg-webfont.woff') format('woff'),
+         url('../fonts/brandon_reg-webfont.ttf') format('truetype'),
+         url('../fonts/brandon_reg-webfont.svg#brandon_grotesque_regularRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Open_Sans_Regular';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    background: #3D5927 url("../images/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+$verde : #009448;
+$violeta : #8E3289;
+$gris : #404040;
+$grisA : #CBCCC0;  
+$grisB : #B1B6A6;
+
+.contenedor {
+    width: 980px;
+    margin: 0 auto;
+    min-height: 500px;
+    position: relative;
+}
+
+.inactivo {
+            opacity: .5;
+    }
+
+.head {
+    height: 100px;
+    background-color: $verde;
+
+
+   	 img {
+		margin: 0 auto;
+		display: block;
+	}
+
+            .block{
+                        float: right;
+                        position: absolute;
+                        right: 0;
+                        top: 20px;
+
+                        select{
+                                color: #fff;
+                                font-family: 'BrooklynSamuelsFive-Bold';
+                                background-color: $verde;
+                                border: none;
+                                box-shadow: none;
+                                background-image: url('../images/background-select.png');
+                        }
+            }
+
+            .contenedor {
+                    min-height: 0px;
+            }
+
+             .logout {
+                        float: right;
+                        padding-top:10px;
+                        cursor: pointer;
+                    
+                        p{
+                                    color: #fff;
+                                    float: left;
+                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                    font-size: 11px;
+                                    padding-top: 2px;
+                                    padding-right:5px;
+                         }
+
+                         img{
+                                    float: left;
+                         }
+            }
+}
+
+.centrado{
+    margin: 0 auto;
+}
+
+.menu {
+            height: 100px;
+             height: 75px;
+             padding-top:12px;
+            background-color: rgba(0,0,0,.5);
+            -moz-background-color: rgba(0,0,0,.5);
+            -webkit-background-color: rgba(0,0,0,.5);
+            -o-background-color: rgba(0,0,0,.5);
+            -ms-background-color: rgba(0,0,0,.5);
+            position: relative;
+
+   	 img {
+		margin: 0 auto;
+		display: block;
+	}
+
+            .text-a{
+                    font-family: 'BrooklynSamuelsFive-Fat';
+                    font-size: 14px;
+                    padding-top: 10px;
+            }
+
+            .text-b{
+                    font-family: 'Brandon_reg';
+                    font-size: 11px;
+            }
+
+            .navbar-toggle {
+                position: relative;
+                width: 50px;
+                height: 50px;
+                float: right;
+                padding: 9px 10px;
+                margin-top: 2px;
+                margin-right: 15px;
+                margin-bottom: 8px;
+                background-color: rgba(255,255,255,.5);
+                -moz-background-color: rgba(255,255,255,.5);
+                -webkit-background-color: rgba(255,255,255,.5);
+                -o-background-color: rgba(255,255,255,.5);
+                -ms-background-color: rgba(255,255,255,.5);
+                background-image: none;
+                border-radius: 2px;
+                z-index: 5;
+
+                        .icon-bar {
+                                display: block;
+                                width: 22px;
+                                height: 2px;
+                                border-radius: 1px;
+                                z-index: 10;
+                                color: #000;
+                                z-index: 6;
+                                background-color: #000;
+                                width: 100%;
+                                float: left;
+                            }
+            }
+
+            .nav>li>a {
+                position: relative;
+                display: block;
+                padding: 0;
+                color: #fff;
+                z-index: 5;
+            }
+
+            .nav>li>a:hover {
+                background-color: transparent;
+                opacity: .5;
+            }
+
+            span{
+                width: 140px;
+                float: left;
+                height: 22px;
+            }
+
+            img{
+                width: 47px;
+                float: left;
+
+            }
+
+             li{
+                width: 190px;
+            }
+
+            .catalogo{
+                width: 150px;
+
+                         span {
+                                width: 100px;
+                        }
+            }
+
+            .navbar-nav {
+                margin: 0;
+            }
+
+           
+
+}
+
+
+
+.footer {
+    height: 130px;
+    background-image: url("../images/footer.png");
+    background-size: cover;
+    repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 0;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: relative;
+    margin-top: -130px;
+    clear: both;
+    padding-top: 10px;
+
+    img {
+	    margin-top: 15px;
+	    width: 260px;
+	    display: block;
+	    margin: 0 auto;
+	    margin-top: 30px;
+	}
+}
+
+
+.base{
+
+            .contenido{
+                    background-color: rgba(0,0,0,.5);
+                    -moz-background-color: rgba(0,0,0,.5);
+                    -webkit-background-color: rgba(0,0,0,.5);
+                    -o-background-color: rgba(0,0,0,.5);
+                    -ms-background-color: rgba(0,0,0,.5);
+                    min-height: 500px;
+            }
+
+            .buscador{
+                    height: 75px;
+                    padding: 22px 0px 15px 0px;
+                    position: relative;
+
+                        input{
+                                    background-color: rgba(0,0,0,.5);
+                                    -moz-background-color: rgba(0,0,0,.5);
+                                    -webkit-background-color: rgba(0,0,0,.5);
+                                    -o-background-color: rgba(0,0,0,.5);
+                                    -ms-background-color: rgba(0,0,0,.5);
+                                    border: none;
+                        }
+            }
+
+             .head-page{
+                    height: 75px;
+                    padding: 15px 10px;
+                    position: relative;
+
+                        h3{
+                                       color: #fff;
+                                       font-size: 17px;
+                                       font-family: 'BrooklynSamuelsFive-Bold';
+                                       padding: 18px;
+                        }
+            }
+
+            .sub-footer{
+                    background-color: rgba(255,255,255,.5);
+                    -moz-background-color: rgba(255,255,255,.5);
+                    -webkit-background-color: rgba(255,255,255,.5);
+                    -o-background-color: rgba(255,255,255,.5);
+                    -ms-background-color: rgba(255,255,255,.5);
+                    height: 75px;
+                    padding: 15px 10px;
+                    position: relative;
+            }
+
+            .titulo{
+                    background-color: rgba(255,255,255,.5);
+                    -moz-background-color: rgba(255,255,255,.5);
+                    -webkit-background-color: rgba(255,255,255,.5);
+                    -o-background-color: rgba(255,255,255,.5);
+                    -ms-background-color: rgba(255,255,255,.5);
+                    height: 75px;
+                    padding: 15px 10px;
+                    position: relative;
+
+                    img{
+                        float: left;
+                    }
+
+                    .texto{
+                        float: left;
+                    }
+
+                    .texto-carrito{
+                           
+                            h3{
+                                 color: $violeta !important;
+                            }
+                    }
+
+                    h3{
+                        color: $verde;
+                    }
+
+                    .text-a{
+                            font-family: 'BrooklynSamuelsFive-Fat';
+                            font-size: 14px;
+                            padding-top: 10px;
+                    }
+
+                    .text-b{
+                            font-family: 'Brandon_reg';
+                            font-size: 11px;
+                    }
+
+                    .block-right{
+                        position: absolute;
+                        top: 10px;
+                        right: -5px;
+                        background-color: $violeta;
+                        width: 230px;
+                        height: 118px;
+                        z-index: 2;
+
+                        .num{
+                                font-family: 'BrooklynSamuelsFive-Bold';
+                                font-size: 38px;
+                                padding-top: 30px;
+                                width: 100%;
+                                text-align: center;
+                                color: #fff;
+                        }
+
+                        .text-a{
+                                font-family: 'Brandon_reg';
+                                font-size: 14px;
+                                font-weight: bold;
+                                width: 100%;
+                                text-align: center;
+                                color: #fff;
+                                opacity: .7;
+                        }
+
+                        .text-b{
+                                font-family: 'Brandon_reg';
+                                font-size: 10px;
+                                font-weight: bold;
+                                width: 100%;
+                                text-align: center;
+                                color: #fff;
+                                opacity: .7;
+                                padding-top: 9px;
+
+                        }
+                    }
+            }
+}
+
+
+.talles{
+            text-align: center;
+            color: #595959;
+
+            .error{
+                         border: 1px solid #A16C58 ;
+             }
+
+            input{
+                         width: 100%;
+                         height: 45px;
+                         background-color: #969A8C;
+                         border: none;
+                         padding:10px;
+                         text-align: center;
+             }
+
+             label{
+
+             } 
+
+             span{
+                         background-color: #A7AB9C;
+                         width: 100%;
+                         float: left;
+                         font-weight: bold;
+             } 
+
+             th {
+                    text-align: center;
+            }
+
+             td {
+                    padding: 5px;
+            }
+
+            .inactivo {
+                    opacity: .5;
+            }
+
+}
+
+
+.mensaje-error {
+            color: #A16C58;
+            margin: 20px 0;
+            float: left;
+            width: 100%;
+
+            .text {
+                        float: left; 
+                        padding-left: 5px;
+                        padding-top: 4px;
+                        font-family: 'Brandon_reg';
+                        font-size: 12px;
+                        font-weight: bold;
+             }
+
+            .icon{
+                        float: left; 
+             }
+}
+
+.talles-unico {
+            margin: 0 auto !important;
+            display: table;
+            margin-top: 20px !important;
+
+            td {
+                     max-width: 94px;
+            }
+  }
+
+.block-botones {
+            margin: 0 auto;
+            display: block;
+            display: table;
+            padding-top: 2em;
+
+            .boton {
+                        background-color: $violeta;
+                        border: none;
+                        width: 126px;
+                        height: 36px;
+                        color: #fff;
+                        font-family: 'BrooklynSamuelsFive-Bold';
+                        font-weight: normal;
+                        padding-top: 5px;
+                        margin: 0 5px;
+
+                &.href{
+                    padding: 7px;
+                    padding-top: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    text-decoration: none;
+                }
+             }
+
+             .boton:hover {
+                        opacity: .8;
+             }
+
+            .inactivo{
+                        opacity: .5;
+             }
+}
+
+
+.ver-carrito{
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 5;
+
+            span{
+                        width: auto;
+                        font-family: 'Brandon_reg';
+                        font-weight: bold;
+                        color: #fff;
+                        padding: 15px 10px 15px 10px;
+             }
+
+             img{
+                        float: left;
+             }
+
+             a{
+                        float: left;
+             }
+
+             .num{
+                        width: 20px;
+                        height: 20px;
+                        background-color: $violeta;
+                        text-align: center;
+                        color: #fff;
+                        position: absolute;
+                        right: -2px;
+                        top: -2px;
+                          border-radius:100%;
+                        -moz-border-radius:100%;
+                        -webkit-border-radius:100%;
+                        -o-border-radius:100%;
+                        -ms-border-radius:100%;
+                        outline:none;
+             }
+
+
+ }
+
+ .ver-carrito:hover{
+            opacity: .5;
+}
+
+.filtros{
+
+            p{
+                        font-family: 'Brandon_reg';
+                        color: #fff;
+                        padding-bottom: 5px;
+            }
+
+            input, select{
+                        font-family: 'Brandon_reg';
+                        color: #fff;
+                        border: none;
+                        width: 200px;
+                        height: 27px;
+                        padding:0 5px;
+                        box-sizing: border-box;
+                        background-color: rgba(0, 0, 0, 0.25);
+                        -moz-background-color: rgba(0, 0, 0, 0.25);
+                        -webkit-background-color: rgba(0, 0, 0, 0.25);
+                        -o-background-color: rgba(0, 0, 0, 0.25);
+                        -ms-background-color: rgba(0, 0, 0, 0.25);
+                        border-radius:3px;
+                        -moz-border-radius:3px;
+                        -webkit-border-radius:3px;
+                        -o-border-radius:3px;
+                        -ms-border-radius:3px;
+                        outline:none;
+
+                        .opciones{
+                                     border: none;
+                                     color: #fff;
+                                    background-color: #353325;
+                                    outline:none;
+                        }
+
+                        .opciones:hover{
+                                     border: none;
+                                     color: #fff;
+                                    background-color: #60634B !important;
+                        }
+                        .opciones:focus{
+                                     border: none;
+                        }
+                        
+            }
+
+            select:focus{
+                        border: none;
+                        outline:none;
+             }
+
+             option:focus{
+                outline:none;
+            }
+
+}
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+
+            .menu {
+                z-index: 6;
+            }
+
+            .menu li {
+                width: 100%;
+                float: left;
+            }
+
+            .navbar-collapse {
+                border-top: none;
+            }
+
+
+        .contenedor {
+                width: 90%;
+                margin: 0 5%;
+            }
+
+            .base .titulo .block-right {
+                width: 150px;
+                height: 100px;
+        }
+
+        .base .titulo .block-right .num {
+            font-size: 30px;
+        }
+
+        .base .titulo .block-right .text-a {
+            font-size: 12px;
+            padding-top: 8px;
+        }
+
+         .base .titulo .block-right .text-b {
+            font-size: 8px;
+            padding-top: 5px;
+            line-height: 10px;
+        }
+
+
+}
+
+//acordeon
+.acordeon-general{
+            margin-bottom: 20px;
+            float: left;
+            width: 100%;
+
+            .item{
+                        margin-bottom: 0px;
+                        margin-top: 2px !important;
+                        border-radius: 4px;
+                        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                        background-color: rgba(84,119,98,.45); 
+                         -webkit-background-color: rgba(84,119,98,.45); 
+                        -moz-background-color: rgba(84,119,98,.45); 
+                        -ms-background-color: rgba(84,119,98,.45); 
+                        -o-background-color: rgba(84,119,98,.45); 
+                        border-radius: 0;
+            }
+
+            .panel{
+                        margin-bottom: 0px;
+                        margin-top: 2px !important;
+                        background-color: transparent;
+                        border: none;
+                        border-radius: 4px;
+                        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                        background-color: rgba(84,119,98,.45); 
+                         -webkit-background-color: rgba(84,119,98,.45); 
+                        -moz-background-color: rgba(84,119,98,.45); 
+                        -ms-background-color: rgba(84,119,98,.45); 
+                        -o-background-color: rgba(84,119,98,.45); 
+            }
+
+            .panel-body {
+                    border-top: none !important;
+                    padding: 0;
+            }
+
+             .panel-heading {
+                        color: #fff;
+                         background-color: rgba(0, 0, 0, 0.35);
+                         -webkit-background-color: rgba(0, 0, 0, 0.35);
+                        -moz-background-color: rgba(0, 0, 0, 0.35);
+                        -ms-background-color: rgba(0, 0, 0, 0.35);
+                         -o-background-color: rgba(0, 0, 0, 0.35);
+                        border-radius: 0;
+                        position: relative;
+                        height: 25px;
+                        padding:7px;
+
+                         h4{
+                                    text-decoration: none;
+                                    color: #fff;
+                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                    font-size: 12px;
+                        }
+
+                        .flecha{
+                                     position: absolute;
+                                     right: 17px;
+                                     top: 5px;
+                                    width: 15px;
+                                    height: 15px;
+                                    background-image:url('../images/flecha-top.png');
+                        }
+            }
+
+            .collapsed{
+
+                        .flecha{
+                                    background-image:url('../images/flecha-bottom.png') !important;
+                           }
+            
+            }
+
+
+
+            .panel-heading:hover {
+                        opacity: .8;
+            }
+
+            a{
+                        text-decoration: none;
+                        color: #fff;
+                        font-family: 'BrooklynSamuelsFive-Bold';
+                        font-size: 12px;
+            }
+
+             a:hover {
+                        text-decoration: none !important;
+                        opacity: .8;
+            }
+
+}
+
+
+
+/*tablet----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width : 1280px){
+
+}
+
+/**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 771px) and (max-width : 980px){
+
+	.contenedor {
+	    width: 90%;
+	    margin: 0 5%;
+	}
+
+}
+
+/*notbook------------------------------------*/
+@media screen and (min-width: 1280px) and (max-width : 1800px){
+	
+}
+
+/*desktop------------------------------*/
+@media screen and (min-width: 1801px) and (max-width : 2200px){
+
+}
+
+/*desktop large-----------------------------------------------*/
+@media screen and (min-width: 2220px) and (max-width : 4000px){
+
+}

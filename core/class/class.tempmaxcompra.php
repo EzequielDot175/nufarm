@@ -9,7 +9,7 @@
 	/**
 	* Controlador de compra max de productos
 	*/
-	class TempMaxCompra extends PDOConfig implements SqlConstant
+	class TempMaxCompra extends DB
 	{	
 		/**
 		* @todo trait de constantes
@@ -65,7 +65,7 @@
 		/**
 		* @todo Metodo para obtener el maximo de compra en ver productos
 		*/
-		public function getMaxCompra($prod){
+		public function getMaxCompra($prod = null){
 			$max = $this->prepare(self::MAXCOMPRA_GETMAXCOMPRA);
 			$max->bindParam(':user',$this->user, PDO::PARAM_INT);
 			$max->bindParam(':prod',(!empty($this->prod) ? $this->prod : $prod ), PDO::PARAM_INT);
@@ -226,7 +226,7 @@
 		*/
 		private function setInitsData(){
 			$this->user = self::session('MM_IdUsuario');
-			$this->prod = (isset($_GET['recordID']) ? $_GET['recordID'] : '');
+			$this->prod = (isset($_GET['producto']) ? $_GET['producto'] : '');
 		}
 		/**
 		 * @todo Es posible que si el producto no exista en el registro de la tabla,

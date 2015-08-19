@@ -1,8 +1,12 @@
 <?php 
-// error_reporting(0);
-error_reporting(E_ALL);
-ini_set('display_errors', 'on');
 
+header('location: catalogo.php');
+exit();
+
+error_reporting(0);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'on');
+// die();
 
 require_once('Connections/conexion.php');
 ?>
