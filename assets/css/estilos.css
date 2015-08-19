@@ -732,7 +732,8 @@ body {
     padding-top: 4px;
     font-family: 'Brandon_reg';
     font-size: 12px;
-    font-weight: bold; }
+    font-weight: bold;
+    width: 90%; }
   .mensaje-error .icon {
     float: left; }
 
@@ -982,7 +983,7 @@ body {
     -webkit-border-radius: 3px;
     -o-border-radius: 3px;
     -ms-border-radius: 3px;
-    min-height: 320px; }
+    min-height: 280px; }
     .lista-productos .item .img {
       width: 156px;
       margin: 0 auto;
@@ -1268,7 +1269,9 @@ body {
       display: inline-block;
       font-size: 11px; }
       .detalle-productos .block-num .icon-num p {
-        padding: 3px; }
+        padding: 3px 0px;
+        text-align: center;
+        width: 100%; }
   .detalle-productos .talles {
     margin-left: 15px;
     margin-top: 10px; }
@@ -1525,120 +1528,141 @@ body {
       width: auto;
       padding: 10px;
       font-size: 12px; }
-  .carrito-productos .tabla-detalle thead, .carrito-productos .tabla-detalle tbody {
-    width: 100%;
-    display: block; }
-  .carrito-productos .tabla-detalle th {
-    color: #fff;
-    text-align: center;
-    font-family: 'BrooklynSamuelsFive-Bold';
-    font-size: 12px; }
-  .carrito-productos .tabla-detalle thead {
-    background-color: rgba(84, 91, 80, 0.54);
-    -webkit-background-color: rgba(84, 91, 80, 0.54);
-    -moz-background-color: rgba(84, 91, 80, 0.54);
-    -ms-background-color: rgba(84, 91, 80, 0.54);
-    -o-background-color: rgba(84, 91, 80, 0.54); }
-    .carrito-productos .tabla-detalle thead th {
-      height: 65px; }
-  .carrito-productos .tabla-detalle tbody {
-    background-color: rgba(53, 89, 68, 0.45);
-    -webkit-background-color: rgba(53, 89, 68, 0.45);
-    -moz-background-color: rgba(53, 89, 68, 0.45);
-    -ms-background-color: rgba(53, 89, 68, 0.45);
-    -o-background-color: rgba(53, 89, 68, 0.45);
-    padding: 20px 20px 10px 20px; }
-  .carrito-productos .tabla-detalle .fecha td {
-    background-color: #666; }
-  .carrito-productos .tabla-detalle td {
-    color: #fff;
-    text-align: center;
-    font-family: 'BrooklynSamuelsFive-Bold';
-    height: 60px;
-    font-size: 12px; }
-    .carrito-productos .tabla-detalle td .producto {
-      width: 44px;
-      height: 44px;
-      float: left;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      box-sizing: border-box;
-      background-color: #fff;
-      border-radius: 100%;
-      -moz-border-radius: 100%;
-      -webkit-border-radius: 100%;
-      -ms-border-radius: 100%;
-      -o-border-radius: 100%;
-      overflow: hidden;
-      margin-top: 10px;
-      top: 16px; }
-      .carrito-productos .tabla-detalle td .producto img {
-        width: 110%; }
-    .carrito-productos .tabla-detalle td .cerrar {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      padding-left: 3px;
-      top: 2px;
-      position: relative; }
-    .carrito-productos .tabla-detalle td .text {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Brandon_reg';
-      height: 15px; }
-    .carrito-productos .tabla-detalle td .color {
-      margin: 0 auto;
-      height: 30px; }
-      .carrito-productos .tabla-detalle td .color .icon-color {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
+  .carrito-productos .tabla-detalle {
+                        /* .quitar{
+                                    cursor: pointer;
+                                    text-align: right;
+                                    max-width: 110px;
+                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                    font-size: 14px;
+                                    height: 40px;
+
+                                    p{
+                                        height: 10px;
+                                    }
+
+                                    a{
+                                            color: #fff;
+                                    }
+                                    a:hover{
+                                            text-decoration: none;
+                                    }
+                            }*/ }
+    .carrito-productos .tabla-detalle thead, .carrito-productos .tabla-detalle tbody {
+      width: 100%;
+      display: block; }
+    .carrito-productos .tabla-detalle th {
+      color: #fff;
+      text-align: center;
+      font-family: 'BrooklynSamuelsFive-Bold';
+      font-size: 12px; }
+    .carrito-productos .tabla-detalle thead {
+      background-color: rgba(84, 91, 80, 0.54);
+      -webkit-background-color: rgba(84, 91, 80, 0.54);
+      -moz-background-color: rgba(84, 91, 80, 0.54);
+      -ms-background-color: rgba(84, 91, 80, 0.54);
+      -o-background-color: rgba(84, 91, 80, 0.54); }
+      .carrito-productos .tabla-detalle thead th {
+        height: 65px; }
+    .carrito-productos .tabla-detalle tbody {
+      background-color: rgba(53, 89, 68, 0.45);
+      -webkit-background-color: rgba(53, 89, 68, 0.45);
+      -moz-background-color: rgba(53, 89, 68, 0.45);
+      -ms-background-color: rgba(53, 89, 68, 0.45);
+      -o-background-color: rgba(53, 89, 68, 0.45);
+      padding: 20px 20px 10px 20px; }
+    .carrito-productos .tabla-detalle .fecha td {
+      background-color: #666; }
+    .carrito-productos .tabla-detalle td {
+      color: #fff;
+      text-align: center;
+      font-family: 'BrooklynSamuelsFive-Bold';
+      height: 60px;
+      font-size: 12px; }
+      .carrito-productos .tabla-detalle td .producto {
+        width: 44px;
+        height: 44px;
+        float: left;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        box-sizing: border-box;
+        background-color: #fff;
         border-radius: 100%;
         -moz-border-radius: 100%;
         -webkit-border-radius: 100%;
-        -o-border-radius: 100%;
         -ms-border-radius: 100%;
-        display: inline-block;
-        padding-top: 5px;
+        -o-border-radius: 100%;
+        overflow: hidden;
+        margin-top: 10px;
+        top: 16px; }
+        .carrito-productos .tabla-detalle td .producto img {
+          width: 110%; }
+      .carrito-productos .tabla-detalle td .cerrar {
         position: relative;
-        top: 5px; }
-      .carrito-productos .tabla-detalle td .color p {
-        display: inline-block;
-        padding-left: 5px;
-        font-size: 12px; }
-  .carrito-productos .tabla-detalle .big-text {
-    font-size: 18px;
-    height: 10px; }
-  .carrito-productos .tabla-detalle .col-Auto {
-    width: auto; }
-  .carrito-productos .tabla-detalle .col-A {
-    width: 100px; }
-  .carrito-productos .tabla-detalle .col-B {
-    width: 105px; }
-  .carrito-productos .tabla-detalle .col-C {
-    width: 115px; }
-  .carrito-productos .tabla-detalle .col-D {
-    width: 210px; }
-  .carrito-productos .tabla-detalle .col-Total {
-    width: 230px; }
-  .carrito-productos .tabla-detalle .quitar {
-    cursor: pointer;
-    text-align: right;
-    max-width: 110px;
-    font-family: 'BrooklynSamuelsFive-Bold';
-    font-size: 14px; }
-    .carrito-productos .tabla-detalle .quitar p {
+        top: 50%;
+        transform: translateY(-50%);
+        padding-left: 3px;
+        top: 2px;
+        position: relative; }
+      .carrito-productos .tabla-detalle td .text {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Brandon_reg';
+        height: 15px; }
+      .carrito-productos .tabla-detalle td .color {
+        margin: 0 auto;
+        height: 30px; }
+        .carrito-productos .tabla-detalle td .color .icon-color {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          -moz-border-radius: 100%;
+          -webkit-border-radius: 100%;
+          -o-border-radius: 100%;
+          -ms-border-radius: 100%;
+          display: inline-block;
+          padding-top: 5px;
+          position: relative;
+          top: 5px; }
+        .carrito-productos .tabla-detalle td .color p {
+          display: inline-block;
+          padding-left: 5px;
+          font-size: 12px; }
+    .carrito-productos .tabla-detalle .big-text {
+      font-size: 18px;
       height: 10px; }
-  .carrito-productos .tabla-detalle .quitar:hover {
-    opacity: .5; }
-  .carrito-productos .tabla-detalle .item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    -webkit-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    -moz-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    -ms-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    -o-border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+    .carrito-productos .tabla-detalle .col-Auto {
+      width: auto; }
+    .carrito-productos .tabla-detalle .col-A {
+      width: 100px; }
+    .carrito-productos .tabla-detalle .col-B {
+      width: 105px; }
+    .carrito-productos .tabla-detalle .col-C {
+      width: 115px; }
+    .carrito-productos .tabla-detalle .col-D {
+      width: 210px; }
+    .carrito-productos .tabla-detalle .col-Total {
+      width: 230px; }
+    .carrito-productos .tabla-detalle .quitarA {
+      cursor: pointer;
+      text-align: right;
+      font-family: 'BrooklynSamuelsFive-Bold';
+      font-size: 14px; }
+      .carrito-productos .tabla-detalle .quitarA a {
+        color: #fff; }
+      .carrito-productos .tabla-detalle .quitarA a:hover {
+        text-decoration: none; }
+    .carrito-productos .tabla-detalle .quitar:hover {
+      opacity: .5; }
+    .carrito-productos .tabla-detalle .item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      -webkit-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      -moz-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      -ms-border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      -o-border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
   .carrito-productos .total .block-num {
     display: table;
     height: 97%;

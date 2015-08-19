@@ -23,7 +23,9 @@
 			self::start();
 
 			if(empty($_SESSION["MM_Username"])):
-				Redirect::to('login.php');	
+				// Redirect::to('');	
+				header('location: login.php');
+				exit();
 			endif;
 		}
 

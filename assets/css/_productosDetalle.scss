@@ -86,25 +86,25 @@
               }
 
               .block-head{
-                padding: 37px 27px 30px 27px;
+                        padding: 37px 27px 30px 27px;
             }
 
             .background-a{
-                background-color: $grisA ;  
+                         background-color: $grisA ;  
              }
 
              .background-b{
-                 background-color: $grisB;
+                        background-color: $grisB;
              }
 
              .icon-color{
                         width: 20px;
                         height: 20px;
                         border-radius: 100%;
-                         -moz-border-radius: 100%;
+                        -moz-border-radius: 100%;
                         -webkit-border-radius: 100%;
                         -o-border-radius: 100%;
-                        -ms-border-radius: 100%;
+                         -ms-border-radius: 100%;
                         display: inline-block;
              }
 
@@ -188,10 +188,12 @@
                                     -ms-border-radius: 100%;
                                     display: inline-block;
                                      font-size: 11px;
-                                     
+
 
                                         p{
-                                                padding: 3px;
+                                                padding: 3px 0px;
+                                                text-align: center;
+                                                width: 100%;
                                        }
                          }
              }

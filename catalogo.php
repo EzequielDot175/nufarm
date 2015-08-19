@@ -3,9 +3,17 @@
 	$producto = new producto();
 	
 ?>
-<!-- Header -->
 
+	
 	<div class="lista-productos col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+
+		<!--buscador-->
+		<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+			<div class="filtros">
+				<!--<input type="text" name="" value="">-->
+			</div>
+		</div>
+		<!--end / buscador-->
 
 		<?php 
 			// for ($i=0; $i < 12 ; $i++) {
@@ -24,7 +32,7 @@
 				<h6 class="text-uppercase"><?php echo($val->strNombre) ?></h6>
 				<p class="descripcion"></p>
 				<div class="footer-item">
-					<p class="text-left"><?php echo($val->intStock) ?></p>
+					<p class="text-left">STOCK <?php echo($val->intStock) ?></p>
 
 					<div class="block-puntos">
 						<p class="num"><?php echo($val->dblPrecio) ?></p>

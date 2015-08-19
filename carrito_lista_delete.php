@@ -1,4 +1,13 @@
-<?php 
+<?php
+  
+
+function redirect(){
+  echo('<script>window.location.href="carrito.php";</script>');
+}
+
+  error_reporting(0);
+  ini_set('display_errors', 'off');
+
   require_once('Connections/conexion.php');
   // require_once(dirname(__FILE__).'/TempStock.php');
   require_once('libs.php');
@@ -157,12 +166,9 @@ if ($cond) {
 
 
 
-  $deleteGoTo = "carrito.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
-    $deleteGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $deleteGoTo));
+  
+  redirect();
+  exit();
 }elseif (   isset($_GET['talle_colores'])  ) {
  
     $productos = new tallesColores();
@@ -170,29 +176,13 @@ if ($cond) {
     $talle = $_GET['talle'];
     
     $delete = $productos->deleteItem($_GET['recordID'],$sub,$talle);
-    header('Location: carrito.php');
+    redirect();
 }
-?>
-<?php include("includes/header.php"); ?>
-<div id="menu">
- <div class="link"><p><a href="index.php">Inicio</a></p></div>
-             <div class="link"><p><a href="productos.php">Canjes</a></p></div>
-              <div class="link-activo"><p><a href="mi_cuenta.php">Mi Cuenta</a></p></div>
-                <div class="link"><p><a href="novedades.php">Novedades</a></p></div>
- </ul>
-</div>
-<div id="buscador"></div>
 
-<section>
-<aside>
-<?php include("includes/catalogo.php"); ?>
-</aside>
-<article>
- <h3>Eliminado</h3>
- 
-  </article>
-</section>
-</div></div></div></div>
-<?php include("includes/footer.php"); ?>
-</body>
-</html>
+
+
+
+redirect();
+exit();
+
+?>

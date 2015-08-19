@@ -1,11 +1,20 @@
 <?php 
-	require_once('libs.php');
-if (!isset($_SESSION)) {
-  session_start();
-} ob_start();
+require_once('libs.php');
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
+if(!isset($_SESSION)):
+	@session_start();
+endif;
+
+// function redirect(){
+// 	header('location: http://nufarm-maxx.com/marketingNetDesarrollo/carrito.php');
+// }
+function redirect(){
+	echo('<script>window.location.href="carrito.php";</script>');
+}
+error_reporting(0);
+display_errors(false);
 
 $tempMaxCompra = new TempMaxCompra();
 
@@ -44,8 +53,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
   $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
-  header("Location: ". $MM_restrictGoTo); 
-  exit;
+  @header("Location: ". $MM_restrictGoTo); 
 }
 
 
@@ -132,7 +140,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 															$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 															$update_carrito->update($id_row);
 															
-															header("Location: carrito.php");
+															redirect();
+															
 															
 														
 														}else{
@@ -153,7 +162,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
-		header("Location: carrito.php");
+		redirect();
 		
 	}else if($requiere_talles==2){
 		//requiere talles
@@ -201,8 +210,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 							$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 							$update_carrito->update($id_row);
 																
-							header("Location: carrito.php");
-							exit();
+							redirect();
+							
 																
 															
 				}else{
@@ -225,8 +234,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 		}
 		
-		header("Location: carrito.php");
-		exit();
+		redirect();
+		
 		// echo "<script>window.location.href = 'mi_cuenta.php?activo=2'</script>";
 
 
@@ -251,8 +260,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		$limite = $tempMaxCompra->getMaxCompra($id_producto);
 		if((int)$canTotal > (int)$limite):
 			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
-	  		header("Location: carrito.php");
-	  		exit();
+	  		redirect();
+	  		
 		endif;
 
 		$tempMaxCompra->storeSum($id_producto,$canTotal);
@@ -288,12 +297,16 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			endforeach;
 		endforeach;
 
-		header("Location: carrito.php");
+		redirect();
+		
 
 
 	}
 	else{
-		
+	
+
+
+
 
 		$tempMaxCompra->storeSum($id_producto,$cantidad_elegida);
 		try {
@@ -302,8 +315,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		} catch (Exception $e) {
 			echo($e->getMessage());
 		} 
-
-
 
 		//Hay stock 
 		//No requiere talles		
@@ -331,7 +342,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$update_carrito->intCantidad = $cantidad_en_carrito + $cantidad_elegida;
 										$update_carrito->update($id_row);
 										
-										header("Location: carrito.php");
+										redirect();
+										
 										
 									}else{
 										//No hay de este producto en el carrito, lo ingreso como nuevo
@@ -344,7 +356,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$carr->intCantidad = $cantidad_elegida;
 										$carr->insert();
 									
-										header("Location: carrito.php");
+										redirect();
+										
 									}
 			
 			
@@ -354,13 +367,16 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			
 			//No hay stock disponible
 			// $_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
-	  		header("Location: carrito.php");
-	  		exit();
+	  		redirect();
+	  		
 
 			
 	  	}//end else stock
 		
 	}//end else (requiere talles)
 
+
+	// header('location: http://nufarm-maxx.com/marketingNetDesarrollo/carrito.php');
+redirect();
 
 ?>

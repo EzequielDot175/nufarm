@@ -467,18 +467,18 @@ function bring_detalle_compra($id_compra){
 			
 			<option value="1"';
 			if($estado_producto ==1){$recuadro .="selected=selected ";}
-			$recuadro .= '>Pendiente</option>
+			$recuadro .= '>Pedido realizado</option>
 			
 			<option value="2"';
 			if($estado_producto ==2){$recuadro .="selected=selected ";}
-			$recuadro .= '>En Proceso</option>	
+			$recuadro .= '>Pedido en Proceso</option>	
 			
 			<option value="3"';
 			if($estado_producto ==3){$recuadro .="selected=selected";}
-			$recuadro .= '>Enviado</option>	
+			$recuadro .= '>Pedido enviado</option>	
 			<option value="4"';
 			if($estado_producto ==4){$recuadro .="selected=selected";}
-			$recuadro .= '>Entregado</option>	
+			$recuadro .= '>Pedido entregado</option>	
 			</select>
 			
 			

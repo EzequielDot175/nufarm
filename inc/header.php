@@ -1,6 +1,12 @@
-<?php require('libs.php');
-	error_reporting(E_ERROR | E_PARSE);
-	Auth::check();
+<?php 
+	if(!isset($_SESSION)):
+		session_start();
+		if(empty($_SESSION["MM_Username"])):
+			header('location: login.php');
+			exit();
+		endif;
+	endif;
+	require('libs.php');
 	$TempMaxCompra = new TempMaxCompra();
 	$TempMaxCompra->init();
 ?>
@@ -12,7 +18,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title> titulo</title>
+	<title>Marketing Net</title>
 
 	<!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
 		<!--[if lt IE 9]>
@@ -28,7 +34,7 @@
 		<link href="assets/fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
 
 		<!-- CSS -->
-		<link href="assets/css/estilos.css?v=04" rel="stylesheet" media="screen">
+		<link href="assets/css/estilos.css?v=05" rel="stylesheet" media="screen">
 	</head>
 
 
@@ -39,9 +45,9 @@
 				<img src="assets/images/Nufarm-max-logo.png" id="Nufarm" title="Nufarm" alt="Imagen no encontrada">
 				<div class="block">
 					<select class="form-control">
-						<option>Mkt Net</option>
-						<option>Plan de Negocios</option>
-						<option>Vendedor Estrella</option>
+						<option class="text-uppercase">MARKETING NET</option>
+						<option class="text-uppercase">PLAN DE NEGOCIOS</option>
+						<option class="text-uppercase">VENDEDOR ESTRELLA</option>
 					</select>
 					<div class="logout">
 						<a href="salir.php"><p class="text-uppercase">salir</p></a>
@@ -138,8 +144,4 @@
 				<!--contenido-->
 				<div class="contenido col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 
-					<!--buscador-->
-					<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-						<input type="text" name="" value="" disabled>
-					</div>
-					<!--end / buscador-->
+					

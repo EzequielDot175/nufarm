@@ -225,10 +225,10 @@ function MM_validateForm() { //v4.0
 <div class="logo-login"></div>
 
   <div id="login">
-  <div id="menu">
+  <!--<div id="menu">
       <a href="login.php"><div class="link-login-activo"><span class="home_icon_login-green"></span>INICIAR SESIÓN</div></a>
 			 <a href="recover.php"><div class="link-login"><span class="home_icon_login2"></span><div style="margin-left:25px">RECUPERAR PASS</div></div></a>
-  </div>
+  </div>-->
   <div id="logincaja">
   <div style="height:80px;"></div>
   <label><?php $resultado= (isset($_GET['res'])? $_GET['res']:''); echo $resultado;?></label>

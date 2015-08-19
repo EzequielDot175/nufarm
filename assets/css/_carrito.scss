@@ -204,17 +204,39 @@
                                         width: 230px;
                         }
 
-                         .quitar{
+                        .quitarA{
+                                    cursor: pointer;
+                                    text-align: right;
+                                    font-family: 'BrooklynSamuelsFive-Bold';
+                                    font-size: 14px;
+
+                                    a{
+                                            color: #fff;
+                                    }
+                                    a:hover{
+                                            text-decoration: none;
+                                    }
+                            }
+
+                        /* .quitar{
                                     cursor: pointer;
                                     text-align: right;
                                     max-width: 110px;
                                     font-family: 'BrooklynSamuelsFive-Bold';
                                     font-size: 14px;
+                                    height: 40px;
 
                                     p{
                                         height: 10px;
                                     }
-                            }
+
+                                    a{
+                                            color: #fff;
+                                    }
+                                    a:hover{
+                                            text-decoration: none;
+                                    }
+                            }*/
 
                             .quitar:hover{
                                     opacity: .5;

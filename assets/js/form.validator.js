@@ -2,10 +2,10 @@
 
 	$.fn.message = function(param){
 		var messages = [
-			'no dispone de la cantidad de compras suficientes para este producto', 	// 0
-			'cantidad máxima de canje excedido', 									// 1
-			'cantidad minima de canje no superada', 								// 2
-			'Por favor, llene los campos de productos' 								// 3
+			'respetar cantidad máxima',  // 0
+			'excedidó límite de canjes para este producto', 	// 1
+			'respetar cantidad minima', 	// 2
+			'Por favor, llene los campos de productos'  // 3
 		];
 		var options = $.extend(true, {}, param);
 		

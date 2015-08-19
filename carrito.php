@@ -73,7 +73,7 @@
 					<td class="col-B">
 						<p class="text-uppercase big-text "><?php echo $val->precio ?></p>
 					</td>
-					<td class="quitar col-A">
+					<td class="quitarA col-A">
 						<a href="carrito_lista_delete.php?recordID=<?php echo $val->id ?>&require=<?php echo $val->type ?>">
 							<p class="text-uppercase">
 								quitar

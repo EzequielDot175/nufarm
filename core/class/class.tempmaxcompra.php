@@ -66,9 +66,10 @@
 		* @todo Metodo para obtener el maximo de compra en ver productos
 		*/
 		public function getMaxCompra($prod = null){
+			$prod = (!empty($this->prod) ? $this->prod : $prod );
 			$max = $this->prepare(self::MAXCOMPRA_GETMAXCOMPRA);
 			$max->bindParam(':user',$this->user, PDO::PARAM_INT);
-			$max->bindParam(':prod',(!empty($this->prod) ? $this->prod : $prod ), PDO::PARAM_INT);
+			$max->bindParam(':prod',$prod, PDO::PARAM_INT);
 			$max->execute();
 			$result = $max->fetch(PDO::FETCH_OBJ);
 

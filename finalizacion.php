@@ -3,7 +3,11 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-
+error_reporting(0);
+ini_set('display_errors', 'off');
+function redirect(){
+  echo('<script>window.location.href="confirmacion-carrito.php";</script>');
+}
 
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
@@ -18,8 +22,7 @@ require_once('includes/class.compras.php');
 $checkVencimiento = new TempStock();
 $can = $checkVencimiento->fechaVencimiento($_SESSION['MM_IdUsuario']);
 if($can):
-	header('Location: index.php?activo=1');
-	exit();
+	echo('<script>window.location.href="catalogo.php";</script>');
 endif;
 
 
@@ -254,30 +257,5 @@ if($checkout){
 }
 
 
-header('location: confirmacion-carrito.php');
-exit();
-?>
-<?php include("includes/header.php"); ?>
+redirect();
 
-<section>
-<?php $activo = $_GET['activo']; include("includes/menu.php"); ?>
-<div class="gp"></div>	
-    <aside class="animated bounce">
-      <?php include("includes/catalogo_micuenta.php"); ?>
-    </aside>
-<article>
-
-<div class="inicio">
-<?php  
-	
-	echo $resultado;
-	
-	
-?>
- </div><?php include("includes/footer.php"); ?>  
- </div> </div>
-  </article>
- 
-</section>
-</body>
-</html>

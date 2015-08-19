@@ -12,6 +12,14 @@
 <!--detalle productos-->
 	<div class="detalle-productos col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 
+		<!--buscador-->
+		<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+			<div class="filtros">
+				<!--<input type="text" name="" value="">-->
+			</div>
+		</div>
+		<!--end / buscador-->
+
 		<!--col-a-->
 		<div class="col-a block background-a col-xs-12 col-sm-4 col-md-4 ol-lg-4">
 			<div class="img">
@@ -43,14 +51,6 @@
 					<span>LÍMITES DE CANJE</span>
 				</h3>
 				<!-- end / sub-titulo-->
-				<?php if(!is_null($limitCompra) && $limitCompra != 0 ): ?>
-				<div class="block-num">
-					<p class="text text-uppercase">MÁXIMO</p>
-					<div class="icon-num">
-						<p><?php echo($limitCompraProd) ?></p>
-					</div>
-				</div>
-				<?php endif; ?>
 				<?php if(!empty($detalles->intMinCompra)): ?>
 				<div class="block-num">
 					<p class="text text-uppercase">MÍNIMO</p>
@@ -59,7 +59,15 @@
 					</div>
 				</div>
 				<?php endif; ?>
-				
+
+				<?php if(!is_null($limitCompra) && $limitCompra != 0 ): ?>
+				<div class="block-num">
+					<p class="text text-uppercase">MÁXIMO</p>
+					<div class="icon-num">
+						<p><?php echo($limitCompraProd) ?></p>
+					</div>
+				</div>
+				<?php endif; ?>
 
 				<form action="carrito_add.php" method="post" id="add_product">
 					<input type="hidden" name="type" value="<?php echo($detalles->type) ?>">
@@ -174,7 +182,7 @@
 				<!-- botones -->
 				<div class='block-botones'>
 					<a href="catalogo.php" class="boton href">CANCELAR</a>
-					<button class="boton inactivo" type="submit">AGREGAR</button>
+					<button class="boton" type="submit">AGREGAR</button>
 				</div>
 				<!--end /  botones -->
 				<input type="hidden" name="idProducto" value="<?php echo($_GET['producto']) ?>">
