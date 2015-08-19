@@ -14,7 +14,7 @@
 		}
 
 		public static function start(){
-			if(!isset($_SESSION)):
+			if(!isset($_SESSION["MM_Username"])):
 				session_start();
 			endif;
 		}	
@@ -33,14 +33,16 @@
 
 
 		public function getUser(){
+			$id = self::id();
 			$user = $this->prepare(self::AUTH_USER);
-			$user->bindParam(':id', self::id(), PDO::PARAM_INT);
+			$user->bindParam(':id', $id, PDO::PARAM_INT);
 			$user->execute();
 			return $user->fetch();
 		}
 
 		public static function User(){
-			return (new Auth())->getUser();
+			$user = new Auth();
+			return $user->getUser();
 		}
 
 

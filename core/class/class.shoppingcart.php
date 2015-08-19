@@ -8,10 +8,12 @@
 		
 		private $total = 0;
 		private $count = 0;
+		private $user_id;
 
 		public function __construct()
 		{
 			parent::__construct();
+			$this->user_id = Auth::id();
 		}
 
 
@@ -23,7 +25,7 @@
 		 */
 		public function all(){
 			$all = $this->prepare(self::SHOPPINGCART_ALL);
-			$all->bindParam(':id',Auth::id(),PDO::PARAM_INT);
+			$all->bindParam(':id',$this->user_id,PDO::PARAM_INT);
 			$all->execute();
 			$data = $all->fetchAll();
 			
@@ -57,7 +59,7 @@
 
 		public function getSum(){
 			$sum = $this->prepare(self::SHOPPINGCART_SUM);
-			$sum->bindParam(':id', Auth::id(), PDO::PARAM_INT);
+			$sum->bindParam(':id', $this->user_id, PDO::PARAM_INT);
 			$sum->execute();
 			return $sum->fetch()->cantidad;
 		}

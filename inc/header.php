@@ -1,5 +1,5 @@
-<?php require('libs.php') ?>
-<?php 
+<?php require('libs.php');
+	error_reporting(E_ERROR | E_PARSE);
 	Auth::check();
 	$TempMaxCompra = new TempMaxCompra();
 	$TempMaxCompra->init();
