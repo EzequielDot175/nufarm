@@ -16,7 +16,7 @@
 			<!-- botones -->
 			<div class="col-xs-12 col-sm-9 col-md-9 ol-lg-9">
 				<div class='block-botones'>
-					<button class="boton" type="">VOLVER</button>
+					<a href="carrito.php"><button class="boton" type="">VOLVER</button></a>
 				</div>
 			</div>
 			<!--end /  botones -->
