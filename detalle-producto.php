@@ -64,7 +64,7 @@
 				<div class="block-num">
 					<p class="text text-uppercase">MÁXIMO</p>
 					<div class="icon-num">
-						<p><?php echo($limitCompraProd) ?></p>
+						<p><?php echo($limitCompra) ?></p>
 					</div>
 				</div>
 				<?php endif; ?>
