@@ -121,6 +121,7 @@
 			</a>
 		</div>
 		<!--end /  botones -->
+		<?php if(ShoppingCart::sum() > 0): ?>
 		<!-- botones -->
 		<div class="col-xs-12 col-sm-3 col-md-3 ol-lg-3">
 			<div class='block-botones'>
@@ -130,6 +131,7 @@
 			</div>
 		</div>
 		<!--end /  botones -->
+		<?php endif; ?>
 	</div>
 	<!-- end / footer carrito -->
 
