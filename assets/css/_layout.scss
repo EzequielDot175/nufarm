@@ -69,12 +69,16 @@ $violeta : #8E3289;
 $gris : #404040;
 $grisA : #CBCCC0;  
 $grisB : #B1B6A6;
+$error : #AA4025;
 
 .contenedor {
     width: 980px;
     margin: 0 auto;
-    min-height: 500px;
     position: relative;
+}
+
+.contenedor-body {
+    min-height: 500px;
 }
 
 .inactivo {
@@ -82,8 +86,9 @@ $grisB : #B1B6A6;
     }
 
 .head {
-    height: 100px;
-    background-color: $verde;
+            height: 100px;
+            background-color: $verde;
+            letter-spacing: 1px;
 
 
    	 img {
@@ -103,7 +108,11 @@ $grisB : #B1B6A6;
                                 background-color: $verde;
                                 border: none;
                                 box-shadow: none;
-                                background-image: url('../images/background-select.png');
+                                background-image: url('../images/background-select2.png');
+                                background-size: 100% 80%;
+                                background-repeat: no-repeat;
+                                background-position-x: 0;
+                                background-position-y: bottom;
                         }
             }
 
@@ -166,7 +175,7 @@ $grisB : #B1B6A6;
                 position: relative;
                 width: 50px;
                 height: 50px;
-                float: right;
+                float: left;
                 padding: 9px 10px;
                 margin-top: 2px;
                 margin-right: 15px;
@@ -310,11 +319,11 @@ $grisB : #B1B6A6;
             }
 
             .sub-footer{
-                    background-color: rgba(255,255,255,.5);
-                    -moz-background-color: rgba(255,255,255,.5);
-                    -webkit-background-color: rgba(255,255,255,.5);
-                    -o-background-color: rgba(255,255,255,.5);
-                    -ms-background-color: rgba(255,255,255,.5);
+                    background-color: rgba(#C7C7C7,.3);
+                    -moz-background-color: rgba(#C7C7C7,.3);
+                    -webkit-background-color: rgba(#C7C7C7,.3);
+                    -o-background-color: rgba(#C7C7C7,.3);
+                    -ms-background-color: rgba(#C7C7C7,.3);
                     height: 75px;
                     padding: 15px 10px;
                     position: relative;
@@ -368,14 +377,30 @@ $grisB : #B1B6A6;
                         width: 230px;
                         height: 118px;
                         z-index: 2;
+                        -moz-box-shadow: 0px 0px 1px #000000;
+                        -webkit-box-shadow: 0px 0px 1px #000000;
+                        box-shadow: 0px 0px 1px #000000;
+                        letter-spacing: 1px;
 
                         .num{
                                 font-family: 'BrooklynSamuelsFive-Bold';
                                 font-size: 38px;
-                                padding-top: 30px;
+                                padding-top: 35px;
                                 width: 100%;
                                 text-align: center;
                                 color: #fff;
+                        }
+
+                       .sombra{
+                                background-image: url('../images/sombra-violeta.png');
+                                background-repeat: no-repeat;
+                                background-position-x: right;
+                                background-position-y: bottom;
+                                position: absolute;
+                                right: 0;
+                                bottom: -5px;
+                                height: 5px;
+                                width: 5px;
                         }
 
                         .text-a{
@@ -386,6 +411,8 @@ $grisB : #B1B6A6;
                                 text-align: center;
                                 color: #fff;
                                 opacity: .7;
+                                height: 20px;
+                                padding-top: 15px;
                         }
 
                         .text-b{
@@ -409,7 +436,7 @@ $grisB : #B1B6A6;
             color: #595959;
 
             .error{
-                         border: 1px solid #A16C58 ;
+                         border: 1px solid $error ;
              }
 
             input{
@@ -448,7 +475,7 @@ $grisB : #B1B6A6;
 
 
 .mensaje-error {
-            color: #A16C58;
+            color: $error;
             margin: 20px 0;
             float: left;
             width: 100%;
@@ -616,56 +643,7 @@ $grisB : #B1B6A6;
 
 }
 
-// ==========================================================================
-/* RESPONSIVE  */
-// ==========================================================================
-
-/*mobile--------------------------------------------------*/
-@media screen and (min-width: 0px) and (max-width : 767px){
-
-            .menu {
-                z-index: 6;
-            }
-
-            .menu li {
-                width: 100%;
-                float: left;
-            }
-
-            .navbar-collapse {
-                border-top: none;
-            }
-
-
-        .contenedor {
-                width: 90%;
-                margin: 0 5%;
-            }
-
-            .base .titulo .block-right {
-                width: 150px;
-                height: 100px;
-        }
-
-        .base .titulo .block-right .num {
-            font-size: 30px;
-        }
-
-        .base .titulo .block-right .text-a {
-            font-size: 12px;
-            padding-top: 8px;
-        }
-
-         .base .titulo .block-right .text-b {
-            font-size: 8px;
-            padding-top: 5px;
-            line-height: 10px;
-        }
-
-
-}
-
-//acordeon
+ //acordeon
 .acordeon-general{
             margin-bottom: 20px;
             float: left;
@@ -743,7 +721,6 @@ $grisB : #B1B6A6;
             }
 
 
-
             .panel-heading:hover {
                         opacity: .8;
             }
@@ -760,12 +737,132 @@ $grisB : #B1B6A6;
                         opacity: .8;
             }
 
+
+
 }
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+
+            .menu {
+                    z-index: 6;
+            }
+
+            .menu li {
+                    width: 100%;
+                    float: left;
+                     margin: 10px 0;
+            }
+
+            .menu span {
+                width: auto;
+                margin-right: 10px;
+                
+            }
+
+            .menu .catalogo span {
+                width: auto;
+            }
+
+            .menu .text-b {
+                padding-top: 10px;
+            }
+
+            .menu .contenedor {
+                width: 100%;
+                margin: 0;
+            }
+
+            .menu .catalogo {
+                width: 100%;
+            }
+
+            .menu .background-menu{
+                background-color: $verde;
+                padding: 20px;
+            }
+
+            .navbar-header{
+                 padding: 0 5%;
+            }
+
+            .head img {
+                float: left;
+            }
+
+            .navbar-collapse {
+                    border-top: none;
+            }
+
+
+             .contenedor {
+                    width: 90%;
+                    margin: 0 5%;
+            }
+
+            .base .titulo .block-right {
+                    width: 150px;
+                    height: 100px;
+            }
+
+            .base .titulo .block-right .num {
+                    font-size: 30px;
+                    padding-top: 25px;
+            }
+
+            .base .titulo .block-right .text-a {
+                     font-size: 12px;
+                     padding-top: 15px;
+             }
+
+            .base .titulo .block-right .text-b {
+                    font-size: 8px;
+                    padding-top: 5px;
+                    line-height: 10px;
+            }
+
+            .ver-carrito {
+                right: 5%;
+            }
+
+            .detalle-productos .talles {
+                    margin-left: 0px !important;
+             }
+
+             .filtros input, .filtros select {
+                width: 49%;
+                height: 27px;
+            }
+
+            .base .head-page {
+                height: 90px;
+                padding: 35px 10px;
+                position: relative;
+            }
+
+            
+
+           
+
+
+}
+
+
 
 
 
 /*tablet----------------------------------------*/
 @media screen and (min-width: 768px) and (max-width : 1280px){
+
+            .detalle-productos .talles {
+                    margin-left: 0px !important;
+             }
+
+
 
 }
 
