@@ -183,11 +183,22 @@
 			
 			const HISTORIAL_GET = "SELECT 
 				compra.idCompra,
-			    dt.*
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
 			FROM 
 				compra
 			LEFT JOIN
-				detalles_compras as dt ON dt.id_compra = compra.idCompra 
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
 			WHERE
 				idUsuario = :id";
 		}

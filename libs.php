@@ -6,6 +6,7 @@
 
 	require_once(dirname(__FILE__).'/core/class/class.redirect.php'); 
 	require_once(dirname(__FILE__).'/core/class/class.auth.php'); 
+	require_once(dirname(__FILE__).'/core/class/class.estados.php'); 
 	require_once(dirname(__FILE__).'/core/class/class.tempstock.php'); 
 	require_once(dirname(__FILE__).'/core/class/class.tempmaxcompra.php'); 
 	require_once(dirname(__FILE__).'/core/class/class.usuario.php'); 
