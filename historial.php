@@ -1,10 +1,13 @@
 <?php 
 	require_once('inc/header.php');
 
+	$historial = new Historial();
+	$collection = $historial->get(); 
 
 
-	Historial::get();
-	die();
+
+
+	
 ?>
 		
 	<!--detalle productos-->
@@ -47,18 +50,24 @@
 			<!--end /  head tabla-detalle -->
 
 			<?php 
-				$cantItems = 6;
-				for ($i=0; $i < $cantItems ; $i++) { 
-			 ?>
+				$i = 0;
+				foreach($collection->compras as $keycompras => $valcompras):
+			?>
 
 			<!--ITEM accordeon-->
 			<div class="item">
 
 				<!--head accordeon-->
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i;?>" class="<?php if($i != 0){echo 'collapsed';}; //accordeon abierto ?> ">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $keycompras;?>" class="<?php if($i != 0){echo 'collapsed';}; //accordeon abierto ?> ">
 					<div class="panel-heading">
 						<h4>
-							2015/03/20 10:38:40
+							<?php 
+								foreach($valcompras as $key => $val):
+									$date = new DateTime($val->fecha);
+									echo $date->format('Y/m/d H:i:s');
+									break;
+								endforeach;
+							 ?>
 						</h4>
 						<div class="flecha"></div>
 					</div>
@@ -66,16 +75,17 @@
 				<!--end / head accordeon-->
 
 				<!--body accordeon-->
-				<div id="collapse<?php echo $i;?>" class="panel-collapse collapse <?php if($i == 0){echo 'in';}; //accordeon abierto ?> ">
+				<div id="collapse<?php echo $keycompras;?>" class="panel-collapse collapse <?php if($i == 0){echo 'in';$i++;}; //accordeon abierto ?> ">
 					<div class="panel-body">
 						<!-- tabla-detalle -->
 						<table class="tabla-detalle">
 
 							<tbody>
 
-								<?php 
-									$cantPedidos = 6;
-									for ($x=0; $x < $cantPedidos ; $x++) { 
+								<?php
+									$x = 0;
+									foreach($valcompras as $keydetalles => $valdetalles):
+									
 								 ?>
 								 
 
@@ -83,13 +93,14 @@
 								<tr>	
 									<!--total puntos (columna no se repite ->rowspan = cantidad de items) -->
 									<?php   if($x == 0){   ?>
-									<td class=" vertical-align-top" rowspan="<?php echo $cantItems ?>">
+									<td class=" vertical-align-top" rowspan="<?php echo count($valcompras) ?>">
 										<div class="puntos">
-											<p class="num">450</p>
+											<p class="num"><?php echo($collection->totales[$keycompras]) ?></p>
 											<span class="text-uppercase">puntos</span>
 										</div>
 									</td>
-									<?php } ?>
+
+									<?php $x++;} ?>
 									<!--end / total puntos -->
 									
 									<!-- img -->
@@ -103,7 +114,7 @@
 									<!--nombre -->
 									<td class="col-Auto">
 										<div class="background-2">
-											<p class="text text-uppercase">camisa escosesa</p>
+											<p class="text text-uppercase"><?php echo($valdetalles->nombre) ?></p>
 										</div>
 									</td>
 									<!--end /  nombre -->
@@ -112,8 +123,11 @@
 									<td class="col-B">
 										<div class="background-2">
 											<!-- SI NO HAY TALLE-->
-											<!-- <p class="text-uppercase inactivo">n/a</p>-->
-											<p class="text-uppercase big-text">m</p>
+											<?php if(is_null($valdetalles->talle) || empty($valdetalles->talle)): ?>
+											 	<p class="text-uppercase inactivo">n/a</p>
+											<?php else: ?>
+											<p class="text-uppercase big-text"><?php echo($valdetalles->talle) ?></p>
+											<?php endif; ?>
 										</div>
 									</td>
 									<!--end /  talle -->
@@ -121,12 +135,15 @@
 									<!--color -->
 									<td class="col-C">
 										<div class="background-2">
-											<!-- SI NO HAY COLOR-->
-											<!-- <p class="text-uppercase inactivo">n/a</p>-->
-											<div class="color">
-												<span class="icon-color  color-verde "></span>
-												<p class=" text-uppercase">gris oscuro </p>
-											</div>
+											<!-- SI NO HAY COLORs-->
+											<?php if(is_null($valdetalles->color) || empty($valdetalles->talle)): ?>
+											 	<p class="text-uppercase inactivo">n/a</p>
+											<?php else: ?>
+												<div class="color">
+													<span class="icon-color  color-verde " <?php echo Color::get($valdetalles->color) ?> ></span>
+													<p class=" text-uppercase"><?php echo($valdetalles->color) ?> </p>
+												</div>
+											<?php endif; ?>
 										</div>
 									</td>
 									<!--end /  color -->
@@ -134,7 +151,7 @@
 									<!--unidades -->
 									<td class="col-B">
 										<div class="background-2">
-											<p class="text-uppercase big-text ">15</p>
+											<p class="text-uppercase big-text "><?php echo($valdetalles->cantidad) ?></p>
 										</div>
 									</td>
 									<!--end / unidades -->
@@ -142,7 +159,7 @@
 									<!--puntos -->
 									<td class="col-B">
 										<div class="background-2">
-											<p class="text-uppercase big-text ">450</p>
+											<p class="text-uppercase big-text "><?php echo($valdetalles->precio_pagado) ?></p>
 										</div>
 									</td>
 									<!--end / puntos -->
@@ -150,11 +167,22 @@
 									<!--estado -->
 									<td class="col-D">
 										<div class="background-1 pendiente">
-											<!-- IMAGEN PARA DIFERENTES ESTADOS-->
-											<!-- <img src="assets/images/entregado.png" alt="">-->
-											<!-- <img src="assets/images/enviado.png" alt="">-->
-											<img src="assets/images/entregado.png" alt="">
-											<p class="text text-uppercase">entregado</p>
+											<?php switch(Estado::get($valdetalles->estado)):
+											case 'REALIZADO': ?>
+											 <!-- <img src="assets/images/enviado.png" alt=""> -->
+											<?php break;
+											case 'EN PROCESO': ?>
+											  <!-- <img src="assets/images/enviado.png" alt=""> -->
+											<?php break;
+											case 'ENVIADO': ?>
+											 <img src="assets/images/enviado.png" alt="">
+											<?php break;
+											case 'ENTREGADO': ?>
+											 <img src="assets/images/entregado.png" alt="">
+											<?php break; ?>
+
+											<?php endswitch; ?>
+											<p class="text text-uppercase"><?php echo Estado::get($valdetalles->estado);?></p>
 										</div>
 									</td>
 									<!--end / estado -->
@@ -162,7 +190,7 @@
 									<!--remito -->
 									<td class="col-D">
 										<div class="background-1">
-											<p class="medium-text text-uppercase">Nº 04517</p>
+											<p class="medium-text text-uppercase">Nº <?php echo($valdetalles->remito) ?></p>
 										</div>
 									</td>
 									<!--end / remito -->
@@ -170,7 +198,7 @@
 								<!--***********END /  ITEM *********-->
 
 								<?php 
-									}
+									endforeach;
 								?>
 
 							</tbody>
@@ -185,7 +213,7 @@
 
 			
 			<?php 
-				}
+				endforeach;
 			?>
 
 		</div>
