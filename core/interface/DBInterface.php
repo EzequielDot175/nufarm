@@ -174,6 +174,22 @@
 				cart.idUsuario = :id";
 
 			const SHOPPINGCART_SUM = "SELECT IFNULL(SUM(intCantidad),0) as cantidad FROM carrito WHERE idUsuario = :id";
+
+
+			/**
+			 * @internal
+			 * Historial
+			 */
+			
+			const HISTORIAL_GET = "SELECT 
+				compra.idCompra,
+			    dt.*
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra 
+			WHERE
+				idUsuario = :id";
 		}
 
 

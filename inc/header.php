@@ -84,7 +84,7 @@
 							</a>
 						</li>
 						<li class="text-uppercase">
-							<a href="#historial">
+							<a href="historial.php">
 								<img src="assets/images/menu-2.png" alt="">
 								<span class="text-a">HISTORIAL</span>
 								<span class="text-b">DE CANJES REALIZADOS</span>
