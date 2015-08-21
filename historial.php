@@ -1,10 +1,8 @@
 <?php 
-	require('inc/header.php');
-	$carrito = new ShoppingCart();
-	$items = $carrito->all();	
+	require_once('inc/header.php');
+	/*Historial::get();
+	die();*/
 ?>
-<!-- Header -->
-
 		
 	<!--detalle productos-->
 	<div class="historial-productos col-xs-12 col-sm-12 col-md-12 ol-lg-12">

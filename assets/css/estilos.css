@@ -1670,6 +1670,9 @@ body {
         top: 16px; }
         .carrito-productos .tabla-detalle td .producto img {
           width: 110%; }
+      .carrito-productos .tabla-detalle td .text-producto {
+        height: 44px;
+        padding-left: 54px; }
       .carrito-productos .tabla-detalle td .cerrar {
         position: relative;
         top: 50%;
