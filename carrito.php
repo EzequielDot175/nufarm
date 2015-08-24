@@ -44,7 +44,9 @@
 						<div class="producto">
 							<img src="images_productos/<?php echo $val->img ?>" alt="">
 						</div>
-						<p class="text text-uppercase"><?php echo $val->name ?></p>
+						<div class="text-producto">
+							<p class="text text-uppercase"><?php echo $val->name ?></p>
+						</div>
 					</td>
 					<td class="col-B">
 						<!-- SI NO HAY TALLE
@@ -54,17 +56,15 @@
 						<p class="text-uppercase big-text"><?php echo $val->talle ?></p>
 					</td>
 					<td class="col-C">
-						<!-- SI NO HAY COLOR
-							<p class="text-uppercase inactivo">n/a</p>
-						-->
 						<!-- color-->
+						<?php if($val->color == ''): //si no hay color ?>
+							<p class="text-uppercase inactivo">n/a</p>
+						<?php elseif(!is_null($val->color)): //si hay color ?>
 						<div class="color">
-						<?php if(!is_null($val->color)): ?>
 							<span class="icon-color  color-verde " <?php echo Color::get($val->color) ?> ></span>
 							<p class=" text-uppercase"><?php echo $val->color ?> </p>
-						<?php endif;  ?>
 						</div>
-						
+						<?php endif;  ?>
 						<!-- end / color-->
 					</td>
 					<td class="col-B">
@@ -88,7 +88,7 @@
 						<!--COLUMNA TOTAL (no se repite rowspan = cantidad de items) -->
 						<td class="total col-Total" rowspan="<?php $carrito->cantidad() ?>">
 							<div class="block-num">
-								<p class="num "><?php $carrito->total(); ?></p>
+								<p class="num ">$ <?php $carrito->total(); ?></p>
 							</div>
 						</td>
 						<!--END / COLUMNA TOTAL -->

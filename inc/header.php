@@ -13,14 +13,14 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>Marketing Net</title>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Marketing Net</title>
 
-	<!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
+		<!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -53,7 +53,6 @@
 						<a href="salir.php"><p class="text-uppercase">salir</p></a>
 						<img src="assets/images/cerrar.png" id="Nufarm" title="Nufarm" alt="Imagen no encontrada">
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -74,7 +73,7 @@
 				<!--// boton menu mobile -->
 
 				<!-- Contenido menu-->
-				<div class="collapse navbar-collapse" id="navbar-menu">
+				<div class="collapse navbar-collapse background-menu" id="navbar-menu">
 					<ul class="nav navbar-nav">
 						<li class="text-uppercase catalogo">
 							<a href="catalogo.php">
@@ -91,7 +90,7 @@
 							</a>
 						</li>
 						<li class="text-uppercase dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<a href="mi-cuenta-maqueta.php">
 								<img src="assets/images/menu-3.png" alt="">
 								<span class="text-a">MI CUENTA</span>
 								<span class="text-b">DATOS Y CONSULTAS</span>
@@ -111,18 +110,16 @@
 				</div>
 				<!-- end / ver carrito-->
 
-
 			</div>
 		</nav>
 		<!-- //MENU************************************************************************-->
 
 
 		<!-- CONTENEDOR GENERAL***********************************************************-->
-		<div class="contenedor ">
+		<div class="contenedor contenedor-body ">
 
 			<!--base-->
 			<div class="base">
-
 
 				<!--titulo-->
 				<div class="titulo col-xs-12 col-sm-12 col-md-12 ol-lg-12">
@@ -132,11 +129,12 @@
 						<h3 class="text-b">DE PRODUCTOS</h3>
 					</div>
 					<div class="block-right">
+						<p class="text-a text-uppercase">nombre usuario</p>
 						<p class="num"><?php echo Auth::User()->dblCredito; ?></p>
-						<p class="text-a text-uppercase">puntos</p>
 						<p class="text-b text-uppercase">PUNTOS DISPONIBLES 
 							<br>HASTA 31/07/2016
 						</p>
+						<span class="sombra"></span>
 					</div>
 				</div>
 				<!--end / titulo-->

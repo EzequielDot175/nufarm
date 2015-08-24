@@ -835,7 +835,6 @@ body {
 .ver-carrito:hover {
   opacity: .5; }
 
-/* --- FILTROS  --- */
 .filtros p {
   font-family: 'Brandon_reg';
   color: #fff;
@@ -876,7 +875,6 @@ body {
 .filtros option:focus {
   outline: none; }
 
-/* --- ACORDEON  --- */
 .acordeon-general {
   margin-bottom: 20px;
   float: left;
@@ -945,7 +943,6 @@ body {
     text-decoration: none !important;
     opacity: .8; }
 
-/* --- FORM  --- */
 .form-default label, .form-default select, .form-default input, .form-default textarea {
   width: 100%;
   font-size: 11px;
@@ -980,16 +977,11 @@ body {
   letter-spacing: .2;
   font-weight: normal; }
 
-/* --- DIALOG --- */
 .dialog {
   position: relative;
-  margin-bottom: 20px;
-  background-image: url("../images/dialog-bottom.png");
-  background-repeat: no-repeat;
-  background-position-x: 16px;
-  background-position-y: bottom;
-  padding-bottom: 18px; }
+  margin-bottom: 20px; }
   .dialog .block-dialog {
+    height: 130px;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.5);
     -moz-background-color: rgba(255, 255, 255, 0.5);
@@ -1005,14 +997,6 @@ body {
     position: absolute;
     bottom: -18px;
     left: 18px; }
-
-.dialog-verde {
-  background-image: url("../images/dialog-bottom-verde.png");
-  background-position-x: 90%;
-  padding-bottom: 19px;
-  color: #E4E4E4; }
-  .dialog-verde .block-dialog {
-    background-color: rgba(9, 150, 66, 0.5); }
 
 /* RESPONSIVE  */
 /*mobile--------------------------------------------------*/
@@ -1948,13 +1932,26 @@ body {
       text-align: right;
       font-family: 'Brandon_reg';
       font-size: 24px; }
-  .mi-cuenta .sidebar .block-dialog {
-    height: 130px;
-    overflow: hidden; }
-  .mi-cuenta .columna-a {
-    padding-right: 10px; }
-  .mi-cuenta .columna-b {
-    padding-left: 10px; }
+  .mi-cuenta .sidebar .dialog {
+    position: relative;
+    margin-bottom: 20px; }
+    .mi-cuenta .sidebar .dialog .block-dialog {
+      height: 130px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.5);
+      -moz-background-color: rgba(255, 255, 255, 0.5);
+      -webkit-background-color: rgba(255, 255, 255, 0.5);
+      -ms-background-color: rgba(255, 255, 255, 0.5);
+      -o-background-color: rgba(255, 255, 255, 0.5); }
+      .mi-cuenta .sidebar .dialog .block-dialog .text {
+        font-family: 'robotoregular';
+        font-size: 12px; }
+      .mi-cuenta .sidebar .dialog .block-dialog .autor {
+        margin-top: 10px; }
+    .mi-cuenta .sidebar .dialog .image {
+      position: absolute;
+      bottom: -18px;
+      left: 18px; }
 
 /* RESPONSIVE  */
 /*mobile--------------------------------------------------*/
@@ -1976,4 +1973,4 @@ body {
 /*desktop------------------------------*/
 /*desktop large-----------------------------------------------*/
 
-/*# sourceMappingURL=estilos.css.map */
+/*# sourceMappingURL=estilos,css.map */
