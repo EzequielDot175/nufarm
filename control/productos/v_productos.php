@@ -115,9 +115,7 @@ echo '<div id="content-prod">';
 
 $productos = new Producto();
 $all = $productos->all();
-echo "<pre>";
-print_r($all[0]);
-echo "</pre>";
+
 ?>
 <div class="barra-prod"><span>Productos</span></div>
 
