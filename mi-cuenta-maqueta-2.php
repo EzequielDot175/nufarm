@@ -14,7 +14,7 @@
 	<!--end / head-page-->
 
 	<!--formulario-->
-	<div class="formulario block-a col-xs-12 col-sm-5 col-md-5 ol-lg-5">
+	<div class="formulario block-a col-xs-12 col-sm-4 col-md-4 ol-lg-4">
 
 		<h3 class="sub-titulo text-uppercase">Nueva Consulta</h3>
 
@@ -41,32 +41,75 @@
 	<!--end / formulario-->
 
 
-	<!--sidebar-->
-	<div class="consultas block-b col-xs-12 col-sm-7 col-md-7">
+	<!--consultas-->
+	<div class="consultas block-b col-xs-12 col-sm-8 col-md-8">
 
 		<h3 class="sub-titulo text-uppercase">Consultas Realizadas</h3>
-
-
-		<div class="columna-a col-xs-12 col-sm-6 col-md-6">
-			<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-				<div class="block-dialog">
-					<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. </p>
-					<p class="text autor ">Gabriel Filippa </p>
+		
+		<!--block-items-->
+		<div class="block-items col-xs-12 col-sm-12 col-md-12">
+		
+			<?php
+				for ($i=1; $i < 3 ; $i++) { 
+			?>
+				<!--item-->
+				<div class="columna-a col-xs-12 col-sm-6 col-md-6">
+					<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+						<div class="block-dialog">
+							<p class="text fecha ">2015-07-30 10:35:55</p>
+							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. </p>
+							<p class="text autor ">Gabriel Filippa </p>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-
-		<div class="columna-b col-xs-12 col-sm-6 col-md-6">
-			<div class="dialog dialog-verde col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-				<div class="block-dialog">
-					<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. En la compra me faltan 10 pesos para ...</p>
-					<p class="text autor ">Gabriel Filippa </p>
+				<!--end / item-->
+				<!--item-->
+				<div class="columna-b col-xs-12 col-sm-6 col-md-6">
+					<div class="dialog dialog-verde col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+						<div class="block-dialog">
+							<p class="text fecha ">2015-07-30 10:35:55</p>
+							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. En la compra me faltan 10 pesos para ...</p>
+							<p class="text autor ">Gabriel Filippa </p>
+						</div>
+					</div>
 				</div>
-			</div>
+				<!--end / item-->
+
+				<hr><!-- cada dos consultas va un HR -->
+
+				<!--item-->
+				<div class="columna-a col-xs-12 col-sm-6 col-md-6">
+					<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+						<div class="block-dialog">
+							<p class="text fecha ">2015-07-30 10:35:55</p>
+							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. GRACIAS.</p>
+							<p class="text autor ">Gabriel Filippa </p>
+						</div>
+					</div>
+				</div>
+				<!--end / item-->
+				<!--item-->
+				<div class="columna-b col-xs-12 col-sm-6 col-md-6">
+					<div class="dialog dialog-verde col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+						<div class="block-dialog">
+							<p class="text fecha ">2015-07-30 10:35:55</p>
+							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. En la compra me faltan 10 pesos para ...</p>
+							<p class="text autor ">Gabriel Filippa </p>
+						</div>
+					</div>
+				</div>
+				<!--end / item-->
+
+				<hr><!-- cada dos consultas va un HR -->
+			<?php
+				}
+			?>
+
 		</div>
+		<!--end / block-items-->
 
 	</div>
-	<!--end / sidebar-->
+	<!--end / consultas-->
 
 </div>
 <!--end / mi cuenta-->

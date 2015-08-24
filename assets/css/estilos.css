@@ -652,7 +652,8 @@ body {
   -ms-background-color: rgba(199, 199, 199, 0.2);
   height: 75px;
   padding: 15px 10px;
-  position: relative; }
+  position: relative;
+  margin-bottom: 80px; }
 .base .titulo {
   background-color: rgba(255, 255, 255, 0.5);
   -moz-background-color: rgba(255, 255, 255, 0.5);
@@ -983,7 +984,6 @@ body {
 /* --- DIALOG --- */
 .dialog {
   position: relative;
-  margin-bottom: 20px;
   background-image: url("../images/dialog-bottom.png");
   background-repeat: no-repeat;
   background-position-x: 16px;
@@ -998,9 +998,13 @@ body {
     -o-background-color: rgba(255, 255, 255, 0.5); }
     .dialog .block-dialog .text {
       font-family: 'robotoregular';
-      font-size: 12px; }
+      font-size: 12px;
+      line-height: 17px; }
     .dialog .block-dialog .autor {
       margin-top: 10px; }
+    .dialog .block-dialog .fecha {
+      color: #FFFFFF;
+      margin-bottom: 10px; }
   .dialog .image {
     position: absolute;
     bottom: -18px;
@@ -1895,9 +1899,9 @@ body {
     padding: 0;
     margin: 30px 0 15px 0; }
   .mi-cuenta .block-a {
-    padding: 20px 20px 20px 60px; }
+    padding: 20px 0px 20px 60px; }
   .mi-cuenta .block-b {
-    padding: 20px 60px; }
+    padding: 20px 40px 20px 45px; }
   .mi-cuenta .form-a {
     padding-right: 15px; }
   .mi-cuenta .form-b {
@@ -1951,27 +1955,61 @@ body {
   .mi-cuenta .sidebar .block-dialog {
     height: 130px;
     overflow: hidden; }
-  .mi-cuenta .columna-a {
-    padding-right: 10px; }
-  .mi-cuenta .columna-b {
-    padding-left: 10px; }
+  .mi-cuenta .block-items {
+    width: 105%;
+    position: relative;
+    padding-right: 2%;
+    max-height: 455px;
+    overflow-y: scroll;
+    overflow-x: hidden; }
+    .mi-cuenta .block-items .columna-a {
+      padding-right: 7px; }
+    .mi-cuenta .block-items .columna-b {
+      padding-left: 7px; }
+    .mi-cuenta .block-items hr {
+      margin: 8px 0 12px 0; }
 
 /* RESPONSIVE  */
 /*mobile--------------------------------------------------*/
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .block-a {
-    padding: 10px !important; }
+    padding: 20px !important;
+    margin-bottom: 20px; }
 
   .block-b {
-    padding: 10px !important; }
+    padding: 20px !important; }
 
   .form-a {
-    padding: 0px 10px !important; }
+    padding: 0px !important; }
 
   .form-b {
-    padding: 0px 10px !important; } }
+    padding: 0px !important; }
+
+  .mi-cuenta .block-items {
+    max-height: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0; }
+
+  .dialog {
+    margin: 10px 0; }
+
+  .mi-cuenta .block-items .columna-a {
+    padding-right: 0px; }
+
+  .mi-cuenta .block-items .columna-b {
+    padding-left: 0px; }
+
+  .mi-cuenta .hr-bottom {
+    margin: 0px 0 15px 0; } }
 /*tablet----------------------------------------*/
 /**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 771px) and (max-width: 980px) {
+  .formulario {
+    width: 55%; }
+
+  .sidebar {
+    width: 45%; } }
 /*notbook------------------------------------*/
 /*desktop------------------------------*/
 /*desktop large-----------------------------------------------*/
