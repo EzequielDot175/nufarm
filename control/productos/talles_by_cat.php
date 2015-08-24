@@ -116,55 +116,71 @@ $prod = new Producto();
 
 				if($talles ==1)
 				{
-					
-					$talles = $prod->talles($idproducto);
+					$talles = array();
+					$byProd = $prod->talles($idproducto);
+					$allTalles = $prod->allTalles();
+					$formatAll = array();
+
+					foreach($byProd as $key => $val):
+						$formatAll[$val->id]['nombre'] = $val->talle; 
+						$formatAll[$val->id]['cantidad'] = $val->cantidad; 
+					endforeach;
+
+					foreach($allTalles as $key => $val):
+						$item               = new stdClass();
+						$item->{'nombre'}   = $val->nombre_talle;
+						$item->{'id'}       = $val->id_talle;
+						$item->{'cantidad'} = ( isset($formatAll[$val->id_talle]) ? $formatAll[$val->id_talle]['cantidad'] : 0 );
+						$talles[]           = $item;
+					endforeach;
+
 					$html = "";
 
-					if(!empty($talles)):
-						foreach($talles as $key => $val):
-							$html .=   '
-							<div class="tallebox">
-								<p>'.$val->talle.'</p>
-								<p><input class="inputshort" type="text" name="talle['.$val->id.']" value="'.$val->cantidad.'" id="talle'.$val->id.'"></p>
-							</div>';
-						endforeach;
-					else:
-						$talles = $prod->allTalles();
-						foreach($talles as $key => $val):
-							$html .=   '
-							<div class="tallebox">
-								<p>'.$val->nombre_talle.'</p>
-								<p><input class="inputshort" type="text" name="talle['.$val->id_talle.']" value="0" id="talle'.$val->id_talle.'"></p>
-							</div>';
-						endforeach;
-					endif;
+					foreach($talles as $key => $val):
+						$html .=   '
+						<div class="tallebox">
+							<p>'.$val->nombre.'</p>
+							<p><input class="inputshort" type="text" name="talle['.$val->id.']" value="'.$val->cantidad.'" id="talle'.$val->id.'"></p>
+						</div>';
+					endforeach;
+					
 
 					echo($html);
 				}
 				else if ($talles ==2)
 				{
-					$colores = $prod->colores($idproducto);
+					$colores = array();
+					$byProd = $prod->colores($idproducto);
+					$allColores = $prod->allColores();
+					$formatAll = array();
+
+
+
+					foreach($byProd as $key => $val):
+						$formatAll[$val->id]['nombre'] = $val->color; 
+						$formatAll[$val->id]['cantidad'] = $val->cantidad; 
+					endforeach;
+
+			
+					foreach($allColores as $key => $val):
+						$item               = new stdClass();
+						$item->{'nombre'}   = $val->nombre_color;
+						$item->{'id'}       = $val->id_color;
+						$item->{'cantidad'} = ( isset($formatAll[$val->id_color]) ? $formatAll[$val->id_color]['cantidad'] : 0 );
+						$colores[]           = $item;
+					endforeach;
 
 					$html = '';
 
-					if(!empty($colores)):
-						foreach($colores as $key => $val):
-							$html .=   '
-							<div class="tallebox">
-								<p>'.$val->color.'</p>	
-								<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="'.$val->id.'"></p>
-							</div>';
-						endforeach;
-					else:
-						$colores = $prod->allColores();
-						foreach($colores as $key => $val):
-							$html .=   '
-							<div class="tallebox">
-								<p>'.$val->nombre_color.'</p>	
-								<p><input class="inputshort" type="text" name="color['.$val->id_color.']" value="0" id="'.$val->id_color.'"></p>
-							</div>';
-						endforeach;
-					endif;
+					
+					foreach($colores as $key => $val):
+						$html .=   '
+						<div class="tallebox">
+							<p>'.$val->nombre.'</p>
+							<p><input class="inputshort" type="text" name="talle['.$val->id.']" value="'.$val->cantidad.'" id="talle'.$val->id.'"></p>
+						</div>';
+					endforeach;
+					
 
 					echo($html);
 
