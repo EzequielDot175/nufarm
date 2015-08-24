@@ -1,7 +1,8 @@
 <?php 
+ob_start();
 
 // error_reporting(E_ALL);
-// ini_set('display_error', 'on');
+// ini_set('display_errors', 'On');
 
 include_once('../resources/control.php'); 
 include_once("classes/class.productos.php");
@@ -347,9 +348,8 @@ else
 	// die();
 
 }
-
-
-$_SESSION['msg_ok'] = $msg_final;
-header('Location: ./v_productos.php?activo=2&sub=d');
+// $_SESSION['msg_ok'] = $msg_final;
+@header('Location: ./v_productos.php?activo=2&sub=d');
+exit();
 
 ?>
