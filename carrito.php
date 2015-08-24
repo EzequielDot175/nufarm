@@ -116,7 +116,7 @@
 		<div class="col-xs-12 col-sm-9 col-md-9 ol-lg-9">
 			<a href="catalogo.php">
 				<div class='block-botones'>
-					<button class="boton inactivo" type="">AGREGAR MAS PRODUCTOS</button>
+					<button class="boton" type="">AGREGAR MAS PRODUCTOS</button>
 				</div>
 			</a>
 		</div>

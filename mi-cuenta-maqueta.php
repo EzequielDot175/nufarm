@@ -14,7 +14,7 @@
 	<!--end / head-page-->
 
 	<!--formulario-->
-	<div class="formulario block-a col-xs-12 col-sm-7 col-md-7 ol-lg-7">
+	<div class="formulario formularioSidebar block-a col-xs-12 col-sm-7 col-md-7 ol-lg-7">
 
 		<h3 class="sub-titulo text-uppercase">Datos</h3>
 
@@ -149,7 +149,6 @@
 		</div>
 
 		
-
 		<h3 class="sub-titulo sub-titulo-bottom text-uppercase">Consultas</h3>
 
 		<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
@@ -158,7 +157,6 @@
 				<p class="text autor ">Gabriel Filippa </p>
 			</div>
 		</div>
-		
 		
 		<!-- botones -->
 		<hr class="hr-bottom">

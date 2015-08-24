@@ -112,6 +112,10 @@
                                                     position: relative;
                                                     top: 50%;
                                                     transform: translateY(-50%);
+                                                    -moz-transform: translateY(-50%);
+                                                    -webkit-transform: translateY(-50%);
+                                                    -ms-transform: translateY(-50%);
+                                                    -o-transform: translateY(-50%);
                                                     box-sizing: border-box;
                                                     background-color: #fff;
                                                     border-radius: 100%;
@@ -137,6 +141,10 @@
                                                 position: relative;
                                                 top: 50%;
                                                 transform: translateY(-50%);
+                                                -moz-transform: translateY(-50%);
+                                                -webkit-transform: translateY(-50%);
+                                                -ms-transform: translateY(-50%);
+                                                -o-transform: translateY(-50%);
                                                 padding-left: 3px;
                                                 top: 2px;
                                                 position:relative;
@@ -148,6 +156,10 @@
                                                     position: relative;
                                                     top: 50%;
                                                     transform: translateY(-50%);
+                                                    -moz-transform: translateY(-50%);
+                                                    -webkit-transform: translateY(-50%);
+                                                    -ms-transform: translateY(-50%);
+                                                    -o-transform: translateY(-50%);
                                                     font-family: 'Brandon_reg';
                                                     height: 15px;
                                         }
@@ -286,6 +298,10 @@
                                                     position: absolute;
                                                     top: 50%;
                                                     transform: translateY(-50%);
+                                                    -moz-transform: translateY(-50%);
+                                                    -webkit-transform: translateY(-50%);
+                                                    -ms-transform: translateY(-50%);
+                                                     -o-transform: translateY(-50%);
                                         }
                         }
             }

@@ -66,6 +66,24 @@
 
 }
 
+
+//barra de scroll navegador 
+/*::-webkit-scrollbar {//fondo
+    background-color: rgba(#FFFFFF,.18);
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{//barra
+
+     background-color: rgba(#FFFFFF,.45);
+     width: 10px;
+}
+.navbar-collapse {
+
+     background-color: #d1d1d1;
+     width: 10px;
+}*/
+
+
 body {
     background: #3D5927 url("../images/fondo.jpg");
     background-size: cover;
@@ -339,6 +357,7 @@ $error : #AA4025;
                     height: 75px;
                     padding: 15px 10px;
                     position: relative;
+                    margin-bottom: 80px;
             }
 
             .titulo{
@@ -540,6 +559,7 @@ $error : #AA4025;
                 padding-left: 20px;
                 padding-right: 20px;
                 text-decoration: none;
+                color: #fff;
             }
  }
 
@@ -811,7 +831,6 @@ $error : #AA4025;
 /* --- DIALOG --- */
 .dialog{
             position: relative;
-            margin-bottom: 20px;
             background-image: url('../images/dialog-bottom.png');
             background-repeat: no-repeat;
             background-position-x: 16px;
@@ -826,14 +845,21 @@ $error : #AA4025;
                     -ms-background-color: rgba(#fff,.5);
                     -o-background-color: rgba(#fff,.5);
 
-                            .text{
-                                font-family: 'robotoregular';
-                                font-size: 12px;
-                            }
+                                .text{
+                                            font-family: 'robotoregular';
+                                            font-size: 12px;
+                                            line-height: 17px;
+                                }
 
-                            .autor{
-                                margin-top: 10px;
-                            }
+                                .autor{
+                                            margin-top: 10px;
+                                }
+
+                                .fecha{
+                                            color: #FFFFFF;
+                                            margin-bottom: 10px;
+                                }
+
             }
 
             .image{
