@@ -4,6 +4,31 @@
 .mi-cuenta{
             width: 100%;
 
+            //barra de scroll navegador 
+	::-webkit-scrollbar {//fondo
+	    background-color: rgba(#FFFFFF,.18);
+	    width: 10px;
+	}
+	::-webkit-scrollbar-thumb{//barra
+
+	     background-color: rgba(#FFFFFF,.45);
+	     width: 10px;
+	}
+
+	scrollbar-base-color: #C0C0C0;
+	scrollbar-base-color: #C0C0C0;
+	scrollbar-3dlight-color: #C0C0C0;
+	scrollbar-highlight-color: #C0C0C0;
+	scrollbar-track-color: #EBEBEB;
+	scrollbar-arrow-color: black;
+ 	scrollbar-shadow-color: #C0C0C0;
+	scrollbar-dark-shadow-color: #C0C0C0;
+
+	.navbar-collapse {
+	     background-color: #d1d1d1;
+	     width: 10px;
+	}
+
             hr{
             	border-top: 1px solid rgba(#fff,.4);
             	-moz-border-top:  1px solid rgba(#fff,.4);
@@ -190,6 +215,8 @@
 	}
 
 
+
+
 }
 
 
@@ -201,12 +228,12 @@
 /**  TABLETS LANDSCAPE **/
 @media screen and (min-width: 771px) and (max-width : 980px){
 
-	.formulario{
-		width: 55%;
+	.formularioSidebar{
+		width: 55% !important;
 	}
 
 	.sidebar {
-		width: 45%;
+		width: 45% !important;
 	}
 
 }

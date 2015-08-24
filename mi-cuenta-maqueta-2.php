@@ -40,11 +40,12 @@
 	</div>
 	<!--end / formulario-->
 
-
 	<!--consultas-->
 	<div class="consultas block-b col-xs-12 col-sm-8 col-md-8">
 
 		<h3 class="sub-titulo text-uppercase">Consultas Realizadas</h3>
+
+		
 		
 		<!--block-items-->
 		<div class="block-items col-xs-12 col-sm-12 col-md-12">

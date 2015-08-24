@@ -66,6 +66,24 @@
 
 }
 
+
+//barra de scroll navegador 
+/*::-webkit-scrollbar {//fondo
+    background-color: rgba(#FFFFFF,.18);
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{//barra
+
+     background-color: rgba(#FFFFFF,.45);
+     width: 10px;
+}
+.navbar-collapse {
+
+     background-color: #d1d1d1;
+     width: 10px;
+}*/
+
+
 body {
     background: #3D5927 url("../images/fondo.jpg");
     background-size: cover;
@@ -541,6 +559,7 @@ $error : #AA4025;
                 padding-left: 20px;
                 padding-right: 20px;
                 text-decoration: none;
+                color: #fff;
             }
  }
 

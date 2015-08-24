@@ -120,7 +120,7 @@
 										<div class="background-2">
 											<!-- SI NO HAY TALLE-->
 											<?php if(is_null($valdetalles->talle) || empty($valdetalles->talle) ): ?>
-											 	<p class="text-uppercase inactivo">n/a</p>
+											 	<p class="text-uppercase inactivo medium-text">n/a</p>
 											<?php else: ?>
 											<p class="text-uppercase big-text"><?php echo($valdetalles->talle) ?></p>
 											<?php endif; ?>
@@ -133,7 +133,7 @@
 										<div class="background-2">
 											<!-- SI NO HAY COLORs-->
 											<?php if(is_null($valdetalles->color) || empty($valdetalles->talle)): ?>
-											 	<p class="text-uppercase inactivo">n/a</p>
+											 	<p class="text-uppercase inactivo medium-text">n/a</p>
 											<?php else: ?>
 												<div class="color">
 													<span class="icon-color  color-verde " <?php echo Color::get($valdetalles->color) ?> ></span>
