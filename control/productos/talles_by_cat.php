@@ -16,6 +16,7 @@ $prod = new Producto();
 
 				function build_boxes($talle, $nombre_talle, $idproducto){
 					
+					$salida = "";
 					if($idproducto > 0)
 					{
 						//editar

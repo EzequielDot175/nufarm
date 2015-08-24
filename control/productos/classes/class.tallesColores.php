@@ -46,7 +46,9 @@
 				$sql .= "UPDATE colores_talles SET cantidad = ".(int)$v." WHERE id_producto = ".$prod." && id_color = ".$color." && id_talle = ".$k.";";
 				endif;
 			endforeach;
-			return true;
+
+			return $this->query($sql);
+			// return true;
 		}
 		public function all($prod = null){
 			if(is_null($prod)):
@@ -117,6 +119,8 @@
 		public function add($val,$prod,$color){
 			$sql = "INSERT INTO colores_talles (id_producto,id_color,id_talle,cantidad) VALUES ";
 			$i = 0;
+
+
 			if(!$this->exist($prod,$color)):
 				foreach($val['talle'] as $k => $v):
 					if ($i == 0) {
@@ -137,6 +141,7 @@
 				if (!$this->update($prod, $color, $val['talle'])) {
 					throw new Exception("Error al intentar actualizar los talles", 1);
 				}
+
 			endif;
 			
 		}
@@ -170,6 +175,7 @@
 			endforeach;
 			
 			$sql .= " WHERE idProducto = ".$id;
+
 
 			$this->exec($sql);
 		}

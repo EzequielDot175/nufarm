@@ -28,6 +28,9 @@ $color = $_POST['color'];
 
 
 
+
+
+
 // if($_FILES['strImagen']['name']!=""){
 
 //       $nombre_final="";
@@ -281,6 +284,8 @@ elseif (isset($_POST["color_talle"])) {
 
 
 
+
+
 	$x = new tallesColores();
 
 	$x->idProducto=$idProducto;
@@ -303,8 +308,6 @@ elseif (isset($_POST["color_talle"])) {
 	endforeach;
 	$x->execProdStock($idProducto);
 
-
-	
 
 
 }
