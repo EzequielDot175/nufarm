@@ -65,8 +65,9 @@
 		public function allById($id = null){
 			$take = ( is_null($id) ? $this->id : $id);
 			$meta = $this->prepare(self::PRODUCTO_ALLBYID);
-			$meta->bindParam(':id',$id, PDO::PARAM_INT);
+			$meta->bindParam(':id',$take, PDO::PARAM_INT);
 			$meta->execute();
+
 
 			if(is_null($id)):
 				$this->meta = $meta->fetch();
