@@ -2,7 +2,7 @@
 	require_once('inc/header.php');
 
 	$historial = new Historial();
-	$collection = $historial->get(); 
+	$collection = $historial->getById(); 
 
 ?>
 		
