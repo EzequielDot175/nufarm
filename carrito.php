@@ -59,7 +59,6 @@
 						<!-- color-->
 						<?php if($val->color == ''): //si no hay color ?>
 							<p class="text-uppercase inactivo">n/a</p>
-
 						<?php elseif(!is_null($val->color)): //si hay color ?>
 						<div class="color">
 							<span class="icon-color  color-verde " <?php echo Color::get($val->color) ?> ></span>

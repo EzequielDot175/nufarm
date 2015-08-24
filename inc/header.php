@@ -90,7 +90,7 @@
 							</a>
 						</li>
 						<li class="text-uppercase dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<a href="mi-cuenta-maqueta.php">
 								<img src="assets/images/menu-3.png" alt="">
 								<span class="text-a">MI CUENTA</span>
 								<span class="text-b">DATOS Y CONSULTAS</span>

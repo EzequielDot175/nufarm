@@ -119,7 +119,7 @@
 									<td class="col-B">
 										<div class="background-2">
 											<!-- SI NO HAY TALLE-->
-											<?php if(is_null($valdetalles->talle) || empty($valdetalles->talle)): ?>
+											<?php if(is_null($valdetalles->talle) || empty($valdetalles->talle) ): ?>
 											 	<p class="text-uppercase inactivo">n/a</p>
 											<?php else: ?>
 											<p class="text-uppercase big-text"><?php echo($valdetalles->talle) ?></p>

@@ -51,6 +51,18 @@
          url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont.eot');
+    src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto-regular-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-regular-webfont.woff') format('woff'),
+         url('../fonts/roboto-regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
 }
 
@@ -319,11 +331,11 @@ $error : #AA4025;
             }
 
             .sub-footer{
-                    background-color: rgba(#C7C7C7,.3);
-                    -moz-background-color: rgba(#C7C7C7,.3);
-                    -webkit-background-color: rgba(#C7C7C7,.3);
-                    -o-background-color: rgba(#C7C7C7,.3);
-                    -ms-background-color: rgba(#C7C7C7,.3);
+                    background-color: rgba(#C7C7C7,.2);
+                    -moz-background-color: rgba(#C7C7C7,.2);
+                    -webkit-background-color: rgba(#C7C7C7,.2);
+                    -o-background-color: rgba(#C7C7C7,.2);
+                    -ms-background-color: rgba(#C7C7C7,.2);
                     height: 75px;
                     padding: 15px 10px;
                     position: relative;
@@ -509,36 +521,37 @@ $error : #AA4025;
             display: block;
             display: table;
             padding-top: 2em;
-
-            .boton {
-                        background-color: $violeta;
-                        border: none;
-                        width: 126px;
-                        height: 36px;
-                        color: #fff;
-                        font-family: 'BrooklynSamuelsFive-Bold';
-                        font-weight: normal;
-                        padding-top: 5px;
-                        margin: 0 5px;
-
-                &.href{
-                    padding: 7px;
-                    padding-top: 10px;
-                    padding-left: 20px;
-                    padding-right: 20px;
-                    text-decoration: none;
-                }
-             }
-
-             .boton:hover {
-                        opacity: .8;
-             }
-
-            .inactivo{
-                        opacity: .5;
-             }
 }
 
+.boton {
+            background-color: $violeta;
+            border: none;
+            width: 126px;
+            height: 36px;
+            color: #fff;
+            font-family: 'BrooklynSamuelsFive-Bold';
+            font-weight: normal;
+            padding-top: 5px;
+            margin: 0 5px;
+
+            &.href{
+                padding: 7px;
+                padding-top: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                text-decoration: none;
+            }
+ }
+
+
+ .boton:hover {
+            opacity: .8;
+ }
+
+
+.inactivo{
+            opacity: .5;
+ }
 
 .ver-carrito{
             position: absolute;
@@ -586,6 +599,8 @@ $error : #AA4025;
             opacity: .5;
 }
 
+
+/* --- FILTROS  --- */
 .filtros{
 
             p{
@@ -643,7 +658,7 @@ $error : #AA4025;
 
 }
 
- //acordeon
+/* --- ACORDEON  --- */
 .acordeon-general{
             margin-bottom: 20px;
             float: left;
@@ -739,6 +754,106 @@ $error : #AA4025;
 
 
 
+}
+
+
+/* --- FORM  --- */
+.form-default{
+
+            label, select, input, textarea{
+                width: 100%;
+                font-size: 11px;
+                color: #fff;
+                font-family: 'Brandon_reg';
+            }
+
+             input, textarea{
+                background-color: transparent;
+                border: 1px solid rgba(#fff,.5);
+                -moz-border: 1px solid rgba(#fff,.5);
+                -webkit-border: 1px solid rgba(#fff,.5);
+                -ms-border: 1px solid rgba(#fff,.5);
+                -o-border: 1px solid rgba(#fff,.5);
+                height: 24px;
+                padding: 5px;
+            }
+
+            textarea{
+                height: 136px;
+            }
+
+           select{
+                height: 24px;
+                background-color: rgba(#fff,.2);
+                -moz-background-color: rgba(#fff,.2);
+                -webkit-background-color: rgba(#fff,.2);
+                -ms-background-color: rgba(#fff,.2);
+                -o-background-color: rgba(#fff,.2);
+                border: none;
+                border-radius: 0;
+                font-size: 13px;
+                font-family: 'robotoregular';
+                padding: 0px 3px 2px 3px;
+            }
+
+            select option { 
+                background-color: #5B6D55;
+            }
+
+
+            label{
+                letter-spacing: .2;
+                font-weight: normal;
+            }    
+}
+
+
+/* --- DIALOG --- */
+.dialog{
+            position: relative;
+            margin-bottom: 20px;
+            background-image: url('../images/dialog-bottom.png');
+            background-repeat: no-repeat;
+            background-position-x: 16px;
+            background-position-y: bottom;
+            padding-bottom: 18px;
+
+            .block-dialog{
+                    padding: 15px;
+                    background-color: rgba(#fff,.5);
+                    -moz-background-color: rgba(#fff,.5);
+                     -webkit-background-color: rgba(#fff,.5);
+                    -ms-background-color: rgba(#fff,.5);
+                    -o-background-color: rgba(#fff,.5);
+
+                            .text{
+                                font-family: 'robotoregular';
+                                font-size: 12px;
+                            }
+
+                            .autor{
+                                margin-top: 10px;
+                            }
+            }
+
+            .image{
+                position: absolute;
+                bottom: -18px;
+                left: 18px;
+            }
+            
+}
+
+.dialog-verde{
+            background-image: url('../images/dialog-bottom-verde.png');
+            background-position-x: 90%;
+            padding-bottom: 19px;
+            color: #E4E4E4;
+
+            .block-dialog{
+                background-color: rgba(#099642, .5);
+                    
+             }
 }
 
 // ==========================================================================
@@ -844,9 +959,8 @@ $error : #AA4025;
                 position: relative;
             }
 
-            
 
-           
+        
 
 
 }

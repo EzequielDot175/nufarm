@@ -1,10 +1,128 @@
 // ========================
 /******** CUENTA ********/
 // ========================
-.cuenta{
+.mi-cuenta{
             width: 100%;
 
+            hr{
+            	border-top: 1px solid rgba(#fff,.4);
+            	-moz-border-top:  1px solid rgba(#fff,.4);
+            	-webkit-border-top: 1px  solid rgba(#fff,.4);
+            	-ms-border-top:  1px solid rgba(#fff,.4);
+            	-o-border-top:  1px solid rgba(#fff,.4);
+            	width: 100%;
+            	float: left;
+            }
+
+            .hr-bottom{
+            	padding:0;
+            	margin:30px 0 15px 0;
+            }
+           
+
+            .block-a{
+            	padding: 20px 20px 20px 60px;
+            }
+
+            .block-b{
+            	padding: 20px 60px;
+            }
+
+            .form-a{
+            	padding-right: 15px;
+            }
+
+            .form-b{
+            	padding-left: 15px;
+            }
+
+            .head-page{
+            	height: 48px;
+            }
+
+             .sub-titulo-bottom{
+            	margin-top: 35px;
+            }
+
+            .sub-titulo{
+            	width: 100%;
+            	float: left;
+            	color: #fff;
+            	border-bottom: 1px solid #fff;
+            	font-family: 'Brandon_reg';
+            	font-weight: bold;
+            	display: block;
+            	font-size: 13px;
+            	letter-spacing: .2;
+            	padding: 5px 0;
+            	margin-bottom: 20px;
+            }
+
+           
+           .block-botones {
+		padding-top: 0;
+	}
+
+	 .boton {
+	    width: 200px;
+	}
+
+	.sidebar{
+
+		.item{
+			height: 55px;
+			padding: 10px;
+			margin-bottom: 10px;
+			background-color: rgba(#fff,.2);
+                		-moz-background-color: rgba(#fff,.2);
+                		-webkit-background-color: rgba(#fff,.2);
+                		-ms-background-color: rgba(#fff,.2);
+                		-o-background-color: rgba(#fff,.2);
+
+
+                		.image{
+				width: 31px;
+				float: left;
+				margin-right:10px;
+                		}
+
+                		.text{
+				float: left;
+				font-family: 'Brandon_reg';
+				font-size: 11px;
+				color: #fff;
+				padding-top:3px;
+                		}
+
+                		.num{
+				float: right;
+				padding-right:10px;
+				color: #fff;
+				text-align: right;
+				font-family: 'Brandon_reg';
+				font-size: 24px;
+                		}
+		}
+
+		.block-dialog{
+               		height: 130px;
+               		overflow: hidden;
+           	 }
+	}
+
+	.columna-a{
+		padding-right: 10px;
+	}
+
+	.columna-b{
+		padding-left: 10px;
+	}
+
 }
+
+
+
+
 
 
 
@@ -14,6 +132,22 @@
 
 /*mobile--------------------------------------------------*/
 @media screen and (min-width: 0px) and (max-width : 767px){
+
+	.block-a{
+            	padding: 10px !important; 
+            }
+
+            .block-b{
+            	padding: 10px !important; 
+            }
+
+            .form-a{
+            	padding: 0px 10px !important; 
+            }
+
+            .form-b{
+            	padding: 0px 10px !important; 
+            }
 
 }
 
