@@ -16,7 +16,6 @@ $prod = new Producto();
 
 				function build_boxes($talle, $nombre_talle, $idproducto){
 					
-					$salida = "";
 					if($idproducto > 0)
 					{
 						//editar
@@ -124,21 +123,34 @@ $prod = new Producto();
 				}
 				else if ($talles ==2)
 				{
-
-
-
 					$colores = $prod->colores($idproducto);
+				
 
 					$html = '';
-					foreach($colores as $key => $val):
-						$html .=   '
-						<div class="tallebox">
-							<p>'.$val->color.'</p>	
-							<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="'.$val->id.'"></p>
-						</div>';
-					endforeach;
 
-					echo($html);
+					if(!empty($colores)):
+						foreach($colores as $key => $val):
+							$html .=   '
+							<div class="tallebox">
+								<p>'.$val->color.'</p>	
+								<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="'.$val->id.'"></p>
+							</div>';
+						endforeach;
+					else:
+						$colores = $prod->allColores();
+						echo "<pre>";
+						print_r($var);
+						echo "</pre>";
+						// foreach($colores as $key => $val):
+						// 	$html .=   '
+						// 	<div class="tallebox">
+						// 		<p>'.$val->color.'</p>	
+						// 		<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="'.$val->id.'"></p>
+						// 	</div>';
+						// endforeach;
+					endif;
+
+					var_dump($html);
 
 					//require colores
 					// include_once("../colores/classes/class.colores.php");
