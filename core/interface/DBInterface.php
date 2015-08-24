@@ -64,6 +64,8 @@
 			const PRODUCTO_COLORESBYPROD 		= "SELECT cp.cantidad, colores.nombre_color as color , cp.id_color as id FROM colores_productos as cp NATURAL JOIN colores WHERE cp.id_producto = :id ";
 			const PRODUCTO_TALLES_COLORESBYPROD = "SELECT * FROM colores_talles as ct NATURAL JOIN colores NATURAL JOIN talles WHERE ct.id_producto = :id"; 
 			const PRODUCTO_CATEGORIAS 			= "SELECT * FROM categorias ";
+			const PRODUCTO_ALLCOLORES 			= "SELECT * FROM colores ";
+			const PRODUCTO_ALLTALLES  			= "SELECT * FROM talles ";
 			/**
 			* @param carrito
 			*/
