@@ -1,10 +1,10 @@
 <?php
   
-  ob_start();
+ob_start();
 
-function redirect(){
-  echo('<script>window.location.href="carrito.php";</script>');
-}
+// function redirect(){
+//   echo('<script>window.location.href="carrito.php";</script>');
+// }
 
   error_reporting(0);
   ini_set('display_errors', 'off');
@@ -183,7 +183,7 @@ if ($cond) {
 
 
 
-header('Location: carrito.php');
+header('Location: catalogo.php');
 exit();
 
 ?>
