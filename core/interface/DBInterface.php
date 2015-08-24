@@ -66,6 +66,7 @@
 			const PRODUCTO_CATEGORIAS 			= "SELECT * FROM categorias ";
 			const PRODUCTO_ALLCOLORES 			= "SELECT * FROM colores ";
 			const PRODUCTO_ALLTALLES  			= "SELECT * FROM talles ";
+			const PRODUCTO_UPDCAT 				= "UPDATE productos SET intCategoria = :cat WHERE idProducto = :prod";
 			/**
 			* @param carrito
 			*/

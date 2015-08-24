@@ -124,7 +124,6 @@ $prod = new Producto();
 				else if ($talles ==2)
 				{
 					$colores = $prod->colores($idproducto);
-				
 
 					$html = '';
 
@@ -138,38 +137,18 @@ $prod = new Producto();
 						endforeach;
 					else:
 						$colores = $prod->allColores();
-						echo "<pre>";
-						print_r($var);
-						echo "</pre>";
-						// foreach($colores as $key => $val):
-						// 	$html .=   '
-						// 	<div class="tallebox">
-						// 		<p>'.$val->color.'</p>	
-						// 		<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="'.$val->id.'"></p>
-						// 	</div>';
-						// endforeach;
+				
+						foreach($colores as $key => $val):
+							$html .=   '
+							<div class="tallebox">
+								<p>'.$val->nombre_color.'</p>	
+								<p><input class="inputshort" type="text" name="color['.$val->id_color.']" value="0" id="'.$val->id_color.'"></p>
+							</div>';
+						endforeach;
 					endif;
 
-					var_dump($html);
+					echo($html);
 
-					//require colores
-					// include_once("../colores/classes/class.colores.php");
-					// $tll= new colores();
-					// $colores_disp = $tll->select_all_clean();
-					
-					
-					// foreach($colores_disp as $color)
-					// {
-					// 	$color_n= new colores();
-					// 	$color_n->select($color);
-					// 	$nombre_color = $color_n->getnombre_color();
-					// 	//llamo funcion que genera cuadros con los imputs
-						
-					// 	build_boxes_color($color, $nombre_color, $idproducto);
-					// 	$color="";
-					// 	$nombre_color="";
-
-					// }
 				}
 				else if ($talles == 3)
 				{

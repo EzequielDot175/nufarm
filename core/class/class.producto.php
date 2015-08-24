@@ -152,14 +152,14 @@
 		 * @return [ARRAY]
 		 */
 		public function allColores(){
-			return $this->query(self::ALLCOLORES)->fetchAll();
+			return $this->query(self::PRODUCTO_ALLCOLORES)->fetchAll();
 		}
 		/**
 		 * Obtengo todos los talles
 		 * @return [ARRAY]
 		 */
 		public function allTalles(){
-			return $this->query(self::ALLCOLORES)->fetchAll();
+			return $this->query(self::PRODUCTO_ALLTALLES)->fetchAll();
 		}
 		/**
 		 * @internal
@@ -170,6 +170,14 @@
 			return $this->query(self::PRODUCTO_CATEGORIAS)->fetchAll();
 		}
 		
+
+		public function updCategoria($intCat, $intProd){
+			$upd = $this->prepare(self::PRODUCTO_UPDCAT);
+			$upd->bindParam(':cat', $intCat , PDO::PARAM_INT);
+			$upd->bindParam(':prod', $intProd , PDO::PARAM_INT);
+			$upd->execute();
+		}
+
 		
 
 
