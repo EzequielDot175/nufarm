@@ -1,6 +1,10 @@
 <?php
 
-include_once("../resources/class.database.php");
+// include_once("../resources/class.database.php");
+// require_once($_SESSION['basecontrol']."resources/class.database.php");
+
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 
 /* CLASS DECLARATION */
 
@@ -70,7 +74,7 @@ echo '<option value='.$id.'>'.$name.'</option>';
 
 
 function select_by_producto($id_producto, $id_color){
-$sql ="SELECT * FROM colores_productos WHERE cantidad=200 AND id_producto = '$id_producto' AND id_color = '$id_color' ";
+$sql ="SELECT * FROM colores_productos WHERE id_producto = '$id_producto' AND id_color = '$id_color' ";
 $result =  $this->database->query($sql);
 $result = $this->database->result;
 $row = mysql_fetch_object($result);
@@ -148,7 +152,7 @@ function updateAllColours($array,$id){
 		else:
 			$sql = "UPDATE colores_productos SET cantidad = ".(int)$value." WHERE id_color = ".$key." AND id_producto = ".$id;
 		endif;
-		$this->database->query($sql)
+		$this->database->query($sql);
 	}
 
 	

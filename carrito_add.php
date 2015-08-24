@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 require_once('libs.php');
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
@@ -144,7 +145,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 															$update_carrito->update($id_row);
 															
 															@header('location: catalogo.php');
-															redirect();
+															
 															exit();
 															
 															
@@ -161,7 +162,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 
 															@header('location: catalogo.php');
-															redirect();
+															
 															exit();
 
 														}
@@ -173,7 +174,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		}
 		
 		@header('location: catalogo.php');
-		redirect();
+		
 		exit();
 		
 	}else if($requiere_talles==2){
@@ -223,7 +224,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 							$update_carrito->update($id_row);
 																
 							@header('location: catalogo.php');
-							redirect();
+							
 							exit();
 							
 																
@@ -249,7 +250,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		}
 		
 		@header('location: catalogo.php');
-		redirect();
+		
 		exit();
 		
 		// echo "<script>window.location.href = 'mi_cuenta.php?activo=2'</script>";
@@ -277,7 +278,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		if((int)$canTotal > (int)$limite):
 			$_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
 	  		@header('location: catalogo.php');
-	  		redirect();
+	  		
 	  		exit();
 	  		
 		endif;
@@ -316,7 +317,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		endforeach;
 
 		@header('location: catalogo.php');
-		redirect();
+		
 		exit();
 		
 
@@ -363,7 +364,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$update_carrito->update($id_row);
 										
 										@header('location: catalogo.php');
-										redirect();
+										
 										exit();
 										
 										
@@ -379,7 +380,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										$carr->insert();
 									
 										@header('location: catalogo.php');
-										redirect();
+										
 										exit();
 										
 									}
@@ -392,7 +393,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 			//No hay stock disponible
 			// $_SESSION["notification"] = "Disculpe, no se encuentra disponible la cantidad seleccionada.";
 	  		@header('location: catalogo.php');
-	  		redirect();
+	  		
 	  		exit();
 	  		
 
@@ -404,7 +405,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 	// header('location: http://nufarm-maxx.com/marketingNetDesarrollo/carrito.php');
 @header('location: catalogo.php');
-redirect();
+
 exit();
 
 ?>

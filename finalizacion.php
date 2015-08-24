@@ -1,13 +1,14 @@
 <?php
+ob_start();
 if (!isset($_SESSION)) {
   session_start();
 }
 
 error_reporting(0);
 ini_set('display_errors', 'off');
-function redirect(){
-  echo('<script>window.location.href="confirmacion-carrito.php";</script>');
-}
+// function redirect(){
+//   echo('<script>window.location.href="confirmacion-carrito.php";</script>');
+// }
 
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
@@ -257,5 +258,5 @@ if($checkout){
 }
 
 
-redirect();
+header('Location: confirmacion-carrito.php');
 

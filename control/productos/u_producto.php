@@ -1,11 +1,13 @@
 <?php 
+ob_start();
 
-error_reporting(E_ALL);
-ini_set('display_error', 'on');
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
 
 include_once('../resources/control.php'); 
 include_once("classes/class.productos.php");
 include_once("classes/class.tallesColores.php");
+require_once('../../libs.php');
 
 // error_reporting(E_ALL);
 
@@ -27,158 +29,160 @@ $color = $_POST['color'];
 
 
 
-
-// if($_FILES['strImagen']['name']!=""){
-
-//       $nombre_final="";
-
-//       	$productos= new productos();
-// 		$productos->select($idProducto);
-//       	$imagen=$productos->getstrImagen();
-
-//       if($imagen!=""){
-//       unlink('../../images_productos/'.$imagen);
-//       unlink('../../images_productos/tn_'.$imagen);
-//       }
-//       include_once('../resources/class.upload.php');
-//       $yukle = new upload;
-//       $yukle->set_max_size(99999999);
-//       $yukle->set_directory('../../images_productos');
-//       $yukle->set_tmp_name($_FILES['strImagen']['tmp_name']);
-//       $yukle->set_file_size($_FILES['strImagen']['size']);
-//       $yukle->set_file_type($_FILES['strImagen']['type']);
-//       //random
-//       $random = substr(md5(rand()),0,6);
-//       $avatarname= $random.'_'.$_FILES['strImagen']['name'];
-//       $nombre_final = str_replace(' ','-',$avatarname);
-//       $yukle->set_file_name($nombre_final);
-//       $yukle->start_copy();
-//       $yukle->resize(620,0);
-//       $yukle->set_thumbnail_name('tn_'.$nombre_final);
-//       $yukle->create_thumbnail();
-//       $yukle->set_thumbnail_size(300, 0);
-//       if($yukle->is_ok()){
-//       /* INSERT */
-
-//       /* UPDATE */
-
-// 			include_once("classes/class.productos.php");
-// 			$productos= new productos();
-
-// 			$productos->select($idProducto);
-// 			$productos->strImagen=$nombre_final;
-// 			$productos->update($idProducto);
+$prod = new Producto();
+$prod->updCategoria($intCategoria, $idProducto);
 
 
-//       }else{
-//       $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen1. Imagen1 no actualizada!</p></div>';
-//       }
+if($_FILES['strImagen']['name']!=""){
+
+      $nombre_final="";
+
+      	$productos= new productos();
+		$productos->select($idProducto);
+      	$imagen=$productos->getstrImagen();
+
+      if($imagen!=""){
+      unlink('../../images_productos/'.$imagen);
+      unlink('../../images_productos/tn_'.$imagen);
+      }
+      include_once('../resources/class.upload.php');
+      $yukle = new upload;
+      $yukle->set_max_size(99999999);
+      $yukle->set_directory('../../images_productos');
+      $yukle->set_tmp_name($_FILES['strImagen']['tmp_name']);
+      $yukle->set_file_size($_FILES['strImagen']['size']);
+      $yukle->set_file_type($_FILES['strImagen']['type']);
+      //random
+      $random = substr(md5(rand()),0,6);
+      $avatarname= $random.'_'.$_FILES['strImagen']['name'];
+      $nombre_final = str_replace(' ','-',$avatarname);
+      $yukle->set_file_name($nombre_final);
+      $yukle->start_copy();
+      $yukle->resize(620,0);
+      $yukle->set_thumbnail_name('tn_'.$nombre_final);
+      $yukle->create_thumbnail();
+      $yukle->set_thumbnail_size(300, 0);
+      if($yukle->is_ok()){
+      /* INSERT */
+
+      /* UPDATE */
+
+			include_once("classes/class.productos.php");
+			$productos= new productos();
+
+			$productos->select($idProducto);
+			$productos->strImagen=$nombre_final;
+			$productos->update($idProducto);
 
 
-
-// }
-
-// /**/
-// if($_FILES['strImagen2']['name']!=""){
-
-//       $nombre_final="";
-
-//       	$productos= new productos();
-// 		$productos->select($idProducto);
-//       	$imagen=$productos->getstrImagen2();
-
-//       if($imagen!=""){
-//       unlink('../../images_productos/'.$imagen);
-//       unlink('../../images_productos/tn_'.$imagen);
-//       }
-//       include_once('../resources/class.upload.php');
-//       $yukle = new upload;
-//       $yukle->set_max_size(99999999);
-//       $yukle->set_directory('../../images_productos');
-//       $yukle->set_tmp_name($_FILES['strImagen2']['tmp_name']);
-//       $yukle->set_file_size($_FILES['strImagen2']['size']);
-//       $yukle->set_file_type($_FILES['strImagen2']['type']);
-//       //random
-//       $random = substr(md5(rand()),0,6);
-//       $avatarname= $random.'_'.$_FILES['strImagen2']['name'];
-//       $nombre_final = str_replace(' ','-',$avatarname);
-//       $yukle->set_file_name($nombre_final);
-//       $yukle->start_copy();
-//       $yukle->resize(620,0);
-//       $yukle->set_thumbnail_name('tn_'.$nombre_final);
-//       $yukle->create_thumbnail();
-//       $yukle->set_thumbnail_size(300, 0);
-//       if($yukle->is_ok()){
-//       /* INSERT */
-
-//       /* UPDATE */
-
-// 			include_once("classes/class.productos.php");
-// 			$productos= new productos();
-
-// 			$productos->select($idProducto);
-// 			$productos->strImagen2=$nombre_final;
-// 			$productos->update($idProducto);
-
-
-//       }else{
-//       $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen2. Imagen2 no actualizada!</p></div>';
-//       }
+      }else{
+      $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen1. Imagen1 no actualizada!</p></div>';
+      }
 
 
 
-// }
+}
 
-// /**/
-// if($_FILES['strImagen3']['name']!=""){
-// 	$nombre_final="";
+/**/
+if($_FILES['strImagen2']['name']!=""){
+
+      $nombre_final="";
+
+      	$productos= new productos();
+		$productos->select($idProducto);
+      	$imagen=$productos->getstrImagen2();
+
+      if($imagen!=""){
+      unlink('../../images_productos/'.$imagen);
+      unlink('../../images_productos/tn_'.$imagen);
+      }
+      include_once('../resources/class.upload.php');
+      $yukle = new upload;
+      $yukle->set_max_size(99999999);
+      $yukle->set_directory('../../images_productos');
+      $yukle->set_tmp_name($_FILES['strImagen2']['tmp_name']);
+      $yukle->set_file_size($_FILES['strImagen2']['size']);
+      $yukle->set_file_type($_FILES['strImagen2']['type']);
+      //random
+      $random = substr(md5(rand()),0,6);
+      $avatarname= $random.'_'.$_FILES['strImagen2']['name'];
+      $nombre_final = str_replace(' ','-',$avatarname);
+      $yukle->set_file_name($nombre_final);
+      $yukle->start_copy();
+      $yukle->resize(620,0);
+      $yukle->set_thumbnail_name('tn_'.$nombre_final);
+      $yukle->create_thumbnail();
+      $yukle->set_thumbnail_size(300, 0);
+      if($yukle->is_ok()){
+      /* INSERT */
+
+      /* UPDATE */
+
+			include_once("classes/class.productos.php");
+			$productos= new productos();
+
+			$productos->select($idProducto);
+			$productos->strImagen2=$nombre_final;
+			$productos->update($idProducto);
+
+
+      }else{
+      $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen2. Imagen2 no actualizada!</p></div>';
+      }
+
+
+
+}
+
+/**/
+if($_FILES['strImagen3']['name']!=""){
+	$nombre_final="";
       
-//       	$productos= new productos();
-// 		$productos->select($idProducto);
-//       	$imagen=$productos->getstrImagen3();
+      	$productos= new productos();
+		$productos->select($idProducto);
+      	$imagen=$productos->getstrImagen3();
 
-//       if($imagen!=""){
-//       unlink('../../images_productos/'.$imagen);
-//       unlink('../../images_productos/tn_'.$imagen);
-//       }
-//       include_once('../resources/class.upload.php');
-//       $yukle = new upload;
-//       $yukle->set_max_size(99999999);
-//       $yukle->set_directory('../../images_productos');
-//       $yukle->set_tmp_name($_FILES['strImagen3']['tmp_name']);
-//       $yukle->set_file_size($_FILES['strImagen3']['size']);
-//       $yukle->set_file_type($_FILES['strImagen3']['type']);
-//       //random
-//       $random = substr(md5(rand()),0,6);
-//       $avatarname= $random.'_'.$_FILES['strImagen3']['name'];
-//       $nombre_final = str_replace(' ','-',$avatarname);
-//       $yukle->set_file_name($nombre_final);
-//       $yukle->start_copy();
-//       $yukle->resize(620,0);
-//       $yukle->set_thumbnail_name('tn_'.$nombre_final);
-//       $yukle->create_thumbnail();
-//       $yukle->set_thumbnail_size(300, 0);
-//       if($yukle->is_ok()){
-//       /* INSERT */
+      if($imagen!=""){
+      unlink('../../images_productos/'.$imagen);
+      unlink('../../images_productos/tn_'.$imagen);
+      }
+      include_once('../resources/class.upload.php');
+      $yukle = new upload;
+      $yukle->set_max_size(99999999);
+      $yukle->set_directory('../../images_productos');
+      $yukle->set_tmp_name($_FILES['strImagen3']['tmp_name']);
+      $yukle->set_file_size($_FILES['strImagen3']['size']);
+      $yukle->set_file_type($_FILES['strImagen3']['type']);
+      //random
+      $random = substr(md5(rand()),0,6);
+      $avatarname= $random.'_'.$_FILES['strImagen3']['name'];
+      $nombre_final = str_replace(' ','-',$avatarname);
+      $yukle->set_file_name($nombre_final);
+      $yukle->start_copy();
+      $yukle->resize(620,0);
+      $yukle->set_thumbnail_name('tn_'.$nombre_final);
+      $yukle->create_thumbnail();
+      $yukle->set_thumbnail_size(300, 0);
+      if($yukle->is_ok()){
+      /* INSERT */
 
-//       /* UPDATE */
+      /* UPDATE */
 
-// 			include_once("classes/class.productos.php");
-// 			$productos= new productos();
+			include_once("classes/class.productos.php");
+			$productos= new productos();
 
-// 			$productos->select($idProducto);
-// 			$productos->strImagen3=$nombre_final;
-// 			$productos->update($idProducto);
-
-
-//       }else{
-//       $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen3. Imagen3 no actualizada!</p></div>';
-//       }
+			$productos->select($idProducto);
+			$productos->strImagen3=$nombre_final;
+			$productos->update($idProducto);
 
 
+      }else{
+      $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen3. Imagen3 no actualizada!</p></div>';
+      }
 
-// }
-// var_dump($talles);
+
+
+}
 
 
 if($talles!=""){
@@ -281,6 +285,8 @@ elseif (isset($_POST["color_talle"])) {
 
 
 
+
+
 	$x = new tallesColores();
 
 	$x->idProducto=$idProducto;
@@ -304,14 +310,11 @@ elseif (isset($_POST["color_talle"])) {
 	$x->execProdStock($idProducto);
 
 
-	
-
 
 }
 else
 {
-	
-	
+
 	//guardo talles en tabla talles_productos
 	
 	//Limpio talles anteriores
@@ -323,7 +326,7 @@ else
 	/* UPDATE */
 	include_once("classes/class.productos.php");
 	$productos= new productos();
-	
+
 	$productos->select($idProducto);
 	$productos->idProducto=$idProducto;
 	$productos->strNombre=$strNombre;
@@ -333,16 +336,20 @@ else
 	$productos->intStock=$intStock;
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;
-	$productos->intMaxCompra=$intMaxCompra;
+	$productos->intMaxCompra= (is_null($intMaxCompra) ? 'NULL' : $intMaxCompra);
 	$productos->update($idProducto);
 
 	$msg_final .= '<div class="notify"><p>producto actualizado!</p></div>';
 
+	
+	// echo "<pre>";
+	// print_r($_POST);
+	// echo "</pre>";
+	// die();
 
 }
-
-
-$_SESSION['msg_ok'] = $msg_final;
-header('Location: ./v_productos.php?activo=2&sub=d');
+// $_SESSION['msg_ok'] = $msg_final;
+@header('Location: ./v_productos.php?activo=2&sub=d');
+exit();
 
 ?>

@@ -1,12 +1,13 @@
 <?php
   
+ob_start();
 
-function redirect(){
-  echo('<script>window.location.href="carrito.php";</script>');
-}
+// function redirect(){
+//   echo('<script>window.location.href="carrito.php";</script>');
+// }
 
-  error_reporting(0);
-  ini_set('display_errors', 'off');
+  // error_reporting(0);
+  // ini_set('display_errors', 'off');
 
   require_once('Connections/conexion.php');
   // require_once(dirname(__FILE__).'/TempStock.php');
@@ -167,8 +168,7 @@ if ($cond) {
 
 
   
-  redirect();
-  exit();
+  
 }elseif (   isset($_GET['talle_colores'])  ) {
  
     $productos = new tallesColores();
@@ -176,13 +176,11 @@ if ($cond) {
     $talle = $_GET['talle'];
     
     $delete = $productos->deleteItem($_GET['recordID'],$sub,$talle);
-    redirect();
+    
 }
 
 
 
-
-redirect();
-exit();
+header('Location: catalogo.php');
 
 ?>

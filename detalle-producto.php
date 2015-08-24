@@ -2,6 +2,7 @@
 	require('inc/header.php');
 	$producto = new producto($_GET['producto']);
 	$detalles = $producto->details();
+
 	$tempMaxCompra = new TempMaxCompra();
 	$tempMaxCompra->haveMaxCompra();
 	$limitCompraProd = $tempMaxCompra->getMaxProd();
