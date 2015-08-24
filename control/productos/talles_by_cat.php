@@ -175,6 +175,8 @@ $prod = new Producto();
 
 					$key = rand();
 					
+
+
 					if (isset($_GET['action']) && $_GET['action'] == 'add' || empty($all)):
 					?>
 					<div class="segmentTalleColor">
@@ -224,7 +226,10 @@ $prod = new Producto();
 									<?php foreach($talles as $val): ?>
 									<div class="tallebox">
 										<p><?php echo($val['nombre_talle']) ?></p>	
-										<p><input class="inputshort valid" type="text" name="color_talle[<?php echo($key) ?>][talle][<?php echo($val['id_talle']) ?>]" value="<?php echo($v['talle'][$val['id_talle']]) ?>"></p>
+										<p><input class="inputshort valid" 
+													type="text" name="color_talle[<?php echo($key) ?>][talle][<?php echo($val['id_talle']) ?>]" 
+													value="<?php echo (	isset($v['talle'][$val['id_talle']]) ? $v['talle'][$val['id_talle']] : 0 ) ?>"></p>
+										<p></p>
 									</div>
 									<?php endforeach; ?>
 								</div>
