@@ -16,7 +16,7 @@
 
 
 
-		public function get(){
+		public function getById(){
 			$sel = $this->prepare(self::HISTORIAL_GET);
 			$sel->bindParam(':id', $this->id, PDO::PARAM_INT);
 			$sel->execute();

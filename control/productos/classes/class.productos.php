@@ -10,8 +10,8 @@ class productos{
 	/* ATTRIBUTE DECLARATION */
 var $idProducto;   // KEY ATTR. WITH AUTOINCREMENT
 var $strNombre;
-var $intMinCompra;
-var $intMaxCompra;
+var $intMinCompra = 0;
+var $intMaxCompra = 'NULL';
 var $strDetalle;
 var $intCategoria;
 var $dblPrecio;
@@ -608,7 +608,7 @@ function update($id){
 	
 	$sql = " UPDATE productos SET strNombre = '$this->strNombre',intMaxCompra = $this->intMaxCompra ,intMinCompra = $this->intMinCompra,strDetalle = '$this->strDetalle',intCategoria = '$this->intCategoria',dblPrecio = '$this->dblPrecio',intStock = '$this->intStock',strImagen = '$this->strImagen',strImagen2 = '$this->strImagen2',strImagen3 = '$this->strImagen3' ,destacado = '$this->destacado' WHERE idProducto = $id ";
 
-	$result = $this->database->query($sql);
+	$this->database->query($sql);
 
 }
 

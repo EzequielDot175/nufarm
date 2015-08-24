@@ -62,14 +62,47 @@
 			return $prop;
 		}
 
+		public function allById($id = null){
+			$take = ( is_null($id) ? $this->id : $id);
+			$meta = $this->prepare(self::PRODUCTO_ALLBYID);
+			$meta->bindParam(':id',$id, PDO::PARAM_INT);
+			$meta->execute();
+
+			if(is_null($id)):
+				$this->meta = $meta->fetch();
+			else:
+				return $meta->fetch();			
+			endif;
+		}
+
+		/**
+		 * Obtengo el tipo de producto
+		 * @param  1 - talles
+		 * @param  2 - colores
+		 * @param  3 - talles-colores
+		 * @param  4 - sin nada
+		 * @return [INT] [tipo del producto]
+		 */
+		public function defineType($id = null){
+			$take = ( is_null($id) ? $this->id : $id);
+			$type = $this->prepare(self::PRODUCTO_BYTYPE);
+			$type->bindParam(':id', $take, PDO::PARAM_INT);
+			$type->execute();
+			if(is_null($id)):
+				$this->category = $type->fetch();
+			else:
+				return $type->fetch();			
+			endif;
+		}
 
 		/**
 		 * Traigo los talles del producto 
 		 * @return [Object] [resultado]
 		 */
-		private function talles(){
+		public function talles($id = null){
+			$take = ( is_null($id) ? $this->id : $id);
 			$talles = $this->prepare(self::PRODUCTO_TALLESBYPROD);
-			$talles->bindParam(':id', $this->id, PDO::PARAM_INT);
+			$talles->bindParam(':id', $take, PDO::PARAM_INT);
 			$talles->execute();
 			return $talles->fetchAll();
 		}
@@ -77,9 +110,10 @@
 		 * Traigo los colores del producto 
 		 * @return [Object] [resultado]
 		 */
-		private function colores(){
+		public function colores($id = null){
+			$take = ( is_null($id) ? $this->id : $id);
 			$colores = $this->prepare(self::PRODUCTO_COLORESBYPROD);
-			$colores->bindParam(':id', $this->id, PDO::PARAM_INT);
+			$colores->bindParam(':id', $take, PDO::PARAM_INT);
 			$colores->execute();
 			return $colores->fetchAll();
 		}
@@ -87,14 +121,14 @@
 		 * Traigo los talles_colores del producto 
 		 * @return [Object] [resultado]
 		 */
-		private function talles_colores(){
+		public function talles_colores($id = null){
+			$take = ( is_null($id) ? $this->id : $id);
 			$talles_colores = $this->prepare(self::PRODUCTO_TALLES_COLORESBYPROD);
-			$talles_colores->bindParam(':id', $this->id, PDO::PARAM_INT);
+			$talles_colores->bindParam(':id', $take, PDO::PARAM_INT);
 			$talles_colores->execute();
 
 			$data = $talles_colores->fetchAll();
 			$format = array();
-
 
 			foreach($data as $key => $val):
 				$item = new stdClass();
@@ -112,29 +146,31 @@
 			endforeach;
 			return $format;
 		}
-		
-		private function allById(){
-			$meta = $this->prepare(self::PRODUCTO_ALLBYID);
-			$meta->bindParam(':id',$this->id, PDO::PARAM_INT);
-			$meta->execute();
-			$this->meta = $meta->fetch();
-
-		}
 
 		/**
-		 * Obtengo el tipo de producto
-		 * @param  1 - talles
-		 * @param  2 - colores
-		 * @param  3 - talles-colores
-		 * @param  4 - sin nada
-		 * @return [INT] [tipo del producto]
+		 * Obtengo todos los colores
+		 * @return [ARRAY]
 		 */
-		private function defineType(){
-			$type = $this->prepare(self::PRODUCTO_BYTYPE);
-			$type->bindParam(':id', $this->id, PDO::PARAM_INT);
-			$type->execute();
-			$this->category = $type->fetch();
+		public function allColores(){
+			return $this->query(self::ALLCOLORES)->fetchAll();
 		}
+		/**
+		 * Obtengo todos los talles
+		 * @return [ARRAY]
+		 */
+		public function allTalles(){
+			return $this->query(self::ALLCOLORES)->fetchAll();
+		}
+		/**
+		 * @internal
+		 * Trae todas las categorias
+		 */
+		
+		public function categorias(){
+			return $this->query(self::PRODUCTO_CATEGORIAS)->fetchAll();
+		}
+		
+		
 
 
 	}

@@ -1,10 +1,17 @@
 <?php 
-error_reporting(0);
-// ini_set('display_errors', 'on');
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+
+require_once('../../libs.php');
 
 
+
+// die('asdas');
 $idcategoria = $_GET['idcategoria']; 
 $idproducto = $_GET['idproducto'];
+
+
+$prod = new Producto();
 
 
 				function build_boxes($talle, $nombre_talle, $idproducto){
@@ -46,23 +53,29 @@ $idproducto = $_GET['idproducto'];
 				
 				function build_boxes_color($color, $nombre_color, $idproducto){
 					
+				
+
 					if($idproducto > 0)
 					{
 						//editar
-						include_once("classes/class.colores_productos.php");
+						include_once("class.colores_productos.php");
 					
-						$colprod = new colores_productos();
-						$colprod->select_by_producto($idproducto, $color);
-						$id_color_producto = $colprod->getid();
-						$id_color = $colprod->getid_color();
-						$id_producto = $colprod->getid_producto();
-						$cantidad = $colprod->getcantidad();
+						// $colprod = new colores_productos();
+						// $colprod->select_by_producto($idproducto, $color);
+						// $id_color_producto = $colprod->getid();
+						// $id_color = $colprod->getid_color();
+						// $id_producto = $colprod->getid_producto();
+						// $cantidad = $colprod->getcantidad();
 						
-						$salida .=   '
-						<div class="tallebox">
-							<p>'.$nombre_color.'</p>	
-							<p><input class="inputshort" type="text" name="color['.$color.']" value="'.$cantidad.'" id="'.$color.'"></p>
-						</div>';
+						// $salida .=   '
+						// <div class="tallebox">
+						// 	<p>'.$nombre_color.'</p>	
+						// 	<p><input class="inputshort" type="text" name="color['.$color.']" value="'.$cantidad.'" id="'.$color.'"></p>
+						// </div>';
+
+						echo "<pre>";
+						print_r($idproducto);
+						echo "</pre>";
 						
 						
 					}
@@ -84,6 +97,7 @@ $idproducto = $_GET['idproducto'];
 				$categorias= new categorias();
 				$categorias->select($idcategoria);
 				$talles=$categorias->gettalles();
+
 
 
 				if($talles ==1)
@@ -109,24 +123,40 @@ $idproducto = $_GET['idproducto'];
 				}
 				else if ($talles ==2)
 				{
+
+
+
+					$colores = $prod->colores($idproducto);
+
+					$html = '';
+					foreach($colores as $key => $val):
+						$html .=   '
+						<div class="tallebox">
+							<p>'.$val->color.'</p>	
+							<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="'.$val->id.'"></p>
+						</div>';
+					endforeach;
+
+					echo($html);
+
 					//require colores
-					include_once("../colores/classes/class.colores.php");
-					$tll= new colores();
-					$colores_disp = $tll->select_all_clean();
+					// include_once("../colores/classes/class.colores.php");
+					// $tll= new colores();
+					// $colores_disp = $tll->select_all_clean();
 					
 					
-					foreach($colores_disp as $color)
-					{
-						$color_n= new colores();
-						$color_n->select($color);
-						$nombre_color = $color_n->getnombre_color();
-						//llamo funcion que genera cuadros con los imputs
+					// foreach($colores_disp as $color)
+					// {
+					// 	$color_n= new colores();
+					// 	$color_n->select($color);
+					// 	$nombre_color = $color_n->getnombre_color();
+					// 	//llamo funcion que genera cuadros con los imputs
 						
-						build_boxes_color($color, $nombre_color, $idproducto);
-						$color="";
-						$nombre_color="";
-					
-					}
+					// 	build_boxes_color($color, $nombre_color, $idproducto);
+					// 	$color="";
+					// 	$nombre_color="";
+
+					// }
 				}
 				else if ($talles == 3)
 				{

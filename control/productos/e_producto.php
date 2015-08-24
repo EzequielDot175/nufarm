@@ -1,5 +1,8 @@
 <?php include_once('../resources/control.php'); header('Content-Type: text/html; charset=utf-8'); 
 include_once('helper_titulos.php');
+require_once('../../libs.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 ?>
 <!DOCTYPE html>
 <html>
@@ -142,28 +145,12 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 <?php
 
 $id =$_GET['id'];
-/* SELECT */
-include_once("classes/class.productos.php");
-$productos= new productos();
-$productos->select($id);
-
-
-$idProducto=$productos->getidProducto();
-$strNombre=$productos->getstrNombre();
-$intMinCompra = $productos->getMinCompra();
-$intMaxCompra = $productos->getMaxCompra();
-$strDetalle=$productos->getstrDetalle();
-$intCategoria=$productos->getintCategoria();
-$dblPrecio=$productos->getdblPrecio();
-$intStock=$productos->getintStock();
-$strImagen=$productos->getstrImagen();
-$strImagen2=$productos->getstrImagen2();
-$strImagen3=$productos->getstrImagen3();
-$destacado=$productos->getdestacado();
-
-
-
+$prod = new Producto();
+$data = $prod->allById($id);
+$type = $prod->defineType($id);
+echo('<h1>'.$type->type.'</h1>');
 ?>
+
 <div id="content-prod3">
 <div class="barra-prod"><span>Editar Producto</span></div>
 
@@ -172,135 +159,101 @@ $destacado=$productos->getdestacado();
 <div class="box-form-c">
 	
 	<div class="tiform6">Nombre</div>
-	<input type="text" name="strNombre" class="campo-prod" value="<?php echo $strNombre;?>" />
+	<input type="text" name="strNombre" class="campo-prod" value="<?php echo $data->strNombre;?>" />
 
 </div>
 
 <div class="box-form">
 
 <div class="tiform6">Detalle</div>
-<textarea name="strDetalle" class="campo-prod-detalle"><?php echo $strDetalle;?></textarea>
+<textarea name="strDetalle" class="campo-prod-detalle"><?php echo $data->strDetalle;?></textarea>
 
 </div>
 
 <div class="box-form">
 
 <div class="tiform6">Precio</div>
-<input type="text" name="dblPrecio" class="campo-prod" value="<?php echo $dblPrecio;?>" />
+<input type="text" name="dblPrecio" class="campo-prod" value="<?php echo $data->dblPrecio;?>" />
 
 <div class="tiform6">Minima cantidad de compra</div>
-<input type="number" name="intMinCompra" class="campo-prod" value="<?php echo $intMinCompra;?>" />
+<input type="number" name="intMinCompra" class="campo-prod" value="<?php echo $data->intMinCompra;?>" />
 
 <div class="tiform6">Maxima cantidad de compra</div>
-<input type="number" name="intMaxCompra" class="campo-prod" value="<?php echo $intMaxCompra;?>" />
+<input type="number" name="intMaxCompra" class="campo-prod" value="<?php echo $data->intMaxCompra;?>" />
 
 <div class="tiform6">Categoría</div>
+<input type="hidden" id="type_talle" value="<?php echo($type->type) ?>">
+
+
 <select name="intCategoria" id="item-categorias" class="campo-prod" onchange="revisar_talles();">
-
-
-<?php
-
-include_once("../categorias/classes/class.categorias.php");
-$cat= new categorias();
-$cat->categorias_drop_list($intCategoria);
-
-
-
-?>
+	<?php 
+	$categorias = $prod->categorias();
+	foreach($categorias as $k => $v ): 
+			if($type->id_cat !=  $v->idCategorias):
+		?>
+		<option value="<?php echo($v->idCategorias) ?>"><?php echo($v->strDescripcion) ?></option>
+	<?php
+			else: ?>
+		<option selected value="<?php echo($v->idCategorias) ?>"><?php echo($v->strDescripcion) ?></option>
+	<?php   endif;
+	endforeach; ?>
 </select>
 
 
 <div id="tipotalles">
 <?php
 
-$categorias= new categorias();
-$categorias->select($intCategoria);
-$talles=$categorias->gettalles();
-echo($talles);
-if($talles ==1){
-include_once("../talles/classes/class.talles.php");
-$tll= new talles();
-$talles_disp = $tll->select_all_clean();
+// $categorias= new categorias();
+// $categorias->select($intCategoria);
+// $talles=$categorias->gettalles();
+// echo($talles);
+if($type->type ==1){
+// include_once("../talles/classes/class.talles.php");
+// $tll= new talles();
+// $talles_disp = $tll->select_all_clean();
 		
-foreach($talles_disp as $id_talle_m){
-$talle_n= new talles();
-$talle_n->select($id_talle_m);
-$nombre_talle = $talle_n->getnombre_talle();
-$id_talle_tabla = $talle_n->getid_talle();
+// foreach($talles_disp as $id_talle_m){
+// $talle_n= new talles();
+// $talle_n->select($id_talle_m);
+// $nombre_talle = $talle_n->getnombre_talle();
+// $id_talle_tabla = $talle_n->getid_talle();
 		
-include_once("classes/class.talles_productos.php");
+// include_once("classes/class.talles_productos.php");
 	
-$tallprod = new talles_productos();
-$tallprod->select_by_producto($idProducto, $id_talle_m);
-$id_talle_producto = $tallprod->getid();
-#echo $id_talle = $tallprod->getid_talle();
-$id_producto = $tallprod->getid_producto();
-$cantidad = $tallprod->getcantidad();
+// $tallprod = new talles_productos();
+// $tallprod->select_by_producto($idProducto, $id_talle_m);
+// $id_talle_producto = $tallprod->getid();
+// #echo $id_talle = $tallprod->getid_talle();
+// $id_producto = $tallprod->getid_producto();
+// $cantidad = $tallprod->getcantidad();
 
-echo   '
-<div class="tallebox">
-<p>'.$nombre_talle.'</p>			
-<p><input class="inputshort" type="text" name="talle['.$id_talle_m.']" value="'.$cantidad.'" ></p>
-</div>';
-$id_talle_m ="";
+// echo   '
+// <div class="tallebox">
+// <p>'.$nombre_talle.'</p>			
+// <p><input class="inputshort" type="text" name="talle['.$id_talle_m.']" value="'.$cantidad.'" ></p>
+// </div>';
+// $id_talle_m ="";
 		
-}
+// }
 		
-}else if($talles == 2)
-{
-	include_once("../colores/classes/class.colores.php");
-	include_once("classes/class.colores_productos.php");
-
-	$id_product = $_GET["id"];
-	$tll= new colores();
-	$colores_disp = $tll->select_all_clean();
-	$cat = new colores_productos();
-	$row = $cat->getAllCategories($id_product);
-
-	// echo("<pre>");
-	foreach ($row as $key => $value) {
-		echo   '
-	 	<div class="tallebox">
-	 	<p>'.$value->nombre.'</p>			
-	 	<p><input class="inputshort" type="text" name="color['.$value->idColor.']" value="'.$value->cantidad.'" ></p>
-	 	</div>';
-	}
-	// die();
-	// echo("asda");
-	// foreach($colores_disp as $id_color_m)
-	// {
-		
-	// 	$color_n= new colores();
-	// 	$color_n->select($id_color_m);
-
-
-	// 	$nombre_color = $color_n->getnombre_color();
-	// 	$id_color_tabla = $color_n->getid_color();
-
-		
-		
+}else if($type->type == 2){ ?> 
 	
-	// 	$colprod = new colores_productos();
-	// 	$colprod->select_by_producto($idProducto, $id_color_m);
-	// 	$id_color_producto = $colprod->getid();
-	// 	#echo $id_talle = $tallprod->getid_talle();
-	// 	$id_producto = $colprod->getid_producto();
-	// 	$cantidad = $colprod->getcantidad();
+	<div class="tallebox">
+	<p>'.$value->nombre.'</p>			
+	<p><input class="inputshort" type="text" name="color['.$value->idColor.']" value="'.$value->cantidad.'" ></p>
+	</div>';
 
-	// 	echo   '
-	// 	<div class="tallebox">
-	// 	<p>'.$nombre_color.'</p>			
-	// 	<p><input class="inputshort" type="text" name="color['.$id_color_m.']" value="'.$cantidad.'" ></p>
-	// 	</div>';
-	// 	// $id_color_m ="";
-		
-	// }
-		
+	<div class="tallebox">
+	<p>'.$nombre_color.'</p>			
+	<p><input class="inputshort" type="text" name="color['.$id_color_m.']" value="'.$cantidad.'" ></p>
+	</div>';
+	
+<?php	
 }else{
 echo '
 <div class="form-item">
 <div class="tiform6">Unidades en Stock </div>
-<input type="text" name="intStock" class="campo-prod" value="'.$intStock.'" />
+<input type="text" name="intStock" class="campo-prod" value="'.$data->intStock.'" />
 <div class="tiform-desc"> Ingrese el total del nuevo stock</div>
 </div>
 ';
@@ -317,7 +270,7 @@ echo '
 <div class="box-form">
 
 <div class="tiform6">Destacado</div>
-<input type="text" name="destacado" class="campo-prod" value="<?php echo $destacado;?>" />
+<input type="text" name="destacado" class="campo-prod" value="<?php echo $data->destacado;?>" />
 
 <h4>seleccionar imagenes</h4>
 
@@ -325,8 +278,8 @@ echo '
 <div class="box-img-prod-01">
 <?php 
 
-if($strImagen!=""){
-  echo '<img id="preview1" src="../../images_productos/'.$strImagen.'" alt="" width="100"/>';
+if($data->strImagen!=""){
+  echo '<img id="preview1" src="../../images_productos/'.$data->strImagen.'" alt="" width="100"/>';
 }else{
   echo '<img id="preview1" src="../../images_productos/default.png" alt="" width="100" />';
 }
@@ -334,14 +287,14 @@ if($strImagen!=""){
 </div>
 
 <div class="box-img-prod-01">
-<div class="upload"><input type="file" name="strImagen" id="strImagen" onchange="readURL(this);" value="<?php echo $strImagen;?>" /></div>
+<div class="upload"><input type="file" name="strImagen" id="strImagen" onchange="readURL(this);" value="<?php echo $data->strImagen;?>" /></div>
 </div>
 
 </div>
 
 
 <div class="box-form-btn">
-<input type="hidden" name="idProducto" id="idProducto" value="<?php echo $idProducto; ?>" />
+<input type="hidden" name="idProducto" id="idProducto" value="<?php echo $data->idProducto; ?>" />
 <button type="submit" class="button7">ACEPTAR</button> 
 <button type="button" class="button7" onclick="window.location = 'v_productos.php';">CANCELAR</button>
 </div>

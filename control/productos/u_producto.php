@@ -310,8 +310,7 @@ elseif (isset($_POST["color_talle"])) {
 }
 else
 {
-	
-	
+
 	//guardo talles en tabla talles_productos
 	
 	//Limpio talles anteriores
@@ -323,7 +322,7 @@ else
 	/* UPDATE */
 	include_once("classes/class.productos.php");
 	$productos= new productos();
-	
+
 	$productos->select($idProducto);
 	$productos->idProducto=$idProducto;
 	$productos->strNombre=$strNombre;
@@ -333,11 +332,16 @@ else
 	$productos->intStock=$intStock;
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;
-	$productos->intMaxCompra=$intMaxCompra;
+	$productos->intMaxCompra= (is_null($intMaxCompra) ? 'NULL' : $intMaxCompra);
 	$productos->update($idProducto);
 
 	$msg_final .= '<div class="notify"><p>producto actualizado!</p></div>';
 
+	
+	// echo "<pre>";
+	// print_r($_POST);
+	// echo "</pre>";
+	// die();
 
 }
 
