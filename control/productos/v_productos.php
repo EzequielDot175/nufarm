@@ -1,6 +1,7 @@
 <?php header('Content-Type: text/html; charset=utf-8');
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
+require_once('../../libs.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -111,15 +112,62 @@ $orden = "StrNombre ASC";
 echo '<div class="menuorden"><a href="v_productos.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_productos.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
 /* SELECT */
 echo '<div id="content-prod">';
-echo '
-<div class="barra-prod"><span>Productos</span></div>
-';
 
-include_once("classes/class.productos.php");
+$productos = new Producto();
+$all = $productos->all();
+
+?>
+<div class="barra-prod"><span>Productos</span></div>
+
+<?php foreach($all as $k => $v): ?>
+<div class="item-content-prod">
+
+	<div class="box-image-prod-item">
+		<img src="../../images_productos/<?php echo($v->strImagen) ?>" alt="">
+	</div>
+
+
+	<div class="box-prod-item-2">
+
+		<div class="box-prod-item-1 ">
+			<span>													
+				<?php echo($v->dblPrecio) ?> 
+			</span>
+		</div>
+
+		<div class="nom-desc">
+			<p style="color: #646363;text-transform: uppercase;font-weight: bold;"><?php echo($v->strNombre) ?></p>
+			<p style="color:#7A7474"><?php echo substr($v->strDetalle, 0, 30) ?>...</p>
+		</div>
+		<div class="stock-detalle">
+			<p>STOCK: <?php echo($v->intStock) ?></p>
+			<?php if((int)$v->intMinCompra > 0): ?>
+			<p>MIN: <?php echo($v->intMinCompra) ?></p>
+			<?php endif; ?>
+
+			<?php if((int)$v->intMaxCompra > 0): ?>
+			<p>MIN: <?php echo($v->intMaxCompra) ?></p>
+			<?php endif; ?>
+		</div>
+		<div class="box-detalle2">
+
+		</div>
+
+		<div class="box-btn-prod-edit">
+			<p>
+				<a class="btn-prod-edit" href="e_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d"><span>ADMINISTRAR</span></a>
+
+				<a class="btn-prod-edit" href="d_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d"><span>ELIMINAR</span></a>
+			</p>
+		</div>
+	</div>
+</div>
+<?php endforeach; ?>
+<!-- include_once("classes/class.productos.php");
 $productos= new productos();
-$productos->select_all($pagina, $orden);
-echo '</div>';
-?>	
+$productos->select_all($pagina, $orden); -->
+
+</div>
 
 	
 </div>
