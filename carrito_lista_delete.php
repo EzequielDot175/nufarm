@@ -1,5 +1,6 @@
 <?php
   
+  ob_start();
 
 function redirect(){
   echo('<script>window.location.href="carrito.php";</script>');
@@ -167,7 +168,7 @@ if ($cond) {
 
 
   
-  redirect();
+  
   exit();
 }elseif (   isset($_GET['talle_colores'])  ) {
  
@@ -176,13 +177,13 @@ if ($cond) {
     $talle = $_GET['talle'];
     
     $delete = $productos->deleteItem($_GET['recordID'],$sub,$talle);
-    redirect();
+    
 }
 
 
 
 
-redirect();
+header('Location: carrito.php');
 exit();
 
 ?>
