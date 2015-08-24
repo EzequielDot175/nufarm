@@ -137,18 +137,66 @@
 		</div>
 
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-			<img class="image" src="assets/images/sidebar-icon-2.png" alt="">
-			<p class="text text-uppercase"> Puntos <br> asignados</p>
-			<span class="num" >20.500</span>
+			<!--<img class="image" src="assets/images/sidebar-icon-2.png" alt="">-->
+			<!--grafico-->
+			<div id="canvas-holder">
+				<canvas class="image" id="item1Data" width="30" height="30"/>
+			</div>
+			<!--end / grafico-->
+			<p class="text text-uppercase"> Puntos <br> consumidos</p>
+			<span class="num" >3.500</span>
 		</div>
 
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-			<img class="image" src="assets/images/sidebar-icon-3.png" alt="">
-			<p class="text text-uppercase"> Puntos <br> asignados</p>
-			<span class="num" >20.500</span>
+			<!--<img class="image" src="assets/images/sidebar-icon-3.png" alt="">-->
+			<!--grafico-->
+			<div id="canvas-holder">
+				<canvas class="image" id="item2Data" width="30" height="30"/>
+			</div>
+			<!--end / grafico-->
+			<p class="text text-uppercase"> Puntos <br> disponibles</p>
+			<span class="num" >17.000</span>
 		</div>
 
-		
+		<div id="canvas-holder">
+			<canvas id="chart-area" width="30" height="30"/>
+		</div>
+
+		<script>
+		var item1Data = [
+			{
+				value: 1000,
+				color:"#d1d1d1",
+			},
+			{
+				value: 300,
+				color: "#fff",
+			},
+
+		];
+
+		var item2Data = [
+			{
+				value: 300,
+				color:"#d1d1d1",
+			},
+			{
+				value: 1000,
+				color: "#fff",
+			},
+
+		];
+
+		window.onload = function(){
+			var ctx = document.getElementById("item1Data").getContext("2d");
+			window.myPie = new Chart(ctx).Pie(item1Data);
+
+			var ctx = document.getElementById("item2Data").getContext("2d");
+			window.myPie = new Chart(ctx).Pie(item2Data);
+		};
+
+		</script>
+
 		<h3 class="sub-titulo sub-titulo-bottom text-uppercase">Consultas</h3>
 
 		<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
@@ -161,7 +209,9 @@
 		<!-- botones -->
 		<hr class="hr-bottom">
 		<div class='block-botones'>
-			<button  class="boton text-uppercase">Ver Consultas</button>
+			<a href="mi-cuenta-maqueta-2.php">
+				<button  class="boton text-uppercase">Ver Consultas</button>
+			</a>
 		</div>
 		<!--end /  botones -->
 

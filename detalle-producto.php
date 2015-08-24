@@ -87,7 +87,7 @@
 							<td <?php echo Producto::disable($val->cantidad)->opacity ?> >
 								<label  class="talle text-uppercase "><?php echo($val->talle) ?></label >
 								<input <?php echo Producto::disable($val->cantidad)->disabled ?> class="input_talle" type="number" min="0" max="<?php echo($val->cantidad) ?>" name="talle[<?php echo($val->id) ?>]" value="" >
-								<span class="unidades"><?php echo($val->cantidad) ?> u</span>
+								<span class="text-uppercase unidades"><?php echo($val->cantidad) ?> u</span>
 							</td>
 						<?php endforeach; ?>
 						</tr>
@@ -113,7 +113,7 @@
 							<td <?php echo Producto::disable($val->cantidad)->opacity ?> >
 								<label  class="talle text-uppercase "></label >
 								<input <?php echo Producto::disable($val->cantidad)->disabled ?> class="input_talle" type="number" min="0" max="<?php echo($val->cantidad) ?>" name="color[<?php echo($val->id) ?>]" value="" >
-								<span class="unidades"><?php echo($val->cantidad) ?> u</span>
+								<span class="text-uppercase unidades"><?php echo($val->cantidad) ?> u</span>
 							</td>
 						</tr>
 					</tbody>
@@ -139,7 +139,7 @@
 							<td <?php echo Producto::disable($tval->cantidad)->opacity ?> >
 								<label  class="talle text-uppercase "><?php echo($tval->nombre) ?></label >
 								<input  <?php echo Producto::disable($tval->cantidad)->disabled ?> class="input_talle" type="number" min="0" max="<?php echo($tval->cantidad) ?>" name="pedido[<?php echo($val['color']->id_color) ?>][talle][<?php echo($tval->id_talle) ?>]" value="" >
-								<span class="unidades"><?php echo($tval->cantidad) ?> u</span>
+								<span class="text-uppercase unidades"><?php echo($tval->cantidad) ?> u</span>
 							</td>
 						<?php endforeach; ?>
 						</tr>
@@ -160,7 +160,7 @@
 						<tr>
 							<td <?php echo Producto::disable($detalles->intStock)->opacity ?> >
 								<input  <?php echo Producto::disable($detalles->intStock)->disabled ?> class="input_talle" type="number" min="0" max="<?php echo($detalles->intStock) ?>" name="cantidad" value="" >
-								<span class="unidades"><?php echo($detalles->intStock) ?> u</span>
+								<span class="text-uppercase unidades"><?php echo($detalles->intStock) ?> u</span>
 							</td>
 						</tr>
 					</tbody>

@@ -53,8 +53,10 @@
 
             .tabla-detalle{
 
-
-                        
+                        thead {
+                                      padding: 0px 20px 0px 20px;
+                        }
+                       
 
                         thead , tbody{
                                      width: 100%;
@@ -129,6 +131,9 @@
 
                                                     img{
                                                                 width: 110%;
+                                                                top: -10%;
+                                                                left: -5%;
+                                                                position: relative;
                                                     }
                                         }
 

@@ -457,6 +457,14 @@ li > a:focus {
   src: url("../fonts/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-regular-webfont.woff2") format("woff2"), url("../fonts/roboto-regular-webfont.woff") format("woff"), url("../fonts/roboto-regular-webfont.ttf") format("truetype"), url("../fonts/roboto-regular-webfont.svg#robotoregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type=number] {
+  -moz-appearance: textfield; }
+
 /*::-webkit-scrollbar {//fondo
     background-color: rgba(#FFFFFF,.18);
     width: 10px;
@@ -529,6 +537,8 @@ body {
       padding-right: 5px; }
     .head .logout img {
       float: left; }
+    .head .logout:hover {
+      opacity: .5; }
 
 .centrado {
   margin: 0 auto; }
@@ -700,9 +710,9 @@ body {
     width: 230px;
     height: 118px;
     z-index: 2;
-    -moz-box-shadow: 0px 0px 1px #000000;
-    -webkit-box-shadow: 0px 0px 1px #000000;
-    box-shadow: 0px 0px 1px #000000;
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     letter-spacing: 1px; }
     .base .titulo .block-right .num {
       font-family: 'BrooklynSamuelsFive-Bold';
@@ -743,7 +753,8 @@ body {
 
 .talles {
   text-align: center;
-  color: #595959; }
+  color: #595959;
+  font-family: 'Brandon_reg'; }
   .talles .error {
     border: 1px solid #AA4025; }
   .talles input {
@@ -752,12 +763,16 @@ body {
     background-color: #969A8C;
     border: none;
     padding: 10px;
-    text-align: center; }
+    text-align: center;
+    font-family: 'Brandon_reg'; }
+  .talles label {
+    font-family: 'Brandon_reg'; }
   .talles span {
     background-color: #A7AB9C;
     width: 100%;
     float: left;
-    font-weight: bold; }
+    font-weight: bold;
+    font-family: 'Brandon_reg'; }
   .talles th {
     text-align: center; }
   .talles td {
@@ -962,39 +977,44 @@ body {
     opacity: .8; }
 
 /* --- FORM  --- */
-.form-default label, .form-default select, .form-default input, .form-default textarea {
-  width: 100%;
-  font-size: 11px;
-  color: #fff;
-  font-family: 'Brandon_reg'; }
-.form-default input, .form-default textarea {
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  -moz-border: 1px solid rgba(255, 255, 255, 0.5);
-  -webkit-border: 1px solid rgba(255, 255, 255, 0.5);
-  -ms-border: 1px solid rgba(255, 255, 255, 0.5);
-  -o-border: 1px solid rgba(255, 255, 255, 0.5);
-  height: 24px;
-  padding: 5px; }
-.form-default textarea {
-  height: 136px; }
-.form-default select {
-  height: 24px;
-  background-color: rgba(255, 255, 255, 0.2);
-  -moz-background-color: rgba(255, 255, 255, 0.2);
-  -webkit-background-color: rgba(255, 255, 255, 0.2);
-  -ms-background-color: rgba(255, 255, 255, 0.2);
-  -o-background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 0;
-  font-size: 13px;
-  font-family: 'robotoregular';
-  padding: 0px 3px 2px 3px; }
-.form-default select option {
-  background-color: #5B6D55; }
-.form-default label {
-  letter-spacing: .2;
-  font-weight: normal; }
+.form-default {
+  float: left;
+  width: 100%; }
+  .form-default .form-group {
+    margin-bottom: 10px; }
+  .form-default label, .form-default select, .form-default input, .form-default textarea {
+    width: 100%;
+    font-size: 11px;
+    color: #fff;
+    font-family: 'Brandon_reg'; }
+  .form-default input, .form-default textarea {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    -moz-border: 1px solid rgba(255, 255, 255, 0.5);
+    -webkit-border: 1px solid rgba(255, 255, 255, 0.5);
+    -ms-border: 1px solid rgba(255, 255, 255, 0.5);
+    -o-border: 1px solid rgba(255, 255, 255, 0.5);
+    height: 24px;
+    padding: 5px; }
+  .form-default textarea {
+    height: 136px; }
+  .form-default select {
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    -moz-background-color: rgba(255, 255, 255, 0.2);
+    -webkit-background-color: rgba(255, 255, 255, 0.2);
+    -ms-background-color: rgba(255, 255, 255, 0.2);
+    -o-background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 0;
+    font-size: 13px;
+    font-family: 'robotoregular';
+    padding: 0px 3px 2px 3px; }
+  .form-default select option {
+    background-color: #5B6D55; }
+  .form-default label {
+    letter-spacing: .2;
+    font-weight: normal; }
 
 /* --- DIALOG --- */
 .dialog {
@@ -1003,6 +1023,7 @@ body {
   background-repeat: no-repeat;
   background-position-x: 16px;
   background-position-y: bottom;
+  background-position: 16px bottom;
   padding-bottom: 18px; }
   .dialog .block-dialog {
     padding: 15px;
@@ -1029,6 +1050,7 @@ body {
   background-image: url("../images/dialog-bottom-verde.png");
   background-position-x: 90%;
   padding-bottom: 19px;
+  background-position: 90% bottom;
   color: #E4E4E4; }
   .dialog-verde .block-dialog {
     background-color: rgba(9, 150, 66, 0.5); }
@@ -1538,11 +1560,6 @@ body {
         float: left;
         width: 80px;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
         height: 15px;
         padding-left: 10px;
         box-sizing: border-box;
@@ -1747,6 +1764,8 @@ body {
                                             text-decoration: none;
                                     }
                             }*/ }
+    .carrito-productos .tabla-detalle thead {
+      padding: 0px 20px 0px 20px; }
     .carrito-productos .tabla-detalle thead, .carrito-productos .tabla-detalle tbody {
       width: 100%;
       display: block; }
@@ -1800,7 +1819,10 @@ body {
         margin-top: 10px;
         top: 16px; }
         .carrito-productos .tabla-detalle td .producto img {
-          width: 110%; }
+          width: 110%;
+          top: -10%;
+          left: -5%;
+          position: relative; }
       .carrito-productos .tabla-detalle td .text-producto {
         height: 44px;
         padding-left: 54px; }
@@ -2003,7 +2025,7 @@ body {
   .mi-cuenta .boton {
     width: 200px; }
   .mi-cuenta .sidebar .item {
-    height: 55px;
+    height: 57px;
     padding: 10px;
     margin-bottom: 10px;
     background-color: rgba(255, 255, 255, 0.2);

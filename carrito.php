@@ -49,11 +49,14 @@
 						</div>
 					</td>
 					<td class="col-B">
-						<!-- SI NO HAY TALLE
+
+						<!-- talle-->
+						<?php if($val->color == ''): //si no hay color ?>
 							<p class="text-uppercase inactivo">n/a</p>
-						-->
-						<!-- color-->
-						<p class="text-uppercase big-text"><?php echo $val->talle ?></p>
+						<?php elseif(!is_null($val->color)): //si hay color ?>
+							<p class="text-uppercase big-text"><?php echo $val->talle ?></p>
+						<?php endif;  ?>
+
 					</td>
 					<td class="col-C">
 						<!-- color-->
@@ -88,7 +91,7 @@
 						<!--COLUMNA TOTAL (no se repite rowspan = cantidad de items) -->
 						<td class="total col-Total" rowspan="<?php $carrito->cantidad() ?>">
 							<div class="block-num">
-								<p class="num ">$ <?php $carrito->total(); ?></p>
+								<p class="num "><?php $carrito->total(); ?></p>
 							</div>
 						</td>
 						<!--END / COLUMNA TOTAL -->

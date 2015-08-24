@@ -10,7 +10,7 @@
 		<!--buscador-->
 		<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<div class="filtros">
-				<!--<input type="text" name="" value="">-->
+				<input type="text" name="" value="">
 			</div>
 		</div>
 		<!--end / buscador-->

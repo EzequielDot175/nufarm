@@ -23,6 +23,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="assets/js/eventos.js"></script>
 <script src="assets/js/form.validator.js"></script>
+<script src="assets/js/Chart.min.js"></script>
 
 </body>
 </html>
