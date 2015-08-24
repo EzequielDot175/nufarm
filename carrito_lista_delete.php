@@ -6,8 +6,8 @@ ob_start();
 //   echo('<script>window.location.href="carrito.php";</script>');
 // }
 
-  error_reporting(0);
-  ini_set('display_errors', 'off');
+  // error_reporting(0);
+  // ini_set('display_errors', 'off');
 
   require_once('Connections/conexion.php');
   // require_once(dirname(__FILE__).'/TempStock.php');
@@ -169,7 +169,6 @@ if ($cond) {
 
   
   
-  exit();
 }elseif (   isset($_GET['talle_colores'])  ) {
  
     $productos = new tallesColores();
@@ -182,8 +181,6 @@ if ($cond) {
 
 
 
-
 header('Location: catalogo.php');
-exit();
 
 ?>
