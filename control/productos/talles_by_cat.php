@@ -16,23 +16,37 @@ $prod = new Producto();
 
 				function build_boxes($talle, $nombre_talle, $idproducto){
 					
+
+					// echo "<pre>";
+					// print_r($talle);
+					// print_r($nombre_talle);
+					// print_r($idproducto);
+					// echo "</pre>";
+					// die();
 					if($idproducto > 0)
 					{
 						//editar
 						include_once("classes/class.talles_productos.php");
 					
 						$tallprod = new talles_productos();
-						$tallprod->select_by_producto($idproducto, $talle);
-						$id_talle_producto = $tallprod->getid();
-						$id_talle = $tallprod->getid_talle();
-						$id_producto = $tallprod->getid_producto();
-						$cantidad = $tallprod->getcantidad();
+
+						echo "<pre>";
+						var_dump($tallprod->select_by_producto($idproducto, $talle));
+						echo "</pre>";
+						// $id_talle_producto = $tallprod->getid();
+						// $id_talle = $tallprod->getid_talle();
+						// $id_producto = $tallprod->getid_producto();
+						// $cantidad = $tallprod->getcantidad();
 						
-						$salida .=   '
-						<div class="tallebox">
-							<p>'.$nombre_talle.'</p>	
-							<p><input class="inputshort" type="text" name="talle['.$talle.']" value="'.$cantidad.'" id="'.$talle.'"></p>
-						</div>';
+							
+						// echo "<pre>";
+						// var_dump($id_talle);
+						// echo "</pre>";
+						// $salida .=   '
+						// <div class="tallebox">
+						// 	<p>'.$nombre_talle.'</p>	
+						// 	<p><input class="inputshort" type="text" name="talle['.$talle.']" value="'.$cantidad.'" id="'.$talle.'"></p>
+						// </div>';
 						
 						
 					}
@@ -40,13 +54,13 @@ $prod = new Producto();
 					{
 						//nuevo
 						
-						$salida .=   '
-						<div class="tallebox">
-							<p>'.$nombre_talle.'</p>
-							<p><input class="inputshort" type="text" name="talle['.$talle.']" value="" id="'.$talle.'"></p>
-						</div>';
+						// $salida .=   '
+						// <div class="tallebox">
+						// 	<p>'.$nombre_talle.'</p>
+						// 	<p><input class="inputshort" type="text" name="talle['.$talle.']" value="" id="'.$talle.'"></p>
+						// </div>';
 					}
-					echo $salida;	
+					// echo $salida;	
 				}
 
 				
@@ -102,24 +116,30 @@ $prod = new Producto();
 
 				if($talles ==1)
 				{
-					//require talles
-					include_once("../talles/classes/class.talles.php");
-					$tll= new talles();
-					$talles_disp = $tll->select_all_clean();
 					
-					
-					foreach($talles_disp as $talle)
-					{
-						$talle_n= new talles();
-						$talle_n->select($talle);
-						$nombre_talle = $talle_n->getnombre_talle();
-						//llamo funcion que genera cuadros con los imputs
-						
-						build_boxes($talle, $nombre_talle, $idproducto);
-						$talle="";
-						$nombre_talle="";
-					
-					}
+					$talles = $prod->talles($idproducto);
+					$html = "";
+
+					if(!empty($talles)):
+						foreach($talles as $key => $val):
+							$html .=   '
+							<div class="tallebox">
+								<p>'.$val->talle.'</p>
+								<p><input class="inputshort" type="text" name="talle['.$val->id.']" value="'.$val->cantidad.'" id="talle'.$val->id.'"></p>
+							</div>';
+						endforeach;
+					else:
+						$talles = $prod->allTalles();
+						foreach($talles as $key => $val):
+							$html .=   '
+							<div class="tallebox">
+								<p>'.$val->nombre_talle.'</p>
+								<p><input class="inputshort" type="text" name="talle['.$val->id_talle.']" value="0" id="talle'.$val->id_talle.'"></p>
+							</div>';
+						endforeach;
+					endif;
+
+					echo($html);
 				}
 				else if ($talles ==2)
 				{
@@ -137,7 +157,6 @@ $prod = new Producto();
 						endforeach;
 					else:
 						$colores = $prod->allColores();
-				
 						foreach($colores as $key => $val):
 							$html .=   '
 							<div class="tallebox">
