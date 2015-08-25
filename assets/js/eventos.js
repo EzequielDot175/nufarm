@@ -24,14 +24,23 @@ $(document).ready(function(){
 
 	/**
 	 * Busqueda de productos en la home
+	 * Facil...
 	 */
 
 	 $('.find-input-in-results').keyup(function(event) {
-	 	// var collection = $('');
-	 	// console.log($(this).val());
-	 	// $.each(array/object, function(index, val) {
-	 	// 	 /* iterate through array or object */
-	 	// });
+	 	var collection = $('.find-box-in-results');
+	 	var find = $(this).val().toUpperCase();
+	 	if (find != "") {
+		 	$('.find-box-in-results').parent().parent().hide();
+		 	$.each(collection, function(index, val) {
+		 		var title = $(val).text().toUpperCase();
+		 		if (title.search(find) != -1) {
+		 			$(val).parent().parent().show();
+		 		};
+		 	});
+	 	}else{
+	 		$('.find-box-in-results').parent().parent().show();
+	 	}
 	 });
 	    
 });

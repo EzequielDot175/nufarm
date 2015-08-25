@@ -15,13 +15,17 @@
 			$this->{$name}($arguments);
 		}
 
-		public static function method($name = null){
+		public static function method($name = null,$arguments = null){
 			$class = __CLASS__;
 			$instance = new $class();
 			if(is_null($name)):
 				return $instance;
 			else:
-				return $instance->{$name}();			
+				if(is_null($arguments)):
+					return $instance->{$name}();			
+				else:
+					return $instance->{$name}($arguments);			
+				endif;
 			endif;
 		}
 	}

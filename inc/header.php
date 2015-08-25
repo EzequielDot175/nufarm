@@ -129,7 +129,7 @@
 						<h3 class="text-b">DE PRODUCTOS</h3>
 					</div>
 					<div class="block-right">
-						<p class="text-a text-uppercase">nombre usuario</p>
+						<p class="text-a text-uppercase"><?php echo Auth::User()->strNombre ?></p>
 						<p class="num"><?php echo Auth::User()->dblCredito; ?></p>
 						<p class="text-b text-uppercase">PUNTOS DISPONIBLES 
 							<br>HASTA 31/07/2016

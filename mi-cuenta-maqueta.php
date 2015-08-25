@@ -5,7 +5,6 @@
 		$x->edit($_POST);
 	});
 	$user = Auth::User();
-
 ?>
 <!-- Header -->
 
@@ -139,7 +138,7 @@
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<img class="image" src="assets/images/sidebar-icon-1.png" alt="">
 			<p class="text text-uppercase"> Puntos <br> asignados</p>
-			<span class="num" >20.500</span>
+			<span class="num" ><?php echo $user->puntos_asignados ?></span>
 		</div>
 
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
@@ -150,7 +149,7 @@
 			</div>
 			<!--end / grafico-->
 			<p class="text text-uppercase"> Puntos <br> consumidos</p>
-			<span class="num" >3.500</span>
+			<span class="num" ><?php echo Auth::consumido() ?></span>
 		</div>
 
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
@@ -161,8 +160,12 @@
 			</div>
 			<!--end / grafico-->
 			<p class="text text-uppercase"> Puntos <br> disponibles</p>
-			<span class="num" >17.000</span>
+			<span class="num" ><?php echo $user->dblCredito; ?></span>
 		</div>
+			
+		<input type="hidden" id="asignado" value="<?php echo $user->puntos_asignados ?>">
+		<input type="hidden" id="disponible" value="<?php echo $user->dblCredito ?>">
+		<input type="hidden" id="consumido" value="<?php echo Auth::consumido() ?>">
 
 		<div id="canvas-holder">
 			<canvas id="chart-area" width="30" height="30"/>
@@ -171,11 +174,11 @@
 		<script>
 		var item1Data = [
 			{
-				value: 1000,
+				value: parseInt(document.getElementById('asignado').value),
 				color:"#d1d1d1",
 			},
 			{
-				value: 300,
+				value: parseInt(document.getElementById('consumido').value),
 				color: "#fff",
 			},
 
@@ -183,11 +186,11 @@
 
 		var item2Data = [
 			{
-				value: 300,
+				value: parseInt(document.getElementById('consumido').value),
 				color:"#d1d1d1",
 			},
 			{
-				value: 1000,
+				value: parseInt(document.getElementById('asignado').value),
 				color: "#fff",
 			},
 

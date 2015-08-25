@@ -4,6 +4,8 @@
 	*/
 	class DB extends PDO implements DBInterface
 	{
+
+
 		private $dbname = "nmaxx_develop";
 		private $dbuser = "nmaxx_pnufarm";
 		private $dbpass = "K[^Xc0lsU1T(";
@@ -28,7 +30,9 @@
 	 		$attr = $attributes->getProperties(ReflectionProperty::IS_PUBLIC);
 	 		$props = [];
 	 		foreach ($attr as $key => $value) {
-	 			$props[$value->name] = $this->{$value->name};
+	 			if(!empty($this->{$value->name})):
+	 				$props[$value->name] = $this->{$value->name};
+	 			endif;
 	 		}
 	 		return $props;
 		}
