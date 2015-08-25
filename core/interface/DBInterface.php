@@ -66,6 +66,7 @@
 			 * @param CLASS: Auth
 			 */
 			const AUTH_USER 					= "SELECT * FROM usuarios WHERE idUsuario = :id"; 
+			const AUTH_USEDPOINTS				= "SELECT SUM(dblTotal) as total FROM compra WHERE idUsuario = :id ";
 
 			
 			/**
@@ -201,9 +202,21 @@
 			 * Consultas
 			 */
 
-			const CONSULTA_GET = "SELECT * FROM consultas WHERE idUsuario = :id";
+			const CONSULTA_GET = "SELECT cons.*, usr.strNombre FROM consultas as cons LEFT JOIN usuarios as usr ON usr.idUsuario = cons.idUsuario WHERE cons.idUsuario = 2";
 			const CONSULTA_LAST = "SELECT * FROM consultas WHERE idUsuario = :id ORDER BY idConsulta DESC LIMIT 1";
+			const CONSULTA_GETRESPONSE = "SELECT 
+					cons.strCampo as texto,
+				    cons.fecha,
+				    usr.strNombre
+				FROM consultas as cons
+				LEFT JOIN  
+					usuarios as usr ON usr.idUsuario =  cons.idUsuario
+
+				WHERE
+					cons.respuesta_de = :id";
+			const CONSULTA_NEW = "INSERT INTO consultas (idUsuario,strAsunto,strCampo,fecha,respondido,tipo,respuesta_de) VALUES (:id,:asunto,:campo,NOW(),0,1,0) ";
 		}
 
 
 		?>
+

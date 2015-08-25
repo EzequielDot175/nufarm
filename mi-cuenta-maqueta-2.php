@@ -1,5 +1,9 @@
 <?php 
 	require('inc/header.php');
+	
+	Utils::POST('submit',function(){
+		Consulta::newConsulta($_POST);
+	});
 ?>
 <!-- Header -->
 
@@ -18,15 +22,15 @@
 
 		<h3 class="sub-titulo text-uppercase">Nueva Consulta</h3>
 
-		<form role="form " class="form-default">
+		<form role="form " method="post"  class="form-default">
 			<div class="form-group">
 				<label for="text" class="text-uppercase">Asunto</label>
-				<input type="text" id="email">
+				<input type="text" name="asunto">
 			</div>
 
 			<div class="form-group">
 				<label for="text" class="text-uppercase">Descripción</label>
-				<textarea name=""></textarea>
+				<textarea name="descripcion"></textarea>
 			</div>
 
 			<!-- botones -->
@@ -34,6 +38,7 @@
 			<div class='block-botones'>
 				<button type="submit" class="boton text-uppercase">Guardar Datos</button>
 			</div>
+			<input type="hidden" name="submit">
 			<!--end /  botones -->
 		</form>
 
@@ -49,62 +54,37 @@
 		
 		<!--block-items-->
 		<div class="block-items col-xs-12 col-sm-12 col-md-12">
-		
-			<?php
-				for ($i=1; $i < 3 ; $i++) { 
-			?>
+			
+			<?php foreach(Consulta::all() as $key => $val):
+				$respuesta = Consulta::respuesta($val->idConsulta);
+			 ?>
 				<!--item-->
 				<div class="columna-a col-xs-12 col-sm-6 col-md-6">
 					<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 						<div class="block-dialog">
-							<p class="text fecha ">2015-07-30 10:35:55</p>
-							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. </p>
-							<p class="text autor ">Gabriel Filippa </p>
+							<p class="text fecha "><?php echo $val->fecha ?></p>
+							<p class="text "><?php echo $val->strCampo ?></p>
+							<p class="text autor "><?php echo $val->strNombre ?></p>
 						</div>
 					</div>
 				</div>
 				<!--end / item-->
+				<?php if($respuesta): ?>
 				<!--item-->
 				<div class="columna-b col-xs-12 col-sm-6 col-md-6">
 					<div class="dialog dialog-verde col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 						<div class="block-dialog">
-							<p class="text fecha ">2015-07-30 10:35:55</p>
-							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. En la compra me faltan 10 pesos para ...</p>
-							<p class="text autor ">Gabriel Filippa </p>
+							<p class="text fecha "><?php echo $respuesta->fecha ?></p>
+							<p class="text "><?php echo $respuesta->texto ?></p>
+							<p class="text autor "><?php echo $respuesta->strNombre ?></p>
 						</div>
 					</div>
 				</div>
 				<!--end / item-->
+				<?php endif; ?>
 
 				<hr><!-- cada dos consultas va un HR -->
-
-				<!--item-->
-				<div class="columna-a col-xs-12 col-sm-6 col-md-6">
-					<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-						<div class="block-dialog">
-							<p class="text fecha ">2015-07-30 10:35:55</p>
-							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. GRACIAS.</p>
-							<p class="text autor ">Gabriel Filippa </p>
-						</div>
-					</div>
-				</div>
-				<!--end / item-->
-				<!--item-->
-				<div class="columna-b col-xs-12 col-sm-6 col-md-6">
-					<div class="dialog dialog-verde col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-						<div class="block-dialog">
-							<p class="text fecha ">2015-07-30 10:35:55</p>
-							<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. En la compra me faltan 10 pesos para ...</p>
-							<p class="text autor ">Gabriel Filippa </p>
-						</div>
-					</div>
-				</div>
-				<!--end / item-->
-
-				<hr><!-- cada dos consultas va un HR -->
-			<?php
-				}
-			?>
+			<?php endforeach; ?>
 
 		</div>
 		<!--end / block-items-->

@@ -4,6 +4,11 @@
 	*/
 	class Auth extends DB
 	{
+
+		use Facade;
+
+
+
 		private $id;
 
 
@@ -40,6 +45,19 @@
 			$user->bindParam(':id', $id, PDO::PARAM_INT);
 			$user->execute();
 			return $user->fetch();
+		}
+
+		public function puntosConsumidos(){
+			$id = self::id();
+			$sel = $this->prepare(self::AUTH_USEDPOINTS);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetch()->total;
+		}
+
+
+		public static function consumido(){
+			return self::method('puntosConsumidos');
 		}
 
 		public static function User(){
