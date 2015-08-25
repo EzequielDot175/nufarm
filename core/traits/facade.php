@@ -14,6 +14,16 @@
 		public function __call($name,$arguments){
 			$this->{$name}($arguments);
 		}
+
+		public static function method($name = null){
+			$class = __CLASS__;
+			$instance = new $class();
+			if(is_null($name)):
+				return $instance;
+			else:
+				return $instance->{$name}();			
+			endif;
+		}
 	}
 
  ?>

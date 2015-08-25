@@ -1,5 +1,11 @@
 <?php 
 	require('inc/header.php');
+	Utils::POST('submit',function(){
+		$x = new Usuario();
+		$x->edit($_POST);
+	});
+	$user = Auth::User();
+
 ?>
 <!-- Header -->
 
@@ -18,50 +24,48 @@
 
 		<h3 class="sub-titulo text-uppercase">Datos</h3>
 
-		<form role="form " class="form-default">
+		<form role="form" action="" method="post" class="form-default">
 			<!--form-a-->
 			<div class="form-a col-xs-12 col-sm-6 col-md-6 ol-lg-6">
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Empresa</label>
-					<input type="text" id="email">
+					<input type="text" name="strEmpresa" value="<?php echo $user->strEmpresa ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Nombre</label>
-					<input type="text"  id="email">
+					<input type="text" name="strNombre"  value="<?php echo $user->strNombre ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Apellido</label>
-					<input type="text"  id="email">
+					<input type="text" name="strApellido"  value="<?php echo $user->strApellido ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Teléfono</label>
-					<input type="text" id="email">
+					<input type="text" name="telefono" value="<?php echo $user->telefono ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Dirección</label>
-					<input type="text"  id="email">
+					<input type="text" name="direccion"  value="<?php echo $user->direccion ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Ciudad</label>
-					<input type="text"  id="email">
+					<input type="text" name="ciudad"  value="<?php echo $user->ciudad ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Código Postal</label>
-					<input type="text"  id="email">
+					<input type="text" name="cp"  value="<?php echo $user->cp ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Provincia</label>
-					<select >
-						<option class="text-uppercase">Buenos Aires</option>
-						<option class="text-uppercase">Formosa</option>
-						<option class="text-uppercase">Santiago del Estero</option>
+					<select name="provincia">
+						<?php Provincia::options($user->provincia); ?>
 					</select>
 				</div>
 			</div>
@@ -70,50 +74,52 @@
 			<!--form-b-->
 			<div class="form-b col-xs-12 col-sm-6 col-md-6 ol-lg-6">
 				<div class="form-group">
-					<label for="text" class="text-uppercase">Dirección</label>
-					<input type="text" id="email">
+					<label for="text" class="text-uppercase">E-mail / Usuario</label>
+					<input type="text" name="strEmail" value="<?php echo $user->strEmail ?>">
 				</div>
 
 				<div class="form-group">
+					<label for="text" class="text-uppercase">Contraseña</label>
+					<input type="text" name="strPassword">
+				</div>
+
+				<div class="form-group">
+					<label for="text" class="text-uppercase">Fecha de nac</label>
+					<input type="text" name="cumpleanos"  value="<?php echo Auth::BirthDay($user->cumpleanos); ?>" placeholder="dd/mm/yyyy">
+				</div>
+
+				<div class="form-group">
+					<label for="text" class="text-uppercase">Cargo</label>
+					<input type="text" name="strCargo" value="<?php echo $user->strCargo ?>">
+				</div>
+<!-- 
+				<div class="form-group">
 					<label for="text" class="text-uppercase">Ciudad</label>
-					<input type="text"  id="email">
+					<input type="text"  id="email" value="<?php echo $user->telefono ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Código Postal</label>
-					<input type="text"  id="email">
+					<input type="text"  id="email" value="<?php echo $user->telefono ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Provincia</label>
-					<input type="text" id="email">
-				</div>
-
-				<div class="form-group">
-					<label for="text" class="text-uppercase">Ciudad</label>
-					<input type="text"  id="email">
+					<input type="text" id="email" value="<?php echo $user->telefono ?>">
 				</div>
 
 				<div class="form-group">
 					<label for="text" class="text-uppercase">Código Postal</label>
-					<input type="text"  id="email">
-				</div>
-
-				<div class="form-group">
-					<label for="text" class="text-uppercase">Provincia</label>
-					<input type="text" id="email">
-				</div>
-
-				<div class="form-group">
-					<label for="text" class="text-uppercase">Código Postal</label>
-					<input type="text"  id="email">
-				</div>
+					<input type="text"  id="email" value="<?php echo $user->telefono ?>">
+				</div> -->
 
 			</div>
 			<!--end / form-b-->
 
 			
 			<!-- botones -->
+			<input type="hidden" name="submit">
+
 			<hr class="hr-bottom">
 			<div class='block-botones'>
 				<button type="submit" class="boton text-uppercase">Guardar Datos</button>
@@ -201,8 +207,8 @@
 
 		<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<div class="block-dialog">
-				<p class="text ">En la compra me faltan 10 pesos para cerrar la compra. Agradezco la gestión. </p>
-				<p class="text autor ">Gabriel Filippa </p>
+				<p class="text "><?php echo Consulta::last()->strCampo ?></p>
+				<p class="text autor "><?php echo $user->strNombre ?> </p>
 			</div>
 		</div>
 		

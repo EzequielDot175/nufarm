@@ -1,15 +1,4 @@
 			<?php 
-			/**
-			* @abstract Esta clase supone reemplazar los sql escritos por todo el sitio, definidos como constantes
-			*/
-			trait Helpers{
-
-				public static function session($param){
-					return $_SESSION[$param];
-				}
-			// public static function getPost()
-
-			}
 			
 			
 			interface DBInterface {
@@ -138,7 +127,7 @@
 			*/
 			
 			const USUARIO_SUMCREDITO                 = "UPDATE usuarios SET dblCredito = dblCredito + :num WHERE idUsuario = :user";
-			
+			const USUARIO_EDIT 						 = "UPDATE usuarios :QUERY WHERE idUsuario = :id";
 			
 			
 			
@@ -205,6 +194,15 @@
             	productos as prod ON prod.idProducto = dt.id_producto	
 			WHERE
 				idUsuario = :id";
+
+
+			/**
+			 * @internal
+			 * Consultas
+			 */
+
+			const CONSULTA_GET = "SELECT * FROM consultas WHERE idUsuario = :id";
+			const CONSULTA_LAST = "SELECT * FROM consultas WHERE idUsuario = :id ORDER BY idConsulta DESC LIMIT 1";
 		}
 
 
