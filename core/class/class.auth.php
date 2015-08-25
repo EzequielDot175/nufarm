@@ -47,6 +47,11 @@
 			return $user->getUser();
 		}
 
+		public static function BirthDay($dat){
+			$date = new DateTime($dat);
+			return $date->format('d/m/Y');
+		}
+
 
 
 	}

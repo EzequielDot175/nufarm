@@ -61,18 +61,18 @@
 				</div>
 				<?php endif; ?>
 
-				<?php if(!is_null($limitCompra) && $limitCompra != 0 ): ?>
+				<?php if(!is_null($limitCompra) ): ?>
 				<div class="block-num">
 					<p class="text text-uppercase">MÁXIMO</p>
 					<div class="icon-num">
-						<p><?php echo($limitCompra) ?></p>
+						<p><?php echo ($limitCompra > 0 ? $limitCompra : 0 ) ?></p>
 					</div>
 				</div>
 				<?php endif; ?>
 
 				<form action="carrito_add.php" method="post" id="add_product">
 					<input type="hidden" name="type" value="<?php echo($detalles->type) ?>">
-					<input type="hidden" id="max" value="<?php echo($limitCompra) ?>">
+					<input type="hidden" id="max" value="<?php echo ($limitCompra > 0 ? $limitCompra : 0 ) ?>">
 					<input type="hidden" id="min" value="<?php echo($detalles->intMinCompra) ?>">
 				<?php 
 				/**

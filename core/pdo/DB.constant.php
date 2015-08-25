@@ -66,6 +66,13 @@
 			return $this->query($sql)->fetch(PDO::FETCH_OBJ);
 		}
 
+		/**
+		 * @internal
+		 * Retorna la clase actual
+		 */
+		
+	
+
 
 
 	}

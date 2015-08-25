@@ -19,7 +19,21 @@ $(document).ready(function(){
 	}else{
 		$('.footer').css('position', 'relative');
 	}
-    
+
+
+
+	/**
+	 * Busqueda de productos en la home
+	 */
+
+	 $('.find-input-in-results').keyup(function(event) {
+	 	// var collection = $('');
+	 	// console.log($(this).val());
+	 	// $.each(array/object, function(index, val) {
+	 	// 	 /* iterate through array or object */
+	 	// });
+	 });
+	    
 });
 
 

@@ -10,7 +10,7 @@
 		<!--buscador-->
 		<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<div class="filtros">
-				<input type="text" name="" value="">
+				<input type="text" class="find-input-in-results" value="">
 			</div>
 		</div>
 		<!--end / buscador-->
@@ -29,7 +29,7 @@
 				<div class="img">
 					<img src="images_productos/<?php echo($val->strImagen) ?>" alt="<?php echo($val->strNombre) ?>">
 				</div>
-				<h6 class="text-uppercase"><?php echo($val->strNombre) ?></h6>
+				<h6 class="text-uppercase find-box-in-results"><?php echo($val->strNombre) ?></h6>
 				<p class="descripcion"></p>
 				<div class="footer-item">
 					<p class="text-left">STOCK <?php echo($val->intStock) ?></p>
