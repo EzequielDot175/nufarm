@@ -31,8 +31,8 @@
 			<table class="tabla-detalle">
 				<thead>
 					<tr>
-						<th class="text-uppercase col-A" colspan="2">canje</th>
-						<th class="text-uppercase col-Auto">productos</th>
+						<th class="text-uppercase col-Auto" colspan="2">canje</th>
+						<th class="text-uppercase col-A">productos</th>
 						<th class="text-uppercase col-B">talle</th>
 						<th class="text-uppercase col-C">color</th>
 						<th class="text-uppercase col-B">unidades</th>
