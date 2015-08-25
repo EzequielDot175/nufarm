@@ -5,6 +5,8 @@ $activo = $_GET['activo'];
 $sub = $_GET['sub'];
 
 echo'
+
+<!--
 <div class="ie8container">
 <a href="../compras/v_compras.php?activo=1&sub=c">
 <div id="link1" class="link short ie8'; if ($activo==1){echo " activo";}else{echo " disabled";} echo' "><p class="'; if ($sub=='c' or $sub=='a' ){echo " subactivo";} echo'">CANJES REALIZADOS</p>
@@ -26,6 +28,24 @@ echo'
 </div>
 </a>
 </div>
+-->
+
+<div class="menu">
+        <li class="">FILTROS</li>
+        <a href="../compras/v_compras.php?activo=1&sub=c"  >
+        	<li class="'; if ($activo==1){echo " seleccionado";}echo'">PRODUCTOS CANJEADOS</li>
+        </a>
+        <a href="../productos/v_productos.php?activo=2&sub=d">
+       	 <li class="'; if ($sub=="d"){echo " seleccionado";} echo'">CARGA DE PRODUCTOS</li>
+        </a>
+        <a href="../usuarios/v_usuarios.php?activo=2&sub=e&vert=1">
+        	<li class="'; if ($sub=="e"){echo " seleccionado";}echo'">DATOS DE CLIENTES</li>
+        </a>
+        <a href="../personal/v_personal.php?activo=2&sub=h">
+        	<li class="'; if ($sub=="h"){echo " seleccionado";}echo'">DATOS DE VENDEDORES</li>
+        </a>
+  </div>
+
 ';
 
 }

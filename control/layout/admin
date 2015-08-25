@@ -1,0 +1,41 @@
+
+.main_menu {
+    height: 48px;
+}
+.menu{
+	width: 100%;
+  	float: left;
+  	position: relative;
+  	height: 48px;
+  	margin-top:10px;
+}
+
+.menu li{
+  	float: left;
+  	position: relative;
+  	bottom: 0;
+  	height: 31px;
+  	margin: 0;
+  	margin-right: 1px;
+  	padding:17px 27px 0 27px;
+  	font-size: 12px;
+  	color: #8E3289;
+  	background-color: rgba(215,215,215,.80);
+  	-moz-background-color: rgba(215,215,215,.80);
+  	-ms-background-color: rgba(215,215,215,.80);
+  	-o-background-color: rgba(215,215,215,.80);
+	-webkit-background-color: rgba(215,215,215,.80);
+}
+
+.menu .seleccionado{
+  	float: left;
+  	height: 41px;
+  	margin-top: -10px;
+  	font-size: 20px;
+  	color: #099642;
+  	background-color: rgba(255,255,255,.80);
+  	-moz-background-color: rgba(255,255,255,.80);
+  	-ms-background-color: rgba(255,255,255,.80);
+  	-o-background-color: rgba(255,255,255,.80);
+	-webkit-background-color: rgba(255,255,255,.80);
+}

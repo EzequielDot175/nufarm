@@ -1,13 +1,11 @@
 <?php
 include_once("../resources/class.database.php");
 
-
 /* CLASS DECLARATION */
-
 
 class compras{ 
 // class : begin
-	/* ATTRIBUTE DECLARATION */
+/* ATTRIBUTE DECLARATION */
 var $idCompra;   // KEY ATTR. WITH AUTOINCREMENT
 var $idUsuario;
 var $fthCompra;
@@ -20,11 +18,8 @@ var $database; // Instance of class database
 
 
 /* CONSTRUCTOR METHOD */
-
 function compras(){
-
 	$this->database = new Database();
-
 }
 
 
@@ -109,8 +104,7 @@ function select_all($pagina, $orden)
 			echo "</pre>";
 			die();
 
-		}else
-		{
+		}else{
 			$sql = "SELECT * FROM usuarios ";
 			$result = $this->database->query($sql);
 			$result = $this->database->result;
@@ -121,6 +115,7 @@ function select_all($pagina, $orden)
 			$clientes_d = implode(',', $clientes);
 			$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
 		}
+
 	}elseif($_SESSION['logged_role'] ==2){
 		
 		$sql = "SELECT * FROM usuarios WHERE vendedor='$vendedor_asignado' ";
@@ -143,10 +138,7 @@ function select_all($pagina, $orden)
 			$clientes[] = $row['idUsuario'];
 		}
 		$clientes_d = implode(',', $clientes);
-		$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
-
-
-		
+		$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";	
 	}
 
 
@@ -163,8 +155,6 @@ function select_all($pagina, $orden)
 		include_once('../usuarios/classes/class.usuarios.php');
 		while($row = mysql_fetch_array($result))
 		{
-
-
 			$idCompra = $row['idCompra'];
 			$idUsuario = $row['idUsuario'];
 
@@ -176,8 +166,6 @@ function select_all($pagina, $orden)
 		$pages->mid_range = 10;
 		$pages->paginate();
 		$pages->display_pages();
-
-
 
 		if($_SESSION['logged_role'] ==1){
 
@@ -214,13 +202,9 @@ function select_all($pagina, $orden)
 			{$sql ="SELECT * FROM compra WHERE  idUsuario IN ($clientes_d) ORDER BY $orden $pages->limit;";}
 		}
 
-
-
-
 		$result = $this->database->query($sql);
 		$result = $this->database->result;
 		while($row = mysql_fetch_array($result)){
-
 
 			$idCompra = $row['idCompra'];
 			$idUsuario = $row['idUsuario'];
@@ -234,7 +218,6 @@ function select_all($pagina, $orden)
 			$leido = $row['leido'];
 			$detalle = $row['detalle'];
 			$estado = $row['estado'];
-
 
 			include_once('../usuarios/classes/class.usuarios.php');
 
@@ -260,19 +243,16 @@ function select_all($pagina, $orden)
 
 ////////////////////////////////////////// PRODUCTOS CANJEADOS ITEM PEDIDO - TOTAL
 			$item .= '<div class="item">
-
-
-
 			<!-- Compra: '.$idCompra.' pertenece a vendedor : '.$vendedor_usuario.'-->
 			<div class="olive-bar_new2"><span class="tit_pedido"><span class="bold">Usuario: '.utf8_decode($nombre_usr).' '.utf8_decode($apellido_usr).'</span> / '.$email_usr.'</span> <span class="fecha_tit_admin">'.$fthCompra.'</span></div>
 			<form name="listado_productos" id="estform" action="update_proceso.php" method="post">
 			';
+
+
 ////////////////////////////////////////// SELECT ESTADO PEDIDO
 			if($_SESSION['logged_role'] == 1){
 				$item .= '
 				<div class="estadopedido_box">
-
-
 
 				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
 				<select name="estado_compra" id="estado1">
@@ -316,21 +296,16 @@ function select_all($pagina, $orden)
 			<div class="fth-c"><!--'.$fthCompra.'--></div>
 			</div>
 
-
 			</div>
 
-
-
 			</div>';
-
-
 
 			if($_SESSION['logged_role'] == 1){
 				echo $item;
 			}elseif($_SESSION['logged_role'] == 2){
 				echo $item;
 			}else{
-												//chequear si el cliente pertenece a ese vendedor
+				//chequear si el cliente pertenece a ese vendedor
 				if($_SESSION['logged_id'] == $vendedor_usuario){
 					echo $item;
 				}
@@ -344,11 +319,11 @@ function select_all($pagina, $orden)
 		echo '<div class="navigate">';
 		echo $pages->display_pages();
 
+		// Optional call which will display the page numbers after the results.
+		//$pages->display_jump_menu(); // Optional – displays the page jump menu
+		//echo $pages->display_items_per_page(); //Optional – displays the items per
+		//echo  $pages->current_page . ' of ' .$pages->num_pages.'';
 
- // Optional call which will display the page numbers after the results.
-//$pages->display_jump_menu(); // Optional – displays the page jump menu
-//echo $pages->display_items_per_page(); //Optional – displays the items per
-//echo  $pages->current_page . ' of ' .$pages->num_pages.'';
 		echo '</div>';
 	}
  //////////////////PODUCTOS DEL PEDIDO - NOMBRE - DETALLE - CANTIDAD - PRECIO

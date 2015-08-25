@@ -65,11 +65,12 @@ $prop->sin_responder();
 </header>			
 <div class="main_menu">
 				<?php include('../inc/main_menu.php'); ?>
+
 				
-				<div class="search_box">
+				<!--<div class="search_box">
 				<form action="<?php  echo BASEURL.'/busquedas/busquedas.php'; ?>" method="post">
 				<input type="text" value="BUSCAR" name="busqueda" id="busqueda" />
 				</form>
-				</div>
+				</div>-->
 </div>
 
