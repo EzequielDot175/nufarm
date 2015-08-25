@@ -181,6 +181,6 @@ if ($cond) {
 
 
 
-header('Location: catalogo.php');
+header('Location: carrito.php');
 
 ?>
