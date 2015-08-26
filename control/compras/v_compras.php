@@ -125,7 +125,7 @@ $orden = "idCompra DESC";
 }
 
 echo '
-<div class="filtros">
+<div class="filtros-Default filtros-100">
       <form action="">
             <h3> FILTRAR POR:</h3>
             <select name="">
