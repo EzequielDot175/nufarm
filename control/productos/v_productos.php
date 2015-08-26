@@ -73,15 +73,13 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	
 <div class="three_4">
 
+<!-- SIDEBAR
 <div class="item-group-btn">
-<a class="btn-fill" href="<?php  echo BASEURL.'/productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
-<a class="btn-fill"href="<?php  echo BASEURL.'/categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/colores/v_color.php?activo=2&sub=d';?>"><span><p>Administrar Colores</p></span></a>
-
-
-</div>
-
+	<a class="btn-fill" href="<?php  echo BASEURL.'/productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
+	<a class="btn-fill"href="<?php  echo BASEURL.'/categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
+	<a class="btn-fill" href="<?php  echo BASEURL.'/talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
+	<a class="btn-fill" href="<?php  echo BASEURL.'/colores/v_color.php?activo=2&sub=d';?>"><span><p>Administrar Colores</p></span></a>
+</div>-->
 <?php
 
 if($_SESSION['msg_ok']){echo '<div class="notificacion notify_ok"><p>'.$_SESSION['msg_ok'].'</p></div>'; unset($_SESSION['msg_ok']);}
@@ -111,8 +109,8 @@ $orden = "StrNombre ASC";
 
 echo '<div class="menuorden"><a href="v_productos.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_productos.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
 /* SELECT */
-echo '<div id="content-prod">';
-
+//echo '<div id="content-prod">';
+echo '<div>';
 $productos = new Producto();
 $all = $productos->all();
 

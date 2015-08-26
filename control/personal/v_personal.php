@@ -42,23 +42,17 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	
 <div class="three_4">
 
+<!-- SIDEBAR
 <div class="product_filter_consulta_column">
 <div class="item">
-
 <a href="v_personal.php?activo=2&sub=h"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
-
 </div><div class="item">
-
-
-
 	<a href="v_personal.php?activo=2&sub=h&filtro_personal=1"><div class="pub-eve"><span>ADMINISTRADOR</span></div></a>
-
 	<a href="v_personal.php?activo=2&sub=h&filtro_personal=2"><div class="pub-eve"><span>MARKETING</span></div></a>
-	
 	<a href="v_personal.php?activo=2&sub=h&filtro_personal=3"><div class="pub-eve"><span>VENDEDOR</span></div></a>
-
-	</div></div>		
-
+	</div>
+</div>		
+-->
 
 <?php
 if($_SESSION['msg_ok']){echo '<div class="notify_ok"><p>'.$_SESSION['msg_ok'].'</p></div>'; unset($_SESSION['msg_ok']);}

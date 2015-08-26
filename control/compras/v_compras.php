@@ -80,7 +80,10 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 <div class="prod_container">
-<!--<div class="product_filter_vend_column">-->
+
+
+<!--SIDEBAR
+<div class="product_filter_vend_column">-->
 <?php 
 /*include_once("classes/class.compras.php");
 $compras2= new compras();
