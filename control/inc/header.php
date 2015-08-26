@@ -1,8 +1,3 @@
-<?php 
-  if(!isset($_SESSION)):
-    session_start();
-  endif;
- ?>
 <header>
 <!--[if lt IE 9]>
 <script type="text/javascript">
@@ -45,7 +40,6 @@ $(".search_box").find('input').click(function(){
  $(this).val(''); 
 });
 
-
 // comprobacion estado canje para que no se repitan los quites de creditos
 // $( "#estado" ).change(function() {
  // if($(this).val() == "1" || $(this).val() == "2"){
@@ -61,18 +55,16 @@ $(".search_box").find('input').click(function(){
 <a href="../index.php"><img src="../../imagenes/logo2-02.png" alt="Nufarm"> </a>
 </div>
 <div id="header_bg_img"><div class="subheader"><span class="adminwelcome"><?php  echo $_SESSION['logged_name']; ?> </span>
-
 <!--<div class="prop"><?php  
 /*include_once("../propuestas/classes/class.propuestas.php");
 $prop= new propuestas();
 $prop->sin_responder();*/
 ?></div>-->
-
 </div></div>
 <ul><li class="cerrar_sesion"><a  href="<?php  echo BASEURL.'/logout.php'?>">Cerrar sesion X</a></li></ul>		
 </header>			
 <div class="main_menu">
-				<?php include($_SESSION['root'].'/inc/main_menu.php'); ?>
+				<?php include('../inc/main_menu.php'); ?>
 
 				
 				<!--<div class="search_box">

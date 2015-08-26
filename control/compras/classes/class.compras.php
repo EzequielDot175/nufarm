@@ -474,11 +474,13 @@ function bring_detalle_compra($id_compra){
 				<div class="botones">
 					<div class="item editar">
 						<a href="#">
-							<img class="imagen" src="../../layout/editar.png"  alt="" />
+							<img class="imagen" src="../layout/editar.png"  alt="" />
 						</a>
 					</div>
 					<div class="item borrar">
-						<a href="delete_compras.php?id='.$id.'">borrar</a>
+						<a href="delete_compras.php?id='.$id.'">
+							<img class="imagen" src="../layout/borrar.png"  alt="" />
+						</a>
 					</div>
 				</div>
 			 </table>

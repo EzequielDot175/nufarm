@@ -4532,9 +4532,17 @@ button.mainbtn-save:hover {
 
 .botones{
 	position:absolute;
-	right: -20px;
-	right: -80px;
+	right: -60px;
 	z-index: 1000;
+	padding-top:10px;
+	box-sizing: border-box;
+}
+
+.botones .item{
+	float: left;
+	width: auto;
+	padding-right: 5px;
+	box-sizing: border-box;
 }
 
 .contenedor-A {
