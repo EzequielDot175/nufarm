@@ -2,6 +2,7 @@
 	require('inc/header.php');
 	$producto = new producto();
 	
+	
 ?>
 
 	
