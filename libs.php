@@ -21,6 +21,12 @@
 	require_once(APP_DIR.'/core/class/class.producto.php'); 
 	require_once(APP_DIR.'/core/class/class.colores.php'); 
 	require_once(APP_DIR.'/core/class/class.shoppingcart.php'); 
-	require_once(APP_DIR.'/core/class/class.historial.php'); 
+	require_once(APP_DIR.'/core/class/class.historial.php');
+
+
+
+	 
+	require_once(APP_DIR.'/core/class/class.ajax.php'); 
+
 
  ?>

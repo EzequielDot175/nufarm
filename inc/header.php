@@ -10,7 +10,6 @@
 	$TempMaxCompra = new TempMaxCompra();
 	$TempMaxCompra->init();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 	<head>
