@@ -247,18 +247,18 @@ function select_all($pagina, $orden)
 			<div class="olive-bar_new2"><span class="tit_pedido"><span class="bold">Usuario: '.utf8_decode($nombre_usr).' '.utf8_decode($apellido_usr).'</span> / '.$email_usr.'</span> <span class="fecha_tit_admin">'.$fthCompra.'</span></div>
 			<form name="listado_productos" id="estform" action="update_proceso.php" method="post">
 			';
-
+//ARRANCA EL FORM------------------------------->
 
 ////////////////////////////////////////// SELECT ESTADO PEDIDO
 			if($_SESSION['logged_role'] == 1){
 				$item .= '
 				<div class="estadopedido_box">
 
-				<input type="hidden" name="id_compra" value="'.$idCompra.'" />
-				<select name="estado_compra" id="estado1">
-				'.$opciones.'
-				</select>
-				<button type="sybmit" class="button mainbtn">GUARDAR</button>
+					<input type="hidden" name="id_compra" value="'.$idCompra.'" />
+					<select name="estado_compra" id="estado1">
+					'.$opciones.'
+					</select>
+					<button type="sybmit" class="button mainbtn">GUARDAR</button>
 
 				</div>
 				';
@@ -276,7 +276,13 @@ function select_all($pagina, $orden)
 			}
 
 
+			
+
+
 /////////////////////////////////////////////////// TABLA PRODUCTOS CANJEADOS ///ADMIN ///TOTALES///	
+
+
+			 
 
 			$item .= '
 
@@ -288,8 +294,13 @@ function select_all($pagina, $orden)
 			</p>
 
 			<div class="total_prod_comprado">
+
 			<div>
-			<p><span class="precio_producto_compra green_style">$'.$dblTotal.'</span><span class="valor_total">VALOR TOTAL</span> </p>
+			<p>
+			<!-- TOTAL DE PUNTOS COMENTADO
+			<span class="precio_producto_compra green_style">$'.$dblTotal.'</span>
+			<span class="valor_total">VALOR TOTAL</span> </p>
+			-->
 			</div>
 
 			<div class="box_1_4" >
@@ -402,6 +413,7 @@ function bring_detalle_compra($id_compra){
 
 
 
+
 /////////////////////////////////////////////SELECT ESTADO PRODUCTOS////
 	//verifico si tiene imagen
 		$prod = new productos();
@@ -410,10 +422,71 @@ function bring_detalle_compra($id_compra){
 
 
 
-
+		//////******************** NUEVA TABLA DE DATOS 26-08-15***************/////
 		if( strlen($imagen_producto) > 0 ){
 		//con imagen
 			$recuadro .= '
+			<table>
+				<tr class="tablaDetalle tablaDefault">
+				     	<td  class="colA"  align="center">
+					     	FECHA
+					</td>  
+					<td  class="colB" align="center">
+					     	TOTAL PUNTOS
+					</td>
+					<td  class="colC tdBackground"class="colA"  align="center">
+						<div class="sub"><img class="imagen" src="../../images_productos/'.$imagen_producto.'"  alt="" /></div>
+						<div class="sub text "><span>'.$precio_pagado.'</span></div>
+						<span class="sub text">'.$nombre.' </span>
+					</td>
+					 <td class="colD tdBackground"  align="center">
+					      	<span>'.$cantidad.' </span>
+					 </td>
+					 <td class="colE tdBackground" align="center">
+						<span>'.$color.'</span>
+					 </td>
+					 <td class="colF tdBackground"  align="center">
+						<span> '.$talle.'</span>
+					 </td>
+					 <td  class="colG tdBackground" align="center">
+					      	NUM REMITO
+					</td>
+					<td  class="colH tdBackground"  align="center">
+					     	<select name="estado_compra_prod'.$i.'" id="estado2">
+					
+							<option value="1"';
+							if($estado_producto ==1){$recuadro .="selected=selected ";}
+							$recuadro .= '>Pedido realizado</option>
+							
+							<option value="2"';
+							if($estado_producto ==2){$recuadro .="selected=selected ";}
+							$recuadro .= '>Pedido en Proceso</option>	
+							
+							<option value="3"';
+							if($estado_producto ==3){$recuadro .="selected=selected";}
+							$recuadro .= '>Pedido enviado</option>	
+							<option value="4"';
+							if($estado_producto ==4){$recuadro .="selected=selected";}
+							$recuadro .= '>Pedido entregado</option>	
+						</select>
+					</td>
+				</tr>
+				<div class="botones">
+					<div class="item editar">
+						<a href="#">
+							<img class="imagen" src="../../layout/editar.png"  alt="" />
+						</a>
+					</div>
+					<div class="item borrar">
+						<a href="delete_compras.php?id='.$id.'">borrar</a>
+					</div>
+				</div>
+			 </table>
+
+			
+
+
+			<!--CODIGO ANTERIOR
 			<div class="producto_comprado">
 			<div class="box_1_4" >
 			<div class="precio_producto_compra"><span>$'.$precio_pagado.'</span></div>
@@ -456,16 +529,13 @@ function bring_detalle_compra($id_compra){
 			$recuadro .= '>Pedido entregado</option>	
 			</select>
 			
-			
-			
-			
 			</div>
 			<div class="delete">
 			<a href="delete_compras.php?id='.$id.'">borrar</a>
 			</div>
 			
 			</div>
-
+			-->
 			';
 
 		}else{

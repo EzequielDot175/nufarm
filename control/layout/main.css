@@ -140,19 +140,18 @@ nav,aside,menu,article,details,section,figcaption,figure,footer,header,hgroup {
 	color: #fff;
 	margin: 0px auto 0px auto;
 	font-size: 17px;
-	padding-top: 10px;
+	padding-top: 12px;
 	width: 80%;
 	max-width: 1400px;
 	min-width: 1000px;
 	text-transform:uppercase;
+	text-align: center;
 }
 .disabled p, .disabled a{
 	color: #8E3289;
 }
 .adminwelcome{
-	float:left;
-	width:auto;
-	margin-top: 2px;
+	width:100%;
 }
 ::-webkit-scrollbar {
     width: 8px;
@@ -1301,7 +1300,23 @@ a.btn-login-admin:hover {
 .item td {
 	height: 0px !important;
 	line-height: 19px;
-	padding: 3px;
+	height: 40px;
+}
+
+.item td .sub {
+	float:left;
+	padding: 5px 10px;
+}
+
+.item td .text {
+	padding: 12px;
+}
+
+.tdBackground {
+	background-color: rgba(255,255,255,.5);
+	-moz-background-color: rgba(255,255,255,.5);
+	-ms-background-color: rgba(255,255,255,.5);
+	-webkit-background-color: rgba(255,255,255,.5);
 }
 td.prod {
 	width: 100%;
@@ -1821,6 +1836,7 @@ right: -39px;
 
 .tablacolor3 td {
 	padding: 8px;
+	height: 25px;
 }
 
 .tablacolor3 {
@@ -1828,11 +1844,55 @@ right: -39px;
 	height: 11px;
 	font-size: 10.5px;
 	color: #fff;
-	background-color: rgba(0,148,72,.5) !important;
+	background-color: #009448;
 	text-transform: uppercase;
 	border: 0px solid transparent;
 	padding: 0px 0px 0px 0px;
 	font-family: 'AvenirLTStd-Black';
+}
+
+.tablaDetalle {
+    width: 100%;
+    height: 11px;
+    font-size: 10.5px;
+    color: #666;
+    text-transform: uppercase;
+    border: 0px solid transparent;
+    padding: 0px 0px 0px 0px;
+    font-family: 'AvenirLTStd-Black';
+}
+
+.tablaDetalle .imagen {
+    display: block;
+    width: 30px;
+}
+
+.tablaDefault {
+
+}
+.tablaDefault .colA{
+	width: 10% ;
+}
+.tablaDefault .colB{
+	width: 8% ;
+}
+.tablaDefault .colC{
+	width: 34% ;
+}
+.tablaDefault .colD{
+	width: 8% ;
+}
+.tablaDefault .colE{
+	width: 8% ;
+}
+.tablaDefault .colF{
+	width: 8% ;
+}
+.tablaDefault .colG{
+	width: 8% ;
+}
+.tablaDefault .colH{
+	width: 16% ;
 }
 
 /*.item h4{
@@ -2219,11 +2279,11 @@ span.inactive {
 	width: 100%;
 	height: auto;
 	margin: 0 auto;
-	background-color: rgba(190,215,59,.5);
+	background-color: rgba(153,153,153,.8);
 	padding: 7px 0px 7px 0px;
 	display: block;
 	font-size: 11px;
-	color: #666;
+	color: #fff;
 	text-transform: uppercase;
 	font-family: 'AvenirLTStd-book';
 	cursor: pointer;
@@ -2555,7 +2615,7 @@ PUBLICIDAD Y EVENTOS
 
 
 .olive-bar_new2:hover {
-	background-color: rgba(190,215,59,.8);
+	background-color: #999;
 }
 .olive-bar_new:hover {
 	background-color: #008b3a;
@@ -2791,17 +2851,17 @@ select#estado1 {
 }
 select#estado2 {
 	font-family: 'Open Sans', sans-serif;
-	width: 115px;
+	width: 100%;
 	border: none;
-	height: 25px;
-	margin-top: 14px;
-	margin-right: 15px;
-	color: #A8A8A8;
-	background: none;
+	height: 40px;
+	margin: 0;
 	text-transform: uppercase;
 	font-size: 12px;
 	display: block;
-	float: right;
+	background-color: #fff;
+	color: #099642;
+	padding: 10px;
+	font-weight: bold;
 }
 span.tit_pedido {
 	margin-left: 11px;
@@ -4468,4 +4528,15 @@ button.mainbtn-save:hover {
 .filtros button {
     background-color: #8E3289;
     color: #fff;
+}
+
+.botones{
+	position:absolute;
+	right: -20px;
+	right: -80px;
+	z-index: 1000;
+}
+
+.contenedor-A {
+        padding-right: 100px;
 }

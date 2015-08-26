@@ -96,7 +96,7 @@ $compras3= new compras();
 $compras3->select_all_states();*/
 ?>
  <!--</div> -->
-<div class="three_444 contenedor-default">
+<div class="three_444 contenedor-default contenedor-A">
 <!-- /////////////////////////////////////////////BACKEND CANJES //////////////////////////////////////////////////////////-->
 <?php
  if($_SESSION['msg_ok']){echo '<div class="notify_ok"><p>'.$_SESSION['msg_ok'].'</p></div>'; unset($_SESSION['msg_ok']);}
@@ -148,14 +148,15 @@ echo '
 
 <div class="menuorden"><a href="v_compras.php?orden=1&activo=1&sub=c"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_compras.php?orden=2&activo=1&sub=c"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>
  <table>
- <tr class="tablacolor3">
-     <td  width="10%"  align="center">FECHA</td>  
-     <td  width="9%"  align="center">TOTAL PUNTOS</td>
-     <td  width="38%"  align="center">DESCRIPCION</td>
-      <td width="9%"  align="center">CANTIDAD</td>
-      <td width="9%" align="center">COLOR</td>
-      <td width="9%"  align="center">TALLE</td>
-     <td  width="16%"  align="center">ESTADO</td>
+ <tr class="tablacolor3 tablaDefault">
+     <td  class="colA" width="10%"  align="center">FECHA</td>  
+     <td  class="colB" width="8%"  align="center">TOTAL PUNTOS</td>
+     <td  class="colC" width="34%"  align="center">PRODUCTO</td>
+      <td class="colD" width="8%"  align="center">CANTIDAD</td>
+      <td class="colE" width="8%" align="center">COLOR</td>
+      <td class="colF" width="8%"  align="center">TALLE</td>
+      <td class="colG" width="8%"  align="center">REMITO</td>
+     <td  class="colH" width="16%"  align="center">ESTADO</td>
    </tr>
  </table>
  <div style="height:10px"></div>
