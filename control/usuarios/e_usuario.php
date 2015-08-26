@@ -312,34 +312,7 @@ $vigencia_credito = $dia.'-'.$mes.'-'.$anio;
 
 </form>
 </div>
-<div class="item-content-usuarios-historial">
-<div class="barra-prod"><span>HISTORIAL DE CANJES REALIZADOS</span></div>
-<?php  
-include_once('../propuestas/classes/class.propuestas.php');
 
-$canjes = new propuestas();
-$canjes->select_by_suario($idUsuario);
-?>
-
-
-<?php  
-include_once('../compras/classes/class.compras.php');
-
-$com = new compras();
-$com->select_by_usuario($idUsuario);
-?>
-
-
-
-<?php  
-include_once('../consultas/classes/class.consultas.php');
-
-$coms = new consultas();
-$coms->select_by_usuario($idUsuario);
-
-
-?>
-</div>
 </div>
 
 

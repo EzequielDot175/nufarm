@@ -13,11 +13,17 @@
 		<div class="head-page col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<div class="filtros">
 				<p class="text-uppercase">filtro</p>
-				<input type="text" name="" value="">
-				<select name="" >
-					<option class="opciones" value="opciones">opciones</option>
-					<option class="opciones" value="opciones">opciones</option>
-					<option class="opciones" value="opciones">opciones</option>
+				<input type="text" name="" value="" >
+				<select name="" id="findBy">
+					<option class="opciones" value="1">Productos</option>
+					<option class="opciones" value="2">Talle</option>
+					<option class="opciones" value="3">Color</option>
+					<option class="opciones" value="4">Unidades</option>
+					<option class="opciones" value="5">Estado</option>
+					<option class="opciones" value="6">Remito</option>
+				</select>
+				<select name="" id="results">
+					
 				</select>
 			</div>
 		</div>

@@ -1462,6 +1462,10 @@ body {
         padding: 3px 0px;
         text-align: center;
         width: 100%; }
+    .detalle-productos .block-num.red {
+      color: #C10000; }
+      .detalle-productos .block-num.red .icon-num {
+        border-color: #C10000; }
   .detalle-productos .talles {
     margin-left: 15px;
     margin-top: 10px; }

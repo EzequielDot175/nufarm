@@ -196,6 +196,12 @@
                                                 width: 100%;
                                        }
                          }
+                        &.red{
+                            color: #C10000;
+                            .icon-num{
+                                border-color: #C10000;
+                            }
+                        }
              }
 
              .talles {

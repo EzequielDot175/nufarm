@@ -31,7 +31,9 @@ echo'
 -->
 
 <div class="menu">
-        <li class="">FILTROS</li>
+        <a href="../filtros.php">
+            <li class="">FILTROS</li>
+        </a>
         <a href="../compras/v_compras.php?activo=1&sub=c"  >
         	<li class="'; if ($activo==1){echo " seleccionado";}echo'">PRODUCTOS CANJEADOS</li>
         </a>

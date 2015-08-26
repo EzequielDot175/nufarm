@@ -42,6 +42,24 @@ $(document).ready(function(){
 	 		$('.find-box-in-results').parent().parent().show();
 	 	}
 	 });
+
+
+
+	 /**
+	  * Input busqueda en historial
+	  */
+	 
+	 $('#findBy').change(function(event) {
+	 	event.preventDefault();
+	 	var val = parseInt($(this).val());
+	 	var params = {aged: 12312};
+	 	// $.post('http://localhost/ftp/nufarmMaxx/core/ajax/ajax.php',params, function(data) {
+	 	// 	console.info('Reporting ajax:', data);
+	 	// });
+	 	$.fn.ajaxCore({param: 1, method: 'comboHistorial'});
+	 	
+
+	 });
 	    
 });
 
