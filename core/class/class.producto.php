@@ -40,7 +40,6 @@
 
 						break;
 				endswitch;
-
 			endforeach;
 			
 			foreach($collection as $key => $val):

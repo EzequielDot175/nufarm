@@ -56,8 +56,8 @@
 			const PRODUCTO_ALLCOLORES 			= "SELECT * FROM colores ";
 			const PRODUCTO_ALLTALLES  			= "SELECT * FROM talles ";
 			const PRODUCTO_UPDCAT 				= "UPDATE productos SET intCategoria = :cat WHERE idProducto = :prod";
-			const PRODUCTO_STOCKSUMTALLE 		= "SELECT SUM(cantidad) as stock FROM talles_productos WHERE id_producto = :id";
-			const PRODUCTO_STOCKSUMCOLOR 		= "SELECT SUM(cantidad) as stock FROM colores_productos WHERE id_producto = :id";
+			const PRODUCTO_STOCKSUMTALLE 		= "SELECT SUM(IF(ISNULL(talles.nombre_talle), 0 , tal_prod.cantidad)) as stock FROM talles_productos as tal_prod LEFT JOIN talles ON talles.id_talle = tal_prod.id_talle WHERE tal_prod.id_producto = :id";
+			const PRODUCTO_STOCKSUMCOLOR 		= "SELECT SUM(IF(ISNULL(colores.nombre_color), 0 , col_prod.cantidad)) as stock FROM colores_productos as col_prod LEFT JOIN colores ON colores.id_color = col_prod.id_color WHERE col_prod.id_producto = :id";
 			const PRODUCTO_STOCKSUMTALLECOLOR	= "SELECT SUM(cantidad) as stock FROM colores_talles WHERE id_producto = :id";
 			/**
 			* @param carrito

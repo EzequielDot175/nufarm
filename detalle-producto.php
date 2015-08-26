@@ -7,6 +7,10 @@
 	$tempMaxCompra->haveMaxCompra();
 	$limitCompraProd = $tempMaxCompra->getMaxProd();
 	$limitCompra = $tempMaxCompra->getMaxCompra();
+
+	$intMinCompra = ($limitCompra - $detalles->intMinCompra < 1 ? 1 : $limitCompra - $detalles->intMinCompra  );
+
+	
 ?>
 <!-- Header -->
 
@@ -52,28 +56,37 @@
 					<span>LÍMITES DE CANJE</span>
 				</h3>
 				<!-- end / sub-titulo-->
-				<?php if(!empty($detalles->intMinCompra)): ?>
+				<?php if(!empty($intMinCompra)): ?>
 				<div class="block-num">
 					<p class="text text-uppercase">MÍNIMO</p>
 					<div class="icon-num">
-						<p><?php echo($detalles->intMinCompra) ?></p>
+						<p><?php echo $intMinCompra ?></p>
 					</div>
 				</div>
 				<?php endif; ?>
 
-				<?php if(!is_null($limitCompra) ): ?>
+				<?php if(!is_null($limitCompraProd) ): ?>
 				<div class="block-num">
 					<p class="text text-uppercase">MÁXIMO</p>
 					<div class="icon-num">
-						<p><?php echo ($limitCompra > 0 ? $limitCompra : 0 ) ?></p>
+						<p><?php echo ($limitCompraProd > 0 ? $limitCompraProd : 0 ) ?></p>
+					</div>
+				</div>
+				<?php endif; ?>
+
+				<?php if(!is_null($limitCompra) && $limitCompra != "notlimit"  ): ?>
+				<div class="block-num red">
+					<p class="text text-uppercase">MÁXIMO RESTANTE</p>
+					<div class="icon-num">
+						<p><?php echo($limitCompra); ?></p>
 					</div>
 				</div>
 				<?php endif; ?>
 
 				<form action="carrito_add.php" method="post" id="add_product">
 					<input type="hidden" name="type" value="<?php echo($detalles->type) ?>">
-					<input type="hidden" id="max" value="<?php echo ($limitCompra > 0 ? $limitCompra : 0 ) ?>">
-					<input type="hidden" id="min" value="<?php echo($detalles->intMinCompra) ?>">
+					<input type="hidden" id="max" value="<?php echo ($limitCompra) ?>">
+					<input type="hidden" id="min" value="<?php echo($intMinCompra) ?>">
 				<?php 
 				/**
 				 * @internal  
@@ -104,7 +117,9 @@
 				 */
 				if($detalles->type == 2):
 				?>
-				<?php foreach($detalles->colores as $key => $val): ?>
+				<?php foreach($detalles->colores as $key => $val):
+						if($val->cantidad > 0):
+				 ?>
 				<h3 class="text-uppercase sub-titulo-B color" <?php echo Producto::disable($val->cantidad)->opacity ?> >
 					<span><div class="icon-color color-verde"></div><?php echo($val->color) ?></span>
 				</h3>
@@ -119,8 +134,9 @@
 						</tr>
 					</tbody>
 				</table>
-				<?php endforeach; ?>
 				<?php
+						endif; 
+					endforeach;
 				endif; 
 				/**
 				 * @internal  

@@ -79,6 +79,12 @@
 				return 'notlimit';
 			endif;
 		}
+
+		/**
+		 * @todo
+		 * Metodo para obtener el minimo segun el carrito 
+		 */
+
 		/**
 		* @todo Metodo para setear la nueva cantidad del producto por usuario
 		*/
