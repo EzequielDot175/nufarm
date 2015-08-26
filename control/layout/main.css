@@ -1601,13 +1601,14 @@ label {
 	padding:0;	
 }
 .bar-green {
-	width: 73.1%;
+	width: 100%;
 	height: auto;
-	margin: 0 0px 3px 30px;
+	margin: 0px;
 	background-color: #008B39;
 	display: block;
 	float: left;
 	padding: 7px;
+	box-sizing: border-box;
 }
 .bar-green span {
 	font-size: 12px;
@@ -1627,8 +1628,8 @@ label {
 	float: left;
 }
 .item-content {
-	width: 75% !important;
-	margin: 0 0 0 30px;
+	width: 100% !important;
+	margin: 0px;
 	display: block;
 	float: left;
 }
@@ -3983,8 +3984,8 @@ a.BtnTalle:hover {
 }
 
 #content-consultas {
-	width: 75%;
-	margin: 0 28px 0 0;
+	width: 100%;
+	margin: 0 ;
 	display: block;
 	float: right;
 	color: #333;

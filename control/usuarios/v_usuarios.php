@@ -69,12 +69,11 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	
 <div class="three_4">
 
-
+<!--SIDEBAR
 <div class="product_filter_vend_column_users">
 <nav id="interna2">
 <ul>
-	<li><a class="btn-micuenta5" href="n_<?php echo $singular; ?>.php?activo=2&sub=e"><span>Crear cliente nuevo</span></a></li>
-	
+	<li><a class="btn-micuenta5" href="n_<?php echo $singular; ?>.php?activo=2&sub=e"><span>Crear cliente nuevo</span></a></li>	
 </ul>
 </nav>
 <?php 
@@ -83,6 +82,7 @@ $compras2= new compras();
 $compras2->select_all_vendedores_clientes();
 ?>
 </div>
+-->
 
 <?php
 if($_SESSION['msg_ok']){echo '<div class="notify_ok-ok"><p>'.$_SESSION['msg_ok'].'</p></div>'; unset($_SESSION['msg_ok']);}
