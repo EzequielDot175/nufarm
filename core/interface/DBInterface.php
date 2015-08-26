@@ -56,6 +56,9 @@
 			const PRODUCTO_ALLCOLORES 			= "SELECT * FROM colores ";
 			const PRODUCTO_ALLTALLES  			= "SELECT * FROM talles ";
 			const PRODUCTO_UPDCAT 				= "UPDATE productos SET intCategoria = :cat WHERE idProducto = :prod";
+			const PRODUCTO_STOCKSUMTALLE 		= "SELECT SUM(cantidad) as stock FROM talles_productos WHERE id_producto = :id";
+			const PRODUCTO_STOCKSUMCOLOR 		= "SELECT SUM(cantidad) as stock FROM colores_productos WHERE id_producto = :id";
+			const PRODUCTO_STOCKSUMTALLECOLOR	= "SELECT SUM(cantidad) as stock FROM colores_talles WHERE id_producto = :id";
 			/**
 			* @param carrito
 			*/

@@ -16,7 +16,40 @@
 			parent::__construct();
 		}
 		public function all(){
-			return $this->query(self::PRODUCTO_ALL)->fetchAll();
+
+			$collection = $this->query(self::PRODUCTO_ALL)->fetchAll();
+		
+			foreach($collection as $key => $val):
+				$type = $this->defineType($val->idProducto);
+				
+				switch ($type->type):
+					case '1':
+						$stock = $this->stockFromSumTalle($val->idProducto);
+						$collection[$key]->intStock = $stock;
+						break;
+					case '2':
+						$stock = $this->stockFromSumColor($val->idProducto);
+						$collection[$key]->intStock = $stock;
+						break;
+					case '3':
+						$stock = $this->stockFromSumColorTalle($val->idProducto);
+						$collection[$key]->intStock = $stock;
+						break;
+					
+					default:
+
+						break;
+				endswitch;
+
+			endforeach;
+			
+			foreach($collection as $key => $val):
+				if($val->intStock < 1):
+				unset($collection[$key]);				
+				endif;
+			endforeach;
+
+			return $collection;
 		}
 
 		/**
@@ -60,6 +93,36 @@
 			endif;
 
 			return $prop;
+		}
+
+		/**
+		 * @internal
+		 * @return  Stock del producto directamente desde la suma de sus talles
+		 */
+		public function stockFromSumTalle($id){
+			$sel = $this->prepare(self::PRODUCTO_STOCKSUMTALLE);
+			$sel->bindParam(':id',$id, PDO::PARAM_INT);
+			return ( $sel->execute() ? $sel->fetch()->stock : 0);
+		}
+
+		/**
+		 * @internal
+		 * @return  Stock del producto directamente desde la suma de sus colores
+		 */
+		public function stockFromSumColor($id){
+			$sel = $this->prepare(self::PRODUCTO_STOCKSUMCOLOR);
+			$sel->bindParam(':id',$id, PDO::PARAM_INT);
+			return ( $sel->execute() ? $sel->fetch()->stock : 0);
+		}
+
+		/**
+		 * @internal
+		 * @return  Stock del producto directamente desde la suma de sus colores
+		 */
+		public function stockFromSumColorTalle($id){
+			$sel = $this->prepare(self::PRODUCTO_STOCKSUMTALLECOLOR);
+			$sel->bindParam(':id',$id, PDO::PARAM_INT);
+			return ( $sel->execute() ? $sel->fetch()->stock : 0);
 		}
 
 		public function allById($id = null){

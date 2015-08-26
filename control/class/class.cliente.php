@@ -54,8 +54,7 @@
 				/**
 				 * @param
 				 */
-				
-				echo(json_encode($this->getRows(self::CLIENTE_ALLCOMPRAS.$where)));
+				return $this->getRows(self::CLIENTE_ALLCOMPRAS.$where);
 
 
 			endif;

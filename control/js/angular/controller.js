@@ -1,8 +1,9 @@
 app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	
-	$scope.select_vendedores = "all";
+	$scope.select_vendedores    = "all";
 	$scope.select_prod_canjeado = "";
-	$scope.vendedores        = [];
+	$scope.vendedores           = [];
+	$scope.filtroData           = [];
 	// $scope.currentDate 		= true;
 
 
@@ -53,6 +54,7 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 		console.info('JS', $scope.filtro);
 		ajax.post({get: 'filtrado' , parameters: $scope.filtro},function(a){
 			console.info('RESPONSE', a);
+			$scope.filtroData = a;
 		});
 
 	}

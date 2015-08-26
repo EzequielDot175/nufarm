@@ -43,13 +43,15 @@
 		const CLIENTE_BASICSBYVENDEDOR = "SELECT idUsuario, strNombre, strApellido FROM usuarios WHERE vendedor = :id";
 		const CLIENTE_ALLCOMPRAS = "SELECT
 		compra.idCompra,
+		compra.fthCompra as fecha,
 		usr.idusuario,
 		usr.strNombre,
 		usr.strApellido,
 		dt.id as dt_id,
 		dt.id_producto as producto_id,
-		dt.detalle as producto_detalle,
+		dt.nombre as prod_nombre,
 		dt.cantidad as cantidad,
+		dt.estado_producto as estado,
 		dt.precio_pagado as pagado,
 		dt.color as color,
 		dt.talle as talle,

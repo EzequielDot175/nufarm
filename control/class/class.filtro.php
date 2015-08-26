@@ -32,11 +32,33 @@
 
 		public function results(){
 			if($this->empty):
-				echo json_encode($this->clientes->allCompras());
-			else:
-				$filters = array();
-				$this->clientes->allComprasFilter($this->setFinal());
+				$result = $this->clientes->allCompras();
+				$collection = array();
+				foreach($result as $key => $val):
+					$collection[$val->idCompra]['total'] = 0;
+				endforeach;
 
+				foreach($result as $key => $val):
+					$collection[$val->idCompra][] = $val;
+					$collection[$val->idCompra]['total'] += $val->pagado;
+				endforeach;
+				array_reverse($collection);
+				echo(json_encode($collection));
+
+			else:
+
+				$result = $this->clientes->allComprasFilter($this->setFinal());
+				$collection = array();
+				foreach($result as $key => $val):
+					$collection[$val->idCompra]['total'] = 0;
+				endforeach;
+
+				foreach($result as $key => $val):
+					$collection[$val->idCompra][] = $val;
+					$collection[$val->idCompra]['total'] += $val->pagado;
+				endforeach;
+				array_reverse($collection);
+				echo(json_encode($collection));
 
 			endif;
 		}
