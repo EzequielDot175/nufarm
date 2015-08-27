@@ -218,6 +218,23 @@
 				WHERE
 					cons.respuesta_de = :id";
 			const CONSULTA_NEW = "INSERT INTO consultas (idUsuario,strAsunto,strCampo,fecha,respondido,tipo,respuesta_de) VALUES (:id,:asunto,:campo,NOW(),0,1,0) ";
+
+
+
+			/**
+			 * @internal 
+			 * Clientes
+			 */
+			
+			const CLIENTE_OPTIONS = "SELECT idUsuario as id, strNombre as nombre, strApellido as apellido FROM usuarios";
+
+			/**
+			 * @internal
+			 * Vendores
+			 */
+			
+			const VENDEDOR_OPTIONS = "SELECT id , nombre, apellido FROM personal";
+
 		}
 
 

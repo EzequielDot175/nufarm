@@ -6,7 +6,7 @@
 	require_once(APP_DIR.'/core/traits/facade.php');
 	require_once(APP_DIR.'/core/traits/session.php');
 
-
+	require_once(APP_DIR.'/core/class/class.nav.php');
 	require_once(APP_DIR.'/core/class/class.redirect.php'); 
 	require_once(APP_DIR.'/core/class/class.auth.php'); 
 	require_once(APP_DIR.'/core/class/class.estados.php');
@@ -22,6 +22,7 @@
 	require_once(APP_DIR.'/core/class/class.colores.php'); 
 	require_once(APP_DIR.'/core/class/class.shoppingcart.php'); 
 	require_once(APP_DIR.'/core/class/class.historial.php');
+	require_once(APP_DIR.'/core/class/class.clientes.php');
 
 
 

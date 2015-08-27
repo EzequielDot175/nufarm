@@ -100,7 +100,13 @@
 						<?php foreach($detalles->talles as $key => $val): ?>
 							<td <?php echo Producto::disable($val->cantidad)->opacity ?> >
 								<label  class="talle text-uppercase "><?php echo($val->talle) ?></label >
-								<input <?php echo Producto::disable($val->cantidad)->disabled ?> class="input_talle" type="number" min="0" max="<?php echo($val->cantidad) ?>" name="talle[<?php echo($val->id) ?>]" value="" >
+								<input <?php echo Producto::disable($val->cantidad)->disabled ?>
+										 class="input_talle" 
+										 type="number" 
+										 min="1" 
+										 max="<?php echo($val->cantidad) ?>" 
+										 name="talle[<?php echo($val->id) ?>]" 
+										 value="" >
 								<span class="text-uppercase unidades"><?php echo($val->cantidad) ?> u</span>
 							</td>
 						<?php endforeach; ?>

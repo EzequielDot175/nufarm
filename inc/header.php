@@ -9,6 +9,7 @@
 	require('libs.php');
 	$TempMaxCompra = new TempMaxCompra();
 	$TempMaxCompra->init();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,21 +75,21 @@
 				<!-- Contenido menu-->
 				<div class="collapse navbar-collapse background-menu" id="navbar-menu">
 					<ul class="nav navbar-nav">
-						<li class="text-uppercase catalogo">
-							<a href="catalogo.php">
+						<li class="text-uppercase catalogo <?php Nav::active('catalogo') ?> <?php Nav::active('detalle-producto') ?>">
+							<a href="catalogo.php ">
 								<img src="assets/images/menu-1.png" alt="">
 								<span class="text-a">CATÁLOGO</span>
 								<span class="text-b">DE PRODUCTOS</span>
 							</a>
 						</li>
-						<li class="text-uppercase">
+						<li class="text-uppercase <?php Nav::active('historial') ?>" >
 							<a href="historial.php">
 								<img src="assets/images/menu-2.png" alt="">
 								<span class="text-a">HISTORIAL</span>
 								<span class="text-b">DE CANJES REALIZADOS</span>
 							</a>
 						</li>
-						<li class="text-uppercase dropdown">
+						<li class="text-uppercase dropdown <?php Nav::active('mi-cuenta-maqueta') ?>" >
 							<a href="mi-cuenta-maqueta.php">
 								<img src="assets/images/menu-3.png" alt="">
 								<span class="text-a">MI CUENTA</span>
