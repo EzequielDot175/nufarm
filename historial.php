@@ -171,10 +171,10 @@
 										<div class="background-1 pendiente">
 											<?php switch(Estado::get($valdetalles->estado)):
 											case 'REALIZADO': ?>
-											 <!-- <img src="assets/images/enviado.png" alt=""> -->
+											<img src="assets/images/enviado.png" alt="">
 											<?php break;
 											case 'EN PROCESO': ?>
-											  <!-- <img src="assets/images/enviado.png" alt=""> -->
+											<img src="assets/images/pendiente.png" alt=""> 
 											<?php break;
 											case 'ENVIADO': ?>
 											 <img src="assets/images/enviado.png" alt="">

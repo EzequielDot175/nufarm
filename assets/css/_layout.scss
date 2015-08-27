@@ -161,6 +161,21 @@ $error : #AA4025;
                                 background-repeat: no-repeat;
                                 background-position-x: 0;
                                 background-position-y: bottom;
+                                direction: rtl;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                padding-right:20px;
+                        }
+
+                        .option {
+                                padding:10px !important;
+                        }
+
+                        .icon-select {
+                                position: absolute;
+                                right: 0;
+                                top: 5px;
                         }
             }
 
@@ -817,6 +832,7 @@ $error : #AA4025;
                                     color: #fff;
                                     font-family: 'BrooklynSamuelsFive-Bold';
                                     font-size: 12px;
+                                    letter-spacing: 1.5px;
                         }
 
                         .flecha{
@@ -826,6 +842,7 @@ $error : #AA4025;
                                     width: 15px;
                                     height: 15px;
                                     background-image:url('../images/flecha-top.png');
+
                         }
             }
 

@@ -44,10 +44,11 @@
 			<div class="contenedor">
 				<img src="assets/images/Nufarm-max-logo.png" id="Nufarm" title="Nufarm" alt="Imagen no encontrada">
 				<div class="block">
+					<img class="icon-select " src="assets/images/flecha-select.png" id="Nufarm" title="Nufarm" alt="Imagen no encontrada">
 					<select class="form-control">
-						<option class="text-uppercase">MARKETING NET</option>
-						<option class="text-uppercase">PLAN DE NEGOCIOS</option>
-						<option class="text-uppercase">VENDEDOR ESTRELLA</option>
+						<option class="text-uppercase option">MARKETING NET</option>
+						<option class="text-uppercase option">PLAN DE NEGOCIOS</option>
+						<option class="text-uppercase option">VENDEDOR ESTRELLA</option>
 					</select>
 					<div class="logout">
 						<a href="salir.php"><p class="text-uppercase">salir</p></a>
@@ -121,46 +122,32 @@
 			<!--base-->
 			<div class="base">
 
+				<?php //Nav::titulo titulo dinámico
+					$pagina = basename($_SERVER['REQUEST_URI']) ;
+					$titulos  = Nav::titulo($pagina); 
+				?>
+
 				<!--titulo-->
 				<div class="titulo col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-					<div class="texto">
-					
-					<?php
-						$pagina =basename($_SERVER['REQUEST_URI']) ;
-
-						switch ($pagina) {
-							case 'catalogo.php':
-								echo '
-									<h3 class="text-a">CATÁLOGO</h3>
-									<h3 class="text-b">DE PRODUCTOS</h3>
-									';
-								break;
-
-							case 'historial.php':
-								echo '
-									<h3 class="text-a">HISTORIAL DE CANJES REALIZADOS</h3>
-									<h3 class="text-b">VERIFIQUE EL ESTADO DE SUS CANJES</h3>
-									';
-								break;
-
-							case 'carrito.php':
-								echo '
-									<h3 class="text-a">CARRITO</h3>
-									<h3 class="text-b">DE PRODUCTOS</h3>
-									';
-								break;
-							
-							default:
-								echo '
-									<h3 class="text-a">CATÁLOGO</h3>
-									<h3 class="text-b">DE PRODUCTOS</h3>
-									';
-								break;
-						}
-
+					<?php 
+						if($titulos [0] == 'CARRITO'){
 					?>
-					</div>
+						<img src="assets/images/carrito-title.png" alt="">
+					<?php	
+						}
+					?>
 
+					<?php
+						if($titulos [0] == 'CARRITO'){
+							echo '<div class="texto-carrito">';
+						}else{
+							echo '<div class="texto">';
+						}
+					?>
+						<h3 class="text-a"> <?php echo $titulos [0]; ?> </h3>
+						<h3 class="text-b"> <?php echo $titulos [1]; ?> </h3>	
+					</div>
+					
 					<div class="block-right">
 						<p class="text-a text-uppercase"><?php echo Auth::User()->strNombre ?></p>
 						<p class="num"><?php echo Auth::User()->dblCredito; ?></p>
