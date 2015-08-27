@@ -32,27 +32,29 @@ require_once('../../libs.php');
 
 
   <div class="block">
-    
+     <?php
+        $vSelected = Filter::idSelected('vendedor');
+        $eSelected = Filter::idSelected('estado');
+        $cSelected = Filter::idSelected('cliente');
+        ?>
 
     <div class="filtros_container">   
        <div class="filtros-Default filtros-100">   
-            <form action="">   
+            <form action="" method="POST"> 
+            <input type="hidden" name="filter"> 
                   <h3> FILTRAR POR:</h3>   
-                  <select name="">                     <option value="">VENDEDOR</option>   
-                    <?php //Vendedor::options() ?>   
+                  <select name="vendedor">                     <option value="">VENDEDOR</option>   
+                    <?php Vendedor::options($vSelected); ?>  
                  </select>    
      
-                  <select name="">   
+                  <select name="estado">   
                     <option value="">ESTADO</option>   
-                    <option value="1">PEDIDO REALIZADO</option>    
-                    <option value="2">PEDIDO EN PROCESO</option>   
-                    <option value="3">PEDIDO ENVIADO</option>    
-                    <option value="4">PEDIDO ENTREGADO</option>    
+                    <?php Compra::optionsEstado($eSelected); ?>    
                   </select>    
      
-                  <select name="" >    
+                  <select name="cliente" >    
                     <option value="">CLIENTE</option>    
-                    <?php Cliente::options() ?>    
+                     <?php Cliente::options($cSelected) ?> 
                   </select>    
      
                   <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
@@ -64,37 +66,8 @@ require_once('../../libs.php');
 
       <div class="three_444 contenedor-default contenedor-A">
         <!-- /////////////////////////////////////////////BACKEND CANJES //////////////////////////////////////////////////////////-->
-        <?php
+       
 
-
-        $vSelected = Filter::idSelected('vendedor');
-        $eSelected = Filter::idSelected('estado');
-        $cSelected = Filter::idSelected('cliente');
-        ?>
-
-
-        <div class="filtros-Default filtros-100">
-          <form action="" method="post">
-            <input type="hidden" name="filter">
-            <h3> FILTRAR POR:</h3>
-            <select name="vendedor">
-              <option value="">VENDEDOR</option>
-              <?php Vendedor::options($vSelected); ?>
-            </select>
-
-            <select name="estado">
-              <option value="">ESTADO</option>
-              <?php Compra::optionsEstado($eSelected); ?>
-            </select>
-
-            <select name="cliente" >
-              <option value="">CLIENTE</option>
-              <?php Cliente::options($cSelected) ?>
-            </select>
-
-            <button> VER RESULTADOS </button>
-          </form>
-        </div>
 
 
         <hr class="separador">
