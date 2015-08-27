@@ -405,11 +405,12 @@ $error : #AA4025;
                     -o-background-color: rgba(255,255,255,.5);
                     -ms-background-color: rgba(255,255,255,.5);
                     height: 75px;
-                    padding: 15px 10px;
+                    padding: 15px 20px;
                     position: relative;
 
                     img{
                         float: left;
+                        margin-right: 10px;
                     }
 
                     .texto{
@@ -429,13 +430,14 @@ $error : #AA4025;
 
                     .text-a{
                             font-family: 'BrooklynSamuelsFive-Fat';
-                            font-size: 14px;
+                            font-size: 18px;
                             padding-top: 10px;
+                            padding-bottom: 3px;
                     }
 
                     .text-b{
                             font-family: 'Brandon_reg';
-                            font-size: 11px;
+                            font-size: 12px;
                     }
 
                     .block-right{

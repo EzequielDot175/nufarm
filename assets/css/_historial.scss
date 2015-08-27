@@ -257,17 +257,27 @@
 
 /*mobile--------------------------------------------------*/
 @media screen and (min-width: 0px) and (max-width : 767px){
-            .historial-productos .tabla-detalle .col-B{
+
+            .historial-productos .tabla-detalle .color{
                           display: none !important;
             }
 
-            .historial-productos .tabla-detalle .col-C{
+            .historial-productos .tabla-detalle .unidades{
                           display: none !important;
             }
 
-            .historial-productos .tabla-detalle .col-Auto{
+            .historial-productos .tabla-detalle .talle{
                           display: none !important;
             }
+
+             .historial-productos .tabla-detalle .punto{
+                          display: none !important;
+            }
+
+             .historial-productos .tabla-detalle .remito{
+                          display: none !important;
+            }
+
 
             .historial-productos .tabla-detalle .col-A {
                 width: 33%;
@@ -293,7 +303,17 @@
 /**  TABLETS LANDSCAPE **/
 @media screen and (min-width: 771px) and (max-width : 980px){
 
+            .historial-productos .tabla-detalle .color{
+                          display: none !important;
+            }
 
+            .historial-productos .tabla-detalle .unidades{
+                          display: none !important;
+            }
+
+            .historial-productos .tabla-detalle .talle{
+                          display: none !important;
+            }
 
 }
 

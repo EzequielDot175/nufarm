@@ -37,14 +37,14 @@
 			<table class="tabla-detalle">
 				<thead>
 					<tr>
-						<th class="text-uppercase col-Auto" colspan="2">canje</th>
-						<th class="text-uppercase col-A">productos</th>
-						<th class="text-uppercase col-B">talle</th>
-						<th class="text-uppercase col-C">color</th>
-						<th class="text-uppercase col-B">unidades</th>
-						<th class="text-uppercase col-B">puntos</th>
-						<th class="text-uppercase col-D">estado</th>
-						<th class="text-uppercase col-D">remito</th>
+						<th class="text-uppercase col-Auto canje" colspan="2">canje</th>
+						<th class="text-uppercase col-A productos">productos</th>
+						<th class="text-uppercase col-B talle">talle</th>
+						<th class="text-uppercase col-C color">color</th>
+						<th class="text-uppercase col-B unidades">unidades</th>
+						<th class="text-uppercase col-B punto">puntos</th>
+						<th class="text-uppercase col-D estado">estado</th>
+						<th class="text-uppercase col-D remito">remito</th>
 					</tr>
 				</thead>
 
@@ -95,7 +95,7 @@
 								<tr>	
 									<!--total puntos (columna no se repite ->rowspan = cantidad de items) -->
 									<?php   if($x == 0){   ?>
-									<td class=" vertical-align-top" rowspan="<?php echo count($valcompras) ?>">
+									<td class=" vertical-align-top canje" rowspan="<?php echo count($valcompras) ?>">
 										<div class="puntos">
 											<p class="num"><?php echo($collection->totales[$keycompras]) ?></p>
 											<span class="text-uppercase">puntos</span>
@@ -114,7 +114,7 @@
 									<!--end /  img -->
 									
 									<!--nombre -->
-									<td class="col-Auto">
+									<td class="col-Auto nombre">
 										<div class="background-2">
 											<p class="text text-uppercase"><?php echo($valdetalles->nombre) ?></p>
 										</div>
@@ -122,7 +122,7 @@
 									<!--end /  nombre -->
 									
 									<!-- talle -->
-									<td class="col-B">
+									<td class="col-B talle">
 										<div class="background-2">
 											<!-- SI NO HAY TALLE-->
 											<?php if(is_null($valdetalles->talle) || empty($valdetalles->talle) ): ?>
@@ -135,7 +135,7 @@
 									<!--end /  talle -->
 
 									<!--color -->
-									<td class="col-C">
+									<td class="col-C color">
 										<div class="background-2">
 											<!-- SI NO HAY COLORs-->
 											<?php if(is_null($valdetalles->color) || empty($valdetalles->talle)): ?>
@@ -151,7 +151,7 @@
 									<!--end /  color -->
 
 									<!--unidades -->
-									<td class="col-B">
+									<td class="col-B unidades">
 										<div class="background-2">
 											<p class="text-uppercase big-text "><?php echo($valdetalles->cantidad) ?></p>
 										</div>
@@ -159,7 +159,7 @@
 									<!--end / unidades -->
 									
 									<!--puntos -->
-									<td class="col-B">
+									<td class="col-B punto">
 										<div class="background-2">
 											<p class="text-uppercase big-text "><?php echo($valdetalles->precio_pagado) ?></p>
 										</div>
@@ -167,7 +167,7 @@
 									<!--end / puntos -->
 									
 									<!--estado -->
-									<td class="col-D">
+									<td class="col-D estado">
 										<div class="background-1 pendiente">
 											<?php switch(Estado::get($valdetalles->estado)):
 											case 'REALIZADO': ?>
@@ -190,7 +190,7 @@
 									<!--end / estado -->
 									
 									<!--remito -->
-									<td class="col-D">
+									<td class="col-D remito">
 										<div class="background-1">
 											<p class="medium-text text-uppercase">Nº <?php echo($valdetalles->remito) ?></p>
 										</div>
