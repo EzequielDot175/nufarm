@@ -128,12 +128,13 @@ $orden = "idCompra DESC";
 }
 
 ?>
-<div class="filtros">
+
+<div class="filtros-Default filtros-100">
       <form action="">
             <h3> FILTRAR POR:</h3>
             <select name="">
               <option value="">VENDEDOR</option>
-              <?php Vendedor::options() ?>
+              <?php //Vendedor::options() ?>
             </select>
 
             <select name="">

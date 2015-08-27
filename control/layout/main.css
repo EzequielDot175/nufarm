@@ -4484,10 +4484,27 @@ button.mainbtn-save:hover {
 	-webkit-background-color: rgba(255,255,255,.80);
 }
 
-.filtros{
+.filtros-100{
   	float: left;
   	width: 100%;
-  	font-size: 20px;
+  	font-size: 15px;
+  	padding:20px;
+  	box-sizing: border-box;
+  	background-color: rgba(234,234,234,.80);
+  	-moz-background-color: rgba(234,234,234,.80);
+  	-ms-background-color: rgba(234,234,234,.80);
+  	-o-background-color: rgba(234,234,234,.80);
+	-webkit-background-color: rgba(234,234,234,.80);
+}
+
+.filtros-Default{
+}
+
+.filtros-50{
+  	float: left;
+  	width: 48%;
+  	margin: 1%;
+  	font-size: 15px;
   	padding:20px;
   	box-sizing: border-box;
   	background-color: rgba(234,234,234,.80);
@@ -4504,7 +4521,7 @@ button.mainbtn-save:hover {
 	    height: 10px;
 	    margin: 20px 0;
 }
-.filtros h3 {
+.filtros-Default h3 {
     padding: 0;
     margin:0;
     padding-bottom:10px;
@@ -4512,20 +4529,57 @@ button.mainbtn-save:hover {
     font-size: 13px !important;
 }
 
-.filtros select, button {
+.filtros-Default select, input, button {
     height: 40px;
     width: 200px;
     border: none;
+    float: left;
     font-family: 'AvenirLTStd-Black';
 }
 
-.filtros select{
+.filtros-Default select{
 	background-color: #fff;
 	color: #099642;
 	padding: 10px;
 }
+.filtros-Default label{
+	float: left;
+	padding:10px;
+}
 
-.filtros button {
+.filtros-Violeta select, input, label{
+	color: #8E3289;
+}
+
+.filtros-w100 {
+	width: 100%;
+	float: left;
+	padding: 20px;
+}
+
+.filtros-Verde select, input, label{
+	color: #009448;
+}
+
+
+.filtros-Default .radio {
+	width: auto;
+	float: left;
+	margin-right: 20px;
+}
+
+.filtros-Default .radio input{
+	width: 15px;
+	height: 15px;
+	float: left;	
+	margin-top: 8px;
+}
+
+.filtros-Default .radio label{
+	padding:0px;
+}
+
+.filtros-Default button {
     background-color: #8E3289;
     color: #fff;
 }
