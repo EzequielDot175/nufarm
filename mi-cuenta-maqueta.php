@@ -138,7 +138,8 @@
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<img class="image" src="assets/images/sidebar-icon-1.png" alt="">
 			<p class="text text-uppercase"> Puntos <br> asignados</p>
-			<span class="num" ><?php echo $user->puntos_asignados ?></span>
+			<?php $asignados = $user->dblCredito +  Auth::consumido() ;?>
+			<span class="num" ><?php echo $asignados//$user->puntos_asignados ?></span>
 		</div>
 
 		<div class="item col-xs-12 col-sm-12 col-md-12 ol-lg-12">
@@ -162,8 +163,8 @@
 			<p class="text text-uppercase"> Puntos <br> disponibles</p>
 			<span class="num" ><?php echo $user->dblCredito; ?></span>
 		</div>
-			
-		<input type="hidden" id="asignado" value="<?php echo $user->puntos_asignados ?>">
+		
+		<input type="hidden" id="asignado" value="<?php echo $asignados //$user->puntos_asignados ?>">
 		<input type="hidden" id="disponible" value="<?php echo $user->dblCredito ?>">
 		<input type="hidden" id="consumido" value="<?php echo Auth::consumido() ?>">
 
