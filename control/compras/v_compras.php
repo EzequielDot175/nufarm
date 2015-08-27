@@ -164,12 +164,15 @@ $cSelected = Filter::idSelected('cliente');
 <?php
 /* SELECT */
 if(isset($_POST['filter'])):
-
   $collection = Filter::Compras(array(
     'compra.estado' => $_POST['estado'],
     'usr.idUsuario' => $_POST['cliente'],
     'prs.id' => $_POST['vendedor']
     ));
+else:
+  $collection = Compra::all();
+ 
+endif;
 
   foreach($collection as $key => $v):
     ?>
@@ -198,20 +201,22 @@ if(isset($_POST['filter'])):
         
 
 
-        <div class="botones">
+        
+  
+      <?php $i = 0;$z = 0;  foreach($v as $itemk => $itemv): ?>
+      <div class="botones">
           <div class="item editar">
             <a href="#">
               <img class="imagen" src="../layout/editar.png" alt="">
             </a>
           </div>
           <div class="item borrar">
-            <a href="delete_compras.php?id=<?php  ?>">
+            <a href="delete_compras.php?id=<?php echo $itemv->id_detalle ?>">
               <img class="imagen" src="../layout/borrar.png" alt="">
             </a>
           </div>
         </div>
-  
-      <?php $i = 0;$z = 0;  foreach($v as $itemk => $itemv): ?>
+
         <table>
           <tbody>
             <tr class="tablaDetalle tablaDefault">
@@ -261,34 +266,21 @@ if(isset($_POST['filter'])):
         
         <p> </p>
       <?php endforeach; ?>
-        <div class="total_prod_comprado">
-
-          <div>
-            <p></p>
-          </div>
-
-          <div class="box_1_4">
-            <div class="fth-c"><!-- 2015-08-26 20:24:36 --></div>
-          </div>
-
-        </div>
-
       </form>
     </div>
   
-
 <?php
-endforeach;
-
-else:
-  include_once("classes/class.compras.php");
-  $compras= new compras();
-  $compras->select_all($pagina, $orden);
-endif;
-
-
-?></div>
+endforeach; ?>
+ <div class="navigate">
+  <?php 
+  $current = (isset($_GET['page']) ? $_GET['page'] : 1 );
+  for ($i=1; $i < Compra::sBarPag(); $i++): ?>
+  <a class="<?php echo( $i == $current ? 'current' : 'paginate') ?>" href="?page=<?php echo($i) ?>"><?php echo($i) ?></a>
+  <?php endfor; ?>
+  </div>
 </div>
+</div>
+
 <?php include_once('../inc/footer.php') ?></div>
 
 

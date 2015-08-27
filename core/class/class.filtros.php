@@ -65,6 +65,7 @@
 			return self::method('getCompras',$where);
 		}
 
+
 		public static function idSelected($post){
 			$post = $_POST[$post];
 			if(isset($post) && is_numeric($post)):

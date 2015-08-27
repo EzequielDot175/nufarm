@@ -14,6 +14,11 @@ if(!class_exists('compra')):
 		public function __construct()
 		{
 			parent::__construct();
+
+			/**
+			 * @param [INT] $[limit] [LIMIT {n}]
+			 */
+			$this->limit = 25;
 		}
 		public function byId(){
 
@@ -52,6 +57,36 @@ if(!class_exists('compra')):
 			return (Boolean)$sel->fetch(PDO::FETCH_OBJ)->empty;
 		}
 
+		public function allCompras(){
+			$compras = array();
+			$collection = $this->query(self::COMPRA_ALL.$this->paginator())->fetchAll();
+
+			foreach($collection as $key => $val):
+				$compras[$val->id_compra][] = $val;
+			endforeach;
+
+			return array_reverse($compras);
+		}
+
+		public function paginator(){
+			
+			if(isset($_GET['page'])):
+				$page = ( $_GET['page'] > 1 ? $_GET['page'] : 0);
+				return ' LIMIT '.$this->limit*$page.','.$this->limit;
+			else:
+				return ' LIMIT 0,'.$this->limit;
+			endif;
+		}
+
+		public function barPag(){
+			return round($this->cantidad() / $this->limit);
+
+		}
+
+		public function cantidad(){
+			return $this->query(self::COMPRA_COUNT)->fetch()->count;
+		}
+
 		public function estados(){
 			return array(
             	'1' =>  'PEDIDO REALIZADO',
@@ -59,6 +94,10 @@ if(!class_exists('compra')):
             	'3' =>  'PEDIDO ENVIADO',
             	'4' =>  'PEDIDO ENTREGADO'
 			);
+		}
+
+		public static function all(){
+			return self::method('allCompras');
 		}
 
 		public static function optionsEstado($selected = null){
@@ -76,7 +115,13 @@ if(!class_exists('compra')):
 				endif;
 			endforeach;
 			echo($html);
-		} 
+		}
+
+		public static function sBarPag(){
+			return self::method('barPag');
+		}
+
+
 	}
 
 
