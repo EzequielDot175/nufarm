@@ -9,6 +9,7 @@ if(!class_exists('compra')):
 
 	class Compra extends DB
 	{
+		use Facade;
 		
 		public function __construct()
 		{
@@ -50,6 +51,32 @@ if(!class_exists('compra')):
 			$sel->execute();
 			return (Boolean)$sel->fetch(PDO::FETCH_OBJ)->empty;
 		}
+
+		public function estados(){
+			return array(
+            	'1' =>  'PEDIDO REALIZADO',
+            	'2' =>  'PEDIDO EN PROCESO',
+            	'3' =>  'PEDIDO ENVIADO',
+            	'4' =>  'PEDIDO ENTREGADO'
+			);
+		}
+
+		public static function optionsEstado($selected = null){
+			$array = self::method('estados');
+			$html = "";
+			foreach($array as $key => $val):
+				if(!is_null($selected)):
+					if($selected == $key):
+						$html .= '<option selected="" value="'.$key.'">'.$val.'</option>';
+					else:
+						$html .= '<option value="'.$key.'">'.$val.'</option>';
+					endif;
+				else:
+					$html .= '<option value="'.$key.'">'.$val.'</option>';
+				endif;
+			endforeach;
+			echo($html);
+		} 
 	}
 
 

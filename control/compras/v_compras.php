@@ -3,7 +3,8 @@ include_once('../resources/control.php');
 include_once('helper_titulos.php');
 require_once('../../libs.php');
 
-
+// error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
 ?>
 <!DOCTYPE html>
 <html>
@@ -127,27 +128,28 @@ if($orden==""){
 $orden = "idCompra DESC";
 }
 
+$vSelected = Filter::idSelected('vendedor');
+$eSelected = Filter::idSelected('estado');
+$cSelected = Filter::idSelected('cliente');
 ?>
 
 <div class="filtros-Default filtros-100">
-      <form action="">
+      <form action="" method="post">
+            <input type="hidden" name="filter">
             <h3> FILTRAR POR:</h3>
-            <select name="">
+            <select name="vendedor">
               <option value="">VENDEDOR</option>
-              <?php //Vendedor::options() ?>
+              <?php Vendedor::options($vSelected); ?>
             </select>
 
-            <select name="">
+            <select name="estado">
               <option value="">ESTADO</option>
-              <option value="1">PEDIDO REALIZADO</option>
-              <option value="2">PEDIDO EN PROCESO</option>
-              <option value="3">PEDIDO ENVIADO</option>
-              <option value="4">PEDIDO ENTREGADO</option>
+              <?php Compra::optionsEstado($eSelected); ?>
             </select>
 
-            <select name="" >
+            <select name="cliente" >
               <option value="">CLIENTE</option>
-              <?php Cliente::options() ?>
+              <?php Cliente::options($cSelected) ?>
             </select>
 
             <button> VER RESULTADOS </button>
@@ -172,9 +174,135 @@ $orden = "idCompra DESC";
  <div style="height:10px"></div>
 <?php
 /* SELECT */
-include_once("classes/class.compras.php");
-$compras= new compras();
-$compras->select_all($pagina, $orden);
+if(isset($_POST['filter'])):
+
+  $collection = Filter::Compras(array(
+    'compra.estado' => $_POST['estado'],
+    'usr.idUsuario' => $_POST['cliente'],
+    'prs.id' => $_POST['vendedor']
+    ));
+  
+  foreach($collection as $key => $val):
+    echo "<pre>";
+    print_r($val);
+    echo "</pre>";
+    break;
+  endforeach;
+
+  foreach($collection as $key => $v):
+    ?>
+  <div class="item">
+
+    <div class="olive-bar_new2">
+      <span class="tit_pedido">
+        <span class="bold">Usuario: <?php echo $v[0]->v_nombre ?> <?php echo $v[0]->v_apellido ?></span> / <?php echo $v[0]->email ?></span> 
+        <span class="fecha_tit_admin"><?php echo $v[0]->fthCompra ?></span>
+      </div>
+
+      <form name="listado_productos" id="estform" action="update_proceso.php" method="post">
+
+        <div class="estadopedido_box">
+
+          <input type="hidden" name="id_compra" value="356">
+
+          <select name="estado_compra" id="estado1">
+            <option value="1" selected="selected">Pendiente</option>
+            <option value="2">Finalizado</option>
+          </select>
+
+          <button type="sybmit" class="button mainbtn">GUARDAR</button>
+
+        </div>
+        
+
+
+        <div class="botones">
+          <div class="item editar">
+            <a href="#">
+              <img class="imagen" src="../layout/editar.png" alt="">
+            </a>
+          </div>
+          <div class="item borrar">
+            <a href="delete_compras.php?id=<?php  ?>">
+              <img class="imagen" src="../layout/borrar.png" alt="">
+            </a>
+          </div>
+        </div>
+  
+      <?php $i = 0;$z = 0;  foreach($v as $itemk => $itemv): ?>
+        <table>
+          <tbody>
+            <tr class="tablaDetalle tablaDefault">
+              <td class="colA" align="center">
+                <?php 
+                  if($i == 0):
+                    echo($itemv->fthCompra);
+                    $i++;
+                 endif;
+                  ?>
+              </td>  
+              <td class="colB" align="center">
+                <?php 
+                  if($z == 0):
+                    echo($itemv->dblTotal);
+                    $z++;
+                 endif;
+                  ?>
+               
+              </td>
+              <td class="colC tdBackground" align="center">
+                <div class="sub"><img class="imagen" src="../../images_productos/<?php echo $itemv->prod_imagen ?>" alt=""></div>
+                <div class="sub text "><span><?php echo $itemv->precio_pagado ?></span></div>
+                <span class="sub text"><?php echo $itemv->prod_nombre ?></span>
+              </td>
+              <td class="colD tdBackground" align="center">
+                <span><?php echo $itemv->cantidad ?> </span>
+              </td>
+              <td class="colE tdBackground" align="center">
+                <span><?php echo $itemv->color ?></span>
+              </td>
+              <td class="colF tdBackground" align="center">
+                <span><?php echo $itemv->talle ?></span>
+              </td>
+              <td class="colG tdBackground" align="center">
+                <?php echo $itemv->remito ?>
+              </td>
+              <td class="colH tdBackground" align="center">
+                <select name="estado_compra_prod0" id="estado2">
+                <?php Compra::optionsEstado($itemv->estado); ?>
+                </select>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        
+        <p> </p>
+      <?php endforeach; ?>
+        <div class="total_prod_comprado">
+
+          <div>
+            <p></p>
+          </div>
+
+          <div class="box_1_4">
+            <div class="fth-c"><!-- 2015-08-26 20:24:36 --></div>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  
+
+<?php
+endforeach;
+
+else:
+  include_once("classes/class.compras.php");
+  $compras= new compras();
+  $compras->select_all($pagina, $orden);
+endif;
 
 
 ?></div>

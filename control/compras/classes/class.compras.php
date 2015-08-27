@@ -99,10 +99,6 @@ function select_all($pagina, $orden)
 			$sql = "SELECT * FROM compra WHERE idUsuario IN ($clientes_d); ";
 
 
-			echo "<pre>";
-			print_r($sql);
-			echo "</pre>";
-			die();
 
 		}else{
 			$sql = "SELECT * FROM usuarios ";
