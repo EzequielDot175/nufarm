@@ -36,7 +36,7 @@
 			<!-- botones -->
 			<hr class="hr-bottom">
 			<div class='block-botones'>
-				<button type="submit" class="boton text-uppercase">Guardar Datos</button>
+				<button type="submit" class="boton text-uppercase">Enviar</button>
 			</div>
 			<input type="hidden" name="submit">
 			<!--end /  botones -->

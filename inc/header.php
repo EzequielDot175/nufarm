@@ -123,11 +123,44 @@
 
 				<!--titulo-->
 				<div class="titulo col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-					<img src="assets/images/menu-1-verde.png" alt="">
 					<div class="texto">
-						<h3 class="text-a">CATÁLOGO</h3>
-						<h3 class="text-b">DE PRODUCTOS</h3>
+					
+					<?php
+						$pagina =basename($_SERVER['REQUEST_URI']) ;
+
+						switch ($pagina) {
+							case 'catalogo.php':
+								echo '
+									<h3 class="text-a">CATÁLOGO</h3>
+									<h3 class="text-b">DE PRODUCTOS</h3>
+									';
+								break;
+
+							case 'historial.php':
+								echo '
+									<h3 class="text-a">HISTORIAL DE CANJES REALIZADOS</h3>
+									<h3 class="text-b">VERIFIQUE EL ESTADO DE SUS CANJES</h3>
+									';
+								break;
+
+							case 'carrito.php':
+								echo '
+									<h3 class="text-a">CARRITO</h3>
+									<h3 class="text-b">DE PRODUCTOS</h3>
+									';
+								break;
+							
+							default:
+								echo '
+									<h3 class="text-a">CATÁLOGO</h3>
+									<h3 class="text-b">DE PRODUCTOS</h3>
+									';
+								break;
+						}
+
+					?>
 					</div>
+
 					<div class="block-right">
 						<p class="text-a text-uppercase"><?php echo Auth::User()->strNombre ?></p>
 						<p class="num"><?php echo Auth::User()->dblCredito; ?></p>

@@ -489,7 +489,14 @@ body {
   background-attachment: fixed;
   background-position: center;
   padding-top: 0px;
-  padding-bottom: 0px; }
+  padding-bottom: 0px;
+  letter-spacing: .5px; }
+
+p {
+  letter-spacing: .5px; }
+
+h3 {
+  letter-spacing: 1px; }
 
 .contenedor {
   width: 980px;
@@ -663,7 +670,8 @@ body {
     -ms-background-color: rgba(0, 0, 0, 0.5);
     border: none; }
 .base .head-page {
-  height: 75px;
+  padding-right: 250px !Important;
+  min-height: 75px;
   padding: 15px 10px;
   position: relative; }
   .base .head-page h3 {
@@ -834,6 +842,32 @@ body {
     text-decoration: none;
     color: #fff; }
 
+.block-botones-A {
+  margin: 0 auto;
+  display: block;
+  display: table;
+  width: 100%; }
+
+.boton-A {
+  background-color: #8E3289;
+  border: none;
+  width: 200px;
+  height: 36px;
+  color: #fff;
+  font-family: 'BrooklynSamuelsFive-Bold';
+  font-weight: normal;
+  padding-top: 5px;
+  margin: 0 5px;
+  display: table;
+  margin: 0 auto; }
+  .boton-A.href {
+    padding: 7px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color: #fff; }
+
 .boton:hover {
   opacity: .8; }
 
@@ -877,14 +911,13 @@ body {
 /* --- FILTROS  --- */
 .filtros p {
   font-family: 'Brandon_reg';
-  color: #fff;
-  padding-bottom: 5px; }
+  color: #fff; }
 .filtros .input-buscador {
   position: relative;
   width: 200px; }
   .filtros .input-buscador img {
     position: absolute;
-    top: 2px;
+    top: 7px;
     right: 5px; }
   .filtros .input-buscador input {
     width: 100%;
@@ -907,7 +940,8 @@ body {
   -webkit-border-radius: 3px;
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
-  outline: none; }
+  outline: none;
+  margin-top: 5px; }
   .filtros input .opciones, .filtros select .opciones {
     border: none;
     color: #fff;
@@ -1141,18 +1175,25 @@ body {
   .detalle-productos .talles {
     margin-left: 0px !important; }
 
+  .detalle-productos .talles-unico {
+    margin: 30px auto 0 auto !important; }
+
   .filtros input, .filtros select {
     width: 49%;
     height: 27px; }
 
   .base .head-page {
-    height: 90px;
+    min-height: 90px;
     padding: 35px 10px;
-    position: relative; } }
+    position: relative;
+    padding-right: 0px !important; } }
 /*tablet----------------------------------------*/
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .detalle-productos .talles {
-    margin-left: 0px !important; } }
+    margin-left: 0px !important; }
+
+  .detalle-productos .talles-unico {
+    margin: 30px auto 0 auto !important; } }
 /**  TABLETS LANDSCAPE **/
 @media screen and (min-width: 771px) and (max-width: 980px) {
   .contenedor {
@@ -1577,7 +1618,10 @@ body {
         margin-right: 20px;
         box-sizing: border-box; }
         .historial-productos .tabla-detalle td .producto img {
-          width: 110%; }
+          width: 110%;
+          top: -10%;
+          left: -5%;
+          position: relative; }
       .historial-productos .tabla-detalle td .puntos {
         float: left;
         width: 80px;

@@ -101,6 +101,15 @@ body {
     background-position: center;
     padding-top: 0px;
     padding-bottom: 0px;
+    letter-spacing: .5px;
+}
+
+p{
+       letter-spacing: .5px;
+}
+
+h3{
+       letter-spacing: 1px;
 }
 
 $verde : #009448;
@@ -349,7 +358,8 @@ $error : #AA4025;
             }
 
              .head-page{
-                    height: 75px;
+                    padding-right: 250px !Important;
+                    min-height: 75px;
                     padding: 15px 10px;
                     position: relative;
 
@@ -587,6 +597,36 @@ $error : #AA4025;
             }
  }
 
+ .block-botones-A {
+            margin: 0 auto;
+            display: block;
+            display: table;
+            width: 100%;
+}
+
+.boton-A {
+            background-color: $violeta;
+            border: none;
+            width: 200px;
+            height: 36px;
+            color: #fff;
+            font-family: 'BrooklynSamuelsFive-Bold';
+            font-weight: normal;
+            padding-top: 5px;
+            margin: 0 5px;
+            display: table;
+            margin: 0 auto;
+
+            &.href{
+                padding: 7px;
+                padding-top: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                text-decoration: none;
+                color: #fff;
+            }
+ }
+
 
  .boton:hover {
             opacity: .8;
@@ -650,7 +690,6 @@ $error : #AA4025;
             p{
                         font-family: 'Brandon_reg';
                         color: #fff;
-                        padding-bottom: 5px;
             }
 
             .input-buscador{
@@ -659,7 +698,7 @@ $error : #AA4025;
 
                      img{
                             position: absolute;
-                            top: 2px;
+                            top: 7px;
                             right: 5px;
                     }
 
@@ -690,6 +729,7 @@ $error : #AA4025;
                         -o-border-radius:3px;
                         -ms-border-radius:3px;
                         outline:none;
+                        margin-top: 5px;
 
                         .opciones{
                                      border: none;
@@ -1022,15 +1062,21 @@ $error : #AA4025;
                     margin-left: 0px !important;
              }
 
+                .detalle-productos .talles-unico {
+                    margin: 30px auto 0 auto !important;
+             }
+
+
              .filtros input, .filtros select {
                 width: 49%;
                 height: 27px;
             }
 
             .base .head-page {
-                height: 90px;
+                min-height: 90px;
                 padding: 35px 10px;
                 position: relative;
+                padding-right: 0px !important;
             }
 
 
@@ -1050,7 +1096,9 @@ $error : #AA4025;
                     margin-left: 0px !important;
              }
 
-
+              .detalle-productos .talles-unico {
+                    margin: 30px auto 0 auto !important;
+             }
 
 }
 

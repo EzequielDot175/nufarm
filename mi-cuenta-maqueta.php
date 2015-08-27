@@ -120,8 +120,8 @@
 			<input type="hidden" name="submit">
 
 			<hr class="hr-bottom">
-			<div class='block-botones'>
-				<button type="submit" class="boton text-uppercase">Guardar Datos</button>
+			<div class='block-botones-A'>
+				<button type="submit" class="boton-A text-uppercase">Guardar Datos</button>
 			</div>
 			<!--end /  botones -->
 		</form>

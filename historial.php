@@ -108,7 +108,7 @@
 									<!-- img -->
 							 		<td class="">
 										<div class="producto">
-											<img src="assets/images/producto.png" alt="">
+											<img src="images_productos/<?php echo $val->img ?>" alt="">
 										</div>
 									</td>
 									<!--end /  img -->
