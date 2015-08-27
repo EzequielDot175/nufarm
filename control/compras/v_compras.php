@@ -85,48 +85,6 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 <div class="block">
 
 
-
-<!--SIDEBAR
-<div class="product_filter_vend_column">-->
-<?php 
-/*include_once("classes/class.compras.php");
-$compras2= new compras();
-$compras2->select_all_vendedores();*/
-?>
-<!--</br></br>-->
-<?php /*
-include_once("classes/class.compras.php");
-$compras3= new compras();
-$compras3->select_all_states();*/
-?>
- <!--</div> -->
-<div class="filtros_container">
-     <div class="filtros-Default filtros-100">
-          <form action="">
-                <h3> FILTRAR POR:</h3>
-                <select name="">
-                  <option value="">VENDEDOR</option>
-                  <?php //Vendedor::options() ?>
-                </select>
-
-                <select name="">
-                  <option value="">ESTADO</option>
-                  <option value="1">PEDIDO REALIZADO</option>
-                  <option value="2">PEDIDO EN PROCESO</option>
-                  <option value="3">PEDIDO ENVIADO</option>
-                  <option value="4">PEDIDO ENTREGADO</option>
-                </select>
-
-                <select name="" >
-                  <option value="">CLIENTE</option>
-                  <?php Cliente::options() ?>
-                </select>
-
-                <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button> 
-          </form>
-    </div>
-</div>
-
 <div class="prod_container">
 
 <div class="three_444 contenedor-default contenedor-A">
@@ -212,13 +170,6 @@ if(isset($_POST['filter'])):
     'usr.idUsuario' => $_POST['cliente'],
     'prs.id' => $_POST['vendedor']
     ));
-  
-  foreach($collection as $key => $val):
-    echo "<pre>";
-    print_r($val);
-    echo "</pre>";
-    break;
-  endforeach;
 
   foreach($collection as $key => $v):
     ?>
