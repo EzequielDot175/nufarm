@@ -798,9 +798,14 @@ body {
 
 .talles-unico {
   margin: 0 auto !important;
-  display: table; }
+  display: table;
+  width: 94px;
+  height: 63px;
+  margin-top: 30px !important; }
   .talles-unico td {
     max-width: 94px; }
+  .talles-unico input {
+    height: 35px; }
 
 .block-botones {
   margin: 0 auto;

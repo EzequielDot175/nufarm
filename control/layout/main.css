@@ -3535,8 +3535,8 @@ select#vendedor {
   	margin: 0 0 7px 0;
   	padding: 0;
   	display: block;
-    background:#AB3476;
-    color: #FFF;
+	background:#AB3476;
+	color: #FFF;
   }
   #welcome h3 {
   	font-size: 13px;
@@ -3572,7 +3572,7 @@ span.talle {
   	display: block;
   }
 .estadopedido_box {
-	width: 14%;
+	width: 100%;
 	float: right;
 	display: block;
 	margin-top: -1px;
@@ -3597,7 +3597,7 @@ span.talle {
 	position: absolute;
 	top: -31px;
 	right: -2px;
-	width: 178px;
+	width: 16%;
 }
 .estadopedido_box .button:hover {
 	opacity: .9;
@@ -4490,7 +4490,7 @@ button.mainbtn-save:hover {
   	font-size: 15px;
   	padding:20px;
   	box-sizing: border-box;
-  	background-color: rgba(234,234,234,.80);
+  	background-color: ba(234,234,234,.80);
   	-moz-background-color: rgba(234,234,234,.80);
   	-ms-background-color: rgba(234,234,234,.80);
   	-o-background-color: rgba(234,234,234,.80);
@@ -4498,13 +4498,14 @@ button.mainbtn-save:hover {
 }
 
 .filtros-Default{
+	text-transform: uppercase;
+	font-size: 12px;
 }
 
 .filtros-50{
   	float: left;
   	width: 48%;
   	margin: 1%;
-  	font-size: 15px;
   	padding:20px;
   	box-sizing: border-box;
   	background-color: rgba(234,234,234,.80);
@@ -4521,6 +4522,7 @@ button.mainbtn-save:hover {
 	    height: 10px;
 	    margin: 20px 0;
 }
+
 .filtros-Default h3 {
     padding: 0;
     margin:0;
@@ -4534,6 +4536,8 @@ button.mainbtn-save:hover {
     width: 200px;
     border: none;
     float: left;
+    font-size: 12px;
+    text-transform: uppercase;
     font-family: 'AvenirLTStd-Black';
 }
 

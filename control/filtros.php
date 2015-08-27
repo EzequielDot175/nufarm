@@ -73,17 +73,17 @@
 						<div class="filtros-Default filtros-50">
 			            				<h3> FILTRAR POR:</h3>
 							<select name="" id="" ng-model="select_vendedores" ng-change="setCliente()" ng-options="v.value as v.text for (k, v) in vendedores" >
-								<option value="">Todos los vendedores</option>
+								<option value="">TODOS LOS VENDEDORES</option>
 							</select> 
 							<select name="" id="" ng-model="filtro.clientes"  ng-options="v.value as v.text for (k, v) in clientes">
-								<option value="">Todos los clientes</option>
+								<option value="">TODOS LOS CLIENTES</option>
 							</select>
 						</div>
 
 						<div class="filtros-Default filtros-50">
 			            				<h3> FILTRAR CANJES POR :</h3>
 							<select name="" id="" ng-model="filtro.cant_canjes">
-								<option value="" selected>Cantidad de canjes</option>
+								<option value="" selected>CANTIDAD DE CANJES</option>
 								<option value="10">Hasta 10 canjes</option>
 								<option value="20">Hasta 20 canjes</option>
 								<option value="30">Hasta 30 canjes</option>

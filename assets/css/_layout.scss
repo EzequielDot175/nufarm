@@ -546,9 +546,16 @@ $error : #AA4025;
 .talles-unico {
             margin: 0 auto !important;
             display: table;
+            width: 94px;
+            height: 63px;
+            margin-top: 30px !important;
 
             td {
                      max-width: 94px;
+            }
+
+            input {
+                     height: 35px;
             }
   }
 

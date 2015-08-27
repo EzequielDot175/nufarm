@@ -1,7 +1,7 @@
 
 	<footer>
 
-<div class="footer_new"></div>
-	</footer>
+<!--<div class="footer_new"></div>
+	</footer>-->
 
 		
