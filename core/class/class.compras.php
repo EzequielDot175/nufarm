@@ -134,10 +134,14 @@ endif;
 
 if(!class_exists('DetalleCompra')):
 
+
 	/**
 	 * @internal Clase controladora de los items individuales por compra
 	 */
 	class DetalleCompra extends DB{
+
+		use Facade;
+
 
 		public function __construct()
 		{
@@ -192,6 +196,33 @@ if(!class_exists('DetalleCompra')):
 			$sel->bindParam(':id',$id,PDO::PARAM_INT);
 			$sel->execute();
 			return $sel->fetch(PDO::FETCH_OBJ);
+		}
+
+
+		public function updEstado($params){
+			$estado = (int)$params->estado;
+			$id = (int)$params->id;
+			$upd = $this->prepare(self::DTCOMPRA_UPDESTADO);
+			$upd->bindParam(':estado', $estado);
+			$upd->bindParam(':dtid', $id);
+			$upd->execute();
+
+			echo "<pre>";
+			echo('ESTADO : '.$estado);
+			echo("<br>");
+			echo('ID : '.$id);
+			var_dump($upd->rowCount());
+			echo "</pre>";
+			// return $upd->execute();
+		}
+
+		public static function upd($estado,$id){
+
+
+			$params = new stdClass();
+			$params->{'estado'} = $estado;
+			$params->{'id'} = $id;
+			return self::method('updEstado',$params);
 		}
 	}
 

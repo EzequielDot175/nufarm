@@ -108,6 +108,7 @@
 			 dt.talle,
 			 dt.precio_pagado,
 			 dt.cantidad,
+			 dt.estado_producto as estado_detalle,
 			 dt.id as id_detalle,
 			 usr.strNombre as nombre,
 			 usr.strApellido as apellido,
@@ -155,6 +156,7 @@
 			id                                        = :id";
 			const DTCOMPRA_SET_TOTAL                  = "UPDATE compra SET dblTotal  = :num WHERE idUsuario = :user && idCompra = :id ";
 			const DTCOMPRA_DELETE                     = "DELETE FROM detalles_compras WHERE id = :id";
+			const DTCOMPRA_UPDESTADO 				  = "UPDATE detalles_compras as dt SET dt.estado_producto = :estado WHERE dt.id = :dtid";
 			
 			
 			

@@ -2,7 +2,8 @@
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
 require_once('../../libs.php');
-
+// echo("asda");
+// die();
 // error_reporting(E_ALL);
 // ini_set('display_errors', 'On');
 ?>
@@ -96,7 +97,6 @@ require_once('../../libs.php');
           ));
       else:
         $collection = Compra::all();
-
       endif;
 
       foreach($collection as $key => $v):
@@ -178,7 +178,7 @@ require_once('../../libs.php');
                   </td>
                   <td class="colH tdBackground" align="center">
                     <select name="detalles[<?php echo $itemv->id_detalle ?>]" id="estado2">
-                      <?php Compra::optionsEstado($itemv->estado); ?>
+                      <?php Compra::optionsEstado($itemv->estado_detalle); ?>
                     </select>
                   </td>
                 </tr>

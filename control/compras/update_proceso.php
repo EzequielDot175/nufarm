@@ -1,37 +1,16 @@
 <?php session_start();
+ob_start();
+require_once("../../libs.php");
+
+foreach($_POST['detalles'] as $key => $val):
+	/**
+	 * @param estado
+	 * @param id_detalle_producto
+	 */
+	DetalleCompra::upd($val,$key);
+endforeach;
 
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-die();
+// @header('Location: v_compras.php?activo=1&sub=c');
 
-// $id_compra = $_POST['id_compra'];
-// $nuevo_proceso = $_POST['estado_compra'];
-// $num_prod = $_POST['num_prod'];
-
-// include_once('classes/class.compras.php');
-
-
-// //////////////////////////////////////////PEDIDO
-// $update = new compras();
-// $update->select($id_compra);
-// $update->estado = $nuevo_proceso;
-// $update->update($id_compra);
-
-// //////////////////////////////////////////PRODUCTOS
-// $i=0;
-// while($i <= $num_prod){
-
-
-// $update = new compras();
-// $update->select_productos($_POST['id_compra_prod'.$i]);
-// $update->estado2 = $_POST['estado_compra_prod'.$i];
-// $update->id_producto = $_POST['id_prod'.$i];
-// $update->update_prod($_POST['id_compra_prod'.$i]);
-// $i++;
-// }
-
-// $_SESSION['msg_ok'] = 'Estado Modificado!';
-// header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
