@@ -129,6 +129,8 @@
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
            		productos as prod ON prod.idProducto = dt.id_producto";
+
+           	const COMPRA_COUNT = "SELECT COUNT(idCompra) AS count FROM compra";
 			
 			
 			/**

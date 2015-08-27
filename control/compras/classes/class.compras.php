@@ -395,6 +395,12 @@ function bring_detalle_compra($id_compra){
 
 	while($row = mysql_fetch_array($result)){
 
+
+
+		echo "<pre>";
+		print_r($row);
+		echo "</pre>";
+		
 		$id_compra = $row['id_compra'];
 		$id = $row['id'];
 		$id_producto = $row['id_producto'];
