@@ -59,7 +59,7 @@ if(!class_exists('compra')):
 
 		public function allCompras(){
 			$compras = array();
-			$collection = $this->query(self::COMPRA_ALL.$this->paginator())->fetchAll();
+			$collection = $this->query(self::COMPRA_ALL.$this->orderBy().$this->paginator())->fetchAll();
 
 			foreach($collection as $key => $val):
 				$compras[$val->id_compra][] = $val;
@@ -79,7 +79,8 @@ if(!class_exists('compra')):
 		}
 
 		public function barPag(){
-			return round($this->cantidad() / $this->limit);
+			$paginas = ($this->cantidad() / $this->limit);
+			return round($paginas);
 
 		}
 
@@ -94,6 +95,10 @@ if(!class_exists('compra')):
             	'3' =>  'PEDIDO ENVIADO',
             	'4' =>  'PEDIDO ENTREGADO'
 			);
+		}
+
+		public function orderBy(){
+			return " ORDER BY idCompra DESC ";
 		}
 
 		public static function all(){
