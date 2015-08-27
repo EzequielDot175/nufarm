@@ -1,6 +1,9 @@
 <?php 
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
+require_once('../../libs.php');
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -124,20 +127,26 @@ if($orden==""){
 $orden = "idCompra DESC";
 }
 
-echo '
+?>
 <div class="filtros">
       <form action="">
             <h3> FILTRAR POR:</h3>
             <select name="">
               <option value="">VENDEDOR</option>
+              <?php Vendedor::options() ?>
             </select>
 
             <select name="">
               <option value="">ESTADO</option>
+              <option value="1">PEDIDO REALIZADO</option>
+              <option value="2">PEDIDO EN PROCESO</option>
+              <option value="3">PEDIDO ENVIADO</option>
+              <option value="4">PEDIDO ENTREGADO</option>
             </select>
 
             <select name="" >
               <option value="">CLIENTE</option>
+              <?php Cliente::options() ?>
             </select>
 
             <button> VER RESULTADOS </button>
@@ -160,7 +169,7 @@ echo '
    </tr>
  </table>
  <div style="height:10px"></div>
-';
+<?php
 /* SELECT */
 include_once("classes/class.compras.php");
 $compras= new compras();

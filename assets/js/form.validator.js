@@ -40,7 +40,10 @@ jQuery(document).ready(function($) {
 	
 	var send = false;
 
-	var max = parseInt($('#max').val()) || 999999999;
+	var max = $('#max').val();
+	if (max == "notlimit") {
+		max = 9999999999;
+	};
 	var min = parseInt($('#min').val()) || 0;
 
 	$('#add_product').on('submit', function(event) {
@@ -89,7 +92,9 @@ jQuery(document).ready(function($) {
 			total += parseInt($(el).val()) || 0;		
 		});
 		
-		console.info('Reporting :', total , min , max);
+		// console.info('Reporting :', total , min , max);
+
+		console.log($('#max').val());
 		if (total < min) {
 			$('#error_1').message({message: 2});
 		}else if(total > max){
