@@ -84,6 +84,31 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 
+<div class="filtros_container">   
+     <div class="filtros-Default filtros-100">   
+          <form action="">   
+                <h3> FILTRAR POR:</h3>   
+                <select name="">                     <option value="">VENDEDOR</option>   
+                  <?php //Vendedor::options() ?>   
+               </select>    
+   
+                <select name="">   
+                  <option value="">ESTADO</option>   
+                  <option value="1">PEDIDO REALIZADO</option>    
+                  <option value="2">PEDIDO EN PROCESO</option>   
+                  <option value="3">PEDIDO ENVIADO</option>    
+                  <option value="4">PEDIDO ENTREGADO</option>    
+                </select>    
+   
+                <select name="" >    
+                  <option value="">CLIENTE</option>    
+                  <?php Cliente::options() ?>    
+                </select>    
+   
+                <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
+          </form>    
+    </div>   
+</div>
 
 <div class="prod_container">
 
