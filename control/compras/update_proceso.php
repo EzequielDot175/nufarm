@@ -11,6 +11,6 @@ foreach($_POST['detalles'] as $key => $val):
 endforeach;
 
 
-// @header('Location: v_compras.php?activo=1&sub=c');
+@header('Location: v_compras.php?activo=1&sub=c');
 
 ?>

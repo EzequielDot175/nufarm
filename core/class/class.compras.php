@@ -206,14 +206,7 @@ if(!class_exists('DetalleCompra')):
 			$upd->bindParam(':estado', $estado);
 			$upd->bindParam(':dtid', $id);
 			$upd->execute();
-
-			echo "<pre>";
-			echo('ESTADO : '.$estado);
-			echo("<br>");
-			echo('ID : '.$id);
-			var_dump($upd->rowCount());
-			echo "</pre>";
-			// return $upd->execute();
+			return $upd->execute();
 		}
 
 		public static function upd($estado,$id){
