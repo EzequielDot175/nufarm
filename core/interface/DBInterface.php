@@ -97,6 +97,38 @@
 			// const COMPRA_BYID                      = "SELECT "
 			const COMPRA_EMPTY = "SELECT IF(COUNT(id_compra) = 0 , '1' , '0' ) as empty FROM detalles_compras WHERE id_compra = :id";
 			const COMPRA_DELETE = "DELETE FROM compra WHERE idCompra = :id";
+			const COMPRA_ALL = "SELECT
+			 compra.fthCompra,
+			 compra.dblTotal,
+			 compra.idCompra as id_compra,
+			 compra.estado,
+			 dt.nombre as prodNombre,
+			 dt.remito,
+			 dt.color,
+			 dt.talle,
+			 dt.precio_pagado,
+			 dt.cantidad,
+			 dt.id as id_detalle,
+			 usr.strNombre as nombre,
+			 usr.strApellido as apellido,
+			 usr.strEmail as email,
+             usr.idUsuario as user_id,
+             prs.nombre as v_nombre,
+             prs.apellido as v_apellido,
+             prs.id as v_id,
+             prod.strNombre as prod_nombre,
+             prod.strImagen as prod_imagen
+
+			FROM
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+				usuarios as usr ON usr.idUsuario = compra.idUsuario
+            LEFT JOIN
+            	personal as prs ON prs.id = usr.vendedor
+           	LEFT JOIN 
+           		productos as prod ON prod.idProducto = dt.id_producto";
 			
 			
 			/**
