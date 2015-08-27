@@ -11,7 +11,10 @@
 		<!--buscador-->
 		<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<div class="filtros">
-				<input type="text" class="find-input-in-results" value="">
+				<div class="input-buscador">
+					<input type="text" class="find-input-in-results" value="">
+					<img src="assets/images/buscador.png" alt="">
+				</div>
 			</div>
 		</div>
 		<!--end / buscador-->

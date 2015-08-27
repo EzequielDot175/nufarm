@@ -307,6 +307,19 @@ h1,h2,h3,h4,h5,h6{font-weight:bold;}
   	-o-background-color: rgba(255,255,255,.80);
 	-webkit-background-color: rgba(255,255,255,.80);
 }
+
+.filtros_container {
+	float: left;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	box-sizing: border-box;
+	background-color: rgba(234,234,234,.80);
+  	-moz-background-color: rgba(234,234,234,.80);
+  	-ms-background-color: rgba(234,234,234,.80);
+  	-o-background-color: rgba(234,234,234,.80);
+	-webkit-background-color: rgba(234,234,234,.80);
+}
 .product_filter_vend_column {
 	width: 17%;
 	float: left;
@@ -3535,8 +3548,8 @@ select#vendedor {
   	margin: 0 0 7px 0;
   	padding: 0;
   	display: block;
-    background:#AB3476;
-    color: #FFF;
+	background:#AB3476;
+	color: #FFF;
   }
   #welcome h3 {
   	font-size: 13px;
@@ -3572,7 +3585,7 @@ span.talle {
   	display: block;
   }
 .estadopedido_box {
-	width: 14%;
+	width: 100%;
 	float: right;
 	display: block;
 	margin-top: -1px;
@@ -3597,7 +3610,7 @@ span.talle {
 	position: absolute;
 	top: -31px;
 	right: -2px;
-	width: 178px;
+	width: 16%;
 }
 .estadopedido_box .button:hover {
 	opacity: .9;
@@ -4477,11 +4490,15 @@ button.mainbtn-save:hover {
   	margin-top: -10px;
   	font-size: 20px;
   	color: #099642;
-  	background-color: rgba(255,255,255,.80);
-  	-moz-background-color: rgba(255,255,255,.80);
-  	-ms-background-color: rgba(255,255,255,.80);
-  	-o-background-color: rgba(255,255,255,.80);
-	-webkit-background-color: rgba(255,255,255,.80);
+  	background-color: rgba(234,234,234,.80);
+  	-moz-background-color: rgba(234,234,234,.80);
+  	-ms-background-color: rgba(234,234,234,.80);
+  	-o-background-color: rgba(234,234,234,.80);
+	-webkit-background-color: rgba(234,234,234,.80);
+}
+
+.filtro-bottom{
+	margin-top: 20px;
 }
 
 .filtros-100{
@@ -4498,13 +4515,23 @@ button.mainbtn-save:hover {
 }
 
 .filtros-Default{
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.block-filtros{
+	padding: 20px;
+}
+
+.block-50{
+	width: 102%;
+	position: relative;
 }
 
 .filtros-50{
   	float: left;
   	width: 48%;
-  	margin: 1%;
-  	font-size: 15px;
+  	margin:  0 2% 0 0;
   	padding:20px;
   	box-sizing: border-box;
   	background-color: rgba(234,234,234,.80);
@@ -4521,6 +4548,9 @@ button.mainbtn-save:hover {
 	    height: 10px;
 	    margin: 20px 0;
 }
+
+
+
 .filtros-Default h3 {
     padding: 0;
     margin:0;
@@ -4529,12 +4559,44 @@ button.mainbtn-save:hover {
     font-size: 13px !important;
 }
 
-.filtros-Default select, input, button {
+.filtros-Default select, input {
     height: 40px;
-    width: 200px;
+    width: 205px;
+    margin-right: 20px;
     border: none;
     float: left;
+    font-size: 12px;
+    text-transform: uppercase;
     font-family: 'AvenirLTStd-Black';
+}
+
+.filtros-Default  button {
+    height: 40px;
+    width: auto;
+    padding: 5px 10px;
+    margin-right: 20px;
+    border: none;
+    float: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: 'AvenirLTStd-Black';
+}
+
+.filtros-Default  .button-image {
+    position: relative;
+    padding-left: 35px;
+}
+
+.block-botones{
+	margin:0 auto;
+	display: table;
+	padding-top: 30px;
+}
+
+.filtros-Default  .button-image  img{
+    position: absolute;
+    top: 7px;
+    left: 5px;
 }
 
 .filtros-Default select{
@@ -4554,8 +4616,31 @@ button.mainbtn-save:hover {
 .filtros-w100 {
 	width: 100%;
 	float: left;
-	padding: 20px;
+	padding: 20px 0;
 }
+
+.filtros-A select, input {
+    width: 20%;
+    margin: 0 20px 0 0;
+}
+
+.filtros-B select, input{
+    width: 20%;
+    margin: 0 20px 0 0;
+    padding: 0 0 0 10px;
+    color: #8E3289 !important;
+}
+
+.filtros-B label {
+    	color: #8E3289 !important;
+}
+
+.filtros-B .fecha {
+	margin-top: 0;
+    	color: #8E3289 !important;
+}
+
+
 
 .filtros-Verde select, input, label{
 	color: #009448;
@@ -4573,6 +4658,7 @@ button.mainbtn-save:hover {
 	height: 15px;
 	float: left;	
 	margin-top: 8px;
+	margin-right: 8px;
 }
 
 .filtros-Default .radio label{
