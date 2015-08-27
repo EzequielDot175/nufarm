@@ -41,10 +41,13 @@ echo'
        	 <li class="'; if ($sub=="d"){echo " seleccionado";} echo'">CARGA DE PRODUCTOS</li>
         </a>
         <a href="../usuarios/v_usuarios.php?activo=2&sub=e&vert=1">
-        	<li class="'; if ($sub=="e"){echo " seleccionado";}echo'">DATOS DE CLIENTES</li>
+        	<li class="'; if ($sub=="e"){echo " seleccionado";}echo'">CLIENTES</li>
         </a>
         <a href="../personal/v_personal.php?activo=2&sub=h">
-        	<li class="'; if ($sub=="h"){echo " seleccionado";}echo'">DATOS DE VENDEDORES</li>
+        	<li class="'; if ($sub=="h"){echo " seleccionado";}echo'">VENDEDORES</li>
+        </a>
+        <a href="#">
+            <li class="">CONSULTAS</li>
         </a>
   </div>
 

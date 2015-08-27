@@ -82,7 +82,7 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 
 <div class="block">
-<div class="prod_container">
+
 
 
 <!--SIDEBAR
@@ -99,6 +99,35 @@ $compras3= new compras();
 $compras3->select_all_states();*/
 ?>
  <!--</div> -->
+<div class="filtros_container">
+     <div class="filtros-Default filtros-100">
+          <form action="">
+                <h3> FILTRAR POR:</h3>
+                <select name="">
+                  <option value="">VENDEDOR</option>
+                  <?php //Vendedor::options() ?>
+                </select>
+
+                <select name="">
+                  <option value="">ESTADO</option>
+                  <option value="1">PEDIDO REALIZADO</option>
+                  <option value="2">PEDIDO EN PROCESO</option>
+                  <option value="3">PEDIDO ENVIADO</option>
+                  <option value="4">PEDIDO ENTREGADO</option>
+                </select>
+
+                <select name="" >
+                  <option value="">CLIENTE</option>
+                  <?php Cliente::options() ?>
+                </select>
+
+                <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button> 
+          </form>
+    </div>
+</div>
+
+<div class="prod_container">
+
 <div class="three_444 contenedor-default contenedor-A">
 <!-- /////////////////////////////////////////////BACKEND CANJES //////////////////////////////////////////////////////////-->
 <?php
@@ -129,44 +158,21 @@ $orden = "idCompra DESC";
 
 ?>
 
-<div class="filtros-Default filtros-100">
-      <form action="">
-            <h3> FILTRAR POR:</h3>
-            <select name="">
-              <option value="">VENDEDOR</option>
-              <?php //Vendedor::options() ?>
-            </select>
 
-            <select name="">
-              <option value="">ESTADO</option>
-              <option value="1">PEDIDO REALIZADO</option>
-              <option value="2">PEDIDO EN PROCESO</option>
-              <option value="3">PEDIDO ENVIADO</option>
-              <option value="4">PEDIDO ENTREGADO</option>
-            </select>
-
-            <select name="" >
-              <option value="">CLIENTE</option>
-              <?php Cliente::options() ?>
-            </select>
-
-            <button> VER RESULTADOS </button>
-      </form>
-</div>
 
 <hr class="separador">
 
 <div class="menuorden"><a href="v_compras.php?orden=1&activo=1&sub=c"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_compras.php?orden=2&activo=1&sub=c"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>
  <table>
  <tr class="tablacolor3 tablaDefault">
-     <td  class="colA" width="10%"  align="center">FECHA</td>  
-     <td  class="colB" width="8%"  align="center">TOTAL PUNTOS</td>
-     <td  class="colC" width="34%"  align="center">PRODUCTO</td>
-      <td class="colD" width="8%"  align="center">CANTIDAD</td>
-      <td class="colE" width="8%" align="center">COLOR</td>
-      <td class="colF" width="8%"  align="center">TALLE</td>
-      <td class="colG" width="8%"  align="center">REMITO</td>
-     <td  class="colH" width="16%"  align="center">ESTADO</td>
+     <td  class="colA" align="center">FECHA</td>  
+     <td  class="colB" align="center">TOTAL PUNTOS</td>
+     <td  class="colC" align="center">PRODUCTO</td>
+      <td class="colD" align="center">CANTIDAD</td>
+      <td class="colE" align="center">COLOR</td>
+      <td class="colF" align="center">TALLE</td>
+      <td class="colG" align="center">REMITO</td>
+     <td  class="colH" align="center">ESTADO</td>
    </tr>
  </table>
  <div style="height:10px"></div>

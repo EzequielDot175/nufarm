@@ -49,17 +49,20 @@
 <body>
 
 	<?php //include_once('inc/header.php') ?>
+
+	<!-- PAGE -->
 	<div class="block">
-		<div class="prod_container ">
-
 		
+		<div class="prod_container block-filtros ">
 
+			<!--FILTROS-->
 			<div class="filtro">
-		
 				<div class="panel filtros-Default filtros-Violeta" ng-controller="FiltroController" >
+
+					<!-- form-->
 					<form ng-submit="filter();">
 
-						<div class="filtros-w100 filtros-Verde">			
+						<div class="filtros-w100 filtros-Verde ">			
 							<div class="radio">
 								<input type="radio" checked value="1" name="fetchBy">
 								<label for="" >Ver filtros en resultados</label>
@@ -70,76 +73,135 @@
 							</div>
 						</div>
 
-						<div class="filtros-Default filtros-50">
-			            				<h3> FILTRAR POR:</h3>
-							<select name="" id="" ng-model="select_vendedores" ng-change="setCliente()" ng-options="v.value as v.text for (k, v) in vendedores" >
-								<option value="">TODOS LOS VENDEDORES</option>
-							</select> 
-							<select name="" id="" ng-model="filtro.clientes"  ng-options="v.value as v.text for (k, v) in clientes">
-								<option value="">TODOS LOS CLIENTES</option>
-							</select>
+
+						<div class="block-50">
+							<div class="filtros-Default filtros-50">
+				            			<h3> FILTRAR POR:</h3>
+								<select name="" id="" ng-model="select_vendedores" ng-change="setCliente()" ng-options="v.value as v.text for (k, v) in vendedores" >
+									<option value="">TODOS LOS VENDEDORES</option>
+								</select> 
+								<select name="" id="" ng-model="filtro.clientes"  ng-options="v.value as v.text for (k, v) in clientes">
+									<option value="">TODOS LOS CLIENTES</option>
+								</select>
+							</div>
+							<div class="filtros-Default filtros-50">
+				            			<h3> FILTRAR CANJES POR :</h3>
+								<select name="" id="" ng-model="filtro.cant_canjes">
+									<option value="" selected>CANTIDAD DE CANJES</option>
+									<option value="10">Hasta 10 canjes</option>
+									<option value="20">Hasta 20 canjes</option>
+									<option value="30">Hasta 30 canjes</option>
+								</select>
+								<select name="" id="" ng-model="filtro.punt_disponibles">
+									<option value="" selected>Puntos disponibles</option>
+									<option value="0">Entre 0 y 1000</option>
+									<option value="1">Entre 1000 y 2000</option>
+									<option value="2">Entre 2000 y 3000</option>
+									<option value="3">Entre 3000 y 4000</option>
+									<option value="4">Entre 4000 y 5000</option>
+									<option value="5">Mas de 5000</option>
+								</select>
+							</div>
 						</div>
 
-						<div class="filtros-Default filtros-50">
-			            				<h3> FILTRAR CANJES POR :</h3>
-							<select name="" id="" ng-model="filtro.cant_canjes">
-								<option value="" selected>CANTIDAD DE CANJES</option>
-								<option value="10">Hasta 10 canjes</option>
-								<option value="20">Hasta 20 canjes</option>
-								<option value="30">Hasta 30 canjes</option>
-							</select>
-							<select name="" id="" ng-model="filtro.punt_disponibles">
-								<option value="" selected>Puntos disponibles</option>
-								<option value="0">Entre 0 y 1000</option>
-								<option value="1">Entre 1000 y 2000</option>
-								<option value="2">Entre 2000 y 3000</option>
-								<option value="3">Entre 3000 y 4000</option>
-								<option value="4">Entre 4000 y 5000</option>
-								<option value="5">Mas de 5000</option>
-							</select>
-							
-						</div>
 
-						<div class="filtros-Default filtros-100">
-			            				<h3> FILTRAR ACTIVIDAD POR:</h3>
-								<div class="filtros-w100">
-									<select name="" id="" ng-model="filtro.prod_canjeado" ng-options="v.value as v.text for (k, v) in select_prod_canjeado">
-										<option value="">Producto canjeado</option>
-									</select>
-									<select name="" id="" ng-model="filtro.estado">
-										<option value="">Estado de entrega</option>
-										<option value="1">Pendiente</option>
-										<option value="2">En Proceso</option>
-										<option value="3">Enviado</option>
-										<option value="4">Entregado</option>
-									</select>
+						<div class="filtros-Default filtros-100 filtro-bottom">
+			            			<h3> FILTRAR ACTIVIDAD POR:</h3>
+							<div class="filtros-w100 filtros-A">
+								<select name="" id="" ng-model="filtro.prod_canjeado" ng-options="v.value as v.text for (k, v) in select_prod_canjeado">
+									<option value="">Producto canjeado</option>
+								</select>
+								<select name="" id="" ng-model="filtro.estado">
+									<option value="">Estado de entrega</option>
+									<option value="1">Pendiente</option>
+									<option value="2">En Proceso</option>
+									<option value="3">Enviado</option>
+									<option value="4">Entregado</option>
+								</select>
+							</div>
+							<div class="filtros-w100 filtros-B">
+								<label class="fecha" for="">Desde</label>
+								<input type="date" ng-model="filtro.desde" class="typeDate"  placeholder="Date">
+								<label class="fecha"  for="">Hasta</label>
+								<input type="date" ng-model="filtro.hasta" class="typeDate" >
+								<div class="radio">
+									<input type="radio" name="typeSearch" ng-model="filtro.typeSearch" value="'byWeek'" class="typeSelection">
+									<label for="">Ultimo semana</label>
 								</div>
-
-								<div class="filtros-w100">
-							
-									<label for="">Desde</label>
-									<input type="date" ng-model="filtro.desde" class="typeDate"  placeholder="Date">
-									<label for="">Hasta</label>
-									<input type="date" ng-model="filtro.hasta" class="typeDate" >
-								
-								
-									<div class="radio">
-										<input type="radio" name="typeSearch" ng-model="filtro.typeSearch" value="'byWeek'" class="typeSelection">
-										<label for="">Ultimo semana</label>
-									</div>
-									<div class="radio">
-										<input type="radio" name="typeSearch" ng-model="filtro.typeSearch" value="'byMonth'" class="typeSelection">
-										<label for="">Ultimo mes</label>
-									</div>	
+								<div class="radio">
+									<input type="radio" name="typeSearch" ng-model="filtro.typeSearch" value="'byMonth'" class="typeSelection">
+									<label for="">Ultimo mes</label>
 								</div>	
+							</div>	
 						</div>
 						
-						<input type="submit" >
-						
+						<div class="block-botones">
+							<button class="button-image" type="submit" ><img src="layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button> 
+							<button class="button-image"  > <img src="layout/excel.png" alt="">DESCARGAR RESULTADOS EN EXCEL </button>
+						</div>
 					</form>
+					<!-- end / form-->
 
+					
+
+					<!-- resultados-->
 					<div class="resultados">
+						<!-- head tabla
+						<table>
+							<tr class="tablacolor3 tablaDefault">
+							     	<td  class="colA" align="center">FECHA</td>  
+							     	<td  class="colB" align="center">TOTAL PUNTOS</td>
+							     	<td  class="colC" align="center">PRODUCTO</td>
+							      	<td class="colD" align="center">CANTIDAD</td>
+							      	<td class="colE" align="center">COLOR</td>
+							      	<td class="colF" align="center">TALLE</td>
+							      	<td class="colG" align="center">REMITO</td>
+							     	<td  class="colH" align="center">ESTADO</td>
+							</tr>
+						</table>
+						-->
+							
+						<!-- item -->
 						<div class="item" ng-repeat="(key, value) in filtroData">
+						 	<table >
+								<tr class="tablaDetalle tablaDefault"  ng-repeat="(k, v) in value" ng-if="k != 'total'">
+								     	<td  class="colA"  align="center">
+									     	{{ value[0].fecha }}
+									</td>  
+									<td  class="colB" align="center">
+									     	{{value.total}}
+									</td>
+									<td  class="colC tdBackground"class="colA"  align="center">
+										<!--<div class="sub"><img class="imagen" src="../../images_productos/'.$imagen_producto.'"  alt="" /></div>-->
+										<div class="sub text "><span>{{v.pagado}}</span></div>
+										<span class="sub text">{{v.prod_nombre}}</span>
+									</td>
+									 <td class="colD tdBackground"  align="center">
+									      	<span>{{v.cantidad}} </span>
+									 </td>
+									 <td class="colE tdBackground" align="center">
+										<span>{{v.color}}</span>
+									 </td>
+									 <td class="colF tdBackground"  align="center">
+										<span>{{v.talle}}</span>
+									 </td>
+									 <td  class="colG tdBackground" align="center">
+									      	{{v.remito}}
+									</td>
+									<td  class="colH tdBackground"  align="center">
+									     	<select name="estado_compra_prod'.$i.'" id="estado2">
+											<option ng-selected="v.estado == 1" value="1">Pedido realizado</option>
+											<option ng-selected="v.estado == 2" value="2"> Pedido en Proceso</option>	
+											<option ng-selected="v.estado == 3" value="3"> Pedido enviado</option>	
+											<option ng-selected="v.estado == 4" value="4">Pedido entregado</option>	
+										</select>
+									</td>
+								</tr>
+								
+							 </table>
+							
+
+							<!--
 							<h3 class="nombre">
 								{{ value[0].strNombre }} {{ value[0].strApellido }} 
 							</h3>
@@ -166,14 +228,21 @@
 									</div>
 								</div>
 							</div>
+							-->
 						</div>
+						<!-- end / item -->
+
+
 					</div>
+					<!-- end / resultados-->
 
 				</div>
 			</div>
+			<!--END / FILTROS-->
 
 		</div>
 	</div>
+	<!-- END / PAGE -->
 
 <?php include_once('inc/footer.php') ?>
 
