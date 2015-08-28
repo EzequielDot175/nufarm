@@ -15,12 +15,9 @@
 			$sel = $this->prepare(self::VENDEDOR_OPTIONS);
 			$sel->execute();
 			return $sel->fetchAll();
-
-			// echo "<pre>";
-			// var_dump($sel->execute());
-			// echo "</pre>";
-			// return $sel->fetchAll();
 		}
+
+
 
 		public static function options($selected = null){
 			$collection = self::method('basics');
@@ -40,6 +37,9 @@
 			endforeach;
 			echo($html);
 		}
+
+
+		
 	}
 
  ?>

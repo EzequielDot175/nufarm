@@ -263,6 +263,7 @@
 			 */
 			
 			const CLIENTE_OPTIONS = "SELECT idUsuario as id, strNombre as nombre, strApellido as apellido FROM usuarios";
+			const CLIENTE_BYVENDEDOR = "SELECT idUsuario as id, strNombre as nombre, strApellido as apellido FROM usuarios WHERE vendedor = :id";
 
 			/**
 			 * @internal

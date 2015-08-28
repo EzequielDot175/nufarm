@@ -29,6 +29,7 @@
 
 	require_once(APP_DIR.'/core/class/class.filtros.php'); 
 	require_once(APP_DIR.'/core/class/class.ajax.php'); 
+	require_once(APP_DIR.'/core/class/class.ve.php');
 
 
  ?>

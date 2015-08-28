@@ -19,6 +19,13 @@
 			return $sel->fetchAll();
 		}
 
+		public function basicsById($id){
+			$sel = $this->prepare(self::CLIENTE_BYVENDEDOR);
+			$sel->bindParam(':id',$id, PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetchAll();
+		}
+
 		public static function options($selected = null){
 			$collection = self::method('basics');
 			$html = "";
