@@ -266,26 +266,39 @@ switch ($role) {
 
 echo '
 
-<div class="imagen-personal"></div>
+<table>
+           <tbody>
+                <tr class=" tablaPersonal ">
+                  <td class="colA" align="center">
+			<div class="imagen-personal"></div>
+                  </td>
+                  <td class="colB tdBackground" align="center">
+                    <span>'.$nombre.' '.$apellido.'</span>
+                  </td>
+                  <td class="colC tdBackground" align="center">
+                     <span>Login: '.$login.'</span>
+                  </td>
+                  <td class="colD tdBackground" align="center">
+                    <span>'.$role_nombre.'</span>
+                  </td>
+                  <td class="colE ">
+                     		<div class="botones">
+		              <div class="item editar">
+		                <a href="e_personal.php?id='.$id.'&activo=2&sub=h">
+		                  <img class="imagen" src="../layout/editar.png" alt="">
+		                </a>
+		              </div>
+		              <div class="item borrar">
+		                <a href="d_personal.php?id='.$id.'&activo=2&sub=h">
+		                  <img class="imagen" src="../layout/borrar.png" alt="">
+		                </a>
+		              </div>
+		           </div>
+                  </td>
+                </tr>
 
-<div class="box-personal">
-
-<div class="box-personal-content">
-
-<span>'.$nombre.' '.$apellido.'</span>
-<p>Login: '.$login.'</p>
-
-</div>
-
-<div class="box-personal-content">
-<h3>'.$role_nombre.'</h3>
-</div>
-
-
-<a class="btn-personal" href="e_personal.php?id='.$id.'&activo=2&sub=h">ADMINISTRAR</a><br>
-<a class="btn-personal" href="d_personal.php?id='.$id.'&activo=2&sub=h">ELIMINAR</a>
-
-</div>
+           </tbody>
+</table>
 
 ';
 }

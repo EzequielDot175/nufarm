@@ -67,7 +67,8 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 	
-<div class="three_4">
+<div class="prod_container">
+<div class="three_444 contenedor-default contenedor-A">
 
 <!--SIDEBAR
 <div class="product_filter_vend_column_users">
@@ -112,15 +113,21 @@ $orden = "idUsuario ASC";
 
 //echo '<div class="menuorden"><a href="v_usuarios.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_usuarios.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
 /* SELECT */
-echo '<div class="bar-green">
-<span>EMPRESA</span> <em>CRÉDITO DISPONIBLE:</em>
-</div>';
+echo '
+	<table>
+	         <tr class="tablacolor3 tablaClientes" >
+	           <td  class="tituloA" align="center"  colspan="4" >EMPRESA</td>  
+	           <td class="tituloB" align="center">CRÉDITO DISPONIBLE</td>
+	         </tr>
+      	</table>
+       ';
 echo '<div class="item-content">';
 include_once("classes/class.usuarios.php");
 $usuarios= new usuarios();
 $usuarios->select_all($pagina, $orden);
 echo '</div>';
 ?>	
+</div>
 </div>
 <?php include_once('../inc/footer.php') ?>
 </div>

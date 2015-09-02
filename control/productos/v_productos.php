@@ -70,8 +70,8 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	<?php include_once('../inc/header.php') ?>
 
 <div class="block">
-	
-<div class="three_4">
+<div class="prod_container">
+<div class="three_444 contenedor-default contenedor-A">
 
 <!-- SIDEBAR
 <div class="item-group-btn">
@@ -117,56 +117,63 @@ $all = $productos->all();
 ?>
 <div class="barra-prod"><span>Productos</span></div>
 
+
 <?php foreach($all as $k => $v): ?>
-<div class="item-content-prod">
-
-	<div class="box-image-prod-item">
-		<img src="../../images_productos/<?php echo($v->strImagen) ?>" alt="">
-	</div>
 
 
-	<div class="box-prod-item-2">
-
-		<div class="box-prod-item-1 ">
-			<span>													
-				<?php echo($v->dblPrecio) ?> 
-			</span>
-		</div>
-
-		<div class="nom-desc">
-			<p style="color: #646363;text-transform: uppercase;font-weight: bold;"><?php echo($v->strNombre) ?></p>
-			<p style="color:#7A7474"><?php echo substr($v->strDetalle, 0, 30) ?>...</p>
-		</div>
-		<div class="stock-detalle">
-			<p>STOCK: <?php echo($v->intStock) ?></p>
+<table>
+           <tbody>
+                <tr class=" tablaProductos">
+                  <td class="colA" align="center">
+			<img class="img" src="../../images_productos/<?php echo($v->strImagen) ?>" alt="">
+                  </td>
+                  <td class="colB tdBackground" align="center">
+                    <span><?php echo($v->dblPrecio) ?> <span>
+                  </td>
+                  <td class="colC tdBackground" align="center">
+                    <span><?php echo($v->strNombre) ?></span>
+                  </td>
+                  <td class="colD tdBackground" align="center">
+                    <span><?php echo substr($v->strDetalle, 0, 30) ?>...</span>
+                  </td>
+                   <td class="colE tdBackground" align="center">
+                    <span><p>STOCK: <?php echo($v->intStock) ?></p></span>
+                  </td>
+                  <td class="colF tdBackground" align="center">
+                    <span>
 			<?php if((int)$v->intMinCompra > 0): ?>
 			<p>MIN: <?php echo($v->intMinCompra) ?></p>
 			<?php endif; ?>
 
 			<?php if((int)$v->intMaxCompra > 0): ?>
-			<p>MIN: <?php echo($v->intMaxCompra) ?></p>
-			<?php endif; ?>
-		</div>
-		<div class="box-detalle2">
+			<p>MAX: <?php echo($v->intMaxCompra) ?></p>
+			<?php endif; ?> </span>
+                  </td>
+                  <td class="colG ">
+                     		<div class="botones">
+		              <div class="item editar">
+		                <a href="e_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d">
+		                  <img class="imagen" src="../layout/editar.png" alt="">
+		                </a>
+		              </div>
+		              <div class="item borrar">
+		                <a href="d_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d">
+		                  <img class="imagen" src="../layout/borrar.png" alt="">
+		                </a>
+		              </div>
+		           </div>
+                  </td>
+                </tr>
 
-		</div>
-
-		<div class="box-btn-prod-edit">
-			<p>
-				<a class="btn-prod-edit" href="e_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d"><span>ADMINISTRAR</span></a>
-
-				<a class="btn-prod-edit" href="d_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d"><span>ELIMINAR</span></a>
-			</p>
-		</div>
-	</div>
-</div>
+           </tbody>
+</table>
 <?php endforeach; ?>
 <!-- include_once("classes/class.productos.php");
 $productos= new productos();
 $productos->select_all($pagina, $orden); -->
 
 </div>
-
+</div>
 	
 </div>
 
