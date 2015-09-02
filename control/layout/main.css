@@ -2030,6 +2030,28 @@ right: -39px;
    background-size: 100%;
 }
 
+.general_container {
+    float: left;
+    width: 100%;
+    height: auto;
+    background-color: rgba(234,234,234,.80);
+    -moz-background-color: rgba(234,234,234,.80);
+    -ms-background-color: rgba(234,234,234,.80);
+    -o-background-color: rgba(234,234,234,.80);
+    -webkit-background-color: rgba(234,234,234,.80);
+}
+
+.editar_container {
+    float: left;
+    width: 100%;
+    height: auto;
+        background-color: rgba(255,255,255,.3);
+    -moz-background-color: rgba(255,255,255,.3);
+    -ms-background-color: rgba(255,255,255,.3);
+    -webkit-background-color: rgba(255,255,255,.3);
+}
+}
+
 /*.item h4{
 	background: #9E1F64; color: #fff; width: 99%; padding: .2em .3em; margin: .8em 0 .3em 0; font-size: 100%;
 }*/
@@ -2053,7 +2075,7 @@ right: -39px;
 
 .navigate a {
 	padding: 5px 10px 5px 10px;
-	background: #BED73B;
+	background: #009448;
 	margin: 2px;
 	float: left;
 	color: #fff;
@@ -3133,7 +3155,7 @@ div.upload4 input {
 	float: left;
 	margin-right: 2%;
 	text-transform: uppercase;
-	opacity: 0.6;
+	font-family: 'AvenirLTStd-Black';
 }
 .tiform6-2 {
 	font-size: 12px;
@@ -4488,7 +4510,6 @@ a.btn-personal:hover {
 #form-bg-personal {
 	float: left;
 	width: 100%;
-	background-color: whitesmoke;
 	margin-bottom: 50px;
 	padding-bottom: 45px;
 }

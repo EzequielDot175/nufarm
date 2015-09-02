@@ -133,14 +133,17 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 	
-<div class="three_4">
+ <div class="general_container ">
 
-<div class="item-group-btn">
-<a class="btn-fill" href="<?php  echo BASEURL.'/productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
-<a class="btn-fill"href="<?php  echo BASEURL.'/categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/colores/v_color.php?activo=2&sub=d';?>"><span><p>Administrar Colores</p></span></a>
-</div>
+      <div class="three_444 contenedor-default ">
+	<!-- botones administrar -->
+	<!--<div class="item-group-btn">
+			<a class="btn-fill" href="<?php  echo BASEURL.'/productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
+			<a class="btn-fill"href="<?php  echo BASEURL.'/categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
+			<a class="btn-fill" href="<?php  echo BASEURL.'/talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
+			<a class="btn-fill" href="<?php  echo BASEURL.'/colores/v_color.php?activo=2&sub=d';?>"><span><p>Administrar Colores</p></span></a>
+	</div>-->
+	<!-- botones administrar -->
 
 <?php
 
@@ -148,10 +151,11 @@ $id =$_GET['id'];
 $prod = new Producto();
 $data = $prod->allById($id);
 $type = $prod->defineType($id);
-echo('<h1>'.$type->type.'</h1>');
+//echo('<h1>'.$type->type.'</h1>');
 ?>
 
-<div id="content-prod3">
+   
+<div class="editar_container">
 <div class="barra-prod"><span>Editar Producto</span></div>
 
 <form method="post" action="u_producto.php" id="simpleform"  enctype="multipart/form-data">
@@ -302,7 +306,7 @@ if($data->strImagen!=""){
 </div>
 
 </div>
-
+</div>
 </form>
 
 

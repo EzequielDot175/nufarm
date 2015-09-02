@@ -113,8 +113,12 @@ $("#vigencia_credito").datepicker({altFormat: 'yy-mm-dd'});
 <!-- Header -->
 	<?php include_once('../inc/header.php') ?>
 <div class="block">
-	<div class="three_4">
+	 <div class="general_container ">
 
+      <div class="three_444 contenedor-default ">
+
+<!-- botones administrar -->
+	<!--
 <div class="product_filter_vend_column_users">
 <nav id="interna2">
 <ul>
@@ -128,7 +132,7 @@ $compras2= new compras();
 $compras2->select_all_vendedores_clientes();
 ?>
 </div>
-
+-->
 <?php
 
 $id =$_GET['id'];
@@ -167,7 +171,7 @@ list($anio, $mes, $dia) = explode('-', $vigencia_credito);
 $vigencia_credito = $dia.'-'.$mes.'-'.$anio;  
 
 ?>
-<div class="item-content-usuarios">
+<div class="editar_container">
 <div class="barra-prod"><span>CLIENTE</span></div>
 
 <form method="post" action="u_usuario.php" id="simpleform" enctype="multipart/form-data" >
@@ -316,6 +320,7 @@ $vigencia_credito = $dia.'-'.$mes.'-'.$anio;
 </div>
 
 
+</div>
 
 </body>
 </html>

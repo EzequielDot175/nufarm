@@ -70,7 +70,7 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	<?php include_once('../inc/header.php') ?>
 
 <div class="block">
-<div class="prod_container">
+<div class="general_container ">
 <div class="three_444 contenedor-default contenedor-A">
 
 <!-- SIDEBAR
