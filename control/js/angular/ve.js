@@ -3,5 +3,5 @@
 *
 * Description
 */
-var app = angular.module('ve', [])
+// var app = angular.module('ve', [])
 

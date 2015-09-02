@@ -18,20 +18,45 @@
 			self::start();
 		}
 
+		public static function startSession(){
+			if(!isset($_SESSION)):
+				@session_start();				
+			endif;
+		}
+
 		public static function start(){
 			if(!isset($_SESSION["MM_Username"])):
-				session_start();
+				@session_start();
 			endif;
-		}	
+		}
+		public static function startAdmin(){
+			if(!isset($_SESSION["logged_id"])):
+				@session_start();
+			endif;
+		}
 
 		public static function check(){
 			self::start();
 
 			if(empty($_SESSION["MM_Username"])):
-				// Redirect::to('');	
 				header('location: login.php');
 				exit();
 			endif;
+		}
+
+		public static function checkAdmin(){
+			self::startAdmin();
+
+			if(empty($_SESSION["logged_id"])):
+				header('location: index.php');
+				exit();
+			endif;
+		}
+
+		public static function idAdmin(){
+			self::startSession();
+
+			return (int)$_SESSION['logged_id'];
 		}
 
 		public static function id(){
@@ -46,6 +71,13 @@
 			$user->execute();
 			return $user->fetch();
 		}
+		public function getUserAdmin(){
+			$id = self::idAdmin();
+			$user = $this->prepare(self::AUTH_USERADMIN);
+			$user->bindParam(':id', $id, PDO::PARAM_INT);
+			$user->execute();
+			return $user->fetch();
+		} 
 
 		public function puntosConsumidos(){
 			$id = self::id();
@@ -63,6 +95,10 @@
 		public static function User(){
 			$user = new Auth();
 			return $user->getUser();
+		}
+
+		public static function UserAdmin(){
+			return self::method('getUserAdmin'); 
 		}
 
 		public static function BirthDay($dat){

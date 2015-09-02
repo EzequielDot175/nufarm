@@ -70,7 +70,7 @@
 			 */
 			const AUTH_USER 					= "SELECT * FROM usuarios WHERE idUsuario = :id"; 
 			const AUTH_USEDPOINTS				= "SELECT SUM(dblTotal) as total FROM compra WHERE idUsuario = :id ";
-
+			const AUTH_USERADMIN 				= "SELECT * FROM personal WHERE id = :id";
 			
 			/**
 			* @param class TempMaxCompra
@@ -272,6 +272,19 @@
 			
 			const VENDEDOR_OPTIONS = "SELECT id , nombre, apellido FROM personal";
 
+
+			/**
+			 * @internal
+			 * Vendedor Estrella
+			 */
+			const VE_HASFACTURACION     = "SELECT IF(COUNT(id) = 0, 0, 1) as result FROM `facturacion` WHERE id_user = :id ";
+			const VE_INSERT             = "INSERT INTO facturacion (id_user,data,start_year, end_year) VALUES (:id,:data, :start, :end)";		
+			const VE_GETFACTURACION     = "SELECT * FROM facturacion WHERE id_user = :id";
+			const VE_ANUAL              = "SELECT DATE_FORMAT(fecha_inicio, '%Y-%m-%d') as inicio, DATE_FORMAT(fecha_fin, '%Y-%m-%d') as fin FROM ve_registro_anual GROUP BY fecha_inicio, fecha_fin ";
+			const VE_ALL_NO_DATE        = "SELECT ve.*, IF(usr.gold = 1, 'NUFARM MAX GOLD' , 'NUFARM MAX' ) AS gold FROM ve_registro_anual as ve LEFT JOIN usuarios as usr ON usr.idUsuario = id_cliente WHERE id_vendedor = :id";
+			const VE_ALL_DATE           = "SELECT ve.*, IF(usr.gold = 1, 'NUFARM MAX GOLD' , 'NUFARM MAX' ) AS gold FROM ve_registro_anual as ve LEFT JOIN usuarios as usr ON usr.idUsuario = id_cliente WHERE id_vendedor = :id AND fecha_inicio >= :inicio AND fecha_fin <= :fin";
+			const VE_ALL_DATE_BY_CLIENT = "SELECT ve.*, IF(usr.gold = 1, 'NUFARM MAX GOLD' , 'NUFARM MAX' ) AS gold FROM ve_registro_anual as ve LEFT JOIN usuarios as usr ON usr.idUsuario = id_cliente WHERE id_cliente = :id AND fecha_inicio >= :inicio AND fecha_fin <= :fin";
+			const VE_CATPREMIOS 		= "SELECT * FROM categorias_premios";
 		}
 
 
