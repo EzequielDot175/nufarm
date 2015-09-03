@@ -70,7 +70,29 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	<?php include_once('../inc/header.php') ?>
 
 <div class="block">
-<div class="general_container ">
+<div class="filtros_container">   
+       <div class="filtros-Default filtros-100">   
+            <form action="" method="POST"> 
+            <input type="hidden" name="filter"> 
+                  <h3> FILTRAR POR:</h3>   
+                  <select name="vendedor">
+                  	<option value="">VENDEDOR</option>   
+                 </select>    
+     
+                  <select name="estado">   
+                    <option value="">ESTADO</option>   
+                  </select>    
+     
+                  <select name="cliente" >    
+                    <option value="">CLIENTE</option>    
+                  </select>    
+     
+                  <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
+            </form>    
+      </div>   
+  </div>
+
+<div class="prod_container">
 <div class="three_444 contenedor-default contenedor-A">
 
 <!-- SIDEBAR
@@ -115,8 +137,18 @@ $productos = new Producto();
 $all = $productos->all();
 
 ?>
-<div class="barra-prod"><span>Productos</span></div>
 
+<table>
+     <tr class="tablacolor3 tablaProductos" >
+       <td  class="colA" align="center" >IMG</td>  
+       <td class="colB" align="center">CANT</td>
+       <td  class="colC" align="center" >NOMBRE</td>  
+       <td class="colD" align="center">DESCRIPCIÓN</td>
+       <td class="colE" align="center">STOCK</td>
+       <td class="colF" align="center">MIN-MAX</td>
+       <td></td>
+     </tr>
+</table>
 
 <?php foreach($all as $k => $v): ?>
 

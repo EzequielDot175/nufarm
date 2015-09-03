@@ -38,11 +38,11 @@
 }
 @font-face {
 	font-family:'AvenirLTStd-Light';
-	src: url('../../AvenirLTStd-Light_latin+latin-ext_gdi.eot');
-	src: url('../../AvenirLTStd-Light_latin+latin-ext_gdi.eot?#iefix') format('embedded-opentype'),
-		url('../../AvenirLTStd-Light_latin+latin-ext_gdi.woff') format('woff'),
-		url('../../AvenirLTStd-Light_latin+latin-ext_gdi.ttf') format('truetype'),
-		url('../../AvenirLTStd-Light_latin+latin-ext_gdi.svg#AvenirLTStd-Light') format('svg');
+	src: url('../../font/AvenirLTStd-Light_latin+latin-ext_gdi.eot');
+	src: url('../../font/AvenirLTStd-Light_latin+latin-ext_gdi.eot?#iefix') format('embedded-opentype'),
+		url('../../font/AvenirLTStd-Light_latin+latin-ext_gdi.woff') format('woff'),
+		url('../../font/AvenirLTStd-Light_latin+latin-ext_gdi.ttf') format('truetype'),
+		url('../../font/AvenirLTStd-Light_latin+latin-ext_gdi.svg#AvenirLTStd-Light') format('svg');
 	font-weight: 300;
 	font-style: normal;
 	font-stretch: normal;
@@ -1515,7 +1515,7 @@ label {
 	border: none;
 	display: inline-block;
 	cursor: pointer;
-	background-color: #BED73B;
+	background-color: #009448;
 	height: 32px;
 	border-radius: 5%;
 }
@@ -1619,7 +1619,7 @@ label {
 	border: none;
 	display: inline-block;
 	cursor: pointer;
-	background-color: #BED73B;
+	background-color: #009448;
 	height: 32px;
 	border-radius: 5%;
 }
@@ -1855,6 +1855,8 @@ right: -39px;
 .tablacolor3 td {
 	padding: 8px;
 	height: 25px;
+	color:#FFF !important;
+	font-family: 'AvenirLTStd-Black' !important;
 }
 
 .tablacolor3 {
@@ -1877,7 +1879,7 @@ right: -39px;
     text-transform: uppercase;
     border: 0px solid transparent;
     padding: 0px 0px 0px 0px;
-    font-family: 'AvenirLTStd-Black';
+    font-family:'AvenirLTStd-Light';
 }
 
 .tablaDetalle .imagen {
@@ -1916,9 +1918,9 @@ right: -39px;
 
 
 .tablaClientes td{
-	height: 40px !important;
+	height: 50px !important;
 	padding:0;
-	font-family: 'AvenirLTStd-Black';
+	font-family:'AvenirLTStd-Light';
 	color: #666;
 }
 
@@ -1958,7 +1960,7 @@ right: -39px;
 .tablaProductos td{
 	height: 40px !important;
 	padding:0;
-	font-family: 'AvenirLTStd-Black';
+	font-family:'AvenirLTStd-Light';
 	color: #666;
 }
 
@@ -2000,22 +2002,21 @@ right: -39px;
 
 
 
-.tablaersonal td{
+.tablaPersonal td{
 	height: 40px !important;
 	padding:0;
-	font-family: 'AvenirLTStd-Black';
+	font-family:'AvenirLTStd-Light';
 	color: #666;
 }
 
-
-.tablaersonal  .colA{
-	width: 3% ;
+.tablaPersonal  .colA{
+	width: 7% ;
 }
 .tablaPersonal  .colB{
 	width: 31% ;
 }
 .tablaPersonal   .colC{
-	width: 35% ;
+	width: 31% ;
 }
 .tablaPersonal  .colD{
 	width: 31% ;
@@ -2098,7 +2099,7 @@ right: -39px;
 
 .navigate2 a {
 	padding: 5px 10px 5px 10px;
-	background: #BED73B;
+	background: #009448;
 	margin: 2px;
 	float: left;
 	color: #fff;
@@ -4225,7 +4226,7 @@ a.BtnTalle:hover {
 	text-transform: uppercase;
 	overflow: hidden;
 	cursor: pointer;
-	border-bottom: 4px solid #FFF;
+	box-sizing:border-box;
 }
 
 .bar-consultas span {
@@ -4285,7 +4286,6 @@ a.BtnTalle:hover {
 	padding: 5px 0 5px 0;
 	margin: 10px 0 15px 0;
 	background-color: #008B39;
-	border-bottom: 4px solid #FFF;
 	display: block;
 	float: left;
 }
@@ -4340,7 +4340,7 @@ span.respuesta i {
 	float: right;
 }
 .btn-consulta {
-	background-color: #BED73B;
+	background-color: #009448;
 	color: #FFF !important;
 	padding: 7px 46px 7px 46px;
 	margin-right: -5px;
@@ -4497,7 +4497,6 @@ a.btn-personal:hover {
 	background-color: #008B39;
 	display: block;
 	float: left;
-	border-bottom: 4px solid #FFF;
 }
 .respuesta2 p {
 	font-size: 12px;
@@ -4822,6 +4821,10 @@ button.mainbtn-save:hover {
 	z-index: 1000;
 	padding-top:10px;
 	box-sizing: border-box;
+}
+
+.botones .item:hover{
+	opacity:.8;
 }
 
 .botones .item{

@@ -23,7 +23,6 @@ include_once('helper_titulos.php');
 	font-size: 14px;
 	color: #008752;
 	float: right;
-	padding: 0 10px 0 0;
 }
 </style>
 
@@ -76,16 +75,14 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 	
-	<div class="three_4">
+<div class="prod_container">
+<div class="three_444 contenedor-default">
 
+<!--SIDEBAR ADMINISTRADOR
 <div class="product_filter_consulta_column">
 <div class="item">
-
 <a href="v_consultas.php?activo=2&sub=f&respondido=todos"><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
-
 </div><div class="item">
-
-
 
 	<a href="v_consultas.php?activo=2&sub=f&respondido=0"><div class="pub-eve"><span>NO LEIDO</span></div></a>
 
@@ -93,8 +90,9 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	
 	<a href="v_consultas.php?activo=2&sub=f&respondido=1"><div class="pub-eve4"><span>RESPONDIDA</span></div></a>
 
-	</div></div>			
-
+	</div>
+</div>			
+-->
 <?php
 if($_SESSION['msg_ok']){echo '<div class="notify_ok"><p>'.$_SESSION['msg_ok'].'</p></div>'; unset($_SESSION['msg_ok']);}
 if($_SESSION['msg_error']){echo '<div class="notify_error"><p>'.$_SESSION['msg_error'].'</p></div>'; unset($_SESSION['msg_error']);}
@@ -130,5 +128,5 @@ $consultas->select_all($pagina, $orden);
 ?>	</div>
 <?php include_once('../inc/footer.php') ?>
 </div><!-- end block -->
-
+</div>
 </body></html>
