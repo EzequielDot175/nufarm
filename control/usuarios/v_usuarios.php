@@ -74,12 +74,12 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
                   <select name="vendedor"><option value="">VENDEDOR</option>   
                  </select>    
      
-                  <select name="estado">   
-                    <option value="">ESTADO</option>   
-                  </select>    
-     
                   <select name="cliente" >    
                     <option value="">CLIENTE</option>    
+                  </select>    
+     
+                  <select name="estado">   
+                    <option value="">ESTADO</option>   
                   </select>    
      
                   <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     

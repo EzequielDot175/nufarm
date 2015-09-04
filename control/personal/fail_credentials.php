@@ -1,4 +1,5 @@
-<?php session_start(); header('Content-Type: text/html; charset=utf-8');
+<?php @session_start(); header('Content-Type: text/html; charset=utf-8');
+
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
 ?>
