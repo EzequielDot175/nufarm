@@ -39,11 +39,11 @@
 			$user = self::post('user');
 			$clientes = new Cliente();
 
-			switch ($user['role']) {
+			switch ($user['role']):
 				case '1':
 				case '2':
 						if(is_null(self::post('id'))):
-							$all = $clientes->basics();
+							$all = $clientes->basicsVe();
 							echo json_encode($all);
 						else:
 							$all = $clientes->basicsById(self::post('id'));
@@ -55,7 +55,7 @@
 					$all = $clientes->basicsById($user['id']);
 					echo json_encode($all);
 					break;
-			}
+			endswitch;
 			
 			// $clientes = new Cliente();
 			// if(is_null(self::post('id'))):
@@ -67,6 +67,20 @@
 			// endif;
 		}
 
+		public static function checkPeriod(){
+			$date = self::post('date');
+			$ve = new VendedorEstrella();
+			$result = $ve->checkClosedPeriod($date);
+			echo ($result ? 0 : 1);
+		}
+
+		public static function updateDataFacturacion(){
+			$data = self::post('data');
+			$ve = new VendedorEstrella();
+			$data = $ve->updateFacturacion(self::post('data'), self::post('id') );
+			echo json_encode($data);
+		}
+
 		private static function filter(){
 			$filter = self::post('params');
 			$user = self::post('user');
@@ -74,6 +88,14 @@
 			$ve->role = $user['role'];
 			$collection = $ve->getResults($filter);
 			echo json_encode($collection);
+			// $ve->getResults($filter);
+			// print_r($collection);
+		}
+
+		public static function totalByPeriod(){
+			$ve = new VendedorEstrella();
+			echo json_encode( $ve->getTotales(self::post('date')) );
+
 		}
 
 		private static function myData(){

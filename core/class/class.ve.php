@@ -34,16 +34,23 @@
 				$from_reg_anual = $sel->fetchAll();
 				return $from_reg_anual;
 			else:
-							
+				$periodos = $this->periodosReales();
+				$ultimo_periodo = array_pop($periodos);
+				$sel = $this->prepare(self::VE_CLIENTFACTBYID);
+				$sel->bindParam(':id', $obj->cliente, PDO::PARAM_INT);
+				$sel->bindParam(':periodo_anterior', $ultimo_periodo->inicio, PDO::PARAM_STR);
+
+
+				$sel->execute();
+				return $sel->fetchAll();
 			endif;
 
 		}
 
-		public function getAllByAuth(){
-			$id = Auth::idAdmin();
+		public function getAllByAuth($forceAuth = null){
+			$id = (!is_null($forceAuth) ? $forceAuth : Auth::idAdmin());
 			// Periodos existentes que ya fueron cerrados y guardados en ve_registro_anual
 			$periodo = $_POST['params']['date'];
-
 			/**
 			 * Compruebo que no sea un periodo cerrado y guardado en base de datos
 			 */
@@ -71,11 +78,68 @@
 				 * registrado en la base de datos por lo tanto 
 				 * busco en los resultados creados en la base de datos
 				 */
-
+				$periodos = $this->periodosReales();
+				$ultimo_periodo = array_pop($periodos);
+				$sel = $this->prepare(self::VE_CLIENTFACTBYIDVENDEDOR);
+				$sel->bindParam(':id', $id, PDO::PARAM_INT);
+				$sel->bindParam(':periodo_anterior', $ultimo_periodo->inicio, PDO::PARAM_STR);
+				$sel->execute();
+				return $sel->fetchAll();
 
 			endif;
 		}
 
+		public function updateFacturacion($data,$id){
+			// print_r($data);
+			$std = new stdClass();
+			$total = 0;
+			$total_prod_clave = 0;
+			foreach($data as $key => $val):
+				$total += $val['total'];
+				$total_prod_clave += $val['total_prod_clave'];
+				@$std->{ucwords($key)}->{'facturacion_total'} = (int)$val['total']; 
+				@$std->{ucwords($key)}->{'facturacion_prod_clave'} = (int)$val['total_prod_clave']; 
+			endforeach;
+
+			$data_facturacion = json_encode($std);
+			// echo($id);
+
+			$upd = $this->prepare(self::VE_UPDATE_CURRENT_PERIOD_BYID);
+			$upd->bindParam(':id', $id, PDO::PARAM_INT);
+			$upd->bindParam(':data', $data_facturacion, PDO::PARAM_STR);
+			$upd->bindParam(':total', $total, PDO::PARAM_INT);
+			$upd->bindParam(':fact_prod_clave', $total_prod_clave, PDO::PARAM_INT);
+			$upd->execute();
+			// echo($upd->rowCount() > 0 ? 'true' : 'false');
+
+			$periodos = $this->periodosReales();
+			$ultimo_periodo = array_pop($periodos);
+			$sel = $this->prepare(self::VE_CLIENTFACTBYIDROW);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->bindParam(':periodo_anterior', $ultimo_periodo->inicio, PDO::PARAM_STR);
+			$sel->execute();
+			return $sel->fetch();
+		}
+
+		public function getTotales($periodo){
+			$id = Auth::idAdmin();
+
+			if($this->checkClosedPeriod($periodo)):
+				$periodo = explode("_", $periodo);
+				$sel = $this->prepare(self::VE_TOTAL_BY_PERIOD);
+				$sel->bindParam(':id', $id, PDO::PARAM_INT);
+				$sel->bindParam(':inicio', $periodo[0], PDO::PARAM_INT);
+				$sel->bindParam(':fin', $periodo[1], PDO::PARAM_INT);
+				$sel->execute();
+				return $sel->fetch();
+			else:
+				$sel = $this->prepare(self::VE_TOTAL_BY_CURRENT_PERIOD);
+				$sel->bindParam(':id', $id, PDO::PARAM_INT);
+				$sel->execute();
+				return $sel->fetch();
+			endif;
+			die();
+		}
 
 		public function getResults($params){
 			$obj = (Object)$params;
@@ -83,12 +147,19 @@
 			
 			if($_POST['user']['role'] != 3):
 				if(empty($obj->vendedor) && empty($obj->cliente)):
-					return $this->getAll();
-				elseif (empty($obj->vendedor) && !empty($obj->cliente)):
-					return $this->getByVendedor($obj);
+					return $this->allVe($obj->date);
+
+				elseif (!empty($obj->cliente) && empty($obj->vendedor)):
+
+					return $this->getByCliente($obj);
+
 				elseif (!empty($obj->vendedor) && empty($obj->cliente)):
+
+					return $this->getAllByAuth($obj->vendedor);
+				else:
 					return $this->getByCliente($obj);
 				endif;
+
 			else:
 				if(empty($obj->cliente)):
 					return $this->getAllByAuth();
@@ -99,26 +170,70 @@
 
 		}
 
+		public function allVe($date){
+			if($this->checkClosedPeriod($date)):
+				$date = explode("_", $date);
+				$sel = $this->prepare(self::VE_ALL_CLIENTES_VENDEDORES_BY_PERIOD);
+				$sel->bindParam(':inicio', $date[0], PDO::PARAM_STR);
+				$sel->bindParam(':fin', $date[1], PDO::PARAM_STR);
+				$sel->execute();
+				
+				return $sel->fetchAll();
+			else:
+				
+				$periodos = $this->periodosReales();
+				$ultimo_periodo = array_pop($periodos);
+				$sel = $this->prepare(self::VE_ALL_CLIENTES_VENDEDORES);
+				$sel->bindParam(':periodo_anterior', $ultimo_periodo->inicio, PDO::PARAM_STR);
+				$sel->execute();
+				return $sel->fetchAll();
+				
+			endif;
+		}
+
 		public function setInit(){
+			if(Auth::userAdmin()->role != 3):
+				$setAll = $this->query(self::VE_ALL_USERFACTURACION)->fetchAll();
 
-
-			echo "<pre>";
-			print_r($var);
-			echo "</pre>";
-			die();
-			$id = Auth::id();
-			$year = 2015;
-			$periodo = $this->nextPer();
-			$data = json_encode($this->initDataFacturacion());
-			if(!$this->hasFacturacion()):
-				$ins = $this->prepare(self::VE_INSERT);
-				$ins->bindParam(':id', $id, PDO::PARAM_INT);
-				$ins->bindParam(':start', $periodo->inicio, PDO::PARAM_INT);
-				$ins->bindParam(':end', $periodo->fin, PDO::PARAM_INT);
-				$ins->bindParam(':data', $data, PDO::PARAM_INT);
-				var_dump($ins->execute());
+				foreach($setAll as $key => $val):
+					if(is_null($val->id_user)):
+						$this->initFactUser($val->idUsuario,$val->vendedor);
+					endif;
+				endforeach;
+				
+			else:
+				$id = Auth::idAdmin();
+				$rtc_clientes = $this->prepare(self::VE_USERFACTURACION);
+				$rtc_clientes->bindParam(':id',$id, PDO::PARAM_INT);
+				$rtc_clientes->execute();
+				$rtc_clientes = $rtc_clientes->fetchAll();
+			
+				foreach($rtc_clientes as $key => $val):
+					if(is_null($val->id_user)):
+						$this->initFactUser($val->idUsuario,$val->vendedor);
+					endif;
+				endforeach;
 			endif;
 
+		}
+
+
+		public function initFactUser($id, $vendedor = null){
+			$vendedor = ( !is_null($vendedor) ? $vendedor : Auth::idAdmin() );
+			$currentPeriod = array_pop($this->periodos());
+
+			$initData = json_encode($this->initDataFacturacion());
+			$inicio =  $currentPeriod->inicio;
+			$fin =  $currentPeriod->fin;
+
+			$ins = $this->prepare(self::VE_INS_FACT_INCIAL);
+			$ins->bindParam(':id',$id,PDO::PARAM_INT);
+			$ins->bindParam(':vendedor',$vendedor,PDO::PARAM_INT);
+			$ins->bindParam(':data',$initData,PDO::PARAM_STR);
+			$ins->bindParam(':start',$inicio,PDO::PARAM_STR);
+			$ins->bindParam(':end',$fin,PDO::PARAM_STR);
+
+			$ins->execute();
 		}
 
 		public function periodos(){

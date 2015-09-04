@@ -26,6 +26,10 @@
 			return $sel->fetchAll();
 		}
 
+		public function basicsVe(){
+			return $this->query(self::VE_ALL_CLIENTES)->fetchAll();
+		}
+
 		public static function options($selected = null){
 			$collection = self::method('basics');
 			$html = "";
