@@ -70,8 +70,30 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	<?php include_once('../inc/header.php') ?>
 
 <div class="block">
-	
-<div class="three_4">
+<div class="filtros_container">   
+       <div class="filtros-Default filtros-100">   
+            <form action="" method="POST"> 
+            <input type="hidden" name="filter"> 
+                  <h3> FILTRAR POR:</h3>   
+                  <select name="vendedor">
+                  	<option value="">VENDEDOR</option>   
+                 </select>    
+     
+                  <select name="estado">   
+                    <option value="">ESTADO</option>   
+                  </select>    
+     
+                  <select name="cliente" >    
+                    <option value="">CLIENTE</option>    
+                  </select>    
+     
+                  <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
+            </form>    
+      </div>   
+  </div>
+
+<div class="prod_container">
+<div class="three_444 contenedor-default contenedor-A">
 
 <!-- SIDEBAR
 <div class="item-group-btn">
@@ -115,58 +137,75 @@ $productos = new Producto();
 $all = $productos->all();
 
 ?>
-<div class="barra-prod"><span>Productos</span></div>
+
+<table>
+     <tr class="tablacolor3 tablaProductos" >
+       <td  class="colA" align="center" >IMG</td>  
+       <td class="colB" align="center">CANT</td>
+       <td  class="colC" align="center" >NOMBRE</td>  
+       <td class="colD" align="center">DESCRIPCIÓN</td>
+       <td class="colE" align="center">STOCK</td>
+       <td class="colF" align="center">MIN-MAX</td>
+       <td></td>
+     </tr>
+</table>
 
 <?php foreach($all as $k => $v): ?>
-<div class="item-content-prod">
-
-	<div class="box-image-prod-item">
-		<img src="../../images_productos/<?php echo($v->strImagen) ?>" alt="">
-	</div>
 
 
-	<div class="box-prod-item-2">
-
-		<div class="box-prod-item-1 ">
-			<span>													
-				<?php echo($v->dblPrecio) ?> 
-			</span>
-		</div>
-
-		<div class="nom-desc">
-			<p style="color: #646363;text-transform: uppercase;font-weight: bold;"><?php echo($v->strNombre) ?></p>
-			<p style="color:#7A7474"><?php echo substr($v->strDetalle, 0, 30) ?>...</p>
-		</div>
-		<div class="stock-detalle">
-			<p>STOCK: <?php echo($v->intStock) ?></p>
+<table>
+           <tbody>
+                <tr class=" tablaProductos">
+                  <td class="colA" align="center">
+			<img class="img" src="../../images_productos/<?php echo($v->strImagen) ?>" alt="">
+                  </td>
+                  <td class="colB tdBackground" align="center">
+                    <span><?php echo($v->dblPrecio) ?> <span>
+                  </td>
+                  <td class="colC tdBackground" align="center">
+                    <span><?php echo($v->strNombre) ?></span>
+                  </td>
+                  <td class="colD tdBackground" align="center">
+                    <span><?php echo substr($v->strDetalle, 0, 30) ?>...</span>
+                  </td>
+                   <td class="colE tdBackground" align="center">
+                    <span><p>STOCK: <?php echo($v->intStock) ?></p></span>
+                  </td>
+                  <td class="colF tdBackground" align="center">
+                    <span>
 			<?php if((int)$v->intMinCompra > 0): ?>
 			<p>MIN: <?php echo($v->intMinCompra) ?></p>
 			<?php endif; ?>
 
 			<?php if((int)$v->intMaxCompra > 0): ?>
-			<p>MIN: <?php echo($v->intMaxCompra) ?></p>
-			<?php endif; ?>
-		</div>
-		<div class="box-detalle2">
+			<p>MAX: <?php echo($v->intMaxCompra) ?></p>
+			<?php endif; ?> </span>
+                  </td>
+                  <td class="colG ">
+                     		<div class="botones">
+		              <div class="item editar">
+		                <a href="e_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d">
+		                  <img class="imagen" src="../layout/editar.png" alt="">
+		                </a>
+		              </div>
+		              <div class="item borrar">
+		                <a href="d_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d">
+		                  <img class="imagen" src="../layout/borrar.png" alt="">
+		                </a>
+		              </div>
+		           </div>
+                  </td>
+                </tr>
 
-		</div>
-
-		<div class="box-btn-prod-edit">
-			<p>
-				<a class="btn-prod-edit" href="e_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d"><span>ADMINISTRAR</span></a>
-
-				<a class="btn-prod-edit" href="d_producto.php?id=<?php echo($v->idProducto) ?>&amp;activo=2&amp;sub=d"><span>ELIMINAR</span></a>
-			</p>
-		</div>
-	</div>
-</div>
+           </tbody>
+</table>
 <?php endforeach; ?>
 <!-- include_once("classes/class.productos.php");
 $productos= new productos();
 $productos->select_all($pagina, $orden); -->
 
 </div>
-
+</div>
 	
 </div>
 

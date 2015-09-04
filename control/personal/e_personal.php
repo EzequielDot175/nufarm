@@ -85,8 +85,11 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	<?php include_once('../inc/header.php') ?>
 
 <div class="block">
-	
-	<div class="three_4">
+ <div class="general_container ">
+
+      <div class="three_444 contenedor-default ">
+	<!-- botones administrar -->
+	<!--
 	<div class="item">
 
 	<div class="product_filter_consulta_column">
@@ -104,7 +107,8 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	
 	<a href=""><div class="pub-eve"><span>VENTA</span></div></a>
 
-	</div></div>		
+	</div></div>-->
+	<!-- botones administrar -->		
 <?php
 
 $id =$_GET['id'];
@@ -120,10 +124,10 @@ $role=$personal->getrole();
 $password=$personal->getpassword();
 $idpersonal = $id;
 ?>
-<div id="content-consultas">
+<div class="editar_container">
 <form method="post" action="u_personal.php" id="form-bg-personal"  >
 
-<div class="respuesta2"><p>Crear personal</p></div>
+<div class="barra-prod"><span>Editar personal</span></div>
 
 <div class="colform-personal">
 <div class="form-item">
@@ -163,7 +167,7 @@ $idpersonal = $id;
 </div><!-- Fin colform -->
 
 
-
+</div>
 
 <input type="hidden" name="idpersonal" id="idpersonal" value="<?php echo $idpersonal; ?>" />
 <div class="form-item">

@@ -66,8 +66,28 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 	<?php include_once('../inc/header.php') ?>
 
 <div class="block">
-	
-<div class="three_4">
+	<div class="filtros_container">   
+       <div class="filtros-Default filtros-100">   
+            <form action="" method="POST"> 
+            <input type="hidden" name="filter"> 
+                  <h3> FILTRAR POR:</h3>   
+                  <select name="vendedor"><option value="">VENDEDOR</option>   
+                 </select>    
+     
+                  <select name="estado">   
+                    <option value="">ESTADO</option>   
+                  </select>    
+     
+                  <select name="cliente" >    
+                    <option value="">CLIENTE</option>    
+                  </select>    
+     
+                  <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
+            </form>    
+      </div>   
+  </div>
+<div class="prod_container">
+<div class="three_444 contenedor-default contenedor-A">
 
 <!--SIDEBAR
 <div class="product_filter_vend_column_users">
@@ -112,15 +132,25 @@ $orden = "idUsuario ASC";
 
 //echo '<div class="menuorden"><a href="v_usuarios.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_usuarios.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
 /* SELECT */
-echo '<div class="bar-green">
-<span>EMPRESA</span> <em>CRÉDITO DISPONIBLE:</em>
-</div>';
+echo '
+	<table>
+	         <tr class="tablacolor3 tablaClientes" >
+	           <td class="colA" align="center">IMG</td>  
+	           <td class="colB" align="center">EMPRESA</td>
+	           <td class="colC" align="center">CONTACTO</td>  
+	           <td class="colD" align="center">EMAIL</td>
+	           <td class="colE" align="center">CRÉDITO DISPONIBLE</td>
+	           <td></td>
+	         </tr>
+      	</table>
+       ';
 echo '<div class="item-content">';
 include_once("classes/class.usuarios.php");
 $usuarios= new usuarios();
 $usuarios->select_all($pagina, $orden);
 echo '</div>';
 ?>	
+</div>
 </div>
 <?php include_once('../inc/footer.php') ?>
 </div>

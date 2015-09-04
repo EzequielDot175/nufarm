@@ -159,7 +159,7 @@ echo '
 
 <span>Cliente: '.utf8_decode($nombre_usuario).' '.utf8_decode($apellido_usuario).'</span>
 
-<span> Empresa: '.utf8_decode($empresa_usuario).'<div style="float:right;margin:0 10px 0 0"> '.$fecha.' </span>
+<span> Empresa: '.utf8_decode($empresa_usuario).'<div style="float:right"> '.$fecha.' </span>
 
 <a class="btn-consulta" href="responder_consulta.php?id='.$idConsulta.'&activo=2&sub=f">ADMINISTRAR</a>
 </div>
@@ -253,7 +253,7 @@ echo '
 
 <span>Cliente: '.utf8_decode($nombre_usuario).' '.utf8_decode($apellido_usuario).'</span>
 
-<span> Empresa: '.utf8_decode($empresa_usuario).'<div style="float:right;margin:0 10px 0 0"> '.$fecha.' </span>
+<span> Empresa: '.utf8_decode($empresa_usuario).'<div style="float:right"> '.$fecha.' </span>
 
 <a class="btn-consulta" href="responder_consulta.php?id='.$idConsulta.'&activo=2&sub=f">ADMINISTRAR</a>
 </div>

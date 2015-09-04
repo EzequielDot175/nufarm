@@ -263,30 +263,44 @@ $usuarioitem ="";
 if(strlen($logo) >2 ){
 $usuarioitem .= '
 
-<div class="item-content-user">
-	<div class="divideritemuno" >
-	    
-		<img id="preview5" src="../../images-clientes/'.$logo.'" alt="" width="100"/>
-		
-	</div>
-	<div class="divider-bg">
-	<div class="divideritemdos" >
-		<h5>'.$strEmpresa.' </h5><br>
-		<span>'.$strApellido.' '.$strNombre.' </span>
-		<span>'.$strEmail.'</span><br>
-	</div>
-	
-	<div class="divideritemtres" >
-		<span>$ '.$dblCredito.'  </span>
-	</div>
 
-	<div class="divideritemcuatro" >
-	<a class="btn-user" href="e_usuario.php?id='.$idUsuario.'&activo=2&sub=e"><span>ADMINISTRAR</span></a>
-	<a class="btn-user" href="d_usuario.php?id='.$idUsuario.'&activo=2&sub=e"><span>ELIMINAR</span></a>
-	</div>
 
-</div>
-</div>
+	<table>
+	           <tbody>
+	                <tr class=" tablaClientes">
+	                  <td class="colA" align="center">
+				<img class="imagen"  id="preview5" src="../../images-clientes/'.$logo.'" alt="" width="100"/>
+	                  </td>
+	                  <td class="colB tdBackground" align="center">
+	                    <span>'.$strEmpresa.' <span>
+	                  </td>
+	                  <td class="colC tdBackground" align="center">
+	                    <span>'.$strApellido.' '.$strNombre.' </span>
+	                  </td>
+	                  <td class="colD tdBackground" align="center">
+	                    <span>'.$strEmail.'</span>
+	                  </td>
+	                   <td class="colE tdBackground" align="center">
+	                    <span> '.$dblCredito.' </span>
+	                  </td>
+	                  <td class="colF ">
+	                     		<div class="botones">
+			              <div class="item editar">
+			                <a href="e_usuario.php?id='.$idUsuario.'&activo=2&sub=e">
+			                  <img class="imagen" src="../layout/editar.png" alt="">
+			                </a>
+			              </div>
+			              <div class="item borrar">
+			                <a href="d_usuario.php?id='.$idUsuario.'&activo=2&sub=e">
+			                  <img class="imagen" src="../layout/borrar.png" alt="">
+			                </a>
+			              </div>
+			           </div>
+	                  </td>
+	                </tr>
+
+	           </tbody>
+	</table>
 ';
 
 // <div class="item">
@@ -316,31 +330,42 @@ $usuarioitem .= '
 
 $usuarioitem .= '
 
-<div class="item-content-user">
-	<div class="divideritemuno" >
-       <img id="preview5" src="../../images_productos/default.png" alt="" width="100" />
-	</div>
-	
-	<div class="divider-bg">
+	<table>
+	           <tbody>
+	                <tr class=" tablaClientes">
+	                  <td class="colA" align="center">
+				<img id="preview5" src="../../images_productos/default.png" alt="" width="100" />
+	                  </td>
+	                  <td class="colB tdBackground" align="center">
+	                    <span>'.$strEmpresa.' <span>
+	                  </td>
+	                  <td class="colC tdBackground" align="center">
+	                    <span>'.$strApellido.' '.$strNombre.' </span>
+	                  </td>
+	                  <td class="colD tdBackground" align="center">
+	                    <span>'.$strEmail.'</span>
+	                  </td>
+	                   <td class="colE tdBackground" align="center">
+	                    <span> '.$dblCredito.' </span>
+	                  </td>
+	                  <td class="colF ">
+	                     		<div class="botones">
+			              <div class="item editar">
+			                <a href="e_usuario.php?id='.$idUsuario.'&activo=2&sub=e">
+			                  <img class="imagen" src="../layout/editar.png" alt="">
+			                </a>
+			              </div>
+			              <div class="item borrar">
+			                <a href="d_usuario.php?id='.$idUsuario.'&activo=2&sub=e">
+			                  <img class="imagen" src="../layout/borrar.png" alt="">
+			                </a>
+			              </div>
+			           </div>
+	                  </td>
+	                </tr>
 
-	<div class="divideritemdos">
-		<h5>'.$strEmpresa.' </h5><br>
-		<span>'.$strApellido.' '.$strNombre.' </span>
-		<span>'.$strEmail.'</span><br>
-	</div>
-	
-	<div class="divideritemtres" >';
-    $usuarioitem .='<span> $'.$dblCredito.' </span>
-
-	</div>
-
-	<div class="divideritemcuatro" >
-	<a class="btn-user" href="e_usuario.php?id='.$idUsuario.'&activo=2&sub=e"><span>ADMINISTRAR</span></a>
-	<a class="btn-user" href="d_usuario.php?id='.$idUsuario.'&activo=2&sub=e"><span>ELIMINAR</span></a>
-	</div>
-	
-	</div>
-	</div>
+	           </tbody>
+	</table>
 ';
 
 }

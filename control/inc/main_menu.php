@@ -32,7 +32,7 @@ echo'
 
 <div class="menu">
         <a href="../filtros.php">
-            <li class="">FILTROS</li>
+            <li class="">REPORTES</li>
         </a>
         <a href="../compras/v_compras.php?activo=1&sub=c"  >
         	<li class="'; if ($activo==1){echo " seleccionado";}echo'">PRODUCTOS CANJEADOS</li>
@@ -46,7 +46,7 @@ echo'
         <a href="../personal/v_personal.php?activo=2&sub=h">
         	<li class="'; if ($sub=="h"){echo " seleccionado";}echo'">VENDEDORES</li>
         </a>
-        <a href="#">
+        <a href="../consultas/v_consultas.php?activo=2&sub=f&orden=1">
             <li class="">CONSULTAS</li>
         </a>
   </div>

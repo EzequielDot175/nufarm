@@ -40,7 +40,8 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 	
-<div class="three_4">
+<div class="general_container">
+<div class="three_444 contenedor-default contenedor-A">
 
 <!-- SIDEBAR
 <div class="product_filter_consulta_column">
@@ -83,12 +84,23 @@ $orden = "id ASC";
 echo '<div class="menuorden"><a href="v_personal.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_personal.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
 /* SELECT */
 echo '<div id="content-consultas">';
-echo '<div class="bar-green-personal">PERSONAL</div>';
+echo '
+	<table>
+	     <tr class="tablacolor3 tablaPersonal" >
+	       <td  class="colA" align="center" >IMG</td>  
+	       <td class="colB" align="center">EMPRESA</td>
+	       <td  class="colC" align="center" >LOGIN</td>  
+	       <td class="colD" align="center">TIPO DE USUARIO</td>
+	       <td></td>
+	     </tr>
+	</table>
+    ';
 include_once("classes/class.personal.php");
 $personal= new personal();
 $personal->select_all($pagina, $orden);
 echo '</div>';
 ?>	
+</div>
 </div>
 <?php include_once('../inc/footer.php') ?></div>
 

@@ -77,28 +77,25 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 
+<div class="prod_container">
+<div class="three_444 contenedor-default">
+		<div class="">
 
 
-		<div class="three_4">
-		<div class="item2">
-
+<!--SIDEBAR ADMINISTRADOR
 <div class="product_filter_consulta_column2">
 <div class="item">
-
 <a href=""><div class="olive-bar_new3"><span>VER TODOS</span></div></a>
-
 </div><div class="item">
-
-
-
 	<a href=""><div class="pub-eve"><span>NO LEIDO</span></div></a>
 
 	<a href=""><div class="pub-eve2"><span>PENDIENTE</span></div></a>
 	
 	<a href=""><div class="pub-eve4"><span>RESPONDIDA</span></div></a>
 
-	</div></div>		
-		
+	</div>
+</div>		
+-->	
 <?php
 
 $id =$_GET['id'];
@@ -174,7 +171,7 @@ echo "
 
 </div></p></div></div>
 	
-	
+	</div>
 	
 	
 <?php include_once('../inc/footer.php') ?></div>
