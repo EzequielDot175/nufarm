@@ -56,15 +56,6 @@
 					echo json_encode($all);
 					break;
 			endswitch;
-			
-			// $clientes = new Cliente();
-			// if(is_null(self::post('id'))):
-			// 	$all = $clientes->basics();
-			// 	// echo json_encode($all);
-			// else:
-			// 	$all = $clientes->basicsById(self::post('id'));
-			// 	// echo json_encode($all);
-			// endif;
 		}
 
 		public static function checkPeriod(){

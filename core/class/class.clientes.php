@@ -20,14 +20,22 @@
 		}
 
 		public function basicsById($id){
-			$sel = $this->prepare(self::CLIENTE_BYVENDEDOR);
-			$sel->bindParam(':id',$id, PDO::PARAM_INT);
-			$sel->execute();
-			return $sel->fetchAll();
+			if(!empty($id)):
+				$sel = $this->prepare(self::CLIENTE_BYVENDEDOR);
+				$sel->bindParam(':id',$id, PDO::PARAM_INT);
+				$sel->execute();
+				return $sel->fetchAll();
+			else:
+				return $this->basics();
+			endif;
 		}
 
 		public function basicsVe(){
 			return $this->query(self::VE_ALL_CLIENTES)->fetchAll();
+		}
+
+		public static function byVendedor($id){
+			return self::method('basicsById',$id);
 		}
 
 		public static function options($selected = null){
@@ -47,6 +55,17 @@
 				endif;
 			endforeach;
 			echo($html);
+		}
+
+		public static function optionsCombo($id){
+			$collection = self::method('basicsById',$id);
+
+			$html = '<option value="">CLIENTE</option>';
+			foreach($collection as $key => $val):
+				$html .= '<option value="'.$val->id.'">'.strtoupper($val->strEmpresa).'</option>';
+			endforeach;
+			echo($html);
+		
 		}
 	}
  ?>

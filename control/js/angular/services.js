@@ -26,6 +26,7 @@ app.service('ajax', ['$http','$rootScope',function (ajax,root) {
 	}
 
 	this.veClient = function(){
+
 		return {
 			post: function(param,callback){
 				var extend = param;
@@ -36,6 +37,11 @@ app.service('ajax', ['$http','$rootScope',function (ajax,root) {
 			},
 			myData: function(id,callback){
 				var param = {method: 'myData'};
+					param.id = id;
+				this.post(param,callback);
+			},
+			periodos : function(id,callback){
+				var param = {method: 'Periodos'};
 					param.id = id;
 				this.post(param,callback);
 			}

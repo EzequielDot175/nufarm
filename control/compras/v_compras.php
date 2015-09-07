@@ -2,6 +2,8 @@
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
 require_once('../../libs.php');
+
+
 // echo("asda");
 // die();
 // error_reporting(E_ALL);
@@ -11,7 +13,6 @@ require_once('../../libs.php');
 <html>
 <head>
 
-  <?php include_once('../resources/control.php'); ?>
   <title></title>
   <link rel="stylesheet" type="text/css" media="all" href="../layout/base.css" />
   <link rel="stylesheet" type="text/css" media="all" href="../layout/header-footer-columns.css" />
@@ -35,27 +36,29 @@ require_once('../../libs.php');
   <div class="block">
      <?php
         $vSelected = Filter::idSelected('vendedor');
-        $eSelected = Filter::idSelected('estado');
         $cSelected = Filter::idSelected('cliente');
+        $eSelected = Filter::idSelected('estado');
         ?>
+    <input type="hidden" name="client" value="<?php echo $cSelected ?>">
 
     <div class="filtros_container">   
        <div class="filtros-Default filtros-100">   
             <form action="" method="POST"> 
             <input type="hidden" name="filter"> 
                   <h3> FILTRAR POR:</h3>   
-                  <select name="vendedor">                     <option value="">VENDEDOR</option>   
+                  <select name="vendedor" id="svendedor">                     
+                    <option value="">VENDEDOR</option>   
                     <?php Vendedor::options($vSelected); ?>  
                  </select>    
      
-                  <select name="estado">   
-                    <option value="">ESTADO</option>   
-                    <?php Compra::optionsEstado($eSelected); ?>    
-                  </select>    
-     
-                  <select name="cliente" >    
+                  <select name="cliente"  id="scliente">    
                     <option value="">CLIENTE</option>    
                      <?php Cliente::options($cSelected) ?> 
+                  </select>  
+
+                  <select name="estado"  id="sestado">   
+                    <option value="">ESTADO</option>   
+                    <?php Compra::optionsEstado($eSelected); ?>    
                   </select>    
      
                   <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
@@ -90,11 +93,8 @@ require_once('../../libs.php');
        <?php
        /* SELECT */
        if(isset($_POST['filter'])):
-        $collection = Filter::Compras(array(
-          'compra.estado' => $_POST['estado'],
-          'usr.idUsuario' => $_POST['cliente'],
-          'prs.id' => $_POST['vendedor']
-          ));
+        $collection = Filter::Compras($_POST);
+
       else:
         $collection = Compra::all();
       endif;
@@ -207,8 +207,29 @@ require_once('../../libs.php');
   </div>
 </div>
 
-<?php include_once('../inc/footer.php') ?></div>
 
+
+<?php include_once('../inc/footer.php') ?></div>
+<script>
+  jQuery(document).ready(function($) {
+      $('#svendedor').change(function(event) {
+        event.preventDefault();
+        $.post('ajax.php', {comboFiltro: '' , vendedor: $(this).val()}, function(data, textStatus, xhr) {
+          $('#scliente').html(data);
+          $('input[name="client"]').trigger('click'); 
+        });
+      });
+
+      var client_val = $('input[name="client"]').val();
+      if (client_val != "") {
+        $('#svendedor').trigger('change');
+        // $('option[value="'+client_val+'"]').attr('selected', 'true');
+        $('input[name="client"]').on('click', function(event) {
+            $('option[value="'+client_val+'"]').attr('selected', '');
+        });
+      };
+  });
+</script>
 
 </body>
 </html>

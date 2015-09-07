@@ -327,10 +327,6 @@
 		}
 
 
-		public function periodExist(){
-
-		}
-
 		private static function isGold($num) {
 			switch ($num) {
 				case '1':
@@ -361,6 +357,14 @@
 
 		public function categoriasPremios(){
 			return $this->query(self::VE_CATPREMIOS)->fetchAll();
+		}
+
+		public function getFacturacionById($id = null){
+			$id = (is_null($id) ? Auth::id() : $id);
+			$sel = $this->prepare(self::VE_SEL_FACT_BY_IDUSER);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetch();
 		}
 
 		private function initDataFacturacion(){

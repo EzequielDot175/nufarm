@@ -1,6 +1,5 @@
 			<?php 
 			
-			
 			interface DBInterface {
 
 			/**
@@ -131,8 +130,181 @@
            	LEFT JOIN 
            		productos as prod ON prod.idProducto = dt.id_producto";
 
-           	const COMPRA_COUNT = "SELECT COUNT(idCompra) AS count FROM compra";
+           	const COMPRA_ALL_BY_STATE = "SELECT
+			 compra.fthCompra,
+			 compra.dblTotal,
+			 compra.idCompra as id_compra,
+			 compra.estado,
+			 dt.nombre as prodNombre,
+			 dt.remito,
+			 dt.color,
+			 dt.talle,
+			 dt.precio_pagado,
+			 dt.cantidad,
+			 dt.estado_producto as estado_detalle,
+			 dt.id as id_detalle,
+			 usr.strNombre as nombre,
+			 usr.strApellido as apellido,
+			 usr.strEmail as email,
+             usr.idUsuario as user_id,
+             prs.nombre as v_nombre,
+             prs.apellido as v_apellido,
+             prs.id as v_id,
+             prod.strNombre as prod_nombre,
+             prod.strImagen as prod_imagen
+
+			FROM
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+				usuarios as usr ON usr.idUsuario = compra.idUsuario
+            LEFT JOIN
+            	personal as prs ON prs.id = usr.vendedor
+           	LEFT JOIN 
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE compra.estado = :estado";
+
+
+
+           	const COMPRA_ALL_BY_VENDEDOR = "SELECT
+			 compra.fthCompra,
+			 compra.dblTotal,
+			 compra.idCompra as id_compra,
+			 compra.estado,
+			 dt.nombre as prodNombre,
+			 dt.remito,
+			 dt.color,
+			 dt.talle,
+			 dt.precio_pagado,
+			 dt.cantidad,
+			 dt.estado_producto as estado_detalle,
+			 dt.id as id_detalle,
+			 usr.strNombre as nombre,
+			 usr.strApellido as apellido,
+			 usr.strEmail as email,
+             usr.idUsuario as user_id,
+             prs.nombre as v_nombre,
+             prs.apellido as v_apellido,
+             prs.id as v_id,
+             prod.strNombre as prod_nombre,
+             prod.strImagen as prod_imagen
+
+			FROM
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+				usuarios as usr ON usr.idUsuario = compra.idUsuario
+            LEFT JOIN
+            	personal as prs ON prs.id = usr.vendedor
+           	LEFT JOIN 
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id ";
+
+           	const COMPRA_ALL_BY_CLIENTE = "SELECT
+			 compra.fthCompra,
+			 compra.dblTotal,
+			 compra.idCompra as id_compra,
+			 compra.estado,
+			 dt.nombre as prodNombre,
+			 dt.remito,
+			 dt.color,
+			 dt.talle,
+			 dt.precio_pagado,
+			 dt.cantidad,
+			 dt.estado_producto as estado_detalle,
+			 dt.id as id_detalle,
+			 usr.strNombre as nombre,
+			 usr.strApellido as apellido,
+			 usr.strEmail as email,
+             usr.idUsuario as user_id,
+             prs.nombre as v_nombre,
+             prs.apellido as v_apellido,
+             prs.id as v_id,
+             prod.strNombre as prod_nombre,
+             prod.strImagen as prod_imagen
+
+			FROM
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+				usuarios as usr ON usr.idUsuario = compra.idUsuario
+            LEFT JOIN
+            	personal as prs ON prs.id = usr.vendedor
+           	LEFT JOIN 
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id ";
+
+           	const COMPRA_ALL_BY_CLIENTE_BY_STATE = "SELECT
+			 	compra.fthCompra,
+			 	compra.dblTotal,
+			 	compra.idCompra as id_compra,
+			 	compra.estado,
+			 	dt.nombre as prodNombre,
+			 	dt.remito,
+			 	dt.color,
+			 	dt.talle,
+			 	dt.precio_pagado,
+			 	dt.cantidad,
+			 	dt.estado_producto as estado_detalle,
+			 	dt.id as id_detalle,
+			 	usr.strNombre as nombre,
+			 	usr.strApellido as apellido,
+			 	usr.strEmail as email,
+             	usr.idUsuario as user_id,
+             	prs.nombre as v_nombre,
+             	prs.apellido as v_apellido,
+             	prs.id as v_id,
+             	prod.strNombre as prod_nombre,
+             	prod.strImagen as prod_imagen
+
+			FROM
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+				usuarios as usr ON usr.idUsuario = compra.idUsuario
+            LEFT JOIN
+            	personal as prs ON prs.id = usr.vendedor
+           	LEFT JOIN 
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND compra.estado = :estado";
+
+
 			
+			const COMPRA_ALL_BY_VENDEDOR_BY_STATE = "SELECT
+			 compra.fthCompra,
+			 compra.dblTotal,
+			 compra.idCompra as id_compra,
+			 compra.estado,
+			 dt.nombre as prodNombre,
+			 dt.remito,
+			 dt.color,
+			 dt.talle,
+			 dt.precio_pagado,
+			 dt.cantidad,
+			 dt.estado_producto as estado_detalle,
+			 dt.id as id_detalle,
+			 usr.strNombre as nombre,
+			 usr.strApellido as apellido,
+			 usr.strEmail as email,
+             usr.idUsuario as user_id,
+             prs.nombre as v_nombre,
+             prs.apellido as v_apellido,
+             prs.id as v_id,
+             prod.strNombre as prod_nombre,
+             prod.strImagen as prod_imagen
+
+			FROM
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+				usuarios as usr ON usr.idUsuario = compra.idUsuario
+            LEFT JOIN
+            	personal as prs ON prs.id = usr.vendedor
+           	LEFT JOIN 
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado";
+
+           	const COMPRA_COUNT = "SELECT COUNT(idCompra) AS count FROM compra";
 			
 			/**
 			* @param class: DetalleCompra
@@ -262,7 +434,7 @@
 			 * Clientes
 			 */
 			
-			const CLIENTE_OPTIONS = "SELECT idUsuario as id, strNombre as nombre, strApellido as apellido FROM usuarios";
+			const CLIENTE_OPTIONS = "SELECT idUsuario as id, strEmpresa FROM usuarios";
 			const CLIENTE_BYVENDEDOR = "SELECT idUsuario as id, strEmpresa FROM usuarios WHERE vendedor = :id";
 
 			/**
@@ -361,6 +533,7 @@
 			const VE_UPDATE_CURRENT_PERIOD_BYID = "UPDATE facturacion SET data = :data , fact_total = :total, fact_prod_clave = :fact_prod_clave WHERE id = :id";
 			const VE_SEL_FACT_BY_ID 			= "SELECT * FROM facturacion WHERE id = :id";
 			const VE_ALL_CLIENTES 				= "SELECT idUsuario AS id, strEmpresa FROM usuarios ";
+			const VE_SEL_FACT_BY_IDUSER 		= "SELECT * FROM facturacion WHERE id_user = :id";
 		}
 
 

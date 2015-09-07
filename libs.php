@@ -1,17 +1,21 @@
 <?php 
+	// error_reporting(E_ALL);
+	// ini_set('display_errors', 'On');
 	define('APP_DIR', dirname(__FILE__));
 
 	require_once(APP_DIR.'/core/interface/DBInterface.php');
 	require_once(APP_DIR.'/core/pdo/DB.constant.php');
 	require_once(APP_DIR.'/core/traits/facade.php');
 	require_once(APP_DIR.'/core/traits/session.php');
-
 	require_once(APP_DIR.'/core/class/class.nav.php');
 	require_once(APP_DIR.'/core/class/class.redirect.php'); 
 	require_once(APP_DIR.'/core/class/class.auth.php'); 
 	require_once(APP_DIR.'/core/class/class.estados.php');
 	require_once(APP_DIR.'/core/class/class.consultas.php');
 	require_once(APP_DIR.'/core/class/class.provincias.php'); 
+
+
+
 	require_once(APP_DIR.'/core/class/class.utils.php'); 
 	require_once(APP_DIR.'/core/class/class.tempstock.php'); 
 	require_once(APP_DIR.'/core/class/class.tempmaxcompra.php'); 
