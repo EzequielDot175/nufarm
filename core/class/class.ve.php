@@ -49,6 +49,9 @@
 
 		public function getAllByAuth($forceAuth = null){
 			$id = (!is_null($forceAuth) ? $forceAuth : Auth::idAdmin());
+
+			print_r($id);
+			die();
 			// Periodos existentes que ya fueron cerrados y guardados en ve_registro_anual
 			$periodo = $_POST['params']['date'];
 			/**
