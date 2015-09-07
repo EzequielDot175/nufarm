@@ -35,16 +35,21 @@ app.service('ajax', ['$http','$rootScope',function (ajax,root) {
 					console.error(a);
 				});
 			},
-			myData: function(id,callback){
-				var param = {method: 'myData'};
-					param.id = id;
+			myData: function(obj,callback){
+				var param = {method: 'getByCliente'};
+					param.data = obj;
 				this.post(param,callback);
 			},
 			periodos : function(id,callback){
 				var param = {method: 'Periodos'};
 					param.id = id;
 				this.post(param,callback);
+			},
+			checkPeriod: function(date,callback){
+				var param = {method: 'checkPeriod', date: date};
+				this.post(param,callback);
 			}
+
 
 		};
 	}

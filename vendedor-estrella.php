@@ -57,7 +57,7 @@ Auth::check();
 
 
 		<!-- CONTENEDOR GENERAL***********************************************************-->
-		<div class="contenedor ">
+		<div class="contenedor " ng-controller="ctrlClient">
 
 			<!--base-->
 			<div class="base">
@@ -65,8 +65,9 @@ Auth::check();
 				<!-- head -->
 				<div class=" head-cliente col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 					<h3 class="titulo-A">FACTURACIÓN</h3>
-					<select name="">   
-						<option value="">FACTURACION 2014/ 2015</option>   
+					<select name="" ng-model="periodo" ng-change="selectPeriodo()">   
+						<option value="">FACTURACION</option>
+						<option value="{{value.inicio}}_{{value.fin}}" ng-repeat="(key, value) in periodos">{{value.inicio | date:'yyyy'}} / {{value.fin | date:'yyyy'}}</option>  
 					</select>  
 				</div>
 				<!-- end / head -->
@@ -88,7 +89,7 @@ Auth::check();
 
 							<div class="block-resumen-A">
 								<div class="block-resumen col-xs-12 col-sm-3 col-md-3 ol-lg-3">
-								<div class="num">0</div>
+								<div class="num">{{total}}</div>
 									<hr class="hr-resumen"> 
 									<div class="text">
 										Facturación total
@@ -96,7 +97,7 @@ Auth::check();
 								</div>
 
 								<div class="block-resumen col-xs-12 col-sm-3 col-md-3 ol-lg-3">
-									<div class="num">50%</div>
+									<div class="num">{{procentaje_prod_clave}}%</div>
 									<hr class="hr-resumen"> 
 									<div class="text">
 										Facturación Productos Clave
@@ -104,15 +105,15 @@ Auth::check();
 								</div>
 
 								<div class="block-resumen col-xs-12 col-sm-3 col-md-3 ol-lg-3">
-									<div class="num">129%</div>
+									<div class="num">{{progreso}}%</div>
 									<hr class="hr-resumen"> 
 									<div class="text">
-										Avance Productos Clave
+										Avance Total Productos
 									</div>
 								</div>
 
 								<div class="block-resumen col-xs-12 col-sm-3 col-md-3 ol-lg-3">
-									<div class="num">2</div>
+									<div class="num">{{ categoria }}</div>
 									<hr class="hr-resumen"> 
 									<div class="text">
 										Accede a categoría
@@ -198,28 +199,28 @@ Auth::check();
 									<!-- item-->
 									<tr>
 										<td class=" background-A text-uppercase center">
-											10.789
+											{{ agosto }}
 										</td>
 										<td class="background-A text-uppercase  col-mes center ">
-											30.100
+											{{ septiembre }}
 										</td>
 										<td class="background-A text-uppercase  col-mes center">
-											50.789
+											{{ octubre }}
 										</td>
 										<td class="background-B text-uppercase  col-mes  center">
-											20.889
+											{{ noviembre }}
 										</td>
 										<td class="background-B text-uppercase  col-mes  center ">
-											10.000
+											{{ diciembre }}
 										</td>
 										<td class="background-A text-uppercase  col-mes  center ">
-											51.000
+											{{ enero }}
 										</td>
 										<td class="background-A text-uppercase  col-mes  center" >
-											40.020
+											{{ febrero }}
 										</td>
 										<td class="background-A text-uppercase  col-mes  center">
-											100.789
+											{{ marzo }}
 										</td>
 
 									</tr>

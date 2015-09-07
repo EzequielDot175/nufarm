@@ -106,6 +106,13 @@
 			print_r($user);
 		}
 
+		private static function getByCliente(){
+			$obj = self::post('data');
+			$obj = (Object) $obj;
+			$ve = new VendedorEstrella();
+			echo json_encode($ve->getByCliente($obj));
+		}
+
 		private static function catPremios(){
 			$ve = new VendedorEstrella();
 			$collection = $ve->categoriasPremios();
