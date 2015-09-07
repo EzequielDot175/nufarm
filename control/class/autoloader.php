@@ -1,5 +1,6 @@
 <?php
-
+	
+	// define('APP_DIR', dirname(__FILE__));
 	/**
 	 * @internal Inclusion de interfaces
 	 */
@@ -9,7 +10,7 @@
 	/**
 	* @internal clases
 	*/ 
-	require_once('db.constant.php');
+	require_once('DB.constant.php');
 	require_once('class.template.php');
 	require_once('class.auth.php');
 	require_once('class.personal.php');
