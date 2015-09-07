@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 	/**
 	* @internal Clase Auth para autenticar la session del usuario
 	*/
@@ -39,7 +40,7 @@
 			self::start();
 
 			if(empty($_SESSION["MM_Username"])):
-				header('location: login.php');
+				@header('location: login.php');
 				exit();
 			endif;
 		}
@@ -48,7 +49,7 @@
 			self::startAdmin();
 
 			if(empty($_SESSION["logged_id"])):
-				header('location: index.php');
+				@header('location: index.php');
 				exit();
 			endif;
 		}
