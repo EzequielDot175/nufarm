@@ -170,7 +170,8 @@ if(!class_exists('DetalleCompra')):
 					$compra->delete($info->compra);
 				endif;
 
-				header('location: '.$_SESSION['last_page']);
+				@header('location: v_compras.php?activo=1&sub=c');
+				exit();
 			} catch (PDOException $e) {
 				echo $e->getMessage();
 			}

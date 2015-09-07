@@ -1,7 +1,6 @@
 <?php 
-	require('class/class.auth.php');
-	Auth::check();
-	
+	require_once('../libs.php');
+	Auth::checkAdmin();
  ?>
 
 <!DOCTYPE html>
@@ -47,8 +46,7 @@
 		</style>
 	</head>
 <body>
-
-	<?php //include_once('inc/header.php') ?>
+	
 
 	<!-- PAGE -->
 	<div class="block">

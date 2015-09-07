@@ -177,7 +177,7 @@ $prod = new Producto();
 						$html .=   '
 						<div class="tallebox">
 							<p>'.$val->nombre.'</p>
-							<p><input class="inputshort" type="text" name="talle['.$val->id.']" value="'.$val->cantidad.'" id="talle'.$val->id.'"></p>
+							<p><input class="inputshort" type="text" name="color['.$val->id.']" value="'.$val->cantidad.'" id="color'.$val->id.'"></p>
 						</div>';
 					endforeach;
 					

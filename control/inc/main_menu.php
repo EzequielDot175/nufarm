@@ -1,8 +1,8 @@
 <?php 
 if(isset($_SESSION['logged_id'])){
 
-$activo = $_GET['activo'];
-$sub = $_GET['sub'];
+$activo = (isset($_GET['activo']) ? $_GET['activo'] : 1);
+$sub = ( isset($_GET['sub']) ? $_GET['sub'] : 1);
 
 echo'
 

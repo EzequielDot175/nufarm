@@ -29,6 +29,9 @@ $color = $_POST['color'];
 
 
 
+
+
+
 $prod = new Producto();
 $prod->updCategoria($intCategoria, $idProducto);
 
@@ -241,6 +244,10 @@ else if($color)
 
 	include_once("classes/class.productos.php");
 	
+
+
+
+
 	//limpio si habia algo en stock
 	$productos= new productos();
 	$productos->select($idProducto);
@@ -276,6 +283,8 @@ else if($color)
 	$productos->intMaxCompra=$intMaxCompra;		
 	$productos->update($idProducto);
 	
+
+
 	$colours = new colores_productos();
 	$colours->updateAllColours($color,$idProducto);
 

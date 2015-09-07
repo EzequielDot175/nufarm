@@ -72,23 +72,8 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 <div class="block">
 <div class="filtros_container">   
        <div class="filtros-Default filtros-100">   
-            <form action="" method="POST"> 
-            <input type="hidden" name="filter"> 
-                  <h3> FILTRAR POR:</h3>   
-                  <select name="vendedor">
-                  	<option value="">VENDEDOR</option>   
-                 </select>    
-     
-                  <select name="estado">   
-                    <option value="">ESTADO</option>   
-                  </select>    
-     
-                  <select name="cliente" >    
-                    <option value="">CLIENTE</option>    
-                  </select>    
-     
-                  <button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
-            </form>    
+           <a href="n_producto.php"><button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> NUEVO PRODUCTO </button></a>    
+           <a href="v_color.php?activo=2&sub=d"><button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> EDITAR COLORES </button></a>    
       </div>   
   </div>
 

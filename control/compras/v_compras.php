@@ -125,7 +125,7 @@ require_once('../../libs.php');
             <?php $i = 0;$z = 0;  foreach($v as $itemk => $itemv): ?>
             <div class="botones">
               <div class="item editar">
-                <a href="#">
+                <a href="edit_compra.php?id=<?php echo $itemv->id_detalle ?>">
                   <img class="imagen" src="../layout/editar.png" alt="">
                 </a>
               </div>
