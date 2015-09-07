@@ -76,7 +76,7 @@
 
 						<div class="block-50">
 							<div class="filtros-Default filtros-50">
-				            			<h3> FILTRAR POR:</h3>
+				            	<h3> FILTRAR POR:</h3>
 								<select name="" id="" ng-model="select_vendedores" ng-change="setCliente()" ng-options="v.value as v.text for (k, v) in vendedores" >
 									<option value="">TODOS LOS VENDEDORES</option>
 								</select> 
@@ -244,11 +244,10 @@
 	</div>
 	<!-- END / PAGE -->
 
-<?php include_once('inc/footer.php') ?>
 
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/angular/angular.min.js"></script>
-	<script src="js/angular/app.js"></script>
+	<script src="js/angular/app_filtro.js"></script>
 	<script src="js/angular/services.js"></script>
 	<script src="js/angular/directives.js"></script>
 	<script src="js/angular/controller.js"></script>

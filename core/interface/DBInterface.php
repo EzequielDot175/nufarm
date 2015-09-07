@@ -534,7 +534,13 @@
 			const VE_SEL_FACT_BY_ID 			= "SELECT * FROM facturacion WHERE id = :id";
 			const VE_ALL_CLIENTES 				= "SELECT idUsuario AS id, strEmpresa FROM usuarios ";
 			const VE_SEL_FACT_BY_IDUSER 		= "SELECT * FROM facturacion WHERE id_user = :id";
-		}
+			const VE_CATEGORY_OLD_PERIOD_BY_USER = "SELECT 
+				  ROUND( ( ve.total_prod_clave / ve.total ) * 100 ) as porcentaje
+			FROM 
+				ve_registro_anual as ve 
+			WHERE 
+				ve.id_cliente = :id AND ve.fecha_inicio = :fecha_inicio ";
+					}
 
 
 		?>

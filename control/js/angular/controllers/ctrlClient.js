@@ -27,6 +27,7 @@ app.controller('ctrlClient', ['$scope','ajax','$rootScope', function(scp, ajax, 
 	scp.procentaje_prod_clave = 0;
 	scp.progreso = 0;
 	scp.categoria = 0;
+	scp.hasMonths = false;
 
 	/**
 	 * Seteo los periodos disponibles
@@ -43,12 +44,14 @@ app.controller('ctrlClient', ['$scope','ajax','$rootScope', function(scp, ajax, 
 	scp.selectPeriodo = function(){
 		client.myData({cliente: auth,date: scp.periodo},function(data){
 			
-
-			console.info('Reporting info:', data[0]);
-
+			console.info('Reporting :', data);
+			var collection = data[0];
 			scp.total = data[0].total;
 			scp.procentaje_prod_clave = scp.porc_prod_clave(data[0].total, data[0].total_prod_clave);
-
+			scp.progreso = collection.progreso;
+			if (collection.data != undefined) {
+				scp.hasMonths = true;
+			};
 		});
 
 	}

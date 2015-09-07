@@ -173,7 +173,7 @@ Auth::check();
 
 
 						<!-- meses -->
-						<div class="inputs col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+						<div class="inputs col-xs-12 col-sm-12 col-md-12 ol-lg-12" ng-show="hasMonths">
 
 							<div class="titulo-meses col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 								<h3 class="item item-a">2014</h3>
