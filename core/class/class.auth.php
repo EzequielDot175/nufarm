@@ -49,7 +49,7 @@ ob_start();
 			self::startAdmin();
 
 			if(empty($_SESSION["logged_id"])):
-				@header('location: index.php');
+				@header('location: login.php');
 				exit();
 			endif;
 		}
