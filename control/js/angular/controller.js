@@ -25,6 +25,7 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	 * Seteo los options de vendedores
 	 */
 	ajax.post({get: 'vendedores'},function(a){
+		console.info('Reporting vendedores:', a);
 		$scope.vendedores =	a ;
 	});
 
@@ -32,6 +33,7 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	 * Seteo los options de productos canjeados
 	 */
 	ajax.post({get: 'ProdOptions'},function(a){
+		console.info('Reporting prod options:', a);
 		$scope.select_prod_canjeado = a;
 	});
 
