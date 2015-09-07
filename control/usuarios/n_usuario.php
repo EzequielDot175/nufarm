@@ -99,19 +99,7 @@ $("#vigencia_credito").datepicker({altFormat: 'yy-mm-dd'});
 <div class="block">
 	
 	<div class="three_4">
-	<div class="product_filter_vend_column_users">
-<nav id="interna2">
-<ul>
-	<li><a class="btn-micuenta5" href="n_<?php echo $singular; ?>.php?activo=2&sub=e"><span>Crear cliente nuevo</span></a></li>
-	
-</ul>
-</nav>
-<?php 
-include_once("../compras/classes/class.compras.php");
-$compras2= new compras();
-$compras2->select_all_vendedores_clientes();
-?>
-</div>
+
 
 <div class="item-content-usuarios">
 <div class="barra-prod"><span>CLIENTE</span></div>
@@ -155,29 +143,13 @@ $compras2->select_all_vendedores_clientes();
 <div class="tiform6">Teléfono</div>
 <input type="text" name="telefono" class="campo-prod"/>
 
-<div class="tiform6">Nombre contacto 1</div>
-<input type="text" name="nombre_contacto1" class="campo-prod"/>
 
-</div><!-- columna_form -->
+</div>
+<!-- columna_form -->
 
 
 <div class="columna_form2">
 
-
-<div class="tiform6">Apellido contacto 1</div>
-<input type="text" name="apellido_contacto1" class="campo-prod"/>
-
-<div class="tiform6">Email contacto 1</div>
-<input type="text" name="email_contacto1" class="campo-prod"/>
-
-<div class="tiform6">Nombre contacto 2</div>
-<input type="text" name="nombre_contacto2" class="campo-prod"/>
-
-<div class="tiform6">Apellido contacto 2</div>
-<input type="text" name="apellido_contacto2" class="campo-prod"/>
-
-<div class="tiform6">Email contacto 2</div>
-<input type="text" name="email_contacto2" class="campo-prod"/>
 
 <div class="tiform6">Crédito</div>
 <input type="text" name="dblCredito" class="campo-prod"/>

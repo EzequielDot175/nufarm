@@ -442,7 +442,7 @@
 			 * Vendores
 			 */
 			
-			const VENDEDOR_OPTIONS = "SELECT id , nombre, apellido FROM personal";
+			const VENDEDOR_OPTIONS = "SELECT id , nombre, apellido FROM personal WHERE role = 3";
 
 
 			/**

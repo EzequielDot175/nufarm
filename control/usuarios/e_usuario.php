@@ -148,6 +148,7 @@ $strEmpresa=$usuarios->getstrEmpresa();
 $strCargo=$usuarios->getstrCargo();
 $strPassword=$usuarios->getstrPassword();
 $dblCredito=$usuarios->getdblCredito();
+$dblAsignado=$usuarios->getdblAsignado();
 
 
 $direccion=$usuarios->getdireccion();
@@ -256,33 +257,24 @@ $vigencia_credito = $dia.'-'.$mes.'-'.$anio;
 <div class="tiform6">Password</div>
 <input type="text" name="strPassword" class="campo-prod" value="<?php echo $strPassword;?>" />
 </div>
+<div class="form-item">
+<div class="tiform6">Puntos Asignados</div>
+<input type="text" disabled class="campo-prod" value="<?php echo $dblAsignado;?>" />
+</div>
+
+<div class="form-item">
+<div class="tiform6">Puntos Consumidos</div>
+<input type="text" disabled class="campo-prod" value="<?php echo $dblAsignado - $dblCredito;?>" />
+</div>
+
+<div class="form-item">
+<div class="tiform6">Puntos Disponibles</div>
+<input type="text" disabled class="campo-prod" value="<?php echo $dblCredito;?>" />
+</div>
 
 <br />
 
-<div class="form-item">
-<div class="tiform6">Nombre Contacto 1</div>
-<input type="text" name="nombre_contacto1" class="campo-prod" value="<?php echo $nombre_contacto1 ; ?>"  /></div>
 
-<div class="form-item">
-<div class="tiform6">Apellido Contacto 1</div>
-<input type="text" name="apellido_contacto1" class="campo-prod" value="<?php echo $apellido_contacto1 ; ?>"  /></div>
-
-<div class="form-item">
-<div class="tiform6">Email Contacto 1</div>
-<input type="text" name="email_contacto1" class="campo-prod" value="<?php echo $email_contacto1 ; ?>"  /></div>
-
-
-<div class="form-item">
-<div class="tiform6">Nombre Contacto 2</div>
-<input type="text" name="nombre_contacto2" class="campo-prod" value="<?php echo $nombre_contacto2 ; ?>"  /></div>
-
-<div class="form-item">
-<div class="tiform6">Apellido Contacto 2</div>
-<input type="text" name="apellido_contacto2" class="campo-prod" value="<?php echo $apellido_contacto2 ; ?>"  /></div>
-
-<div class="form-item">
-<div class="tiform6">Email Contacto 2</div>
-<input type="text" name="email_contacto2" class="campo-prod" value="<?php echo $email_contacto2 ; ?>"  /></div>
 
 
 </div>

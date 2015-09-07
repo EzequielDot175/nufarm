@@ -50,7 +50,7 @@ require_once('../../libs.php');
      
                   <select name="cliente"  id="scliente">    
                     <option value="">CLIENTE</option>    
-                     <?php Cliente::options($cSelected) ?> 
+                     <?php Cliente::options() ?> 
                   </select>  
 
                   <select name="estado"  id="sestado">   
@@ -225,6 +225,10 @@ require_once('../../libs.php');
             $('option[value="'+client_val+'"]').attr('selected', '');
         });
       };
+
+
+      $('#svendedor').trigger('change');
+
   });
 </script>
 

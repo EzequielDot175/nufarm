@@ -16,7 +16,7 @@ var $strEmpresa;
 var $strCargo;
 var $strPassword;
 var $dblCredito;
-
+var $dblAsignado;
 var $direccion;
 var $telefono;
 var $nombre_contacto1;
@@ -50,6 +50,7 @@ function getstrEmpresa(){return $this->strEmpresa;}
 function getstrCargo(){return $this->strCargo;}
 function getstrPassword(){return $this->strPassword;}
 function getdblCredito(){return $this->dblCredito;}
+function getdblAsignado(){return $this->dblAsignado;}
 
 function getdireccion(){return $this->direccion;}
 function gettelefono(){return $this->telefono;}
@@ -108,6 +109,7 @@ $this->strEmpresa = $row->strEmpresa;
 $this->strCargo = $row->strCargo;
 $this->strPassword = $row->strPassword;
 $this->dblCredito = $row->dblCredito;
+$this->dblAsignado = $row->dblAsignado;
 
 $this->direccion = $row->direccion;
 $this->telefono = $row->telefono;
@@ -416,14 +418,20 @@ $result = $this->database->query($sql);
 function insert(){
 $this->idUsuario = ""; // clear key for autoincrement
 
-$sql = "INSERT INTO usuarios ( strNombre,strApellido,strEmail,strEmpresa,strCargo,strPassword,dblCredito, direccion, telefono, nombre_contacto1, apellido_contacto1, email_contacto1, nombre_contacto2, apellido_contacto2, email_contacto2, logo, vigencia_credito, vendedor ) VALUES ( 
+$sql = "INSERT INTO usuarios ( strNombre,strApellido,strEmail,strEmpresa,strCargo,strPassword,dblCredito,dblAsignado, direccion, telefono,logo, vigencia_credito, vendedor ) VALUES ( 
 '$this->strNombre',
 '$this->strApellido',
 '$this->strEmail',
 '$this->strEmpresa',
 '$this->strCargo',
 '$this->strPassword',
-'$this->dblCredito','$this->direccion', '$this->telefono', '$this->nombre_contacto1', '$this->apellido_contacto1', '$this->email_contacto1', '$this->nombre_contacto2', '$this->apellido_contacto2', '$this->email_contacto2', '$this->logo', '$this->vigencia_credito', '$this->vendedor' )";
+'$this->dblCredito',
+'$this->dblCredito',
+'$this->direccion',
+'$this->telefono',
+'$this->logo',
+'$this->vigencia_credito',
+'$this->vendedor' )";
 $result = $this->database->query($sql);
 $this->idUsuario = mysql_insert_id($this->database->link);
 

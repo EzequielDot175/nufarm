@@ -10,18 +10,11 @@ $strEmpresa=$_POST['strEmpresa'];
 $strCargo=$_POST['strCargo'];
 $strPassword=$_POST['strPassword'];
 $dblCredito=$_POST['dblCredito'];
+$dblCredito=$_POST['dblCredito'];
 
 
 $direccion=$_POST['direccion'];
 $telefono=$_POST['telefono'];
-
-$nombre_contacto1=$_POST['nombre_contacto1'];
-$apellido_contacto1=$_POST['apellido_contacto1'];
-$email_contacto1=$_POST['email_contacto1'];
-
-$nombre_contacto2=$_POST['nombre_contacto2'];
-$apellido_contacto2=$_POST['apellido_contacto2'];
-$email_contacto2=$_POST['email_contacto2'];
 
 $logo=$_POST['logo'];
 
@@ -79,15 +72,10 @@ $usuarios->strEmpresa=$strEmpresa;
 $usuarios->strCargo=$strCargo;
 $usuarios->strPassword=$strPassword;
 $usuarios->dblCredito=$dblCredito;
+$usuarios->dblAsignado=$dblAsignado;
 
 $usuarios->direccion=$direccion;
 $usuarios->telefono=$telefono;
-$usuarios->nombre_contacto1=$nombre_contacto1;
-$usuarios->apellido_contacto1=$apellido_contacto1;
-$usuarios->email_contacto1=$email_contacto1;
-$usuarios->nombre_contacto2=$nombre_contacto2;
-$usuarios->apellido_contacto2=$apellido_contacto2;
-$usuarios->email_contacto2=$email_contacto2;
 $usuarios->logo=$logo;
 $usuarios->vigencia_credito=$vigencia_credito;
 $usuarios->vendedor=$vendedor;
