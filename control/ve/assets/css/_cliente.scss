@@ -1,0 +1,247 @@
+// ========================
+/******** CLIENTE ********/
+// ========================
+
+.head-cliente{
+	margin-top: 20px;
+	height: 75px;
+           padding: 15px 20px;
+           position: relative;
+	background-color: rgba(201,201,201,.6);
+           -moz-background-color: rgba(201,201,201,.6);
+           -webkit-background-color: rgba(201,201,201,.6);
+           -o-background-color: rgba(201,201,201,.6);
+           -ms-background-color: rgba(201,201,201,.6);
+
+	h3{
+		float: left !important;
+		font-size: 17px;
+		color: #434343;
+		font-family: 'BrooklynSamuelsFive-Bold';
+		font-weight: bold;
+		margin-bottom: 20px;
+		padding:15px 0;
+		color: $verde;
+	}
+
+	select {
+                     background-color: #fff;
+                     height: 40px;
+                     color: #009448;
+                     padding: 10px;
+                     margin-right: 5px;
+                     width: 200px;
+                     border: none;
+                     float: right;
+                     font-size: 12px;
+                     font-family: 'BrooklynSamuelsFive-Bold';
+          }
+}
+    
+.hr-cliente {
+    border-bottom: 1px solid rgba(102,102,102,.30);
+    margin: 50px 0 30px 0;
+    padding: 0;
+    width: 100%;
+    float: left;
+}
+
+.titulo-meses {
+	margin-top: 80px;
+	
+	h3{
+		font-family: 'Gotham-Light';
+		font-size: 20px;
+		padding-bottom: 10px;
+		color: #414141;
+	}
+
+	.item {
+		border-bottom: 1px solid #A1A399;
+	}
+
+	.item-a {
+		width: 61.5%;
+		margin-right: .5%;
+		float: left;
+	}
+
+	.item-b {
+		width: 38%;
+		float: left;
+	}
+    
+}
+
+.ok-seleccion{
+	position: absolute;
+	right: -50px;
+	top: 5px;
+
+	&:hover{
+		cursor: pointer;
+		opacity: .8;
+	}
+}
+
+.datos {
+	width: 80%;
+	margin: 0 10%;
+
+	.seleccionar{
+		float: left;
+		background-color: rgba(235,235,235,.6);
+	           -moz-background-color: rgba(235,235,235,.6);
+	           -webkit-background-color: rgba(235,235,235,.6);
+	           -o-background-color: rgba(235,235,235,.6);
+	           -ms-background-color: rgba(235,235,235,.6);
+
+		select {
+	                     background-color: #fff;
+	                     height: 40px;
+	                     color: #009448;
+	                     padding: 10px;
+	                     width: 200px;
+	                     border: none;
+	                     float: right;
+	                     font-size: 12px;
+	                     font-family: 'BrooklynSamuelsFive-Bold';
+	          }
+
+	          .text {
+	                     float: left;
+	                     font-family: 'Gotham-Light';
+	                     font-size: 12px;
+	                     font-weight: bold;
+	                     padding: 15px;
+	          }
+	}
+
+	.progressbar{
+
+		.progress {
+		    height: 40px;
+		    margin-bottom: 10px;
+		    overflow: hidden;
+		    background-color: #f5f5f5;
+		    border-radius: 0px;
+		    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+		    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+		}
+
+		.progress-bar {
+		    float: left;
+		    width: 0;
+		    height: 100%;
+		    font-size: 12px;
+		    line-height: 20px;
+		    color: #fff;
+		    text-align: center;
+		    background-color: rgba(#8DC63F,.5);
+		    box-shadow: none;
+		    border-radius:0;
+		}
+
+
+	}
+
+	
+}
+
+.categorias{
+	padding: 20px 0;
+
+
+	.item{
+		position: relative;
+		height: 120px;
+
+		.imagen{
+			margin: 0 auto;
+			display: block;
+		}
+
+		.num{
+			font-size: 16px;
+			text-align: center;
+			margin: 0 auto;
+			display: block;
+			width: 100%;
+			position: absolute;
+			bottom:5px;
+		}
+
+		.activo{
+			border: 1px solid #666;
+			border-radius: 100%;
+			padding-top:4px;
+			width: 25px;
+			height: 25px;
+			padding:5px;
+			left: 50%;
+			margin-left:-12px;
+		}
+	}
+
+}
+
+
+
+       
+
+
+
+
+
+
+
+
+// ==========================================================================
+/* RESPONSIVE  */
+// ==========================================================================
+
+/*mobile--------------------------------------------------*/
+@media screen and (min-width: 0px) and (max-width : 767px){
+
+	.categorias .item .imagen {
+	    	width: 80px;
+	    	margin: 0 auto;
+	}
+
+	.datos .seleccionar .text {
+	     width: 100%;
+	     text-align: center;
+	}
+
+	.datos .seleccionar select {
+	    width: 100%;
+	    margin-top: 10px;
+	}
+}
+
+
+/*tablet----------------------------------------*/
+@media screen and (min-width: 768px) and (max-width : 1280px){
+  
+}
+
+/**  TABLETS LANDSCAPE **/
+@media screen and (min-width: 767px) and (max-width : 980px){
+
+	
+}
+
+/*notbook------------------------------------*/
+@media screen and (min-width: 1280px) and (max-width : 1800px){
+	
+}
+
+/*desktop------------------------------*/
+@media screen and (min-width: 1801px) and (max-width : 2200px){
+
+}
+
+/*desktop large-----------------------------------------------*/
+@media screen and (min-width: 2220px) and (max-width : 4000px){
+
+}
