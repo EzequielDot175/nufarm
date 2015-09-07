@@ -286,14 +286,26 @@
 					$fin_data = explode("-", $date[1]);
 					array_pop($fin_data);
 
-					$ini_diference = empty(array_diff($inicio_std, $inicio_data));
-					$end_diference = empty(array_diff($fin_std, $fin_data));
+					$diff_ini = array_diff($inicio_std, $inicio_data);
+					$diff_end = array_diff($fin_std, $fin_data);
+					
+					$ini_diference = false;
+					$end_diference = false;
+					if(empty($ini_diference)):
+						$ini_diference = true;
+					endif;
+
+					if(empty($end_diference)):
+						$end_diference = true;
+					endif;
+					
 					if($ini_diference && $end_diference):
 						$existe = true;
 						break;
 					endif;
 
 				endforeach;
+
 				return $existe;
 			endif;
 		}
