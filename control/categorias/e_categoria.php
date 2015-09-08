@@ -71,9 +71,9 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="three_4">
 <div class="item-group-btn">
-<a class="btn-fill" href="<?php  echo BASEURL.'/productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
-<a class="btn-fill"href="<?php  echo BASEURL.'/categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
+<a class="btn-fill" href="<?php  echo BASEURL.'productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
+<a class="btn-fill"href="<?php  echo BASEURL.'categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
+<a class="btn-fill" href="<?php  echo BASEURL.'talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
 </div>
 <?php
 

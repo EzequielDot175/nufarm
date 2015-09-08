@@ -29,6 +29,6 @@ $cons->respondido=1;
 $cons->update($idConsulta);
 
 $_SESSION['msg_ok'] = 'Mensaje enviado!';
-header('Location: '.BASEURL.'/consultas/v_consultas.php?activo=2&sub=f&orden=1');
+header('Location: '.BASEURL.'consultas/v_consultas.php?activo=2&sub=f&orden=1');
 
 ?>	

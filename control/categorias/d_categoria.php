@@ -52,7 +52,7 @@ $categorias->delete($id);
 #echo '<div class="notify"><p>!</p><p><a href="v_categorias.php">Regresar</a></p></div>';
 
 $_SESSION['msg_ok'] = 'Categoria, eliminada!';
-header('Location: '.BASEURL.'/categorias/v_categorias.php');
+header('Location: '.BASEURL.'categorias/v_categorias.php');
 
 }
 else{

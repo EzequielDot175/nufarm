@@ -110,7 +110,7 @@ $productos->delete($id);
 
 #echo '<div class="notify"><p>producto, eliminado!</p><p><a href="v_productos.php">Regresar</a></p></div>';
 $_SESSION['msg_ok'] = 'Producto Eliminado!';
-header('Location: '.BASEURL.'/productos/v_productos.php?activo=2&sub=d');
+header('Location: '.BASEURL.'productos/v_productos.php?activo=2&sub=d');
 }
 else{
 echo '

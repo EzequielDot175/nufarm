@@ -50,31 +50,24 @@
 		public function getAllByAuth($forceAuth = null){
 			$id = (!is_null($forceAuth) ? $forceAuth : Auth::idAdmin());
 
-			print_r($id);
-			die();
 			// Periodos existentes que ya fueron cerrados y guardados en ve_registro_anual
 			$periodo = $_POST['params']['date'];
+			
 			/**
 			 * Compruebo que no sea un periodo cerrado y guardado en base de datos
 			 */
+			
 			if($this->checkClosedPeriod($periodo)):
-				if(empty($periodo)):
-					$sel = $this->prepare(self::VE_ALL_NO_DATE);
-					$sel->bindParam(':id', $id, PDO::PARAM_INT);
-					$sel->execute();
-					$from_reg_anual = $sel->fetchAll();
-					return $from_reg_anual;
-				else:
-					$date = explode('_', $_POST['params']['date']);
-					$sel = $this->prepare(self::VE_ALL_DATE);
-					$sel->bindParam(':id',$id, PDO::PARAM_INT);
-					$sel->bindParam(':inicio',$date[0], PDO::PARAM_STR);
-					$sel->bindParam(':fin',$date[1], PDO::PARAM_STR);
-					$sel->execute();
-					$from_reg_anual = $sel->fetchAll();
-					return $from_reg_anual;
-					
-				endif;
+
+				$date = explode('_', $_POST['params']['date']);
+				$sel = $this->prepare(self::VE_ALL_DATE);
+				$sel->bindParam(':id',$id, PDO::PARAM_INT);
+				$sel->bindParam(':inicio',$date[0], PDO::PARAM_STR);
+				$sel->bindParam(':fin',$date[1], PDO::PARAM_STR);
+				$sel->execute();
+				$from_reg_anual = $sel->fetchAll();
+				return $from_reg_anual;
+			
 			else:
 				/**
 				 * @internal Significa que el periodo no esta 
@@ -141,7 +134,7 @@
 				$sel->execute();
 				return $sel->fetch();
 			endif;
-			die();
+			// die();
 		}
 
 		public function getResults($params){
@@ -289,20 +282,11 @@
 					$fin_data = explode("-", $date[1]);
 					array_pop($fin_data);
 
-					$diff_ini = array_diff($inicio_std, $inicio_data);
-					$diff_end = array_diff($fin_std, $fin_data);
+					$diff_ini = count(array_diff($inicio_std, $inicio_data));
+					$diff_end = count(array_diff($fin_std, $fin_data));
+						
 					
-					$ini_diference = false;
-					$end_diference = false;
-					if(empty($ini_diference)):
-						$ini_diference = true;
-					endif;
-
-					if(empty($end_diference)):
-						$end_diference = true;
-					endif;
-					
-					if($ini_diference && $end_diference):
+					if($diff_ini == 0 && $diff_end == 0):
 						$existe = true;
 						break;
 					endif;

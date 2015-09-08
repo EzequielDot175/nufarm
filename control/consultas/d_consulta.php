@@ -100,7 +100,7 @@ echo 'Consulta, eliminada!
 <p>
 <br><br>
 
-<a class="btn-micuenta4" href="'.BASEURL.'/consultas/v_consultas.php?activo=2&sub=f">Regresar</a></p>
+<a class="btn-micuenta4" href="'.BASEURL.'consultas/v_consultas.php?activo=2&sub=f">Regresar</a></p>
 ';
 #header('Location: '.BASEURL.'/consultas/v_consultas.php');
 

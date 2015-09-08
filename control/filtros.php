@@ -47,6 +47,50 @@
 	</head>
 <body>
 	
+<!-- Header -->
+<header>
+<!--[if lt IE 9]>
+<script type="text/javascript">
+   document.createElement("nav");
+   document.createElement("header");
+   document.createElement("footer");
+   document.createElement("section");
+   document.createElement("article");
+   document.createElement("aside");
+   document.createElement("hgroup");
+</script>
+<![endif]-->
+
+<!--[if lt IE 8]>
+<script type="text/javascript">
+   document.createElement("nav");
+   document.createElement("header");
+   document.createElement("footer");
+   document.createElement("section");
+   document.createElement("article");
+   document.createElement("aside");
+   document.createElement("hgroup");
+</script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<div id="top"></div>
+<div id="logo">
+	<a href="../index.php"><img src="../simagenes/logo2-02.png" alt="Nufarm"> </a>
+</div>
+<div id="header_bg_img"><div class="subheader"><span class="adminwelcome">Administrador Marketingnet </span>
+	<!--<div class="prop"></div>-->
+</div></div>
+<ul><li class="cerrar_sesion"><a href="http://localhost/ftp/nufarmMaxx/control//logout.php">Cerrar sesion X</a></li></ul>		
+</header>
+
+
+<!-- Header -->
+
+
 
 	<!-- PAGE -->
 	<div class="block">

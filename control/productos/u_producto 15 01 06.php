@@ -284,6 +284,6 @@ else
 }
 
 $_SESSION['msg_ok'] = $msg_final;
-header('Location: '.BASEURL.'/productos/v_productos.php?activo=2&sub=d');
+header('Location: '.BASEURL.'productos/v_productos.php?activo=2&sub=d');
 
 ?>

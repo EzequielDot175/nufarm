@@ -130,7 +130,7 @@ require_once('../../libs.php');
                 </a>
               </div>
               <div class="item borrar">
-                <a href="delete_compras.php?id=<?php echo $itemv->id_detalle ?>">
+                <a class="confirm-link"  href="delete_compras.php?id=<?php echo $itemv->id_detalle ?>">
                   <img class="imagen" src="../layout/borrar.png" alt="">
                 </a>
               </div>
@@ -228,6 +228,13 @@ require_once('../../libs.php');
 
 
       $('#svendedor').trigger('change');
+
+
+      $('.confirm-link').click(function(event) {
+        if (!confirm('¿Esta seguro que desea borrar este item?')) {
+          event.preventDefault();
+        };
+      });
 
   });
 </script>

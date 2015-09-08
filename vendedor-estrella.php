@@ -173,7 +173,7 @@ Auth::check();
 
 
 						<!-- meses -->
-						<div class="inputs col-xs-12 col-sm-12 col-md-12 ol-lg-12" ng-show="hasMonths">
+						<div class="inputs col-xs-12 col-sm-12 col-md-12 ol-lg-12" ng-show="hasMonths" ng-hide="!hasMonths">
 
 							<div class="titulo-meses col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 								<h3 class="item item-a">2014</h3>
@@ -199,28 +199,28 @@ Auth::check();
 									<!-- item-->
 									<tr>
 										<td class=" background-A text-uppercase center">
-											{{ agosto }}
+											{{ meses.Agosto }}
 										</td>
 										<td class="background-A text-uppercase  col-mes center ">
-											{{ septiembre }}
+											{{ meses.Septiembre }}
 										</td>
 										<td class="background-A text-uppercase  col-mes center">
-											{{ octubre }}
+											{{ meses.Octubre }}
 										</td>
 										<td class="background-B text-uppercase  col-mes  center">
-											{{ noviembre }}
+											{{ meses.Noviembre }}
 										</td>
 										<td class="background-B text-uppercase  col-mes  center ">
-											{{ diciembre }}
+											{{ meses.Diciembre }}
 										</td>
 										<td class="background-A text-uppercase  col-mes  center ">
-											{{ enero }}
+											{{ meses.Enero }}
 										</td>
 										<td class="background-A text-uppercase  col-mes  center" >
-											{{ febrero }}
+											{{ meses.Febrero }}
 										</td>
 										<td class="background-A text-uppercase  col-mes  center">
-											{{ marzo }}
+											{{ meses.Marzo }}
 										</td>
 
 									</tr>
@@ -238,35 +238,6 @@ Auth::check();
 						</div>
 						<!-- end / Gráfico -->
 
-
-						<!-- ScriptGráfico -->
-						<script>
-							var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-							var lineChartData = {
-										//labels : ["Agosto","Septiembre","Octubre","Noviembre","Diciembre","Enero","Febrero","Marzo"], con labels
-										labels : ["","","","","","","",""], // sin labels
-										datasets : [
-										{
-											fillColor : "rgba(0,0,0,0.1)",
-											strokeColor : "rgba(220,220,220,1)",
-											pointColor : "#666666",
-											pointStrokeColor : "#666666",
-											pointHighlightFill : "#666666",
-											pointHighlightStroke : "rgba(220,220,220,1)",
-												data : ['0.5','0.8','0.5','1','1.5','1.8','2','2.5'] //valor correspondiente a la categoria de 0 a 3 por mes
-											},
-											]
-
-										}
-
-										window.onload = function(){
-											var ctx = document.getElementById("canvas").getContext("2d");
-											window.myLine = new Chart(ctx).Line(lineChartData, {
-												responsive: true
-											});
-										}
-									</script>
-									<!-- end / SciptGráfico -->
 
 
 								</div>

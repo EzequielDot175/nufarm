@@ -15,5 +15,5 @@ $categorias->talles=$talles;
 $categorias->insert();
 
 $_SESSION['msg_ok'] = 'categoria Creada!';
-header('Location: '.BASEURL.'/categorias/v_categorias.php');
+header('Location: '.BASEURL.'categorias/v_categorias.php');
 ?>

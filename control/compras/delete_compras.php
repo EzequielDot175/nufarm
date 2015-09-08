@@ -1,4 +1,5 @@
 <?php 
+	ob_start();
 	session_start();
 	require_once('../../libs.php');
 	
@@ -13,7 +14,7 @@
 	$compra->refund((int)$_GET['id']);
 
 
-	// header('location: v_compras.php');
-	// exit();
+	header('location: v_compras.php?activo=1&sub=c');
+	exit();
 
  ?>

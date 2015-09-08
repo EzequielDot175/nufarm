@@ -47,9 +47,9 @@ ob_start();
 
 		public static function checkAdmin(){
 			self::startAdmin();
-
+			@ob_start();
 			if(empty($_SESSION["logged_id"])):
-				@header('location: login.php');
+				@header('location: ./');
 				exit();
 			endif;
 		}
