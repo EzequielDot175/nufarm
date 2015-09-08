@@ -22,5 +22,5 @@ $categorias->update($idCategorias);
 #echo '<div class="notify"><p>categoria actualizada!</p><p><a href="v_categorias.php">Regresar</a></p></div>';
 
 $_SESSION['msg_ok'] = 'Categoria, actualizada!';
-header('Location: '.BASEURL.'/categorias/v_categorias.php?activo=2&sub=d');
+header('Location: '.BASEURL.'categorias/v_categorias.php?activo=2&sub=d');
 ?>	
