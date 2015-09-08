@@ -79,7 +79,7 @@
 
 <div id="top"></div>
 <div id="logo">
-	<a href="../index.php"><img src="../../imagenes/logo2-02.png" alt="Nufarm"> </a>
+	<a href="../index.php"><img src="../imagenes/logo2-02.png" alt="Nufarm"> </a>
 </div>
 <div id="header_bg_img"><div class="subheader"><span class="adminwelcome">Administrador Marketingnet </span>
 	<!--<div class="prop"></div>-->
