@@ -95,9 +95,67 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
       	</div>
 	</div>
 </div>
-	
+
 <div class="prod_container">
 <div class="three_444 contenedor-default">
+<div id="content-consultas">
+	<div class="left"><!-- left -->
+		<div class="receipt">
+			ACEITERA GENERAL DEHEZA S.A.
+		</div>
+		<div class="qry">
+			<div class="date">
+				<p>
+					12/01/2015
+					<br>
+					<span>
+						13:51:51
+					</span>
+				</p>
+			</div>
+			<div class="message">
+				<p>
+					<span>
+						consulta
+					</span>
+
+					En la compra me faltan 10 pesos para cerrar la compra. Y quisiera agregar 20 camperas nexxt. Agradezco la gestión.
+					<br>
+					Gabriel Filippa
+				</p>
+			</div>
+		</div>
+
+		<div class="answer">
+			<div class="date">
+				<p>
+					12/01/2015
+					<br>
+					<span>
+						13:51:51
+					</span>
+				</p>
+			</div>
+			<div class="message">
+				<p>
+					<span>
+						respuesta
+					</span>
+					texto de rta texto de rta texto de rta
+				</p>
+			</div>
+		</div>
+	</div>
+		
+	<div class="right"><!-- right -->
+		<a href="#">
+			responder
+		</a>
+		<span>
+			respondida
+		</span>
+	</div>
+</div><!-- end #content-consultas -->
 
 <!--SIDEBAR ADMINISTRADOR
 <div class="product_filter_consulta_column">
