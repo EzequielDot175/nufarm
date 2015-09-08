@@ -75,6 +75,27 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
 
 <div class="block">
 	
+<div class="contenedor-filtros">
+	<div class="sub-contenedor">
+		<div class="filtros">   
+            <form action="" method="POST"> 
+            <input type="hidden" name="filter"> 
+                  	<h3> FILTRAR POR:</h3>   
+                 	<select name="">                     
+                  		<option value="">TODOS LOS VENDEDORES</option>   
+                 	</select>
+                 	<select name="">                     
+                  		<option value="">ESTADO</option>   
+                 	</select>    
+                  	<select name="">   
+                    		<option value="">CLIENTE</option>   
+                    	</select>    
+                  	<button class="button-image" type="submit"><img src="../layout/ver.png" alt=""> VER RESULTADOS </button>
+            </form>    
+      	</div>
+	</div>
+</div>
+	
 <div class="prod_container">
 <div class="three_444 contenedor-default">
 
@@ -119,7 +140,7 @@ if($orden==""){
 $orden = "idConsulta ASC";
 }
 
-echo '<div class="menuorden"><a href="v_consultas.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_consultas.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
+// echo '<div class="menuorden"><a href="v_consultas.php?orden=1"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_consultas.php?orden=2"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>';
 /* SELECT */
 include_once("classes/class.consultas.php");
 $consultas= new consultas();

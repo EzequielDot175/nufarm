@@ -34,8 +34,8 @@
  // ********** ADJUST THESE VALUES HERE **********
 
 $this->host = "localhost";                  //          <<---------
-$this->password = "K[^Xc0lsU1T(";           //          <<---------
-$this->user = "nmaxx_pnufarm";                   //          <<---------
+$this->password = "root";           //          <<---------
+$this->user = "root";                   //          <<---------
 $this->database = "nmaxx_develop";  
 $this->rows = 0;
 

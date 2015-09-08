@@ -5,8 +5,8 @@
 	class DB extends PDO implements DBInterface
 	{
 		private $dbname = "nmaxx_develop";
-		private $dbuser = "nmaxx_pnufarm";
-		private $dbpass = "K[^Xc0lsU1T(";
+		private $dbuser = "root";
+		private $dbpass = "root";
 		
 
 		public function __construct()
