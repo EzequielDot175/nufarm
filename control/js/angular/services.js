@@ -48,6 +48,10 @@ app.service('ajax', ['$http','$rootScope',function (ajax,root) {
 			checkPeriod: function(date,callback){
 				var param = {method: 'checkPeriod', date: date};
 				this.post(param,callback);
+			},
+			premios : function(callback){
+				var param = {method: 'catPremios'};
+				this.post(param,callback);
 			}
 
 
