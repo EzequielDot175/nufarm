@@ -438,6 +438,14 @@
 					WHERE 
 						idConsulta = :id";
 			const CONSULTA_BY_ID = "SELECT * FROM consultas WHERE idConsulta = :id";
+			const CONSULTA_ALL 	= "SELECT 
+						cons.*,
+					    usr.strEmpresa
+					FROM 
+						consultas as cons
+					LEFT JOIN 
+						usuarios as usr ON usr.idUsuario = cons.idUsuario
+					ORDER BY cons.idConsulta DESC";
 
 
 

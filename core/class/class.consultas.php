@@ -54,6 +54,37 @@
 			return $sel->fetch();
 		}
 
+		public function getAdmin(){
+			$consultas = array();
+			$sel = $this->query(self::CONSULTA_ALL)->fetchAll();
+
+			foreach($sel as $key => $val):
+				if($val->tipo == 1):
+					$consultas[$val->idConsulta] = $val;
+					$consultas[$val->idConsulta]->{'respuestas'} = array();
+				endif;
+			endforeach;
+
+			foreach($sel as $key => $val):
+				if($val->tipo == 2):
+					$consultas[$val->respuesta_de]->{'respuestas'}[] = $val;
+				endif;
+			endforeach;
+
+			return $consultas;
+			
+		}
+
+		public static function formatDate($input){
+			$date = new DateTime($input);
+			echo $date->format('d/m/Y');
+		}
+
+		public static function formatTime($input){
+			$date = new DateTime($input);
+			echo $date->format('H:i:s');
+		}
+
 		/**
 		 * @internal public method
 		 */
