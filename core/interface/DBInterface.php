@@ -408,6 +408,106 @@
 			WHERE
 				idUsuario = :id";
 
+			const HISTORIAL_OPTIONS_PRODUCTOS = "SELECT 
+						dt.id_producto as value,
+					    dt.nombre as text
+					FROM 
+						detalles_compras as dt
+					LEFT JOIN
+						compra ON compra.idCompra = dt.id_compra
+					
+
+					WHERE compra.idUsuario = :id GROUP BY dt.id_producto";
+
+
+
+			const HISTORIAL_REMITOS_BY_AUTH = "SELECT dt.remito as text, dt.remito as value  FROM detalles_compras as dt LEFT JOIN compra ON compra.idCompra = dt.id_compra WHERE compra.idUsuario = :id";
+			
+
+
+			const HISTORIAL_AUTH_BY_PROD = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND dt.id_producto = :id_prod";
+
+
+			const HISTORIAL_AUTH_BY_STATE = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND dt.estado_producto = :id_state";
+
+			const HISTORIAL_AUTH_BY_REF = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND dt.remito = :id_ref";
+
+			const HISTORIAL_AUTH_BY_DATE = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND compra.fthCompra LIKE :fecha ";
+
+
+
 
 			/**
 			 * @internal

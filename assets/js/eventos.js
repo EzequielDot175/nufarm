@@ -46,20 +46,70 @@ $(document).ready(function(){
 
 
 	 /**
-	  * Input busqueda en historial
+	  * Combo en historial.php
 	  */
 	 
 	 $('#findBy').change(function(event) {
 	 	event.preventDefault();
-	 	var val = parseInt($(this).val());
-	 	var params = {aged: 12312};
-	 	// $.post('http://localhost/ftp/nufarmMaxx/core/ajax/ajax.php',params, function(data) {
-	 	// 	console.info('Reporting ajax:', data);
-	 	// });
-	 	$.fn.ajaxCore({param: 1, method: 'comboHistorial'});
-	 	
+	 	var obj = $(this);
+	 	var comboSelect = $('#results');
+
+
+		/**
+		 * cambio el nombre del select segun la opcion
+		 */
+
+	 	switch(obj.val()){
+	 		case '1':
+	 		comboSelect.attr('name', 'producto');
+	 		break;
+	 		case '2':
+	 		comboSelect.attr('name', 'estado');
+	 		break;
+	 		case '3':
+	 		comboSelect.attr('name', 'remito');
+	 		break;
+	 		case '4':
+	 		comboSelect.attr('name', '');
+	 		break;
+
+	 		default:
+	 		comboSelect.attr('name', '');
+
+	 		break;
+	 	}
+
+	 	if (obj.val() != 4) {
+	 		comboSelect.removeClass('hidden');
+	 		$('#date').addClass('hidden');
+
+	 		if (obj.val() != "" || obj.val() == 4) {
+	 			$.post('control/ajax.front.php', {frontAjax: '',method: 'selectHistorial' , option: obj.val()}, function(data) {
+	 				/**
+	 				 * decoding
+	 				 */
+	 				var collection = $.parseJSON(data);
+	 				
+	 				comboSelect.empty();
+	 				
+	 				$.each(collection, function(index, val) {
+	 					comboSelect.append('<option value="'+val.value+'">'+val.text+'</option>');
+	 				});
+	 				
+
+		 		});
+	 		}else{
+	 			comboSelect.empty();
+	 		}
+	 	}else{
+	 		comboSelect.addClass('hidden');
+	 		$('#date').removeClass('hidden');
+	 	}
 
 	 });
+
+
+
 	    
 });
 

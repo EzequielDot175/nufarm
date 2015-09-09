@@ -61,6 +61,7 @@ ob_start();
 		}
 
 		public static function id(){
+			self::start();
 			return (int)$_SESSION['MM_IdUsuario'];
 		}
 

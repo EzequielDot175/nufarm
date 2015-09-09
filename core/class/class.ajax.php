@@ -119,9 +119,19 @@
 			echo json_encode($collection);
 		}
 
+		private static function selectHistorial(){
+			$filtros = new Filter();
+			$filtros->historial(self::post('option'));
+		}
+
+
+
+
 		private static function post($name){
 			return ( isset($_POST[$name]) && !empty($_POST[$name]) ? $_POST[$name] : null ) ;
 		}
+
+
 
 		/**
 		 * Seteo las condiciones para que angular js pueda hacer post a php normal

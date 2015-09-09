@@ -1,9 +1,13 @@
 <?php 
 	require_once('inc/header.php');
 
-	$historial = new Historial();
-	$collection = $historial->getById(); 
 
+	if(isset($_POST['submit'])):
+		$collection = Historial::filtrar();
+	 else:
+		$historial = new Historial();
+		$collection = $historial->getById();
+	 endif; 
 ?>
 		
 	<!--detalle productos-->
@@ -11,21 +15,23 @@
 
 		<!--head-page-->
 		<div class="head-page col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+		<form action="" method="POST">
 			<div class="filtros">
 				<p class="text-uppercase">filtro</p>
-				<input type="text" name="" value="" >
 				<select name="" id="findBy">
+					<option value="">Seleccione una opcíon</option>
 					<option class="opciones" value="1">Productos</option>
-					<option class="opciones" value="2">Talle</option>
-					<option class="opciones" value="3">Color</option>
-					<option class="opciones" value="4">Unidades</option>
-					<option class="opciones" value="5">Estado</option>
-					<option class="opciones" value="6">Remito</option>
+					<option class="opciones" value="2">Estado</option>
+					<option class="opciones" value="3">Remito</option>
+					<option class="opciones" value="4">Fecha</option>
 				</select>
-				<select name="" id="results">
+				<select name="dynamicName" id="results">
 					
 				</select>
+				<input type="date" class="hidden" id="date" name="date">
 			</div>
+			<input type="submit" name="submit" class="btn">
+		</form>
 		</div>
 		<!--end / head-page-->
 
