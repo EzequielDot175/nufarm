@@ -79,14 +79,52 @@
 
 <div id="top"></div>
 <div id="logo">
-	<a href="../index.php"><img src="../simagenes/logo2-02.png" alt="Nufarm"> </a>
+	<a href="../index.php"><img src="../imagenes/logo2-02.png" alt="Nufarm"> </a>
 </div>
 <div id="header_bg_img"><div class="subheader"><span class="adminwelcome">Administrador Marketingnet </span>
 	<!--<div class="prop"></div>-->
 </div></div>
-<ul><li class="cerrar_sesion"><a href="http://localhost/ftp/nufarmMaxx/control//logout.php">Cerrar sesion X</a></li></ul>		
+<ul><li class="cerrar_sesion"><a href="logout.php">Cerrar sesion X</a></li></ul>		
 </header>
+<div class="main_menu">
+				
 
+
+
+<div class="menu">
+        <a href="filtros.php">
+            <li class="seleccionado">REPORTES</li>
+        </a>
+        <a href="compras/v_compras.php?activo=1&amp;sub=c">
+        	<li >PRODUCTOS CANJEADOS</li>
+        </a>
+        <a href="productos/v_productos.php?activo=2&amp;sub=d">
+       	 <li >CARGA DE PRODUCTOS</li>
+        </a>
+        <a href="usuarios/v_usuarios.php?activo=2&amp;sub=e&amp;vert=1">
+        	<li >CLIENTES</li>
+        </a>
+        <a href="personal/v_personal.php?activo=2&amp;sub=h">
+        	<li >VENDEDORES</li>
+        </a>
+        <a href="consultas/v_consultas.php?activo=2&amp;sub=f&amp;orden=1">
+            <li >CONSULTAS</li>
+        </a>
+  </div>
+
+
+
+
+
+
+
+				
+				<!--<div class="search_box">
+				<form action="http://localhost/ftp/nufarmMaxx/control//busquedas/busquedas.php" method="post">
+				<input type="text" value="BUSCAR" name="busqueda" id="busqueda" />
+				</form>
+				</div>-->
+</div>
 
 <!-- Header -->
 
@@ -231,12 +269,7 @@
 									      	{{v.remito}}
 									</td>
 									<td  class="colH tdBackground"  align="center">
-									     	<select name="estado_compra_prod'.$i.'" id="estado2">
-											<option ng-selected="v.estado == 1" value="1">Pedido realizado</option>
-											<option ng-selected="v.estado == 2" value="2"> Pedido en Proceso</option>	
-											<option ng-selected="v.estado == 3" value="3"> Pedido enviado</option>	
-											<option ng-selected="v.estado == 4" value="4">Pedido entregado</option>	
-										</select>
+									    {{estado(v.estado)}}
 									</td>
 								</tr>
 								

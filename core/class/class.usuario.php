@@ -4,6 +4,8 @@
 	*/
 	class Usuario extends DB
 	{
+		use Facade;
+
 		public $error = ""; 
 		
 		public function __construct()
@@ -25,6 +27,14 @@
 			if(!$upd->execute()):
 				throw new PDOException("Error, setCredito", 1);
 			endif;
+		}
+
+
+		public function byId($id){
+			$sel = $this->prepare(self::USUARIO_BY_ID);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetchAll();
 		}
 
 		private static function formatBirthDay($collection){
@@ -70,6 +80,11 @@
 			} catch (Exception $e) {
 				$this->error = "Error al actualizar el usuario";
 			}
+		}
+
+
+		public static function getById($id){
+			return self::method('byId', $id);
 		}
 	}
  ?>

@@ -141,6 +141,8 @@ echo '</div>';
 </div>
 </div>
 <?php include_once('../inc/footer.php') ?>
+
+adsas
 </div>
 
 </body>

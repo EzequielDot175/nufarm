@@ -1,4 +1,4 @@
-<?php session_start(); error_reporting(0);
+<?php @session_start(); error_reporting(0);
 if(!$_SESSION['logged_id']){
 //header('Location: http://www.productosnufarm.com.ar/control');
  header('Location: http://localhost/');

@@ -25,8 +25,9 @@
 		public function consultaByAuth(){
 			$id = Auth::id();
 			$sel = $this->prepare(self::CONSULTA_GET);
-			$sel->bindParam(':id', $this->auth, PDO::PARAM_INT );
+			$sel->bindParam(':id', $id, PDO::PARAM_INT );
 			$sel->execute();
+
 			return $sel->fetchAll();
 		}
 
@@ -46,18 +47,31 @@
 			$ins->execute();
 		}
 
+		public function getById($id){
+			$sel = $this->prepare(self::CONSULTA_BY_ID);
+			$sel->bindParam(':id',$id,PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetch();
+		}
+
 		/**
 		 * @internal public method
 		 */
 
 		public function lastConsulta(){
+
 			$sel = $this->prepare(self::CONSULTA_LAST);
 			$sel->bindParam(':id',$this->auth, PDO::PARAM_INT);
 			$sel->execute();
 			return $sel->fetch();
 		}
 
-
+		public function userByConsulta($id){
+			$sel = $this->prepare(self::CONSULTA_GET_USER_BY_CONS);
+			$sel->bindParam(':id',$id, PDO::PARAM_INT);
+			$sel->execute();
+			return $sel->fetch();
+		}
 
 
 		/**
@@ -91,7 +105,19 @@
 		public static function last(){
 			return self::method('lastConsulta');
 		}
+		/**
+		 * @internal public static method from lastConsulta
+		 */
+		public static function getUserByConsulta($id){
+			return self::method('userByConsulta', $id);
+		}
 
+		/**
+		 * @internal public static method from lastConsulta
+		 */
+		public static function byId($id){
+			return self::method('getById', $id);
+		}
 		
 	}
 
