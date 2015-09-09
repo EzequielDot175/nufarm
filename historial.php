@@ -31,6 +31,9 @@
 				<input type="date" class="hidden" id="date" name="date">
 			</div>
 			<input type="submit" name="submit" class="btn">
+
+			<input type="hidden" id="currentOption" value="<?php echo Utils::detectOnPost(['producto','estado','remito','fecha']) ?>">
+			<input type="hidden" id="currentValOption" value="<?php echo Utils::detectOnPost(['producto','estado','remito','fecha'], true) ?>">
 		</form>
 		</div>
 		<!--end / head-page-->

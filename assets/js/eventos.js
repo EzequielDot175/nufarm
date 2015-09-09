@@ -44,7 +44,7 @@ $(document).ready(function(){
 	 });
 
 
-
+	 $(window).bind('loadAjax');
 	 /**
 	  * Combo en historial.php
 	  */
@@ -95,8 +95,8 @@ $(document).ready(function(){
 	 				$.each(collection, function(index, val) {
 	 					comboSelect.append('<option value="'+val.value+'">'+val.text+'</option>');
 	 				});
+	 				$(window).trigger('loadAjax');
 	 				
-
 		 		});
 	 		}else{
 	 			comboSelect.empty();
@@ -107,6 +107,34 @@ $(document).ready(function(){
 	 	}
 
 	 });
+
+
+	/**
+	 * Select persistente
+	 */
+	var select_option = $('#currentOption').val();
+	var select_option_val = parseInt($('#currentValOption').val());
+
+	var options = ['','producto','estado','remito','date'];
+	if (select_option != "") {
+		$.each(options, function(index, val) {
+			if (select_option == val) {
+				$('#findBy').val(index);
+			};
+		});
+		$('#findBy').trigger('change');
+
+		
+		console.info('Reporting try:', select_option_val);
+	};
+
+	$(window).on('loadAjax',function(){
+
+		$('#results').val(select_option_val);
+		// console.log($('#results'));
+	});
+
+
 
 
 

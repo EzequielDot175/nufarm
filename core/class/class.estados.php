@@ -9,6 +9,7 @@
 
 		public static function get($id){
 			$estados = array(
+				'',
 				'REALIZADO',
 				'EN PROCESO',
 				'ENVIADO',

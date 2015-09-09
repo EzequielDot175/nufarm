@@ -25,6 +25,18 @@
 			return (isset($_POST[$name]) ? $_POST[$name] : $default );
 		}
 
+		public static function detectOnPost($array,$returnData = false){
+			foreach($array as $key => $val):
+				if(isset($_POST[$val])):
+					if($returnData):
+						return $_POST[$val];
+					else:
+						return $val;
+					endif;
+					break;	
+				endif;
+			endforeach;
+		}
 	}
 
  ?>
