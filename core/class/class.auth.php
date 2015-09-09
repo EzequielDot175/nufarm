@@ -72,6 +72,7 @@ ob_start();
 			$user->execute();
 			return $user->fetch();
 		}
+		
 		public function getUserAdmin(){
 			$id = self::idAdmin();
 			$user = $this->prepare(self::AUTH_USERADMIN);

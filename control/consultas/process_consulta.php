@@ -1,6 +1,26 @@
-<?php header('Content-Type: text/html; charset=utf-8');
+<?php 
+header('Content-Type: text/html; charset=utf-8');
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+
+require_once('../../libs.php');
+
+
+$consulta = Consulta::byId($_POST['idConsulta']);
+$mensaje = $_POST['strCampo'];
+$usuario = Auth::UserAdmin();
+
+Mail::informarRespuestaConsulta(
+	array(
+		'asunto' => $consulta->strAsunto,
+		'nombre' => $usuario->nombre,
+		'apellido' => $usuario->apellido,
+		'mensaje' => $_POST['strCampo']
+
+		)
+	);
 
 
 date_default_timezone_set('America/Buenos_Aires');
@@ -9,6 +29,9 @@ $idUsuario=$_POST['idUsuario'];
 $strAsunto=$_POST['strAsunto'];
 $strCampo=$_POST['strCampo'];
 $strCampo = str_replace("//", "//\n", $strCampo);
+
+
+
 
 include_once("classes/class.consultas.php");
 $consultas= new consultas();
@@ -27,6 +50,10 @@ $cons= new consultas();
 $cons->select($idConsulta);
 $cons->respondido=1;
 $cons->update($idConsulta);
+
+
+
+
 
 $_SESSION['msg_ok'] = 'Mensaje enviado!';
 header('Location: '.BASEURL.'consultas/v_consultas.php?activo=2&sub=f&orden=1');

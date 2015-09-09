@@ -61,6 +61,27 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 
 	}
 
+	$scope.estado = function(estate){
+
+		switch(estate){
+			case '1':
+				return 'Pedido Pendiente';
+				break;
+			case '2':
+				return 'Pedido en Proceso';
+				break;
+			case '3':
+				return 'Pedido enviado';
+				break;
+			case '4':
+				return 'Pedido entregado';
+				break;
+			default:
+				return 'SIN ESTADO';
+				break;
+		}
+	}
+
 
 
 }])

@@ -27,7 +27,7 @@ $database_conexion = "nmaxx_develop";
 $username_conexion = "nmaxx_pnufarm";
 $password_conexion = "K[^Xc0lsU1T(";
 
-$conexion = mysql_pconnect($hostname_conexion, $username_conexion, $password_conexion) or trigger_error(mysql_error(),E_USER_ERROR); 
+$conexion = mysql_connect($hostname_conexion, $username_conexion, $password_conexion) or trigger_error(mysql_error(),E_USER_ERROR); 
 mysql_query("SET NAMES 'utf8'", $conexion);
 ?>
 <?php 

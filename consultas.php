@@ -3,6 +3,7 @@
 	
 	Utils::POST('submit',function(){
 		Consulta::newConsulta($_POST);
+		Mail::informarConsulta($_POST);
 	});
 ?>
 <!-- Header -->
@@ -50,7 +51,6 @@
 
 		<h3 class="sub-titulo text-uppercase">Consultas Realizadas</h3>
 
-		
 		
 		<!--block-items-->
 		<div class="block-items col-xs-12 col-sm-12 col-md-12">

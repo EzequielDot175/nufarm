@@ -85,7 +85,7 @@ Auth::check();
 						<!-- contenedor B -->
 						<div class="contenedor-B col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 							
-							<h3 class="titulo-B">SANCHEZ AGRONEGOCIOS S.A.</h3> 
+							<h3 class="titulo-B text-uppercase"><?php echo Auth::User()->strEmpresa ?></h3> 
 
 							<div class="block-resumen-A">
 								<div class="block-resumen col-xs-12 col-sm-3 col-md-3 ol-lg-3">
