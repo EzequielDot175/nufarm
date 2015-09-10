@@ -125,22 +125,7 @@ $(document).ready(function(){
 <div class="block">
 	
 <div class="three_4">
-   			<div class="prop"><?php  
-
-include_once("../propuestas/classes/class.propuestas.php");
-$prop= new propuestas();
-$prop->sin_responder();
-
-
-?></div>
-
-
-<div class="item-group-btn">
-<a class="btn-fill" href="<?php  echo BASEURL.'/productos/n_producto.php?activo=2&sub=d';?>"><span><p>Crear nuevo producto</p></span></a>
-<a class="btn-fill"href="<?php  echo BASEURL.'/categorias/v_categorias.php?activo=2&sub=d';?>"><span><p>Administrar Categorías</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/talles/v_talles.php?activo=2&sub=d';?>"><span><p>Administrar Talles</p></span></a>
-<a class="btn-fill" href="<?php  echo BASEURL.'/colores/v_color.php?activo=2&sub=d';?>"><span><p>Administrar Colores</p></span></a>
-</div>
+ 
 
 <div id="content-prod2">
 

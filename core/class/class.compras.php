@@ -203,17 +203,20 @@ if(!class_exists('DetalleCompra')):
 		public function updEstado($params){
 			$estado = (int)$params->estado;
 			$id = (int)$params->id;
+			$remito = (int)$params->remito;
 			$upd = $this->prepare(self::DTCOMPRA_UPDESTADO);
 			$upd->bindParam(':estado', $estado);
+			$upd->bindParam(':remito', $remito);
 			$upd->bindParam(':dtid', $id);
 			$upd->execute();
 			return $upd->execute();
 		}
 
-		public static function upd($estado,$id){
+		public static function upd($estado,$id,$remito){
 
 
 			$params = new stdClass();
+			$params->{'remito'} = $remito;
 			$params->{'estado'} = $estado;
 			$params->{'id'} = $id;
 			return self::method('updEstado',$params);

@@ -184,7 +184,7 @@ require_once('../../libs.php');
                     <span><?php echo $itemv->talle ?></span>
                   </td>
                   <td class="colG tdBackground" align="center">
-                    <?php echo $itemv->remito ?>
+                    <input type="text" name="remito" value="<?php echo $itemv->remito ?>" style="width:90%;">
                   </td>
                   <td class="colH tdBackground" align="center">
                     <select name="detalles[<?php echo $itemv->id_detalle ?>]" id="estado2">
@@ -219,7 +219,34 @@ require_once('../../libs.php');
 
 
 
+
+
+
+
 <?php include_once('../inc/footer.php') ?></div>
+
+<script src="../js/modal.nufarm.js"></script>
+
+
+
+<div class="modal-alert">
+  <div class="box-alert">
+    <span class="close-alert">Close</span>
+    <h3>¿Esta seguro que desea borrar este elemento?</h3>
+    <p class="pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui odio at, non asperiores veritatis omnis aliquid animi ipsa enim ab atque ea, quasi similique reiciendis! Voluptatibus laboriosam, sapiente amet debitis.</p>
+    <p class="pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui odio at, non asperiores veritatis omnis aliquid animi ipsa enim ab atque ea, quasi similique reiciendis! Voluptatibus laboriosam, sapiente amet debitis.</p>
+    <p class="pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui odio at, non asperiores veritatis omnis aliquid animi ipsa enim ab atque ea, quasi similique reiciendis! Voluptatibus laboriosam, sapiente amet debitis.</p>
+    <p class="pad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui odio at, non asperiores veritatis omnis aliquid animi ipsa enim ab atque ea, quasi similique reiciendis! Voluptatibus laboriosam, sapiente amet debitis.</p>
+    <div class="box-alert-menu-bottom">
+      <div class="left">
+        <button>Aceptar</button>
+      </div>
+      <div class="right">
+        <button>Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   jQuery(document).ready(function($) {
       $('#svendedor').change(function(event) {

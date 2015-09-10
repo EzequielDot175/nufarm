@@ -47,6 +47,9 @@
 		usr.idusuario,
 		usr.strNombre,
 		usr.strApellido,
+		usr.strEmpresa,
+		per.nombre as v_nombre,
+		per.apellido as v_apellido,
 		dt.id as dt_id,
 		dt.id_producto as producto_id,
 		dt.nombre as prod_nombre,
@@ -59,6 +62,7 @@
 		FROM
 		usuarios as usr
 		NATURAL JOIN compra
+		LEFT JOIN personal as per ON per.id = usr.vendedor
 		LEFT JOIN
 		detalles_compras as dt ON dt.id_compra = compra.idCompra ";
 

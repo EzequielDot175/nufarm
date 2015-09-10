@@ -8,6 +8,14 @@ app.service('ajax', ['$http','$rootScope',function (ajax,root) {
 		});
 	}
 
+	this.excel = function(collection,callback){
+		var param = {method: 'excel', excel: ''};
+			param.collection = collection;
+		ajax.post('excel.php',param).success(callback).error(function(a) {
+			console.error('Excel :', a);
+		});
+	}
+
 	this.ve = function(param,callback){
 		var options = param || {};
 			options.vendedor_estrella = "";

@@ -147,14 +147,14 @@
 								<input type="radio" checked value="1" name="fetchBy">
 								<label for="" >Ver filtros en resultados</label>
 							</div>
-							<div class="radio">
+							<!-- <div class="radio">
 								<input type="radio" value="2" name="fetchBy">
 								<label for="">Ver filtros en estadisticas</label>
-							</div>
+							</div> -->
 						</div>
 
 
-						<div class="block-50">
+					<!-- 	<div class="block-50">
 							<div class="filtros-Default filtros-50">
 				            	<h3> FILTRAR POR:</h3>
 								<select name="" id="" ng-model="select_vendedores" ng-change="setCliente()" ng-options="v.value as v.text for (k, v) in vendedores" >
@@ -183,7 +183,7 @@
 								</select>
 							</div>
 						</div>
-
+ -->
 
 						<div class="filtros-Default filtros-100 filtro-bottom">
 			            			<h3> FILTRAR ACTIVIDAD POR:</h3>
@@ -217,7 +217,7 @@
 						
 						<div class="block-botones">
 							<button class="button-image" type="submit" ><img src="layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button> 
-							<button class="button-image"  > <img src="layout/excel.png" alt="">DESCARGAR RESULTADOS EN EXCEL </button>
+							<button class="button-image" ng-click="excel()" prevent-default> <img src="layout/excel.png" alt="">DESCARGAR RESULTADOS EN EXCEL </button>
 						</div>
 					</form>
 					<!-- end / form-->
