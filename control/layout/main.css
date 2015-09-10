@@ -1943,9 +1943,58 @@ right: -39px;
 .tablaDefault .colC{
 	width: 34% ;
 }
+
+.tablaDefault .colC .prod-img{
+	float: left;
+}
+
+.tablaDefault .colC .prod-img img{
+	display: block;
+    width: 30px;
+	background: #fff;
+	border-radius: 50%;
+	padding: 5px;
+	float: left;
+	margin-right: 10px;
+}
+
+.tablaDefault .colC .prod-desc{
+	text-align: left;
+	background-color: rgba(255,255,255,.5);
+	-moz-background-color: rgba(255,255,255,.5);
+	-ms-background-color: rgba(255,255,255,.5);
+	-webkit-background-color: rgba(255,255,255,.5);
+	float: left;
+	width: 88%;
+}
+
+.tablaDefault .colC .prod-desc p{
+	font-size: 17px;
+	padding: 0 10px;
+	line-height: 40px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tablaDefault .colC .prod-desc p span{
+	margin-left: 5%;
+	font-size: 11px;
+	line-height: 20px;
+}
+
 .tablaDefault .colD{
 	width: 8% ;
+	height: 35px;
+	margin: 0;
+	padding: 0;
 }
+
+.tablaDefault .colD span{
+	line-height: 40px;
+	font-size: 11px;
+}
+
 .tablaDefault .colE{
 	width: 8% ;
 }

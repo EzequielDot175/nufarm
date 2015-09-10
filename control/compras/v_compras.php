@@ -165,13 +165,17 @@ require_once('../../libs.php');
                       ?>
                     </span>
                   </td>
-                  <td class="colC tdBackground" align="center">
-                    <div class="sub"><img class="imagen" src="../../images_productos/<?php echo $itemv->prod_imagen ?>" alt=""></div>
-                    <div class="sub text "><span><?php echo $itemv->precio_pagado ?></span></div>
-                    <span class="sub text"><?php echo $itemv->prod_nombre ?></span>
+                  <td class="colC" align="center">
+                    <div class="prod-img">
+                      <img src="../../images_productos/<?php echo $itemv->prod_imagen ?>" alt="<?php echo $itemv->prod_nombre ?>"></div>
+                    <div class="prod-desc">
+                        <p>
+                          <?php echo $itemv->precio_pagado ?> <span><?php echo $itemv->prod_nombre ?></span>
+                        </p>
+                    </div>
                   </td>
                   <td class="colD tdBackground" align="center">
-                    <span><?php echo $itemv->cantidad ?> </span>
+                    <span><?php echo $itemv->cantidad ?> U</span>
                   </td>
                   <td class="colE tdBackground" align="center">
                     <span><?php echo $itemv->color ?></span>
