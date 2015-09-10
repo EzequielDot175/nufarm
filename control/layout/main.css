@@ -1911,15 +1911,35 @@ right: -39px;
 }
 
 .tablaDefault td{
-	min-height: 40px;
+	font-family: Gotham-Medium !important;
+	padding: 0;
 }
 
 .tablaDefault .colA{
-	width: 10% ;
-}
-.tablaDefault .colB{
 	width: 8% ;
 }
+
+.tablaDefault .colA p{
+	font-size: 12px;
+	line-height: 12px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.tablaDefault .colA p span{
+	font-size: 11px;
+	opacity: .8;
+}
+
+.tablaDefault .colB{
+	width: 10% ;
+}
+
+.tablaDefault .colB span{
+	color: #009448;
+	font-size: 21px;
+}
+
 .tablaDefault .colC{
 	width: 34% ;
 }
@@ -1936,6 +1956,7 @@ right: -39px;
 	width: 8% ;
 }
 .tablaDefault .colH{
+	position: relative;
 	width: 16% ;
 }
 
@@ -2086,7 +2107,7 @@ right: -39px;
 	padding:0px;	
 }
 .bold{
-	font-family:'AvenirLTStd-Black';
+	font-family: Gotham-Medium;
 }
 .big {
 	font-size: 27px !important;
@@ -2458,15 +2479,14 @@ span.inactive {
 }
 .olive-bar_new2 {
 	width: 100%;
-	height: auto;
+	line-height: 35px;
 	margin: 0 auto;
 	background-color: rgba(153,153,153,.8);
-	padding: 7px 0px 7px 0px;
 	display: block;
 	font-size: 11px;
 	color: #fff;
 	text-transform: uppercase;
-	font-family: 'AvenirLTStd-book';
+	font-family: Gotham-Medium;
 	cursor: pointer;
 	z-index: 40;
 	position: relative;
@@ -3031,7 +3051,7 @@ select#estado1 {
 	display: none;
 }
 select#estado2 {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'brooklyn_samuelsno5_fat';
 	width: 100%;
 	border: none;
 	height: 40px;
@@ -3763,27 +3783,36 @@ span.talle {
 }
 .estadopedido_box .button {
 	text-transform: uppercase;
-	font-size: 12px;
-	padding: 5px 10px 4px 10px;
+	font-size: 11px;
+	padding: 0;
 	color: #fff;
 	text-decoration: none;
-	margin: 1px;
-	font-family: 'AvenirLTStd-Black';
+	margin: 0;
+	line-height: 35px;
+	height: 35px;
+	font-family: 'BrooklynSamuelsFive-Bold';
 	border: none;
 	display: inline-block;
 	cursor: pointer;
 	background-color: #8E3289;
-	height: 27px;
 	border-radius: 0%;
 	position: absolute;
-	top: -31px;
-	right: -2px;
+	top: -38px;
+	right: 0;
 	width: 16%;
 }
 .estadopedido_box .button:hover {
 	opacity: .9;
 
 }
+
+#estform > table > tbody > tr > td.colH.tdBackground select{
+	position: absolute;
+	top: 0;
+	height: 40px;
+	font-size: 11px;
+}
+
 .actions{
 	width: 10%;
 	float: right;

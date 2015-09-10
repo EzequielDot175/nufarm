@@ -117,7 +117,7 @@ require_once('../../libs.php');
                 <option value="2">Finalizado</option>
               </select>
 
-              <button type="sybmit" class="button mainbtn">GUARDAR</button>
+              <button type="sybmit" class="button mainbtn">GUARDAR ESTADO</button>
 
             </div>
 
@@ -140,21 +140,30 @@ require_once('../../libs.php');
               <tbody>
                 <tr class="tablaDetalle tablaDefault">
                   <td class="colA" align="center">
-                    <?php 
-                    if($i == 0):
-                      echo($itemv->fthCompra);
-                    $i++;
-                    endif;
-                    ?>
+                    <p>
+                      <?php
+                        $date = preg_split("/[\s-]/", $itemv->fthCompra);
+                        $year = $date[0];
+                        $month = $date[1];
+                        $day = $date[2];
+                        $hour = $date[3];
+
+                        if($i == 0):
+                          echo($year.'-'.$month.'-'.$day.'<br><span>'.$hour.'</span>');
+                        $i++;
+                        endif;
+                      ?>
+                    </p>
                   </td>  
                   <td class="colB" align="center">
+                    <span>
                     <?php 
-                    if($z == 0):
-                      echo($itemv->dblTotal);
-                    $z++;
-                    endif;
-                    ?>
-
+                      if($z == 0):
+                        echo($itemv->dblTotal);
+                      $z++;
+                      endif;
+                      ?>
+                    </span>
                   </td>
                   <td class="colC tdBackground" align="center">
                     <div class="sub"><img class="imagen" src="../../images_productos/<?php echo $itemv->prod_imagen ?>" alt=""></div>
