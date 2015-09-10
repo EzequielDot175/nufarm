@@ -47,7 +47,7 @@ echo'
         	<li class="'; if ($sub=="h"){echo " seleccionado";}echo'">VENDEDORES</li>
         </a>
         <a href="../consultas/v_consultas.php?activo=2&sub=f&orden=1">
-            <li class="">CONSULTAS</li>
+            <li class="';if ($sub=="f"){echo " seleccionado";} echo'">CONSULTAS</li>
         </a>
   </div>
 

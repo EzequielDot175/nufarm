@@ -340,6 +340,7 @@
 			
 			const USUARIO_SUMCREDITO                 = "UPDATE usuarios SET dblCredito = dblCredito + :num WHERE idUsuario = :user";
 			const USUARIO_EDIT 						 = "UPDATE usuarios :QUERY WHERE idUsuario = :id";
+			const USUARIO_BY_ID 					 = "SELECT * FROM usuarios WHERE idUsuario = :id";
 			
 			
 			
@@ -407,13 +408,113 @@
 			WHERE
 				idUsuario = :id";
 
+			const HISTORIAL_OPTIONS_PRODUCTOS = "SELECT 
+						dt.id_producto as value,
+					    dt.nombre as text
+					FROM 
+						detalles_compras as dt
+					LEFT JOIN
+						compra ON compra.idCompra = dt.id_compra
+					
+
+					WHERE compra.idUsuario = :id GROUP BY dt.id_producto";
+
+
+
+			const HISTORIAL_REMITOS_BY_AUTH = "SELECT dt.remito as text, dt.remito as value  FROM detalles_compras as dt LEFT JOIN compra ON compra.idCompra = dt.id_compra WHERE compra.idUsuario = :id";
+			
+
+
+			const HISTORIAL_AUTH_BY_PROD = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND dt.id_producto = :id_prod";
+
+
+			const HISTORIAL_AUTH_BY_STATE = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND dt.estado_producto = :id_state";
+
+			const HISTORIAL_AUTH_BY_REF = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND dt.remito = :id_ref";
+
+			const HISTORIAL_AUTH_BY_DATE = "SELECT 
+				compra.idCompra,
+				compra.fthCompra as fecha,
+			    dt.estado_producto as estado,
+			    dt.cantidad,
+			    dt.talle,
+			    dt.color,
+			    dt.precio_pagado,
+			    dt.remito,
+			    dt.id as id_detalle,
+                prod.strNombre as nombre,
+                prod.strImagen as img
+			FROM 
+				compra
+			LEFT JOIN
+				detalles_compras as dt ON dt.id_compra = compra.idCompra
+			LEFT JOIN
+            	productos as prod ON prod.idProducto = dt.id_producto	
+			WHERE compra.idUsuario = :id AND compra.fthCompra LIKE :fecha ";
+
+
+
 
 			/**
 			 * @internal
 			 * Consultas
 			 */
 
-			const CONSULTA_GET = "SELECT cons.*, usr.strNombre FROM consultas as cons LEFT JOIN usuarios as usr ON usr.idUsuario = cons.idUsuario WHERE cons.idUsuario = 2";
+			const CONSULTA_GET = "SELECT cons.*, usr.strNombre FROM consultas as cons LEFT JOIN usuarios as usr ON usr.idUsuario = cons.idUsuario WHERE cons.idUsuario = :id";
 			const CONSULTA_LAST = "SELECT * FROM consultas WHERE idUsuario = :id ORDER BY idConsulta DESC LIMIT 1";
 			const CONSULTA_GETRESPONSE = "SELECT 
 					cons.strCampo as texto,
@@ -426,6 +527,25 @@
 				WHERE
 					cons.respuesta_de = :id";
 			const CONSULTA_NEW = "INSERT INTO consultas (idUsuario,strAsunto,strCampo,fecha,respondido,tipo,respuesta_de) VALUES (:id,:asunto,:campo,NOW(),0,1,0) ";
+			const CONSULTA_GET_USER_BY_CONS = "SELECT 
+						usr.strNombre,
+					   	usr.strApellido,
+					   	usr.strEmail,
+					FROM 
+						consultas as cons
+					LEFT JOIN 
+						usuarios as usr ON usr.idUsuario = cons.idUsuario
+					WHERE 
+						idConsulta = :id";
+			const CONSULTA_BY_ID = "SELECT * FROM consultas WHERE idConsulta = :id";
+			const CONSULTA_ALL 	= "SELECT 
+						cons.*,
+					    usr.strEmpresa
+					FROM 
+						consultas as cons
+					LEFT JOIN 
+						usuarios as usr ON usr.idUsuario = cons.idUsuario
+					ORDER BY cons.idConsulta DESC";
 
 
 

@@ -88,56 +88,29 @@
 				return $this->all($obj->estado);
 		
 			endif;
-
-			// $qAll = self::COMPRA_ALL;
-			// $i = 0;
-			// $empty = true;
-			// $compras = array();
-			
-
-
-			// /**
-			//  * Detemino array vacio
-			//  * @return [BOOLEAN]
-			//  */
-			// foreach($array as $key => $val):
-			// 	if(!empty($val)):
-			// 		$empty = false;
-			// 		break;
-			// 	endif;
-			// endforeach;
-			// /**
-			//  * Si el array no esta vacio seteo where
-			//  * @var string
-			//  */
-			// $where = ($empty ? '' : ' WHERE ');
-			// /**
-			//  * Seteo WHERE statement
-			//  * @return [STRING]
-			//  */
-			// foreach($array as $key => $val):
-			// 	if($i == 0):
-			// 		if(!empty($val)):
-			// 			$where .= $key." = '".$val."' ";
-			// 			$i++;
-			// 		endif;
-			// 	else:
-			// 		if(!empty($val)):
-			// 			$where .= " AND ".$key." = '".$val."' ";
-			// 		endif;
-			// 	endif;
-			// endforeach;
-			// $query = $qAll.$where;
-			
-			// $sel = $this->query($query);
-			// $collection = $sel->fetchAll();
-
-			// foreach($collection as $key => $val):
-			// 	$compras[$val->id_compra][] = $val;
-			// endforeach;
-
-			// return array_reverse($compras);
 		}
+
+
+		public function historial($option){
+			$historial = new Historial();
+			switch ($option):
+				case '1':
+					$historial->basicsProductos();
+					break;
+				case '2':
+					echo Estado::optionEstados();
+					break;
+				case '3':
+					echo $historial->basicsRemitos();
+					break;
+				
+				default:
+					# code...
+					break;
+			endswitch;
+		}
+
+
 
 
 		public static function Compras($where){

@@ -206,20 +206,23 @@
 		};
 
 		</script>
-
+	
 		<h3 class="sub-titulo sub-titulo-bottom text-uppercase">Consultas</h3>
-
+		
+		<?php 
+		$consulta = Consulta::last();
+		if($consulta): ?>
 		<div class="dialog col-xs-12 col-sm-12 col-md-12 ol-lg-12">
 			<div class="block-dialog">
-				<p class="text "><?php echo Consulta::last()->strCampo ?></p>
+				<p class="text "><?php echo $consulta->strCampo ?></p>
 				<p class="text autor "><?php echo $user->strNombre ?> </p>
 			</div>
 		</div>
-		
+		<?php endif; ?>
 		<!-- botones -->
 		<hr class="hr-bottom">
 		<div class='block-botones'>
-			<a href="mi-cuenta-maqueta-2.php">
+			<a href="consultas.php">
 				<button  class="boton text-uppercase">Ver Consultas</button>
 			</a>
 		</div>

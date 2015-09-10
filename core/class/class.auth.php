@@ -61,6 +61,7 @@ ob_start();
 		}
 
 		public static function id(){
+			self::start();
 			return (int)$_SESSION['MM_IdUsuario'];
 		}
 
@@ -72,6 +73,7 @@ ob_start();
 			$user->execute();
 			return $user->fetch();
 		}
+		
 		public function getUserAdmin(){
 			$id = self::idAdmin();
 			$user = $this->prepare(self::AUTH_USERADMIN);

@@ -2,7 +2,9 @@
 	// error_reporting(E_ALL);
 	// ini_set('display_errors', 'On');
 	define('APP_DIR', dirname(__FILE__));
-
+	require_once(APP_DIR.'/core/class/class.template.php');
+	require_once(APP_DIR.'/core/mail/PHPMailerAutoload.php');
+	require_once(APP_DIR.'/core/excel/PHPExcel.php');
 	require_once(APP_DIR.'/core/interface/DBInterface.php');
 	require_once(APP_DIR.'/core/pdo/DB.constant.php');
 	require_once(APP_DIR.'/core/traits/facade.php');
@@ -34,6 +36,8 @@
 	require_once(APP_DIR.'/core/class/class.filtros.php'); 
 	require_once(APP_DIR.'/core/class/class.ajax.php'); 
 	require_once(APP_DIR.'/core/class/class.ve.php');
+	require_once(APP_DIR.'/core/class/class.mail.php');
+	require_once(APP_DIR.'/core/class/class.excel.php');
 
 
  ?>
