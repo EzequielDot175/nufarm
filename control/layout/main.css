@@ -5059,3 +5059,70 @@ button.mainbtn-save:hover {
 .contenedor-A {
         padding-right: 100px;
 }
+
+
+.modal-alert{
+	position: absolute;
+	opacity: 0;
+	z-index: -1000;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+}
+
+.modal-alert .box-alert{
+	width: 40%;
+	height: 400px;
+	margin: 10% auto;
+	background: white;
+	border-radius: 2px;
+	position: relative;
+}
+
+.modal-alert .box-alert h3{
+	background: #009448;
+	color: white;
+	text-transform: uppercase;
+	margin: 0;
+	text-align: center;
+	padding: 1em;
+}
+
+.modal-alert .box-alert .pad{
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-top: 1em;
+}
+.modal-alert .box-alert .text-center{
+	text-align: center;
+}
+
+.modal-alert .box-alert .center{
+	margin: 0 auto;
+}
+
+.modal-alert .box-alert .close-alert{
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	display: inline-block;
+	cursor: pointer;
+	color: white;
+}
+
+.modal-alert .box-alert .box-alert-menu-bottom{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+.modal-alert .box-alert .box-alert-menu-bottom .left{
+	float: left;
+	padding: 2em;
+}
+
+.modal-alert .box-alert .box-alert-menu-bottom .right{
+	float: right;
+	padding: 2em;
+}
