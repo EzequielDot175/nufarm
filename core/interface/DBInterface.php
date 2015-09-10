@@ -162,7 +162,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE compra.estado = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado";
 
 
 
@@ -266,7 +266,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND compra.estado = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado";
 
 
 			
@@ -328,7 +328,7 @@
 			id                                        = :id";
 			const DTCOMPRA_SET_TOTAL                  = "UPDATE compra SET dblTotal  = :num WHERE idUsuario = :user && idCompra = :id ";
 			const DTCOMPRA_DELETE                     = "DELETE FROM detalles_compras WHERE id = :id";
-			const DTCOMPRA_UPDESTADO 				  = "UPDATE detalles_compras as dt SET dt.estado_producto = :estado WHERE dt.id = :dtid";
+			const DTCOMPRA_UPDESTADO 				  = "UPDATE detalles_compras as dt SET dt.estado_producto = :estado, dt.remito = :remito WHERE dt.id = :dtid";
 			
 			
 			

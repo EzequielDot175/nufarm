@@ -124,6 +124,25 @@
 			$filtros->historial(self::post('option'));
 		}
 
+		private static function excel(){
+			$collection = self::post('collection');
+
+			$name = 'filtros_reportes'.rand(1000000,9000000);
+			$excel = new Excel();
+			$excel->setName($name);
+			$excel->setProp(array(
+				'title' => "filtros"
+				));
+			$excel->setFiltrosFormat($collection);
+			$excel->create();
+			$dir = $excel->getDir();
+			if(file_exists($dir."/".$name.".xlsx")):
+				echo($name.".xlsx");
+			else:
+				echo("false");			
+			endif;
+
+		}
 
 
 

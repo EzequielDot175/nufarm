@@ -7,7 +7,8 @@ foreach($_POST['detalles'] as $key => $val):
 	 * @param estado
 	 * @param id_detalle_producto
 	 */
-	DetalleCompra::upd($val,$key);
+
+	DetalleCompra::upd($val,$key,(int)$_POST['remito']);
 endforeach;
 
 

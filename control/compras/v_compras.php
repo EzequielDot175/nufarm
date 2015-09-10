@@ -171,7 +171,7 @@ require_once('../../libs.php');
                     <span><?php echo $itemv->talle ?></span>
                   </td>
                   <td class="colG tdBackground" align="center">
-                    <?php echo $itemv->remito ?>
+                    <input type="text" name="remito" value="<?php echo $itemv->remito ?>" style="width:90%;">
                   </td>
                   <td class="colH tdBackground" align="center">
                     <select name="detalles[<?php echo $itemv->id_detalle ?>]" id="estado2">

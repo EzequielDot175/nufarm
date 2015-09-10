@@ -25,7 +25,7 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	 * Seteo los options de vendedores
 	 */
 	ajax.post({get: 'vendedores'},function(a){
-		console.info('Reporting vendedores:', a);
+		// console.info('Reporting vendedores:', a);
 		$scope.vendedores =	a ;
 	});
 
@@ -33,7 +33,7 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	 * Seteo los options de productos canjeados
 	 */
 	ajax.post({get: 'ProdOptions'},function(a){
-		console.info('Reporting prod options:', a);
+		// console.info('Reporting prod options:', a);
 		$scope.select_prod_canjeado = a;
 	});
 
@@ -53,9 +53,9 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	 */
 	
 	$scope.filter = function(){
-		console.info('JS', $scope.filtro);
+		// console.info('JS', $scope.filtro);
 		ajax.post({get: 'filtrado' , parameters: $scope.filtro},function(a){
-			console.info('RESPONSE', a);
+			// console.info('RESPONSE', a);
 			$scope.filtroData = a;
 		});
 
@@ -80,6 +80,15 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 				return 'SIN ESTADO';
 				break;
 		}
+	}
+
+	$scope.excel = function(){
+		ajax.excel($scope.filtroData, function(data){
+			if (data != "false") {
+				window.location.href = "../excel/"+data;
+			};
+			console.info('Reporting excel:', data);
+		});
 	}
 
 
