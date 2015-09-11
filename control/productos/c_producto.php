@@ -119,7 +119,6 @@ include_once('../resources/class.upload.php');
 /* INSERT */
 
 
-
 if($talles!=""){
 	$stockTallesColor=1;
 	//guardo talles en tabla talles_productos
@@ -174,13 +173,13 @@ else
 	$productos->strImagen2=$strImagen2;
 	$productos->strImagen3=$strImagen3;
 	$productos->destacado=$destacado;
-	$productos->insert();
+	var_dump($productos->insert());
 }
 
 
-
+die();
 
 #echo '<div class="notify"><p>producto Creada!</p><p><a href="v_productos.php">Regresar</a></p></div>';
 $_SESSION['msg_ok'] = 'Producto Creado!';
-header('Location: '.BASEURL.'/productos/v_productos.php');
+header('Location: '.BASEURL.'productos/v_productos.php');
 ?>
