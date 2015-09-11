@@ -267,7 +267,7 @@
 			endif;
 		}
 		/**
-		 * example of basic @ TempStock
+		 * example basic @ TempStock
 		 * @param $userid 
 	 	 * @param $idProd 
 		 * @param $talle
@@ -384,14 +384,6 @@
 			*/
 			$delete_rows_from_stock = "DELETE FROM stock WHERE id_product = ".$prod_id." && id_user = ".$userid;
 
-
-
-
-
-			// echo "<pre>";
-			// print_r($delete_rows_from_stock);
-			// echo "</pre>";
-			// die();
 			if($resultProdStock >= 0):
 				if($this->exec($update) == 0):
 					throw new Exception("Error actualizando el stock del producto", 1);
@@ -399,20 +391,7 @@
 					$this->exec($delete_rows_from_stock);
 				endif;
 			endif;
-			
-			// $update_productos = "UPDATE productos SET intStock = intStock + (
-			// 		SELECT SUM(cantidad) FROM stock WHERE id_user = ".$userid." && requiere_talle = 0 && id_product = ".$prod_id." LIMIT 1
-			// 		    )
-			// 		WHERE idProducto = ".$prod_id;
-			// $delete_stock = "DELETE FROM stock WHERE id_product = ".$prod_id." && requiere_talle = 0 && id_user = ".$userid;
-
-			
-			// if($this->exec($update_productos) == 0):
-			// 	throw new Exception("Error al actualizar el stock del producto", 1);
-			// 	if($this->exec($delete_stock) == 0):
-			// 		throw new Exception("Error al borrar el stock temporal", 1);
-			// 	endif;
-			// endif;
+		
 		}
 
 
@@ -425,6 +404,14 @@
 			$vencimiento = $vencimiento->format('Y-m-d');
 			return ($vencimiento <  $actual ? true : false);
 		}
+
+
+
+
+		public function liberarStockCompra(){
+
+		}
+
 	}
 
 

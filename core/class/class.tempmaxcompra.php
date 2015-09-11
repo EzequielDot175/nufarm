@@ -128,8 +128,12 @@
 			return $sel->fetch(PDO::FETCH_OBJ)->intMaxCompra;
 		}
 
-
-
+		/**
+		 * @set User
+		 */
+		public function setUser($id){
+			$this->user = $id;
+		}
 
 		/**
 		========= PRIVATE METHODS =========
@@ -232,7 +236,7 @@
 		* @todo Metodo para iniciar @param user id y @param producto id
 		*/
 		private function setInitsData(){
-			$this->user = self::session('MM_IdUsuario');
+			$this->user = (!empty(self::session('MM_IdUsuario')) && !is_null(self::session('MM_IdUsuario')) ? self::session('MM_IdUsuario') : '');
 			$this->prod = (isset($_GET['producto']) ? $_GET['producto'] : '');
 		}
 		/**
