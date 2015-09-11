@@ -164,7 +164,8 @@ if(!class_exists('DetalleCompra')):
 			
 
 			try {
-			
+				
+				
 				$tempMaxCompra->setUser($info->user);
 				$tempMaxCompra->updateMaxCompra($info->producto,$info->cantidad);
 				$compra->setTotal($newTotal, $info->user , $info->compra);
