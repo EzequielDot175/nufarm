@@ -11,6 +11,7 @@ require_once('../../libs.php');
 <head>
 
   <title></title>
+  <link rel="stylesheet" type="text/css" media="all" href="../layout/tables.css" />
   <link rel="stylesheet" type="text/css" media="all" href="../layout/base.css" />
   <link rel="stylesheet" type="text/css" media="all" href="../layout/header-footer-columns.css" />
   <link rel="stylesheet" type="text/css" media="all" href="../layout/forms.css" />
@@ -38,7 +39,7 @@ require_once('../../libs.php');
         ?>
     <input type="hidden" name="client" value="<?php echo $cSelected ?>">
 
-    <div class="filtros_container">   
+    <div class="filtros_container" style="width: 105.98%;">   
        <div class="filtros-Default filtros-100">   
             <form action="" method="POST"> 
             <input type="hidden" name="filter"> 
@@ -65,7 +66,7 @@ require_once('../../libs.php');
 
     <div class="prod_container">
 
-      <div class="three_444 contenedor-default contenedor-A">
+      <div class="contenedor-default">
         <!-- /////////////////////////////////////////////BACKEND CANJES //////////////////////////////////////////////////////////-->
        
 
@@ -74,122 +75,146 @@ require_once('../../libs.php');
         <hr class="separador">
 
         <div class="menuorden"><a href="v_compras.php?orden=1&activo=1&sub=c"><img src="../layout/btn-orden1.png" alt="desc"/></a><a href="v_compras.php?orden=2&activo=1&sub=c"><img src="../layout/btn-orden2.png" alt="desc"/></a></div>
-        <table>
-         <tr class="tablacolor3 tablaDefault">
-           <td  class="colA" align="center">FECHA</td>  
-           <td  class="colB" align="center">TOTAL PUNTOS</td>
-           <td  class="colC" align="center">PRODUCTO</td>
-           <td class="colD" align="center">CANTIDAD</td>
-           <td class="colE" align="center">COLOR</td>
-           <td class="colF" align="center">TALLE</td>
-           <td class="colG" align="center">REMITO</td>
-           <td  class="colH" align="center">ESTADO</td>
-         </tr>
-       </table>
-       <div style="height:10px"></div>
-       <?php
-       /* SELECT */
-       if(isset($_POST['filter'])):
-        $collection = Filter::Compras($_POST);
-
-      else:
-        $collection = Compra::all();
-      endif;
-
-      foreach($collection as $key => $v):
-        ?>
-      <div class="item">
-
-        <div class="olive-bar_new2">
-          <span class="tit_pedido">
-            <span class="bold">Usuario: <?php echo $v[0]->v_nombre ?> <?php echo $v[0]->v_apellido ?></span> / <?php echo $v[0]->email ?></span> 
-            <span class="fecha_tit_admin"><?php echo $v[0]->fthCompra ?></span>
-          </div>
-
-          <form name="listado_productos" id="estform" action="update_proceso.php" method="post">
-
-            <div class="estadopedido_box">
-
-              <input type="hidden" name="id_compra" value="356">
-
-              <select name="estado_compra" id="estado1">
-                <option value="1" selected="selected">Pendiente</option>
-                <option value="2">Finalizado</option>
-              </select>
-
-              <button type="sybmit" class="button mainbtn">GUARDAR</button>
-
+        
+        <section class="prods-table">
+            <div id="table-header">
+                <div>
+                    <p>fecha</p>
+                </div>
+                <div>
+                    <p>total puntos</p>
+                </div>
+                <div>
+                    <p>producto</p>
+                </div>
+                <div>
+                    <p>cantidad</p>
+                </div>
+                <div>
+                    <p>color</p>
+                </div>
+                <div>
+                    <p>talle</p>
+                </div>
+                <div>
+                    <p>remito</p>
+                </div>
+                <div>
+                    <p>estado</p>
+                </div>
             </div>
+            
+            <?php
+                /* SELECT */
+                if(isset($_POST['filter'])):
+                    $collection = Filter::Compras($_POST);
 
+                else:
+                    $collection = Compra::all();
+                endif;
 
-            <?php $i = 0;$z = 0;  foreach($v as $itemk => $itemv): ?>
-            <div class="botones">
-              <div class="item editar">
-                <a href="edit_compra.php?id=<?php echo $itemv->id_detalle ?>">
-                  <img class="imagen" src="../layout/editar.png" alt="">
-                </a>
-              </div>
-              <div class="item borrar">
-                <a class="confirm-link"  href="delete_compras.php?id=<?php echo $itemv->id_detalle ?>">
-                  <img class="imagen" src="../layout/borrar.png" alt="">
-                </a>
-              </div>
+                foreach($collection as $key => $v):
+            ?>
+
+            <div class="table-item">
+                <div class="item-top">
+                    <div class="user">
+                        <p>
+                            usuario: <?php echo $v[0]->v_nombre ?> <?php echo $v[0]->v_apellido ?></span> / <?php echo $v[0]->email ?>
+                        </p>
+                    </div>
+
+                    <div class="save">
+                        <label for="submit-form">guardar</label>
+                    </div>
+                </div>
+
+                <form name="listado_productos" id="estform" action="update_proceso.php" method="post">
+                  
+                  <input type="hidden" name="id_compra" value="356"/>
+                  <input type="submit" id="submit-form"/>
+
+                  <?php $i = 0;$z = 0;  foreach($v as $itemk => $itemv): ?>
+                  <div class="table-detail">
+                      <div class="datime">
+                          <p>
+                            <?php
+                              $date = preg_split("/[\s-]/", $itemv->fthCompra);
+                              $year = $date[0];
+                              $month = $date[1];
+                              $day = $date[2];
+                              $hour = $date[3];
+
+                              if($i == 0):
+                                echo($year.'-'.$month.'-'.$day.'<br><span>'.$hour.'</span>');
+                              $i++;
+                              endif;
+                          ?>
+                          </p>
+                      </div>
+                      <div class="pts">
+                          <p>
+                            <?php 
+                                if($z == 0):
+                                echo($itemv->dblTotal);
+                                $z++;
+                                else:
+                                    echo "&nbsp;";
+                                endif;
+                            ?>
+                          </p>
+                      </div>
+                      <div class="prod-list">
+                        <!-- for each start -->
+                        <div class="prod-item">
+                          <div class="prod-det">
+                              <img src="../../images_productos/<?php echo $itemv->prod_imagen ?>">
+                              <p>
+                                <?php echo $itemv->precio_pagado ?> <span><?php echo $itemv->prod_nombre ?></span>
+                              </p>
+                          </div>
+                          <div class="cant">
+                              <p>
+                                <?php echo $itemv->cantidad ?> U
+                              </p>
+                          </div>
+                          <div class="color">
+                              <p>
+                                <?php echo $itemv->color ?>&nbsp;
+                              </p>
+                          </div>
+                          <div class="size">
+                              <p>
+                                <?php echo $itemv->talle ?>&nbsp;
+                              </p>
+                          </div>
+                          <div class="pre-bill">
+                              <input type="text" name="remito" value="<?php echo $itemv->remito ?>">
+                          </div>
+                          <div class="status">
+                            <select name="detalles[<?php echo $itemv->id_detalle ?>]" id="estado2">
+                             <?php Compra::optionsEstado($itemv->estado_detalle); ?>
+                            </select>
+                          </div>
+                          <div class="controls">
+                            <a href="edit_compra.php?id=<?php echo $itemv->id_detalle ?>">
+                              <img src="../layout/editar.png" alt="">
+                            </a>
+
+                            <a href="delete_compras.php?id=<?php echo $itemv->id_detalle ?>">
+                              <img src="../layout/borrar.png" alt="">
+                            </a>
+                          </div>
+                        </div>
+                        <!-- for each end -->
+                      </div>
+                  </div>
+                  <?php endforeach; ?>        
+                </form>
             </div>
-
-            <table>
-              <tbody>
-                <tr class="tablaDetalle tablaDefault">
-                  <td class="colA" align="center">
-                    <?php 
-                    if($i == 0):
-                      echo($itemv->fthCompra);
-                    $i++;
-                    endif;
-                    ?>
-                  </td>  
-                  <td class="colB" align="center">
-                    <?php 
-                    if($z == 0):
-                      echo($itemv->dblTotal);
-                    $z++;
-                    endif;
-                    ?>
-
-                  </td>
-                  <td class="colC tdBackground" align="center">
-                    <div class="sub"><img class="imagen" src="../../images_productos/<?php echo $itemv->prod_imagen ?>" alt=""></div>
-                    <div class="sub text "><span><?php echo $itemv->precio_pagado ?></span></div>
-                    <span class="sub text"><?php echo $itemv->prod_nombre ?></span>
-                  </td>
-                  <td class="colD tdBackground" align="center">
-                    <span><?php echo $itemv->cantidad ?> </span>
-                  </td>
-                  <td class="colE tdBackground" align="center">
-                    <span><?php echo $itemv->color ?></span>
-                  </td>
-                  <td class="colF tdBackground" align="center">
-                    <span><?php echo $itemv->talle ?></span>
-                  </td>
-                  <td class="colG tdBackground" align="center">
-                    <input type="text" name="remito" value="<?php echo $itemv->remito ?>" style="width:90%;">
-                  </td>
-                  <td class="colH tdBackground" align="center">
-                    <select name="detalles[<?php echo $itemv->id_detalle ?>]" id="estado2">
-                      <?php Compra::optionsEstado($itemv->estado_detalle); ?>
-                    </select>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
-
-            <p> </p>
           <?php endforeach; ?>
-        </form>
-      </div>
+        </section>
 
-      <?php
-      endforeach; ?>
 
 
       <div class="navigate">
