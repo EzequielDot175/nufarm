@@ -146,8 +146,14 @@ $(document).ready(function(){
 </div>
 
 <div class="box-form">
-<div class="tiform6">Precio</div>
-<input type="text" name="dblPrecio" class="campo-prod" placeholder="$"/>
+<div class="tiform6">puntos</div>
+<input type="text" name="dblPrecio" class="campo-prod" />
+
+<div class="tiform6">Min</div>
+<input type="text" name="intMinCompra" class="campo-prod" />
+
+<div class="tiform6">Max</div>
+<input type="text" name="intMaxCompra" class="campo-prod" />
 
 <div class="tiform6">Categoría</div>
 <select class="campo-prod" id="item-categorias2" name="intCategoria" onchange="revisar_talles();">

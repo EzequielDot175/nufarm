@@ -165,11 +165,16 @@ if(!class_exists('DetalleCompra')):
 
 			try {
 				
-				
+				/**
+				 * @php Seteo la devolucion del stock personal (maximos y minimos)
+				 */
+				$remains = new stdClass();
+				$remains->{'intCantidad'} =  $info->cantidad;
+				$remains->{'idProducto'} =  $info->producto;
+				$remains->{'idUsuario'} =  $info->user;
 				$tempMaxCompra->setUser($info->user);
-				$tempMaxCompra->updateMaxCompra($info->producto,$info->cantidad);
+				$tempMaxCompra->storeRemains(null,$remains);
 
-				die();
 				$compra->setTotal($newTotal, $info->user , $info->compra);
 				$usuario->sumarCredito($info->pagado,$info->user);
 				$stock->sumStock($info->talle,$info->color,$info->cantidad,$info->producto);

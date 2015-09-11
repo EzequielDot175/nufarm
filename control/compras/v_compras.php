@@ -47,7 +47,7 @@ require_once('../../libs.php');
                     <option value="">VENDEDOR</option>   
                     <?php Vendedor::options($vSelected); ?>  
                  </select>    
-     
+                  
                   <select name="cliente"  id="scliente">    
                     <option value="">CLIENTE</option>    
                      <?php Cliente::options() ?> 

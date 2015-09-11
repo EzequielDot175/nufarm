@@ -338,6 +338,10 @@
 			* @param class: Usuario
 			*/
 			
+			const USUARIO_BY_VENDEDOR 				 = "SELECT * FROM usuarios WHERE vendedor = :id ORDER BY idUsuario DESC";
+			const USUARIO_BY_CLIENTE 				 = "SELECT * FROM usuarios WHERE idUsuario = :id ORDER BY idUsuario DESC";
+			const USUARIO_ALL						 = "SELECT * FROM usuarios  ORDER BY idUsuario DESC  LIMIT :off,:lim";
+			const USUARIO_PAGES 					 = "SELECT ROUND(COUNT(idUsuario) / :lim) as pages FROM usuarios";
 			const USUARIO_SUMCREDITO                 = "UPDATE usuarios SET dblCredito = dblCredito + :num WHERE idUsuario = :user";
 			const USUARIO_EDIT 						 = "UPDATE usuarios :QUERY WHERE idUsuario = :id";
 			const USUARIO_BY_ID 					 = "SELECT * FROM usuarios WHERE idUsuario = :id";

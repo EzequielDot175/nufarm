@@ -594,7 +594,7 @@ function delete($id){
 function insert(){
 $this->idProducto = ""; // clear key for autoincrement
 
-$sql = "INSERT INTO productos ( strNombre,strDetalle,intCategoria,dblPrecio,intStock,strImagen,strImagen2,strImagen3 ) VALUES ( '$this->strNombre','$this->strDetalle','$this->intCategoria','$this->dblPrecio','$this->intStock','$this->strImagen','$this->strImagen2','$this->strImagen3' )";
+$sql = "INSERT INTO productos ( strNombre,strDetalle,intCategoria,dblPrecio,intStock,intMinCompra,intMaxCompra,strImagen,strImagen2,strImagen3 ) VALUES ( '$this->strNombre','$this->strDetalle','$this->intCategoria','$this->dblPrecio','$this->intStock','$this->intMinCompra','$this->intMaxCompra','$this->strImagen','$this->strImagen2','$this->strImagen3' )";
 $result = $this->database->query($sql);
 return $this->idProducto = mysql_insert_id($this->database->link);
 
