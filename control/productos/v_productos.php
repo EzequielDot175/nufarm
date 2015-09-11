@@ -119,7 +119,7 @@ echo '<div class="menuorden"><a href="v_productos.php?orden=1"><img src="../layo
 //echo '<div id="content-prod">';
 echo '<div>';
 $productos = new Producto();
-$all = $productos->all();
+$all = $productos->all(true);
 
 ?>
 

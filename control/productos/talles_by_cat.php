@@ -13,98 +13,24 @@ $idproducto = $_GET['idproducto'];
 
 $prod = new Producto();
 
+function findUsedColours($collection, $used, $current){
 
-				function build_boxes($talle, $nombre_talle, $idproducto){
-					
 
-					// echo "<pre>";
-					// print_r($talle);
-					// print_r($nombre_talle);
-					// print_r($idproducto);
-					// echo "</pre>";
-					// die();
-					if($idproducto > 0)
-					{
-						//editar
-						include_once("classes/class.talles_productos.php");
-					
-						$tallprod = new talles_productos();
+	$used = array_keys($used);
+	foreach($collection as $key => $val):
+		if(in_array($val['id_color'], $used)):
+			if($val['id_color'] != $current):
 
-						echo "<pre>";
-						var_dump($tallprod->select_by_producto($idproducto, $talle));
-						echo "</pre>";
-						// $id_talle_producto = $tallprod->getid();
-						// $id_talle = $tallprod->getid_talle();
-						// $id_producto = $tallprod->getid_producto();
-						// $cantidad = $tallprod->getcantidad();
-						
-							
-						// echo "<pre>";
-						// var_dump($id_talle);
-						// echo "</pre>";
-						// $salida .=   '
-						// <div class="tallebox">
-						// 	<p>'.$nombre_talle.'</p>	
-						// 	<p><input class="inputshort" type="text" name="talle['.$talle.']" value="'.$cantidad.'" id="'.$talle.'"></p>
-						// </div>';
-						
-						
-					}
-					else
-					{
-						//nuevo
-						
-						// $salida .=   '
-						// <div class="tallebox">
-						// 	<p>'.$nombre_talle.'</p>
-						// 	<p><input class="inputshort" type="text" name="talle['.$talle.']" value="" id="'.$talle.'"></p>
-						// </div>';
-					}
-					// echo $salida;	
-				}
+				unset($collection[$key]);
+			endif;
+		endif;
+	endforeach;
 
-				
-				
-				function build_boxes_color($color, $nombre_color, $idproducto){
-					
-				
+	return $collection;
+	
+	
+}
 
-					if($idproducto > 0)
-					{
-						//editar
-						include_once("class.colores_productos.php");
-					
-						// $colprod = new colores_productos();
-						// $colprod->select_by_producto($idproducto, $color);
-						// $id_color_producto = $colprod->getid();
-						// $id_color = $colprod->getid_color();
-						// $id_producto = $colprod->getid_producto();
-						// $cantidad = $colprod->getcantidad();
-						
-						// $salida .=   '
-						// <div class="tallebox">
-						// 	<p>'.$nombre_color.'</p>	
-						// 	<p><input class="inputshort" type="text" name="color['.$color.']" value="'.$cantidad.'" id="'.$color.'"></p>
-						// </div>';
-
-						echo "<pre>";
-						print_r($idproducto);
-						echo "</pre>";
-						
-						
-					}
-					else
-					{
-						//nuevo
-						
-						$salida .=   '
-						<div class="tallebox">
-							<p>'.$nombre_color.'</p>
-							<p><input class="inputshort" type="text" name="talle['.$color.']" value="" id="'.$color.'"></p>
-						</div>';
-					}
-					echo $salida;	
-				}
 				
 				
 				include_once("../categorias/classes/class.categorias.php");
@@ -198,19 +124,34 @@ $prod = new Producto();
 					$talles = $talles->all();
 					$colores = new colores();
 					$colores = $colores->all();
-					$all = $x->all($_GET['idproducto']);
-
-					$key = rand();
 					
 
+					$all = $x->all($_GET['idproducto']);
+
+					$id_colores_usados = array_keys($all);
+					
+
+			
+					$key = rand();
+					
+					$used = array_keys($all);
 
 					if (isset($_GET['action']) && $_GET['action'] == 'add' || empty($all)):
+
 					?>
 					<div class="segmentTalleColor">
 								<label for="">Color</label>
 								<select name="color_talle[<?php echo($key) ?>][color]" class="color">
-									<?php foreach($colores as $val): ?>
+									<?php foreach($colores as $val):
+
+										if(in_array($val['id_color'], $used)):
+											continue;
+										endif;
+
+									 ?>
+
 									<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+									
 									<?php endforeach; ?>
 								</select>
 								<label for="">Talles</label>
@@ -232,22 +173,47 @@ $prod = new Producto();
 						var_dump($x->delete($_GET['idproducto'],$_GET['color']));
 						die();
 					else: 
-						
+
 						foreach($all as $k => $v):
 							$current_color = null;
 							$key = rand();
+
+							// die();
 						?>
 						<div class="segmentTalleColor">
 								<label for="">Color</label>
+
+
+
 								<select name="color_talle[<?php echo($key) ?>][color]" class="color">
-									<?php foreach($colores as $val):
-										if ($val['id_color'] == $k): $current_color = $val['id_color']; ?>
-										<option selected="" value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
-										<?php else: ?>
-										<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
-								<?php 	endif;
+
+									<?php foreach($colores as $color_key => $val):
+										
+										if(in_array($val['id_color'],$used) && $val['id_color'] != $k ):
+											continue;
+										endif;
+											
+											if ($val['id_color'] == $k ): $current_color = $val['id_color']; ?>
+
+											<option selected="" value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+
+											<?php 
+
+											else:
+
+											 ?>
+
+											<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
+											<?php endif;
+
+										
+
 										endforeach; ?>
 								</select>
+
+
+
+
 								<label for="">Talles</label>
 								<div class="tipotalles">
 									<?php foreach($talles as $val): ?>
@@ -274,72 +240,6 @@ $prod = new Producto();
 
 
 
-						/*if(	!$x->exist(array('id_producto',$_GET['idproducto'])) || isset($_GET['action'])	):
-							// SI EL PRODUCTO NO EXISTE O SI SE ENVIA UNA PETICION ACTION
-							
-							$randId = substr(strtoupper(md5(rand().rand())), 0,10);
-						?>
-							<div class="segmentTalleColor">
-								<label for="">Color</label>
-								<select name="talleColor[<?php echo($randId) ?>][color]" class="color">
-									<?php foreach($colores as $val): ?>
-									<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
-									<?php endforeach; ?>
-								</select>
-								<label for="">Talles</label>
-								<div class="tipotalles">
-									<?php foreach($talles as $val): ?>
-									<div class="tallebox">
-										<p><?php echo($val['nombre_talle']) ?></p>	
-										<p><input class="inputshort valid" type="text" name="talleColor[<?php echo($randId) ?>][talle][<?php echo($val['id_talle']) ?>]" value=""></p>
-									</div>
-									<?php endforeach; ?>
-								</div>
-								<div class="addColor">
-									<button class="newColor" >Agregar color</button>
-								</div>
-							</div>
-						<?php
-						else:
-							// SI EL PRODUCTO EXISTE Y NO SE ENVIA UNA PETICION ACTION
-							$data = $x->get($_GET['idproducto']);
-							$data = json_decode($data['colores_talles']);
-
-							$count =  count($data);
-							foreach($data as $k => $v):
-							?>
-							<div class="segmentTalleColor">
-								<label for="">Color</label>
-								<select name="talleColor[<?php echo($k) ?>][color]" class="color">
-									<?php foreach($colores as $val): 
-											if($val['id_color'] == $v->color): ?>
-											<option selected="" value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
-										<?php else:	?>
-												<option value="<?php echo($val['id_color']) ?>"><?php echo($val['nombre_color']) ?></option>
-										<?php endif;
-										endforeach; ?>
-								</select>
-								<label for="">Talles</label>
-								<div class="tipotalles">
-									<?php foreach($talles as $val): ?>
-									<div class="tallebox">
-										<p><?php echo($val['nombre_talle']) ?></p>	
-										<p><input class="inputshort valid" type="text" value="<?php echo $v->talle->{$val['id_talle']} ?>" name="talleColor[<?php echo($k) ?>][talle][<?php echo($val['id_talle']) ?>]" value=""></p>
-									</div>
-									<?php endforeach; ?>
-								</div>
-								<div class="addColor">
-									<?php if($count == 1): ?>
-									<button class="newColor" >Agregar color</button>
-									<?php else: ?>
-									<button class="removeColor" >Borrar color</button>
-									<?php endif; ?>
-								</div>
-							</div>
-
-							<?php
-							endforeach;
-						endif;*/
 					
 				}
 				else

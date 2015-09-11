@@ -21,6 +21,10 @@
  * PHPMailer SPL autoloader.
  * @param string $classname The name of the class to load
  */
+
+if(!function_exists('PHPMailerAutoload')):
+
+
 function PHPMailerAutoload($classname)
 {
     //Can't use __DIR__ as it's only in PHP 5.3+
@@ -44,3 +48,7 @@ if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
         PHPMailerAutoload($classname);
     }
 }
+
+
+
+endif;

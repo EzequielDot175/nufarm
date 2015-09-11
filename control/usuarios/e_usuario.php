@@ -149,7 +149,7 @@ $strCargo=$usuarios->getstrCargo();
 $strPassword=$usuarios->getstrPassword();
 $dblCredito=$usuarios->getdblCredito();
 $dblAsignado=$usuarios->getdblAsignado();
-
+$dblConsumido=$usuarios->getdblConsumido();
 
 $direccion=$usuarios->getdireccion();
 $telefono=$usuarios->gettelefono();
@@ -226,10 +226,7 @@ $vigencia_credito = $dia.'-'.$mes.'-'.$anio;
 <input type="text" name="vigencia_credito" class="campo-prod" value="<?php echo $vigencia_credito ;?>"  /></div>
 
 
-<div class="form-item">
-<div class="tiform6">Crédito</div>
-<input type="text" name="dblCredito" class="campo-prod" value="<?php echo $dblCredito;?>" />
-</div>
+
 
 
 <div class="form-item">
@@ -264,12 +261,12 @@ $vigencia_credito = $dia.'-'.$mes.'-'.$anio;
 
 <div class="form-item">
 <div class="tiform6">Puntos Consumidos</div>
-<input type="text" disabled class="campo-prod" value="<?php echo $dblAsignado - $dblCredito;?>" />
+<input type="text" disabled class="campo-prod" value="<?php echo $dblConsumido?>" />
 </div>
 
 <div class="form-item">
 <div class="tiform6">Puntos Disponibles</div>
-<input type="text" disabled class="campo-prod" value="<?php echo $dblCredito;?>" />
+<input type="text" name="dblCredito" class="campo-prod" value="<?php echo $dblCredito;?>" />
 </div>
 
 <br />

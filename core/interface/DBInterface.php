@@ -36,7 +36,7 @@
 			/**
 			 * @internal Class: Producto
 			 */
-			const PRODUCTO_ALL                  = "SELECT * FROM productos";
+			const PRODUCTO_ALL                  = "SELECT * FROM productos ORDER BY idProducto DESC";
 			const PRODUCTO_ALLBYID 				= "SELECT * FROM productos WHERE idProducto = :id";
 			const PRODUCTO_BYTYPE 				= "SELECT
 			ct.idCategorias as id_cat,
@@ -128,7 +128,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto";
+           		productos as prod ON prod.idProducto = dt.id_producto ";
 
            	const COMPRA_ALL_BY_STATE = "SELECT
 			 compra.fthCompra,
@@ -162,7 +162,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado ";
 
 
 
@@ -266,7 +266,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado ";
 
 
 			
@@ -302,7 +302,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado ";
 
            	const COMPRA_COUNT = "SELECT COUNT(idCompra) AS count FROM compra";
 			
@@ -341,6 +341,7 @@
 			const USUARIO_SUMCREDITO                 = "UPDATE usuarios SET dblCredito = dblCredito + :num WHERE idUsuario = :user";
 			const USUARIO_EDIT 						 = "UPDATE usuarios :QUERY WHERE idUsuario = :id";
 			const USUARIO_BY_ID 					 = "SELECT * FROM usuarios WHERE idUsuario = :id";
+			const USUARIO_SUM_DBLCONSUMIDO_FROM_SHOP = "UPDATE usuarios SET dblConsumido = dblConsumido + (SELECT SUM(prod.dblPrecio * carr.intCantidad) FROM productos as prod NATURAL JOIN carrito as carr  WHERE idUsuario = :id LIMIT 1) WHERE idUsuario = :id ";
 			
 			
 			
@@ -540,14 +541,13 @@
 			const CONSULTA_BY_ID = "SELECT * FROM consultas WHERE idConsulta = :id";
 			const CONSULTA_ALL 	= "SELECT 
 						cons.*,
-					    usr.strEmpresa
+					    usr.strEmpresa,
+					    usr.vendedor
 					FROM 
 						consultas as cons
 					LEFT JOIN 
 						usuarios as usr ON usr.idUsuario = cons.idUsuario
 					ORDER BY cons.idConsulta DESC";
-
-
 
 			/**
 			 * @internal 

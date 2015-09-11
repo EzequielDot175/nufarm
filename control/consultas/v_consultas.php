@@ -10,7 +10,11 @@ ini_set('display_errors', 'On');
 require_once('../../libs.php');
 
 $consultas = new Consulta();
-$collection = $consultas->getAdmin();
+if(isset($_POST['submit'])):
+	$collection = $consultas->filtro();
+else:
+	$collection = $consultas->getAdmin();
+endif;
 
 ?>
 <!DOCTYPE html>
@@ -92,15 +96,19 @@ $("#fecha").datepicker({altFormat: 'yy-mm-dd'});
             <form action="" method="POST"> 
             <input type="hidden" name="filter"> 
                   	<h3> FILTRAR POR:</h3>   
-                 	<select name="">                     
-                  		<option value="">TODOS LOS VENDEDORES</option>   
+                 	<select name="vendedores">                     
+                  		<option value="">TODOS LOS VENDEDORES</option>
+                  		<?php Vendedor::options(); ?>
                  	</select>
-                 	<select name="">                     
-                  		<option value="">ESTADO</option>   
+                 	<select name="estado">                     
+                  		<option value="">ESTADO</option>
+                  		<option value="1">RESPONDIDO</option> 
+                  		<option value="0">NO RESPONDIDO</option> 
                  	</select>    
-                  	<select name="">   
+                  	<!-- <select name="">   
                     		<option value="">CLIENTE</option>   
-                    	</select>    
+                    	</select>     -->
+                    <input type="hidden" name="submit" >
                   	<button class="button-image" type="submit"><img src="../layout/ver.png" alt=""> VER RESULTADOS </button>
             </form>    
       	</div>

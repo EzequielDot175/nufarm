@@ -197,5 +197,38 @@ $(document).ready(function(){
 </div>
 
 
+
+<script>
+	$(function() {
+		$('#item-categorias').trigger('change');
+		$(document).on('click', '.newColor', function(event) {
+			event.preventDefault();
+			var cat = $('#item-categorias').val();
+			var id = window.location.search.match(/id=.*[0-9].&/ig);
+				id = parseInt(id[0].replace(/id=/ig,'').replace(/&/ig,''));
+			$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+id+'&action=add', function(data) {
+				console.log(data);
+				$('#tipotalles').append(data);
+			});
+		});
+		$(document).on('click', '.removeColor', function(event) {
+			event.preventDefault();
+			var color = $(this).parent().children('input[name=id_color]').val() || null;
+			var prod = $(this).parent().children('input[name=id_prod]').val() || null;
+			var cat = $('#item-categorias').val();
+			
+			if (confirm('¿Esta seguro de borrar este color y talles?')) {
+				if (color != null) {
+					$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+prod+'&action=delete&color='+color, function(data) {
+						console.log(data);
+					});
+				};
+				$(this).parents('.segmentTalleColor').remove();
+				
+			};
+		});
+	});
+</script>
+
 </body>
 </html>

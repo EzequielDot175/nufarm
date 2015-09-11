@@ -75,6 +75,30 @@
 			
 		}
 
+		public function getAdminByVendedor($id,$estado){
+			$collection = $this->getAdmin(); 
+			$byVendedor = array();
+
+			
+			foreach($collection as $key => $val):
+			
+				if($estado != ""):
+					
+					if($val->vendedor == $id && $val->respondido == (int)$estado):
+						$byVendedor[$key] = $val;
+					endif;
+				else:
+					if($val->vendedor == $id):
+						$byVendedor[$key] = $val; 
+					endif;
+				endif;
+			endforeach;
+
+
+			return $byVendedor;
+		}
+
+
 		public static function formatDate($input){
 			$date = new DateTime($input);
 			echo $date->format('d/m/Y');
@@ -102,6 +126,18 @@
 			$sel->bindParam(':id',$id, PDO::PARAM_INT);
 			$sel->execute();
 			return $sel->fetch();
+		}
+
+		public function filtro(){
+			if(self::postHas('vendedores') && self::postHas('estado')):
+
+			
+				if(empty(self::getPost('vendedores'))):
+					return $this->getAdmin();
+				else:
+					return $this->getAdminByVendedor(self::getPost('vendedores'),self::getPost('estado'));
+				endif;
+			endif;
 		}
 
 

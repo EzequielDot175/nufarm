@@ -83,6 +83,17 @@
 		}
 
 
+		public function updateDblConsumido(){
+			$id = Auth::id();
+			$upd = $this->prepare(self::USUARIO_SUM_DBLCONSUMIDO_FROM_SHOP);
+			$upd->bindParam(':id',$id,PDO::PARAM_INT);
+			$upd->execute();
+		}
+
+		public static function sumConsumido(){
+			return self::method('updateDblConsumido');
+		}
+
 		public static function getById($id){
 			return self::method('byId', $id);
 		}

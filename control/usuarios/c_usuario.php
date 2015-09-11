@@ -86,5 +86,5 @@ $usuarios->insert();
 
 #echo '<div class="notify"><p>usuario Creada!</p><p><a href="v_usuarios.php">Regresar</a></p></div>';
 $_SESSION['msg_ok'] = 'Cliente Creado!';
-header('Location: '.BASEURL.'/usuarios/v_usuarios.php');
+header('Location: '.BASEURL.'usuarios/v_usuarios.php');
 ?>

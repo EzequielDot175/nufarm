@@ -17,6 +17,7 @@ var $strCargo;
 var $strPassword;
 var $dblCredito;
 var $dblAsignado;
+var $dblConsumido;
 var $direccion;
 var $telefono;
 var $nombre_contacto1;
@@ -51,6 +52,7 @@ function getstrCargo(){return $this->strCargo;}
 function getstrPassword(){return $this->strPassword;}
 function getdblCredito(){return $this->dblCredito;}
 function getdblAsignado(){return $this->dblAsignado;}
+function getdblConsumido(){return $this->dblConsumido;}
 
 function getdireccion(){return $this->direccion;}
 function gettelefono(){return $this->telefono;}
@@ -110,6 +112,7 @@ $this->strCargo = $row->strCargo;
 $this->strPassword = $row->strPassword;
 $this->dblCredito = $row->dblCredito;
 $this->dblAsignado = $row->dblAsignado;
+$this->dblConsumido = $row->dblConsumido;
 
 $this->direccion = $row->direccion;
 $this->telefono = $row->telefono;

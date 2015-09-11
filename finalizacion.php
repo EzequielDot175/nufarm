@@ -4,8 +4,7 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-error_reporting(0);
-ini_set('display_errors', 'off');
+
 // function redirect(){
 //   echo('<script>window.location.href="confirmacion-carrito.php";</script>');
 // }
@@ -19,6 +18,10 @@ $MM_donotCheckaccess = "true";
 // require_once('TempStock.php'); 
 require_once('libs.php'); 
 require_once('includes/class.compras.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+
+
 
 $checkVencimiento = new TempStock();
 $can = $checkVencimiento->fechaVencimiento($_SESSION['MM_IdUsuario']);
@@ -89,10 +92,14 @@ $msg_final = '
  <strong>Enviar un Email con la certificación de tu pago a correo@mail.com o a este Nro de cuenta XXXXXXXXXXXXX</strong>
  
  ';
- 
- 
+ /**
+  * Updateo el dblConsumido directamente desde el carrito de compras
+  */
+ Usuario::sumConsumido();
+
 //Aqui comienza el proceso posterior al pago, si existe la como TRUE la variable checkout se realiza la tarea de ingresar pago a la tabla, descontar credito del usuario, etc.
  
+
 if($checkout){
 	
 	//HAY PAGO REALIZADO

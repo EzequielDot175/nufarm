@@ -152,6 +152,7 @@ if(!class_exists('DetalleCompra')):
 			$compra = new Compra();
 			$usuario = new Usuario();
 			$stock = new Stock();
+			$tempMaxCompra = new TempMaxCompra();
 			$info = $this->joinCompra($id);
 			/**
 			 * @internal Resto de la compra
@@ -161,11 +162,19 @@ if(!class_exists('DetalleCompra')):
 			 */
 			$newTotal = $info->total - $info->pagado;
 			
+
 			try {
+				
+				
+				$tempMaxCompra->setUser($info->user);
+				$tempMaxCompra->updateMaxCompra($info->producto,$info->cantidad);
+
+				die();
 				$compra->setTotal($newTotal, $info->user , $info->compra);
 				$usuario->sumarCredito($info->pagado,$info->user);
 				$stock->sumStock($info->talle,$info->color,$info->cantidad,$info->producto);
 				$this->delete($id);
+
 				if($compra->isEmpty($info->compra)):
 					$compra->delete($info->compra);
 				endif;

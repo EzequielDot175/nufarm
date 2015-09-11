@@ -28,6 +28,14 @@
 				endif;
 			endif;
 		}
+
+		public static function getPost($name){
+			return (isset($_POST[$name]) ? $_POST[$name] : '');
+		}
+
+		public static function postHas($name){
+			return (isset($_POST[$name]) ? true : false);
+		}
 	}
 
  ?>

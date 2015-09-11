@@ -33,7 +33,7 @@
 				$groupBy[$val->id_compra][] = $val;
 			endforeach;
 
-			return $groupBy;
+			return array_reverse($groupBy);
 		}
 
 		public function byVendedor($id, $estado = null){
