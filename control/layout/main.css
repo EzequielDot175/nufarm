@@ -320,7 +320,16 @@ h1,h2,h3,h4,h5,h6{font-weight:bold;}
 	-o-background-color: rgba(255,255,255,.75);
 	padding: 2% 0 0 0;
 }
-
+.prod_container {
+	float: left;
+	width: 100%;
+	height: auto;
+	background-color: rgba(255,255,255,.80);
+  	-moz-background-color: rgba(255,255,255,.80);
+  	-ms-background-color: rgba(255,255,255,.80);
+  	-o-background-color: rgba(255,255,255,.80);
+	-webkit-background-color: rgba(255,255,255,.80);
+}
 
 .filtros_container {
 	float: left;
@@ -1902,90 +1911,21 @@ right: -39px;
 }
 
 .tablaDefault td{
-	font-family: Gotham-Medium !important;
-	padding: 0;
+	min-height: 40px;
 }
 
 .tablaDefault .colA{
-	width: 8% ;
-}
-
-.tablaDefault .colA p{
-	font-size: 12px;
-	line-height: 12px;
-	text-align: left;
-	padding-left: 10px;
-}
-
-.tablaDefault .colA p span{
-	font-size: 11px;
-	opacity: .8;
-}
-
-.tablaDefault .colB{
 	width: 10% ;
 }
-
-.tablaDefault .colB span{
-	color: #009448;
-	font-size: 21px;
+.tablaDefault .colB{
+	width: 8% ;
 }
-
 .tablaDefault .colC{
 	width: 34% ;
 }
-
-.tablaDefault .colC .prod-img{
-	float: left;
-}
-
-.tablaDefault .colC .prod-img img{
-	display: block;
-    width: 30px;
-	background: #fff;
-	border-radius: 50%;
-	padding: 5px;
-	float: left;
-	margin-right: 10px;
-}
-
-.tablaDefault .colC .prod-desc{
-	text-align: left;
-	background-color: rgba(255,255,255,.5);
-	-moz-background-color: rgba(255,255,255,.5);
-	-ms-background-color: rgba(255,255,255,.5);
-	-webkit-background-color: rgba(255,255,255,.5);
-	float: left;
-	width: 88%;
-}
-
-.tablaDefault .colC .prod-desc p{
-	font-size: 17px;
-	padding: 0 10px;
-	line-height: 40px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.tablaDefault .colC .prod-desc p span{
-	margin-left: 5%;
-	font-size: 11px;
-	line-height: 20px;
-}
-
 .tablaDefault .colD{
 	width: 8% ;
-	height: 35px;
-	margin: 0;
-	padding: 0;
 }
-
-.tablaDefault .colD span{
-	line-height: 40px;
-	font-size: 11px;
-}
-
 .tablaDefault .colE{
 	width: 8% ;
 }
@@ -1996,7 +1936,6 @@ right: -39px;
 	width: 8% ;
 }
 .tablaDefault .colH{
-	position: relative;
 	width: 16% ;
 }
 
@@ -2147,7 +2086,7 @@ right: -39px;
 	padding:0px;	
 }
 .bold{
-	font-family: Gotham-Medium;
+	font-family:'AvenirLTStd-Black';
 }
 .big {
 	font-size: 27px !important;
@@ -2519,14 +2458,15 @@ span.inactive {
 }
 .olive-bar_new2 {
 	width: 100%;
-	line-height: 35px;
+	height: auto;
 	margin: 0 auto;
 	background-color: rgba(153,153,153,.8);
+	padding: 7px 0px 7px 0px;
 	display: block;
 	font-size: 11px;
 	color: #fff;
 	text-transform: uppercase;
-	font-family: Gotham-Medium;
+	font-family: 'AvenirLTStd-book';
 	cursor: pointer;
 	z-index: 40;
 	position: relative;
@@ -3091,7 +3031,7 @@ select#estado1 {
 	display: none;
 }
 select#estado2 {
-	font-family: 'brooklyn_samuelsno5_fat';
+	font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	border: none;
 	height: 40px;
@@ -3823,36 +3763,27 @@ span.talle {
 }
 .estadopedido_box .button {
 	text-transform: uppercase;
-	font-size: 11px;
-	padding: 0;
+	font-size: 12px;
+	padding: 5px 10px 4px 10px;
 	color: #fff;
 	text-decoration: none;
-	margin: 0;
-	line-height: 35px;
-	height: 35px;
-	font-family: 'BrooklynSamuelsFive-Bold';
+	margin: 1px;
+	font-family: 'AvenirLTStd-Black';
 	border: none;
 	display: inline-block;
 	cursor: pointer;
 	background-color: #8E3289;
+	height: 27px;
 	border-radius: 0%;
 	position: absolute;
-	top: -38px;
-	right: 0;
+	top: -31px;
+	right: -2px;
 	width: 16%;
 }
 .estadopedido_box .button:hover {
 	opacity: .9;
 
 }
-
-#estform > table > tbody > tr > td.colH.tdBackground select{
-	position: absolute;
-	top: 0;
-	height: 40px;
-	font-size: 11px;
-}
-
 .actions{
 	width: 10%;
 	float: right;
