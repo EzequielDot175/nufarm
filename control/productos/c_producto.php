@@ -1,4 +1,6 @@
-<?php include_once('../resources/control.php'); error_reporting(0); header('Content-Type: text/html; charset=utf-8');
+<?php 
+ob_start();
+include_once('../resources/control.php'); error_reporting(0); header('Content-Type: text/html; charset=utf-8');
 
 include_once('helper_titulos.php');
 
@@ -173,7 +175,7 @@ else
 	$productos->strImagen2=$strImagen2;
 	$productos->strImagen3=$strImagen3;
 	$productos->destacado=$destacado;
-	var_dump($productos->insert());
+	$productos->insert();
 }
 
 
