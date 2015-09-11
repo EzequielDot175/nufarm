@@ -151,7 +151,7 @@ $("#vigencia_credito").datepicker({altFormat: 'yy-mm-dd'});
 <div class="columna_form2">
 
 
-<div class="tiform6">Crédito</div>
+<div class="tiform6">Puntos Asignados</div>
 <input type="text" name="dblCredito" class="campo-prod"/>
 
 <div class="tiform6">Vigencia crédito</div>

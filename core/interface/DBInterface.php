@@ -341,6 +341,7 @@
 			const USUARIO_SUMCREDITO                 = "UPDATE usuarios SET dblCredito = dblCredito + :num WHERE idUsuario = :user";
 			const USUARIO_EDIT 						 = "UPDATE usuarios :QUERY WHERE idUsuario = :id";
 			const USUARIO_BY_ID 					 = "SELECT * FROM usuarios WHERE idUsuario = :id";
+			const USUARIO_SUM_DBLCONSUMIDO_FROM_SHOP = "UPDATE usuarios SET dblConsumido = dblConsumido + (SELECT SUM(prod.dblPrecio * carr.intCantidad) FROM productos as prod NATURAL JOIN carrito as carr  WHERE idUsuario = :id LIMIT 1) WHERE idUsuario = :id ";
 			
 			
 			
@@ -540,14 +541,13 @@
 			const CONSULTA_BY_ID = "SELECT * FROM consultas WHERE idConsulta = :id";
 			const CONSULTA_ALL 	= "SELECT 
 						cons.*,
-					    usr.strEmpresa
+					    usr.strEmpresa,
+					    usr.vendedor
 					FROM 
 						consultas as cons
 					LEFT JOIN 
 						usuarios as usr ON usr.idUsuario = cons.idUsuario
 					ORDER BY cons.idConsulta DESC";
-
-
 
 			/**
 			 * @internal 
