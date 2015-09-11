@@ -128,7 +128,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto";
+           		productos as prod ON prod.idProducto = dt.id_producto ";
 
            	const COMPRA_ALL_BY_STATE = "SELECT
 			 compra.fthCompra,
@@ -162,7 +162,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado ";
 
 
 
@@ -266,7 +266,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado ";
 
 
 			
@@ -302,7 +302,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado ";
 
            	const COMPRA_COUNT = "SELECT COUNT(idCompra) AS count FROM compra";
 			

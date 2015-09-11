@@ -168,6 +168,8 @@ if(!class_exists('DetalleCompra')):
 				
 				$tempMaxCompra->setUser($info->user);
 				$tempMaxCompra->updateMaxCompra($info->producto,$info->cantidad);
+
+				die();
 				$compra->setTotal($newTotal, $info->user , $info->compra);
 				$usuario->sumarCredito($info->pagado,$info->user);
 				$stock->sumStock($info->talle,$info->color,$info->cantidad,$info->producto);

@@ -109,8 +109,12 @@
 		* @todo Metodo que hace exactamente lo contrario a storeSum, resta cantidades agregadas a la cantidad de compra total
 		* @param id_carrito
 		*/	
-		public function storeRemains($carr){
-			$data = $this->storeData($carr);
+		public function storeRemains($carr, $optional = null){
+			if(is_null($optional)):
+				$data = $this->storeData($carr);
+			else:
+				$data = $optional;
+			endif;
 			$upd = $this->prepare(self::MAXCOMPRA_STOREMAINS);
 			$upd->bindParam(':used',$data->intCantidad,PDO::PARAM_INT);
 			$upd->bindParam(':prod',$data->idProducto,PDO::PARAM_INT);
