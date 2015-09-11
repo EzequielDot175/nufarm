@@ -177,8 +177,6 @@ else
 }
 
 
-die();
-
 #echo '<div class="notify"><p>producto Creada!</p><p><a href="v_productos.php">Regresar</a></p></div>';
 $_SESSION['msg_ok'] = 'Producto Creado!';
 header('Location: '.BASEURL.'productos/v_productos.php');

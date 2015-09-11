@@ -36,7 +36,7 @@
 			/**
 			 * @internal Class: Producto
 			 */
-			const PRODUCTO_ALL                  = "SELECT * FROM productos";
+			const PRODUCTO_ALL                  = "SELECT * FROM productos WHERE idProducto DESC";
 			const PRODUCTO_ALLBYID 				= "SELECT * FROM productos WHERE idProducto = :id";
 			const PRODUCTO_BYTYPE 				= "SELECT
 			ct.idCategorias as id_cat,
