@@ -242,6 +242,8 @@
 						-->
 							
 						<!-- item -->
+
+					
 						<div class="item" ng-repeat="(key, value) in filtroData">
 						 	<table >
 								<tr class="tablaDetalle tablaDefault"  ng-repeat="(k, v) in value" ng-if="k != 'total'">

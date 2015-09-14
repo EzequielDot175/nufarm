@@ -13,12 +13,9 @@ else:
 	$collection = $usuarios->getAll();
 endif;
 
-foreach($collection as $key => $val):
-	echo "<pre>";
-	print_r($val);
-	echo "</pre>";
-break;
-endforeach;
+
+$vSelected = (isset($_POST['vendedor']) ? $_POST['vendedor'] : '');
+$cSelected = (isset($_POST['cliente']) ? $_POST['cliente'] : '');
 
 ?>
 <!DOCTYPE html>
@@ -81,7 +78,7 @@ endforeach;
 <body>
 	<!-- Header -->
 	<?php include_once('../inc/header.php') ?>
-
+	<input type="hidden" name="client" value="<?php echo $cSelected ?>">
 	<div class="block">
 		<div class="filtros_container">
 			<div class="filtros-Default filtros-100">   
@@ -90,17 +87,17 @@ endforeach;
 					<h3> FILTRAR POR:</h3>   
 					<select name="vendedor" id="svendedor">                     
 						<option value="">VENDEDOR</option>   
-						<?php Vendedor::options(); ?>  
+						<?php Vendedor::options($vSelected); ?>  
 					</select>    
 
 					<select name="cliente"  id="scliente">    
 						<option value="">CLIENTE</option> 
-						<?php Cliente::options(); ?> 
+						<?php Cliente::options($cSelected); ?> 
 					</select>  
 
 					<button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> VER LISTADO DE RESULTADOS </button>     
 					<input type="hidden" name="submit"> 
-					<a href="n_usuario.php?activo=2&sub=e"><button class="button-image" type="submit" ><img src="../layout/ver.png" alt=""> NUEVO CLIENTE </button></a>     
+					<a href="n_usuario.php?activo=2&sub=e"><button class="button-image btn-new-client" type="submit" ><img src="../layout/ver.png" alt=""> NUEVO CLIENTE </button></a>     
 				</form>    
 			</div>   
 		</div>
@@ -183,7 +180,6 @@ endforeach;
 						</div>	
 					</div>
 
-					?>	
 				</div>
 			</div>
 			<?php include_once('../inc/footer.php') ?>
@@ -203,11 +199,11 @@ endforeach;
 				var client_val = $('input[name="client"]').val();
 				if (client_val != "") {
 					$('#svendedor').trigger('change');
-        // $('option[value="'+client_val+'"]').attr('selected', 'true');
-        $('input[name="client"]').on('click', function(event) {
-        	$('option[value="'+client_val+'"]').attr('selected', '');
-        });
-    };
+		        // $('option[value="'+client_val+'"]').attr('selected', 'true');
+		        $('input[name="client"]').on('click', function(event) {
+		        	$('option[value="'+client_val+'"]').attr('selected', '');
+		        });
+		    };
 
 
     $('#svendedor').trigger('change');
@@ -220,7 +216,7 @@ endforeach;
     });
 
 
-    $('.button-image').click(function(event) {
+    $('.btn-new-client').click(function(event) {
     	event.preventDefault();
     	var url = $(this).parent().attr('href');
     	window.location.href = url;

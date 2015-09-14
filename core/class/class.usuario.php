@@ -111,25 +111,30 @@
 		}
 
 		public function byFilter(){
-			if(empty($_POST['vendedor']) && !empty($_POST['cliente'])):
+
+			if(!empty($_POST['vendedor']) && empty($_POST['cliente'])):
+
 				return $this->filterByVendedor($_POST['vendedor']);
-			elseif(!empty($_POST['vendedor']) && empty($_POST['cliente'])):
+
+			elseif(!empty($_POST['cliente'])):
+
 				return $this->filterByCliente($_POST['cliente']);
+
 			else:
 				return $this->getAll();
 			endif;
 		}
 
-		public function filterByVendedor(int $id){
-			$sel = $this->prepare(self::USUARIOS_BY_VENDEDOR);
+		public function filterByVendedor($id){
+			$sel = $this->prepare(self::USUARIO_BY_VENDEDOR);
 			$sel->bindParam(':id', $id, PDO::PARAM_INT);
 			$sel->execute();
 
 			return $sel->fetchAll();
 		}
 
-		public function filterByCliente(int $id){
-			$sel = $this->prepare(self::USUARIOS_BY_CLIENTE);
+		public function filterByCliente($id){
+			$sel = $this->prepare(self::USUARIO_BY_CLIENTE);
 			$sel->bindParam(':id', $id, PDO::PARAM_INT);
 			$sel->execute();
 

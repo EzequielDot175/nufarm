@@ -55,7 +55,7 @@ app.controller('FiltroController', ['$scope','ajax', function ($scope,ajax) {
 	$scope.filter = function(){
 		// console.info('JS', $scope.filtro);
 		ajax.post({get: 'filtrado' , parameters: $scope.filtro},function(a){
-			// console.info('RESPONSE', a);
+			console.info('RESPONSE', a);
 			$scope.filtroData = a;
 		});
 

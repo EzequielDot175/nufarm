@@ -3,6 +3,7 @@
 	// ini_set('display_errors', 'On');
 	define('APP_DIR', dirname(__FILE__));
 	require_once(APP_DIR.'/core/class/class.template.php');
+	require_once(APP_DIR.'/core/class/class.upload.php');
 	require_once(APP_DIR.'/core/mail/PHPMailerAutoload.php');
 	require_once(APP_DIR.'/core/excel/PHPExcel.php');
 	require_once(APP_DIR.'/core/interface/DBInterface.php');
