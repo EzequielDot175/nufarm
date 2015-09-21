@@ -3,6 +3,6 @@
 $_SESSION['MM_Username'] = "";
     $_SESSION['MM_UserGroup'] = "";
 	$_SESSION['MM_IdUsuario'] = "";
-	header ("Location: login.php"); 
+	header ("Location: ".LOGIN_NUFARM); 
 exit;
 ?>
