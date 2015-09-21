@@ -23,10 +23,6 @@ $password_conexion = "dot175";*/
 
 // define('LOGIN_NUFARM', 'value');
 // 
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
-die();
 
 if($_SERVER['HTTP_HOST'] == "localhost"):
 	define('LOGIN_NUFARM', 'http://localhost/ftp/loginNufarm');
