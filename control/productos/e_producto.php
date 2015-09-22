@@ -1,7 +1,7 @@
 <?php include_once('../resources/control.php'); header('Content-Type: text/html; charset=utf-8'); 
 include_once('helper_titulos.php');
 require_once('../../libs.php');
-error_reporting(E_ALL);
+error_reporting(0);
 ini_set('display_errors', 'On');
 ?>
 <!DOCTYPE html>
