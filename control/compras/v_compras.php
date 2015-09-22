@@ -1,6 +1,7 @@
 <?php 
 // error_reporting(E_ALL);
 // ini_set('display_errors', 'On');
+
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
 require_once('../../libs.php');
