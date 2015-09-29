@@ -1439,7 +1439,8 @@ h3 {
           font-size: 13px;
           color: #CCCCCC;
           line-height: 17px;
-          font-family: 'Lato', sans-serif; }
+          font-family: 'Lato', sans-serif;
+          font-weight: 300; }
           .detalle-productos .col-a .logo .inner p strong {
             display: block;
             text-transform: uppercase;
