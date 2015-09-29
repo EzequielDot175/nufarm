@@ -25,6 +25,14 @@
 <script src="assets/js/eventos.js"></script>
 <script src="assets/js/form.validator.js"></script>
 <script src="assets/js/Chart.min.js"></script>
+<script>
+	jQuery(document).ready(function($) {
+		$('#changeSection').change(function(event) {
+			event.preventDefault();
+			console.info('Reporting value:', $(this).val());
+		});
+	});
+</script>
 
 </body>
 </html>

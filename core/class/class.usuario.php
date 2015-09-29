@@ -71,6 +71,23 @@
 			
 		}
 
+		public function checkInit(){
+			$id = Auth::id();
+			$sel = $this->prepare(self::USUARIO_CHECK_INIT);
+			$sel->bindParam(':id', $id , PDO::PARAM_INT);
+			$sel->execute();
+
+			$result = $sel->fetch();
+		
+			// var_dump((Boolean)$result->init);
+			if(!(Boolean)$result->init):
+				Redirect::to('formulario-inicio.php');
+			endif;
+			
+			die();
+		}
+
+
 		public function edit($collection){
 			$collection['cumpleanos'] = self::formatBirthDay($collection);
 			$query = "UPDATE usuarios ";

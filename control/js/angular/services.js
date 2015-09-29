@@ -66,5 +66,26 @@ app.service('ajax', ['$http','$rootScope',function (ajax,root) {
 		};
 	}
 
+
+
+	this.formInit = function(){
+		return {
+			post: function(params,callback){
+				var extend = params;
+					extend.frontAjax = "";
+				ajax.post('control/ajax.front.php',extend).success(callback).error(function(data) {
+					console.error('Error ', data);
+				});
+			},
+			getUser: function(callback){
+				this.post({method: 'AuthUser'},callback);
+			},
+			basics: function(params,callback){
+				this.post({method: 'editAuth', data: params},callback);
+			}
+
+		}
+	}
+
 }])
 
