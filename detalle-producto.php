@@ -30,6 +30,7 @@
 			<div class="img">
 				<img src="images_productos/<?php echo($detalles->strImagen) ?>" alt="">
 			</div>
+			<?php if(!empty($detalles->message)): ?>
 			<div class="logo">
 				<div class="inner">
 					<img src="assets/images/nufarm-logo-box.png" class="img-responsive">
@@ -37,10 +38,11 @@
 						<strong>
 							LOGO: ATENCIÓN!
 						</strong>
-						Debido a la superficie reducida, este producto admite solo el logo de Nufarm.
+						<?php echo $detalles->message ?>
 					</p>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
 		<!--end / col-a-->
 

@@ -185,6 +185,9 @@ $type = $prod->defineType($id);
 <div class="tiform6">Maxima cantidad de compra</div>
 <input type="number" name="intMaxCompra" class="campo-prod" value="<?php echo $data->intMaxCompra;?>" />
 
+<div class="tiform6">Mensaje Especial</div>
+<textarea name="message" class="campo-prod-detalle valid"><?php echo $data->message ?></textarea>
+
 <div class="tiform6">Categoría</div>
 <input type="hidden" id="type_talle" value="<?php echo($type->type) ?>">
 

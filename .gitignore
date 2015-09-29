@@ -1,11 +1,4 @@
-<<<<<<< HEAD
+
 *.sass-cache
 images_productos/*
-=======
-.DS_STORE
-.DS_Store
-*.sass-cache
-control/resources/class.database.php
-control/class/DB.constant.php
-Connections/conexion.php
->>>>>>> ff99fec7c0283f8114524c51cbb54df9fccb403e
+images_clientes/*

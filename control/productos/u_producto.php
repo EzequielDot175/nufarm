@@ -23,9 +23,10 @@ $dblPrecio=$_POST['dblPrecio'];
 $intStock=	$_POST['intStock'];
 $destacado=$_POST['destacado'];
 
+$message = (empty($_POST['message']) ? '' : $_POST['message']); 
+
 $talles = $_POST['talle'];
 $color = $_POST['color'];
-
 
 
 
@@ -65,6 +66,8 @@ $prod->updCategoria($intCategoria, $idProducto);
 
 
 if($talles!=""){
+	die("1");
+
 	//limpio si habia algo en stock
 	$productos= new productos();
 	$productos->select($idProducto);
@@ -95,6 +98,7 @@ if($talles!=""){
 	$productos->intMinCompra=$intMinCompra;	
 	$productos->intMaxCompra=$intMaxCompra;	
 	$productos->update($idProducto);
+	$productos->message = $message;
 	
 	
 	#var_dump($talles);
@@ -115,6 +119,7 @@ if($talles!=""){
 // var_dump($color);
 else if($color)
 {	
+
 	include_once('classes/class.colores_productos.php');
 
 
@@ -122,6 +127,7 @@ else if($color)
 	
 
 
+	
 
 
 	//limpio si habia algo en stock
@@ -135,7 +141,7 @@ else if($color)
 	
 	
 	$productos->intStock = $sumatoria_colores_total;
-		
+	$productos->message = $message;
 	$productos->update($idProducto);
 
 
@@ -157,12 +163,15 @@ else if($color)
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;		
 	$productos->intMaxCompra=$intMaxCompra;		
+	$productos->message = $message;
 	$productos->update($idProducto);
+
 	
 
 
 	$colours = new colores_productos();
 	$colours->updateAllColours($color,$idProducto);
+
 
 	$msg_final .= '<div class="notify"><p>producto actualizado! <a href="../productos/e_producto.php?id='.$idProducto.'&activo=2&sub=d">Ver</a></p></div>';
 }
@@ -182,7 +191,8 @@ elseif (isset($_POST["color_talle"])) {
 	$x->dblPrecio=$dblPrecio;
 	$x->destacado=$destacado;
 	$x->intMinCompra=$intMinCompra;		
-	$x->intMaxCompra=$intMaxCompra;		
+	$x->intMaxCompra=$intMaxCompra;
+	$x->message = $message;	
 	$x->save();
 
 	foreach($_POST["color_talle"] as $k => $v):
@@ -222,6 +232,7 @@ else
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;
 	$productos->intMaxCompra= (is_null($intMaxCompra) ? 'NULL' : $intMaxCompra);
+	$productos->message = $message;
 	$productos->update($idProducto);
 
 	$msg_final .= '<div class="notify"><p>producto actualizado!</p></div>';
@@ -233,6 +244,11 @@ else
 	// die();
 
 }
+
+
+
+
+
 // $_SESSION['msg_ok'] = $msg_final;
 @header('Location: ./v_productos.php?activo=2&sub=d');
 exit();
