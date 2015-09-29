@@ -9,10 +9,57 @@
             .col-a{
                    width: 40.7%;
                     margin-right: 2px;
+                    position: relative;
+
+                    .logo{
+                    	background-image: url('../images/logo-box-top.png');
+                    	position: absolute;
+                    	background-position: center top;
+                    	background-repeat: no-repeat;
+                    	bottom: -135px;
+                    	left: 0;
+                    	padding-top: 3.4%;
+                    	background-size: 105%;
+                    	width: 95%;
+
+                    	.inner{
+                    		padding: 30px 15px 20px 15px;
+                    		background-color: rgba(255,255,255, .16);
+                    		float: left;
+                    		border-top: 0;
+                    		border-left: 1px solid rgba(255,255,255, .2);
+	                    	border-right: 1px solid rgba(255,255,255, .2);
+	                    	border-bottom: 1px solid rgba(255,255,255, .2);
+
+	                    	img{
+	                    		float: left;
+	                    		display: inline-block;
+	                    		margin-right: 20px;
+	                    	}
+
+	                    	p{
+	                    		float: left;
+	                    		display: inline-block;
+	                    		width: 70%;
+	                    		font-size: 13px;
+	                    		color: #CCCCCC;
+	                    		line-height: 17px;
+	                    		font-family: 'Lato', sans-serif;
+
+	                    		strong{
+	                    			display: block;
+	                    			text-transform: uppercase;
+	                    			font-size: 11px;
+	                    			color: white;
+	                    		}
+	                    	}
+                    	}
+                    }
               }
 
               .col-b{
                      width: 58.7%;
+                     margin-bottom: 50px;
               }
 
             .block{
@@ -230,6 +277,11 @@
     .detalle-productos .col-a {
         width: 100%;
         margin-right: 0%;
+        margin-bottom: 35%;
+
+        .logo{
+        	width: 100%;
+        }
     }
 
     .detalle-productos .col-b {
@@ -273,7 +325,23 @@
 
 /**  TABLETS LANDSCAPE **/
 @media screen and (min-width: 771px) and (max-width : 980px){
+	.detalle-productos .col-a {
+		.logo{
+			top: 110%;
 
+			.inner{
+				text-align: center;
+				img{
+					display: block;
+					margin: 0 auto;
+					float: none;
+				}
+				p{
+					width: 100%;
+				}
+			}
+		}
+	}
     .detalle-productos .block .img {
         width: 100%;
         margin: 0;

@@ -15,10 +15,10 @@
 <!-- Header -->
 
 <!--detalle productos-->
-	<div class="detalle-productos col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+	<div class="detalle-productos col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 		<!--buscador-->
-		<div class="buscador col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+		<div class="buscador col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="filtros">
 				<!--<input type="text" name="" value="">-->
 			</div>
@@ -26,18 +26,29 @@
 		<!--end / buscador-->
 
 		<!--col-a-->
-		<div class="col-a block background-a col-xs-12 col-sm-4 col-md-4 ol-lg-4">
+		<div class="col-a block background-a col-xs-12 col-sm-4 col-md-4 col-lg-4">
 			<div class="img">
 				<img src="images_productos/<?php echo($detalles->strImagen) ?>" alt="">
+			</div>
+			<div class="logo">
+				<div class="inner">
+					<img src="assets/images/nufarm-logo-box.png" class="img-responsive">
+					<p>
+						<strong>
+							LOGO: ATENCIÓN!
+						</strong>
+						Debido a la superficie reducida, este producto admite solo el logo de Nufarm.
+					</p>
+				</div>
 			</div>
 		</div>
 		<!--end / col-a-->
 
 
 		<!--col-b-->
-		<div class="col-b col-xs-12 col-sm-8 col-md-8 ol-lg-8">
+		<div class="col-b col-xs-12 col-sm-8 col-md-8 col-lg-8">
 			
-			<div class=" block block-head background-a col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+			<div class=" block block-head background-a col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="block-puntos">
 					<p class="num"><?php echo($detalles->dblPrecio) ?></p>
 					<p class="text text-uppercase">puntos</p>
@@ -46,7 +57,7 @@
 				<p class="descripcion"><?php echo($detalles->strDetalle) ?></p>
 			</div>
 
-			<div class=" block background-b col-xs-12 col-sm-12 col-md-12 ol-lg-12">
+			<div class=" block background-b col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<!-- titulo general -->
 				<h3 class="text-uppercase sub-titulo">PEDIDO</h3>
 				<!--end / titulo general -->
