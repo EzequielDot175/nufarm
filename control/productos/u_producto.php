@@ -36,6 +36,10 @@ $color = $_POST['color'];
  * PHP magico....
  */
 
+
+if(!empty($_FILES['strImagen']['name'])):
+
+
 core\Upload::ifExist('strImagen',function($class){
 	
 	$file = $class::file('strImagen');
@@ -56,6 +60,7 @@ core\Upload::ifExist('strImagen',function($class){
 
 });
 
+endif;
 
 
 $prod = new Producto();
