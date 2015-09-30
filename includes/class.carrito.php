@@ -240,12 +240,12 @@ if($requiere_talles==1){
 				
 				$detalle_productos .= '
 				<div class="purchase">
-				<img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
+				<img src="http://nufarm-maxx.com/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
 				<span class="tit22"> '.$strNombre.'</span>
 				<span class="cant"> Cant: '.$intCantidad.' </span>
 				<span class="cant"> Talle: '.$nombre_de_talle.' </span>
-				<span class="tot_1"> $'.$dblPrecio.'</span>
-				<span class="tot_2"> Total: $ '.$intCantidad * $dblPrecio.'</span></div>';
+				<span class="tot_1"> '.$dblPrecio.'</span>
+				<span class="tot_2"> Total: '.$intCantidad * $dblPrecio.'</span></div>';
 				
 				//quito del stock
 				$detalle_para_guardar_por_id[] = array(
@@ -272,7 +272,7 @@ if($requiere_talles==1){
 				$total = $dblPrecio * $intCantidad;
 				
 			}else{
-				$detalle_productos .='<p>&#8226; <span style="font-size:10px"> ID:'.$idProducto.'</span> '.$strNombre.'<br> Cantidad solicitada:'.$intCantidad.',  NO DISPONIBLE - $ 0.00 </p>';
+				$detalle_productos .='<p>&#8226; <span style="font-size:10px"> ID:'.$idProducto.'</span> '.$strNombre.'<br> Cantidad solicitada:'.$intCantidad.',  NO DISPONIBLE -  0.00 </p>';
 				$total = 0;
 				$detalle_para_guardar_por_id[] = array(
 				'id_producto' => $idProducto, 
@@ -314,12 +314,12 @@ if($requiere_talles==1){
 				
 				$detalle_productos .= '
 				<div class="purchase">
-				<img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
+				<img src="http://nufarm-maxx.com/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
 				<span class="tit22"> '.$strNombre.'</span>
 				<span class="cant"> Cant: '.$intCantidad.' </span>
 				<span class="cant"> Color: '.$nombre_de_color.' </span>
-				<span class="tot_1"> $'.$dblPrecio.'</span>
-				<span class="tot_2"> Total: $ '.$intCantidad * $dblPrecio.'</span></div>';
+				<span class="tot_1"> '.$dblPrecio.'</span>
+				<span class="tot_2"> Total:  '.$intCantidad * $dblPrecio.'</span></div>';
 				
 				//quito del stock
 				$detalle_para_guardar_por_id[] = array(
@@ -346,7 +346,7 @@ if($requiere_talles==1){
 				$total = $dblPrecio * $intCantidad;
 				
 			}else{
-				$detalle_productos .='<p>&#8226; <span style="font-size:10px"> ID:'.$idProducto.'</span> '.$strNombre.'<br> Cantidad solicitada:'.$intCantidad.',  NO DISPONIBLE - $ 0.00 </p>';
+				$detalle_productos .='<p>&#8226; <span style="font-size:10px"> ID:'.$idProducto.'</span> '.$strNombre.'<br> Cantidad solicitada:'.$intCantidad.',  NO DISPONIBLE -  0.00 </p>';
 				$total = 0;
 				$detalle_para_guardar_por_id[] = array(
 				'id_producto' => $idProducto, 
@@ -389,13 +389,13 @@ if($requiere_talles==1){
 	
 		$detalle_productos .= '
 		<div class="purchase">
-		<img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
+		<img src="http://nufarm-maxx.com/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
 		<span class="tit22"> '.$strNombre.'</span>
 		<span class="cant"> Cant: '.$intCantidad.' </span>
 		<span class="cant"> Color: '.$nom_color.' </span>
 		<span class="cant"> Talle: '.$nom_talle.' </span>
-		<span class="tot_1"> $'.$dblPrecio.'</span>
-		<span class="tot_2"> Total: $ '.$intCantidad * $dblPrecio.'</span></div>';
+		<span class="tot_1"> '.$dblPrecio.'</span>
+		<span class="tot_2"> Total:  '.$intCantidad * $dblPrecio.'</span></div>';
 				
 				//quito del stock
 		$detalle_para_guardar_por_id[] = array(
@@ -428,12 +428,12 @@ if($requiere_talles==1){
 	//compruebo que haya producto en stock
 	if($strintStock >=1){
 	   	$detalle_productos .= '<div class="purchase">
-		<img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
+		<img src="http://nufarm-maxx.com/imagenes/marketingnet-mail_FLECHITA-04.jpg" width="8" height="11">
 		<span class="tit22"> '.$strNombre.'</span>
 		<span class="cant"> Cant: '.$intCantidad.' </span>
 		<span class="cant"> </span>
-		<span class="tot_1"> $'.$dblPrecio.'</span>
-		<span class="tot_2"> Total: $ '.$intCantidad * $dblPrecio.'</span></div>';
+		<span class="tot_1"> '.$dblPrecio.'</span>
+		<span class="tot_2"> Total:  '.$intCantidad * $dblPrecio.'</span></div>';
 	   	$detalle_para_guardar_por_id[] = array(
 	   	'id_producto' => $idProducto, 
 	   	'nombre' => $strNombre,
@@ -455,7 +455,7 @@ if($requiere_talles==1){
 	   	$total = $dblPrecio * $intCantidad;
 	   	
    	}else{
-	   	$detalle_productos .='<p>&#8226; <span style="font-size:10px">  ID:'.$idProducto.'</span> '.$strNombre.', <br> Cant: NO DISPONIBLE - $ 0.00 </p>';
+	   	$detalle_productos .='<p>&#8226; <span style="font-size:10px">  ID:'.$idProducto.'</span> '.$strNombre.', <br> Cant: NO DISPONIBLE -  0.00 </p>';
 	   	$total = 0;
 	   	$detalle_para_guardar_por_id[] = array(
 	   	'id_producto' => $idProducto, 
@@ -485,7 +485,7 @@ $final_con_iva = $valor_general + $valor_general * $IVA / 100;
 if($valor_general >= 1){
 	$detalle_titulo ="<div class='purchase_container'><h2 class='finalizado'>Su canje se realizo de forma exitosa!</h2>";
 	$detalle_productos .='</div>
-	<div class="purchase_end">Total final: $'.$valor_general.'</div> 
+	<div class="purchase_end">Total final: '.$valor_general.'</div> 
 	
 	<!--<span style="font-size:10px; text-transform:uppercase;">Con IVA:</span> 
 	$'.$final_con_iva.'</p>-->

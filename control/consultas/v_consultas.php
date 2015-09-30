@@ -1,4 +1,5 @@
 <?php 
+@session_start();
 include_once('../resources/control.php');
 include_once('helper_titulos.php');
 error_reporting(E_ALL);

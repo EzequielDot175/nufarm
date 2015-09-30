@@ -62,7 +62,7 @@ ob_start();
 
 		public static function id(){
 			self::start();
-			return (int)$_SESSION['MM_IdUsuario'];
+			return (int) (isset($_SESSION['MM_IdUsuario']) ? $_SESSION['MM_IdUsuario'] : '');
 		}
 
 

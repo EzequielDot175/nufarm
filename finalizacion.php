@@ -135,7 +135,7 @@ if($checkout){
 	$info_usuario = '
 				<table width="500" border="0" align="center" cellpadding="5" cellspacing="5">
   <tr>
-    <td colspan="3"><img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mail_ADMIN-03.jpg" width="500" height="197"></td>
+    <td colspan="3"><img src="http://nufarm-maxx.com/imagenes/marketingnet-mail_ADMIN-03.jpg" width="500" height="197"></td>
   </tr>
   <tr>
     <td width="3">&nbsp;</td>
@@ -237,8 +237,8 @@ if($checkout){
 		$msg .='
 		  <tr>
     <td height="39">&nbsp;</td>
-    <td align="left" valign="top"><p class="miniatura"><img src="http://www.productosnufarm.com.ar/imagenes/marketingnet-mailINFO-04.jpg" width="17" height="17" align="left">Consulte el detalle del pedido en www.productosnufarm.com/control</p>
-    <span style="text-align: right">    <span class="BOLD">nufarm.com/ar</span><br>
+    <td align="left" valign="top"><p class="miniatura"><img src="http://nufarm-maxx.com/imagenes/marketingnet-mailINFO-04.jpg" width="17" height="17" align="left">Consulte el detalle del pedido en nufarm-maxx.com/control</p>
+    <span style="text-align: right">    <span class="BOLD">nufarm-maxx.com</span><br>
     </span>
     <hr noshade></td>
     <td>&nbsp;</td>
@@ -257,7 +257,7 @@ if($checkout){
 		$mail->Username = 'mknet@productosnufarm.com';                            // SMTP username
 		$mail->Password = 'mkn1243';                           // SMTP password
 		$mail->SMTPSecure = 'tls';                              // Enable encryption, 
-		$mail->From = 'mknet@productosnufarm.com';
+		$mail->From = 'maxx@nufarm-maxx.com';
 		$mail->FromName = 'MarketingNet ';
 		// $mail->addAddress('mknet@productosnufarm.com', '--');
 		$mail->addAddress('ezequiel@dot175.com', '--');
