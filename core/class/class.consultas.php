@@ -132,7 +132,7 @@
 			if(self::postHas('vendedores') && self::postHas('estado')):
 
 				$vendedores =  ( isset($_POST['vendedores']) ? $_POST['vendedores'] : '');
-				$estado = ( isset($_POST['estado']) ? $_POST['estado'] : '')
+				$estado = ( isset($_POST['estado']) ? $_POST['estado'] : '');
 			
 				if(empty($vendedores)):
 					return $this->getAdmin();
