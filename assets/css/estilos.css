@@ -16,6 +16,7 @@
  * 3. Corrects text resizing oddly in IE 6/7 when body `font-size` is set using
  *  `em` units.
  */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -1407,9 +1408,47 @@ h3 {
   width: 100%; }
   .detalle-productos .col-a {
     width: 40.7%;
-    margin-right: 2px; }
+    margin-right: 2px;
+    position: relative; }
+    .detalle-productos .col-a .logo {
+      background-image: url("../images/logo-box-top.png");
+      position: absolute;
+      background-position: center top;
+      background-repeat: no-repeat;
+      bottom: -135px;
+      left: 0;
+      padding-top: 3.4%;
+      background-size: 105%;
+      width: 95%; }
+      .detalle-productos .col-a .logo .inner {
+        padding: 30px 15px 20px 15px;
+        background-color: rgba(255, 255, 255, 0.16);
+        float: left;
+        border-top: 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .detalle-productos .col-a .logo .inner img {
+          float: left;
+          display: inline-block;
+          margin-right: 20px; }
+        .detalle-productos .col-a .logo .inner p {
+          float: left;
+          display: inline-block;
+          width: 70%;
+          font-size: 13px;
+          color: #CCCCCC;
+          line-height: 17px;
+          font-family: 'Lato', sans-serif;
+          font-weight: 300; }
+          .detalle-productos .col-a .logo .inner p strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 11px;
+            color: white; }
   .detalle-productos .col-b {
-    width: 58.7%; }
+    width: 58.7%;
+    margin-bottom: 50px; }
   .detalle-productos .block {
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -1552,7 +1591,10 @@ h3 {
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .detalle-productos .col-a {
     width: 100%;
-    margin-right: 0%; }
+    margin-right: 0%;
+    margin-bottom: 35%; }
+    .detalle-productos .col-a .logo {
+      width: 100%; }
 
   .detalle-productos .col-b {
     width: 100%;
@@ -1579,6 +1621,17 @@ h3 {
 /*tablet----------------------------------------*/
 /**  TABLETS LANDSCAPE **/
 @media screen and (min-width: 771px) and (max-width: 980px) {
+  .detalle-productos .col-a .logo {
+    top: 110%; }
+    .detalle-productos .col-a .logo .inner {
+      text-align: center; }
+      .detalle-productos .col-a .logo .inner img {
+        display: block;
+        margin: 0 auto;
+        float: none; }
+      .detalle-productos .col-a .logo .inner p {
+        width: 100%; }
+
   .detalle-productos .block .img {
     width: 100%;
     margin: 0;

@@ -20,6 +20,7 @@ var $strImagen;
 var $strImagen2;
 var $strImagen3;
 var $destacado;
+var $message;
 var $database; // Instance of class database
 
 
@@ -47,6 +48,7 @@ function getstrImagen(){return $this->strImagen;}
 function getstrImagen2(){return $this->strImagen2;}
 function getstrImagen3(){return $this->strImagen3;}
 function getdestacado(){return $this->destacado;}
+function getmessage(){return $this->message;}
 
 /* SETTER METHODS */
 function setidProducto($val){ $this->idProducto =  $val;}
@@ -61,6 +63,7 @@ function setstrImagen($val){ $this->strImagen =  $val;}
 function setstrImagen2($val){ $this->strImagen2 =  $val;}
 function setstrImagen3($val){ $this->strImagen3 =  $val;}
 function setdestacado($val){ $this->destacado =  $val;}
+function setmessage($val){ $this->message =  $val;}
 
 /* SELECT METHOD / LOAD */
 function select($id){
@@ -82,6 +85,7 @@ function select($id){
 	$this->strImagen2 = $row->strImagen2;
 	$this->strImagen3 = $row->strImagen3;
 	$this->destacado = $row->destacado;
+	$this->message = $row->message;
 
 }
 
@@ -107,7 +111,7 @@ function select_busqueda($search){
 		$strImagen3 = $row['strImagen3'];
 		$destacado = $row['destacado'];
 
-//veo si requiere talles
+		//veo si requiere talles
 		$categorias= new categorias();
 		$categorias->select($intCategoria);
 		$talles=$categorias->gettalles();
@@ -189,7 +193,7 @@ function select_busqueda($search){
 				{
 					$talles_item .="";
 				}
-//fin talles
+		//fin talles
 
 				$item_prod="";
 				if($strImagen)
@@ -325,7 +329,7 @@ function select_busqueda($search){
 						$strImagen2 = $row['strImagen2'];
 						$strImagen3 = $row['strImagen3'];
 						$destacado = $row['destacado'];
-//veo si requiere talles
+			//veo si requiere talles
 						$categorias= new categorias();
 						$categorias->select($intCategoria);
 						$talles=$categorias->gettalles();
@@ -425,7 +429,7 @@ function select_busqueda($search){
 		//////////////////////////////////////////////////////////SI ES DESTACADO LE CAMBIO EL COLOR DEL CIRCULO
 								if($destacado==1 or $destacado==2 or $destacado==3 )
 								{
-//CON IMAGEN DESTACADO
+			//CON IMAGEN DESTACADO
 									$item .= '
 
 									<div class="item-content-prod">
@@ -594,7 +598,7 @@ function delete($id){
 function insert(){
 $this->idProducto = ""; // clear key for autoincrement
 
-$sql = "INSERT INTO productos ( strNombre,strDetalle,intCategoria,dblPrecio,intStock,strImagen,strImagen2,strImagen3 ) VALUES ( '$this->strNombre','$this->strDetalle','$this->intCategoria','$this->dblPrecio','$this->intStock','$this->strImagen','$this->strImagen2','$this->strImagen3' )";
+$sql = "INSERT INTO productos ( strNombre,strDetalle,intCategoria,dblPrecio,intStock,intMinCompra,intMaxCompra,strImagen,strImagen2,strImagen3 ) VALUES ( '$this->strNombre','$this->strDetalle','$this->intCategoria','$this->dblPrecio','$this->intStock','$this->intMinCompra','$this->intMaxCompra','$this->strImagen','$this->strImagen2','$this->strImagen3' )";
 $result = $this->database->query($sql);
 return $this->idProducto = mysql_insert_id($this->database->link);
 
@@ -605,13 +609,15 @@ return $this->idProducto = mysql_insert_id($this->database->link);
 
 function update($id){
 
-	
-	$sql = " UPDATE productos SET strNombre = '$this->strNombre',intMaxCompra = $this->intMaxCompra ,intMinCompra = $this->intMinCompra,strDetalle = '$this->strDetalle',intCategoria = '$this->intCategoria',dblPrecio = '$this->dblPrecio',intStock = '$this->intStock',strImagen = '$this->strImagen',strImagen2 = '$this->strImagen2',strImagen3 = '$this->strImagen3' ,destacado = '$this->destacado' WHERE idProducto = $id ";
+	$sql = " UPDATE productos SET strNombre = '$this->strNombre', message = '$this->message', intMaxCompra = ".(int)$this->intMaxCompra." ,intMinCompra = $this->intMinCompra,strDetalle = '$this->strDetalle',intCategoria = '$this->intCategoria',dblPrecio = '$this->dblPrecio',intStock = '$this->intStock',strImagen = '$this->strImagen',strImagen2 = '$this->strImagen2',strImagen3 = '$this->strImagen3' ,destacado = '$this->destacado' WHERE idProducto = $id ";
+
 
 	$this->database->query($sql);
 
 }
 
 } // class : end
+
+
 
 ?>

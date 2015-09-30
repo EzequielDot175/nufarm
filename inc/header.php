@@ -45,10 +45,10 @@
 				<img src="assets/images/Nufarm-max-logo.png" id="Nufarm" title="Nufarm" alt="Imagen no encontrada">
 				<div class="block">
 					<img class="icon-select " src="assets/images/flecha-select.png" id="Nufarm" title="Nufarm" alt="Imagen no encontrada">
-					<select class="form-control">
-						<option class="text-uppercase option">MARKETING NET</option>
-						<option class="text-uppercase option">PLAN DE NEGOCIOS</option>
-						<option class="text-uppercase option">VENDEDOR ESTRELLA</option>
+					<select class="form-control" id="changeSection">
+						<option selected="" class="text-uppercase option">MARKETING NET</option>
+						<option value="/plan-de-negocios" class="text-uppercase option">PLAN DE NEGOCIOS</option>
+						<option value="/vendedor-estrella" class="text-uppercase option">VENDEDOR ESTRELLA</option>
 					</select>
 					<div class="logout">
 						<a href="salir.php"><p class="text-uppercase">salir</p></a>
@@ -57,6 +57,7 @@
 				</div>
 			</div>
 		</div>
+
 
 		<!-- MENU************************************************************************-->
 		<nav class="menu navbar col-xs-12 col-sm-12 col-md-12 ol-lg-12">

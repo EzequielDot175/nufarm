@@ -21,6 +21,15 @@ $password_conexion = "dot175";*/
 // $username_conexion = "pnufarm_pnufarm";
 // $password_conexion = "pnufarm123";
 
+// define('LOGIN_NUFARM', 'value');
+// 
+
+if($_SERVER['HTTP_HOST'] == "localhost"):
+	define('LOGIN_NUFARM', 'http://localhost/ftp/loginNufarm');
+else:
+	define('LOGIN_NUFARM', "http://".$_SERVER['HTTP_HOST']);
+endif;
+
 // NUFARM MAX
 $hostname_conexion = "localhost";
 $database_conexion = "nmaxx_develop";

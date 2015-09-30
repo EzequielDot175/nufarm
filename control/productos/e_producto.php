@@ -1,7 +1,7 @@
 <?php include_once('../resources/control.php'); header('Content-Type: text/html; charset=utf-8'); 
 include_once('helper_titulos.php');
 require_once('../../libs.php');
-error_reporting(E_ALL);
+error_reporting(0);
 ini_set('display_errors', 'On');
 ?>
 <!DOCTYPE html>
@@ -184,6 +184,9 @@ $type = $prod->defineType($id);
 
 <div class="tiform6">Maxima cantidad de compra</div>
 <input type="number" name="intMaxCompra" class="campo-prod" value="<?php echo $data->intMaxCompra;?>" />
+
+<div class="tiform6">Mensaje Especial</div>
+<textarea name="message" class="campo-prod-detalle valid"><?php echo $data->message ?></textarea>
 
 <div class="tiform6">Categoría</div>
 <input type="hidden" id="type_talle" value="<?php echo($type->type) ?>">

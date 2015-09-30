@@ -6,7 +6,9 @@
 	{
 		use Facade;
 
-		public $error = ""; 
+		public $error = "";
+		private $limit;
+		private $offset;
 		
 		public function __construct()
 		{
@@ -29,6 +31,42 @@
 			endif;
 		}
 
+
+		public function checkPoints(){
+			$user = Auth::User();
+			$ShoppingCart = new ShoppingCart();
+			$ShoppingCart->all();
+			$credit = $user->dblCredito;
+			$total = $ShoppingCart->getTotal();
+			if( ($credit - $total) < 0):
+				return false;
+			else:
+				return true;
+			endif;
+
+		
+
+		}
+
+		public static function sCheckPoints(){
+			return self::method('checkPoints');
+		}
+
+		public function getAll($page = 0,$limit = 20){
+			$page = (isset($_GET['page']) && !empty($_GET['page']) ? $_GET['page'] : 0);
+			$offset = ($page != 1 && $page != 0 ? $page*$limit : 0);
+
+			$this->limit = $limit;
+			$this->offset = $offset;
+
+			$sel = $this->prepare(self::USUARIO_ALL);
+			$sel->bindParam(':lim', $limit, PDO::PARAM_INT);
+			$sel->bindParam(':off', $offset, PDO::PARAM_INT);
+			$sel->execute();
+
+			return $sel->fetchAll(); 
+			
+		}
 
 		public function byId($id){
 			$sel = $this->prepare(self::USUARIO_BY_ID);
@@ -53,6 +91,23 @@
 			endif;
 			
 		}
+
+		public function checkInit(){
+			$id = Auth::id();
+			$sel = $this->prepare(self::USUARIO_CHECK_INIT);
+			$sel->bindParam(':id', $id , PDO::PARAM_INT);
+			$sel->execute();
+
+			$result = $sel->fetch();
+		
+			// var_dump((Boolean)$result->init);
+			if(!(Boolean)$result->init):
+				Redirect::to('formulario-inicio.php');
+			endif;
+			
+			die();
+		}
+
 
 		public function edit($collection){
 			$collection['cumpleanos'] = self::formatBirthDay($collection);
@@ -89,6 +144,53 @@
 			$upd->bindParam(':id',$id,PDO::PARAM_INT);
 			$upd->execute();
 		}
+		public function setLimit(int $limit){
+			$this->limit = $limit;
+		}
+
+		public function byFilter(){
+
+			if(!empty($_POST['vendedor']) && empty($_POST['cliente'])):
+
+				return $this->filterByVendedor($_POST['vendedor']);
+
+			elseif(!empty($_POST['cliente'])):
+
+				return $this->filterByCliente($_POST['cliente']);
+
+			else:
+				return $this->getAll();
+			endif;
+		}
+
+		public function filterByVendedor($id){
+			$sel = $this->prepare(self::USUARIO_BY_VENDEDOR);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->execute();
+
+			return $sel->fetchAll();
+		}
+
+		public function filterByCliente($id){
+			$sel = $this->prepare(self::USUARIO_BY_CLIENTE);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->execute();
+
+			return $sel->fetchAll();
+		}
+
+		public function getPages(){
+
+			$sel = $this->prepare(self::USUARIO_PAGES);
+			$sel->bindParam(':lim', $this->limit);
+			$sel->execute();
+
+			return $sel->fetch()->pages;
+		}
+
+		public static function all($page = 0, $limit = 20){
+			return self::method('getAll',$page,$limit);
+		}
 
 		public static function sumConsumido(){
 			return self::method('updateDblConsumido');
@@ -97,5 +199,10 @@
 		public static function getById($id){
 			return self::method('byId', $id);
 		}
+
+		public static function pages(){
+			return self::method('getPages');
+		}
+
 	}
  ?>

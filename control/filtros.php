@@ -20,6 +20,7 @@
 
 		<!-- CSS de -->
 		<link rel="stylesheet" type="text/css" media="all" href="layout/main.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="layout/tables.css" />
 
 		<style>
 			.resultados{
@@ -222,7 +223,7 @@
 					</form>
 					<!-- end / form-->
 
-					
+
 
 					<!-- resultados-->
 					<div class="resultados">
@@ -242,6 +243,8 @@
 						-->
 							
 						<!-- item -->
+
+					
 						<div class="item" ng-repeat="(key, value) in filtroData">
 						 	<table >
 								<tr class="tablaDetalle tablaDefault"  ng-repeat="(k, v) in value" ng-if="k != 'total'">
@@ -315,6 +318,156 @@
 			</div>
 			<!--END / FILTROS-->
 
+		</div>
+		<div class="prod_container block-resultados" style="margin-top: 4px;">
+			<section class="filters-table">
+	            <h3>
+	            	Resultados:
+	            </h3>
+	            <div id="table-header">
+	                <div>
+	                    <p>producto</p>
+	                </div>
+	                <div>
+	                    <p>total puntos</p>
+	                </div>
+	                <div>
+	                    <p>color</p>
+	                </div>
+	                <div>
+	                    <p>cantidad</p>
+	                </div>
+	                <div>
+	                    <p>talle</p>
+	                </div>
+	                <div>
+	                    <p>remito</p>
+	                </div>
+	                <div>
+	                    <p>estado</p>
+	                </div>
+	            </div>
+
+	            <div class="table-item">
+	            	<div class="item-top">
+	            		<p>
+	            			30/07/2015 21:44
+	            		</p>
+	            		<p>
+            				ACEITERA GENERAL DEHEZA S.A. <span>|</span> VENDEDOR RTC: FELIPE YOFRE
+	            		</p>
+	            	</div>
+
+	            	<div class="prod-list">
+	            		
+	            		<div class="prod-item">
+	            			
+	            			<div class="prod-det">
+	            				<div>
+		            				<img src="../images_productos/19082015-Nufarm-Maxx-termo-bala-1-litro-01.png"/>
+		            				<p class="name">
+		            					MOCHILA SPINIT
+
+		            					<span>
+		            						150
+		            					</span>
+		            				</p>
+	            				</div>
+	            			</div>
+
+	            			<div class="pts">
+	            				<p>
+	            					500
+            					</p>
+	            			</div>
+
+	            			<div class="color">
+	            				<p>
+            						verde
+        						</p>
+	            			</div>
+
+	            			<div class="cant">
+	            				<p>
+	            					5 U
+            					</p>
+	            			</div>
+
+	            			<div class="size">
+	            				<p>
+	            					xl
+            					</p>
+	            			</div>
+
+	            			<div class="pre-bill">
+	            				<p>
+	            					12345566
+            					</p>
+	            			</div>
+
+	            			<div class="status">
+	            				<p>
+	            					pedido enviado
+	            				</p>
+	            			</div>
+	            		</div>
+
+	            		<div class="prod-item">
+	            			
+	            			<div class="prod-det">
+	            				<div>
+		            				<img src="../images_productos/19082015-Nufarm-Maxx-termo-bala-1-litro-01.png"/>
+		            				<p class="name">
+		            					MOCHILA SPINIT
+
+		            					<span>
+		            						150
+		            					</span>
+		            				</p>
+	            				</div>
+	            			</div>
+
+	            			<div class="pts">
+	            				<p>
+	            					500
+            					</p>
+	            			</div>
+
+	            			<div class="color">
+	            				<p>
+            						verde
+        						</p>
+	            			</div>
+
+	            			<div class="cant">
+	            				<p>
+	            					5 U
+            					</p>
+	            			</div>
+
+	            			<div class="size">
+	            				<p>
+	            					xl
+            					</p>
+	            			</div>
+
+	            			<div class="pre-bill">
+	            				<p>
+	            					12345566
+            					</p>
+	            			</div>
+
+	            			<div class="status">
+	            				<p>
+	            					pedido enviado
+	            				</p>
+	            			</div>
+	            		</div>
+	            		
+	            	</div>
+
+	            </div>
+            </section>
 		</div>
 	</div>
 	<!-- END / PAGE -->

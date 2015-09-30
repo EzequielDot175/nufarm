@@ -11,7 +11,8 @@
 
 
 		public static function to($header){
-			header('location: '.$header);
+			ob_start();
+			@header('location: '.$header);
 			exit();
 		}
 	}

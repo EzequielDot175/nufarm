@@ -15,10 +15,12 @@
 			$this->id = (int)$id;
 			parent::__construct();
 		}
-		public function all(){
+		public function all($isAdmin = false){
 
 			$collection = $this->query(self::PRODUCTO_ALL)->fetchAll();
-		
+			
+
+
 			foreach($collection as $key => $val):
 				$type = $this->defineType($val->idProducto);
 				
@@ -42,11 +44,13 @@
 				endswitch;
 			endforeach;
 			
-			foreach($collection as $key => $val):
-				if($val->intStock < 1):
-				unset($collection[$key]);				
-				endif;
-			endforeach;
+			if(!$isAdmin):
+				foreach($collection as $key => $val):
+					if($val->intStock < 1):
+					unset($collection[$key]);				
+					endif;
+				endforeach;
+			endif;
 
 			return $collection;
 		}
@@ -136,6 +140,14 @@
 			else:
 				return $meta->fetch();			
 			endif;
+		}
+
+		public function updImage($img, $id){
+			$upd = $this->prepare(self::PRODUCTO_UPD_IMAGE);
+			$upd->bindParam(':img', $img, PDO::PARAM_STR);
+			$upd->bindParam(':id', $id, PDO::PARAM_INT);
+			$upd->execute();
+			return $upd->rowCount();
 		}
 
 		/**

@@ -1,4 +1,5 @@
 <?php @session_start(); error_reporting(0);
+require_once('../../libs.php');
 if(!$_SESSION['logged_id']){
 //header('Location: http://www.productosnufarm.com.ar/control');
  header('Location: http://localhost/');
@@ -16,6 +17,13 @@ define('BASEURL', $_SESSION['basecontrol']);
 $sa = explode('/', $_SERVER['PHP_SELF']);
 
 $sa = array_pop($sa);
+
+
+if(!isset($_SESSION['logged_role'])):
+	$vendedor =  new Vendedor();
+	$role = $vendedor->getRole($_SESSION['logged_id']);
+	$_SESSION['logged_role'] = $role;
+endif;
 
 check_permission($sa, $_SESSION['logged_role']);
 

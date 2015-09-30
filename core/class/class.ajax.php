@@ -106,6 +106,10 @@
 			print_r($user);
 		}
 
+		private static function AuthUser(){
+			echo json_encode(Auth::User());
+		}
+
 		private static function getByCliente(){
 			$obj = self::post('data');
 			$obj = (Object) $obj;
@@ -144,6 +148,9 @@
 
 		}
 
+		private static function editAuth(){
+			print_r(self::post('data'));
+		}
 
 
 		private static function post($name){

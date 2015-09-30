@@ -1,0 +1,468 @@
+#table-header{
+	float: left;
+	width: 100%;
+}
+
+#table-header div{
+	background: #009448;
+	float: left;
+	border-right: 1px solid rgba(255, 0, 0, .0);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+#table-header div:last-child{
+	border: 0;
+}
+
+#table-header div p{
+	color: #FFF;
+	font-family: 'Gotham-Medium';
+	font-size: 10px;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/*PRODUCTS TABLE*/
+.prod_container {
+	float: left;
+	width: 100%;
+	padding: 0 45px 0 30px;
+	height: auto;
+	background-color: rgba(255,255,255,.80);
+	-moz-background-color: rgba(255,255,255,.80);
+	-ms-background-color: rgba(255,255,255,.80);
+	-o-background-color: rgba(255,255,255,.80);
+	-webkit-background-color: rgba(255,255,255,.80);
+}
+.prod_container .prods-table{
+	float: left;
+	width: 100%;
+}
+
+.prod_container .prods-table #table-header div:nth-child(1), 
+.prod_container div section div.table-item div.table-detail div:nth-child(1){
+	width: 10%;
+}
+.prod_container .prods-table #table-header div:nth-child(2), 
+.prod_container div section div.table-item div.table-detail div:nth-child(2){
+	width: 12%;
+}
+.prod_container .prods-table #table-header div:nth-child(3){
+	width: 28.2%;
+}
+.prod_container .prods-table #table-header div:nth-child(4){
+	width: 10%;
+}
+.prod_container .prods-table #table-header div:nth-child(5){
+	width: 8%;
+}
+.prod_container .prods-table #table-header div:nth-child(6){
+	width: 8%;
+}
+.prod_container .prods-table #table-header div:nth-child(7){
+	width: 8%;
+}
+.prod_container .prods-table #table-header div:nth-child(8){
+	width: 15%;
+	border: 0;
+}
+
+.prod_container .prods-table .table-item, 
+.prod_container .prods-table .table-item .item-top{
+	float: left;
+	width: 100%;
+}
+
+.prod_container .prods-table .table-item .item-top{
+	margin-top: 10px;
+}
+
+.prod_container .prods-table .table-item .item-top .user{
+	background: rgba(153, 153, 153, .8);
+	border-right: 1px solid rgba(255, 0, 0, .0);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	float: left;
+	width: 76.7%;
+}
+
+.prod_container .prods-table .table-item .item-top .user p{
+	color: #FFF;
+	font-size: 11px;
+	font-family: 'Gotham-Medium';
+	line-height: 30px;
+	text-transform: uppercase;
+	padding-left: 20px;
+}
+
+.prod_container .prods-table .table-item .item-top .save{
+	background: #8E3289;
+	float: left;
+	width: 23%;
+}
+
+.prod_container .prods-table .table-item .item-top .save label{
+	display: block;
+	color: #FFF;
+	line-height: 30px;
+	margin: 0;
+	font-size: 11px;
+	text-align: center;
+}
+.prod_container div section div.table-item div.table-detail{
+	float: left;
+	margin-bottom: 2px;
+	width: 100%;
+}
+.prod_container div section div.table-item div.table-detail div.datime{
+	padding-top: 5px;
+	height: 35px;
+}
+
+.prod_container div section div.table-item div.table-detail div.datime p{
+	font-size: 12px;
+	padding-left: 20px;
+	line-height: 12px;
+}
+
+.prod_container div section div.table-item div.table-detail div.datime p span{
+	font-size: 11px;
+	opacity: .8;
+}
+
+.prod_container div section div.table-item div.table-detail div.pts p{
+	color: #009448;
+    font-size: 21px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list{
+	float: left;
+	width: 77.6%;
+	border: 0;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item{
+	width: 100%;
+	float: left;
+	position: relative;
+	border: 0;
+}
+
+.prod_container div section div.table-item div.table-detail div,
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div{
+	float: left;
+	color: #5F5F5F;
+	text-transform: uppercase;
+	font-family: 'Gotham-Medium';
+	border-right: 1px solid rgba(255, 0, 0, .0);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.prod-det{
+	width: 36.3%;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.prod-det img{
+    width: 9%;
+    max-width: 30px;
+    max-height: 30px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 1.5%;
+    float: left;
+    margin-right: 5%;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.prod-det p{
+	font-size: 17px;
+	width: 78%;
+	padding-left: 5%;
+	float: left;
+	line-height: 38px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: rgba(255,255,255,.5);
+	-moz-background-color: rgba(255,255,255,.5);
+	-ms-background-color: rgba(255,255,255,.5);
+	-webkit-background-color: rgba(255,255,255,.5);
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.prod-det p span{
+	font-size: 11px;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.cant{
+	width: 12.8%;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.color, 
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.size{
+	width: 10.4%;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.cant p, 
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.color p, 
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.size p{
+	font-size: 11px;
+	line-height: 40px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: rgba(255,255,255,.5);
+	-moz-background-color: rgba(255,255,255,.5);
+	-ms-background-color: rgba(255,255,255,.5);
+	-webkit-background-color: rgba(255,255,255,.5);	
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.pre-bill{
+	width: 10.3%;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.pre-bill input{
+	font-size: 12px;
+	color: #8E3289;
+	display: block;
+    line-height: 40px;
+    padding: 0 10%;
+    margin: 0;
+    width: 80%;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.status{
+	width: 19.1%;
+	border: 0;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.status select{
+	font-family: 'brooklyn_samuelsno5_fat';
+	width: 100%;
+	border: none;
+	height: 40px;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 11px;
+	background-color: #fff;
+	color: #099642;
+	font-weight: bold;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.controls{
+	position: absolute;
+	height: 40px;
+	right: -55px;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.controls a{
+	float: left;
+	height: 40px;
+	line-height: 50px;
+	margin-right: 5px;
+}
+
+.prod_container div section div.table-item div.table-detail .prod-list .prod-item div.controls a:last-child{
+	margin: 0;
+}
+
+#submit-form{opacity: 0;position: absolute; width: 0px; height: 0px;}
+
+/*FILTERS TABLE*/
+.block-resultados{
+	padding: 20px  45px 20px 30px;
+}
+
+.filters-table{
+	float: left;
+	width: 100%;
+}
+
+.filters-table h3{
+    margin: 0;
+    color: #646463;
+    font-size: 13px;
+	padding-bottom: 35px;
+	text-transform: uppercase;
+}
+
+.filters-table #table-header div{
+	border-right: 2px solid rgba(255, 0, 0, .0);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+section > div.table-item > div.prod-list > div > div{
+	margin-right: 2px;
+	text-transform: uppercase;
+}
+
+section > div.table-item > div.prod-list > div > div:last-child{
+	margin: 0;
+}
+
+.filters-table #table-header div:nth-child(1), 
+section > div.table-item > div.prod-list > div > div:nth-child(1){
+	width: 38.7%;
+}
+
+.filters-table #table-header div:nth-child(2), 
+section > div.table-item > div.prod-list > div > div:nth-child(2){
+	width: 10%;
+}
+
+.filters-table #table-header div:nth-child(3), 
+section > div.table-item > div.prod-list > div > div:nth-child(3){
+	width: 10%;
+}
+
+.filters-table #table-header div:nth-child(4), 
+section > div.table-item > div.prod-list > div > div:nth-child(4){
+	width: 7.5%;
+}
+
+.filters-table #table-header div:nth-child(5), 
+section > div.table-item > div.prod-list > div > div:nth-child(5){
+	width: 7.5%;
+}
+
+.filters-table #table-header div:nth-child(6), 
+section > div.table-item > div.prod-list > div > div:nth-child(6){
+	width: 10%;
+}
+
+.filters-table #table-header div:nth-child(7), 
+section > div.table-item > div.prod-list > div > div:nth-child(7){
+	width: 15%;
+}
+
+.filters-table .table-item{
+	float: left;
+	width: 100%;
+}
+
+.filters-table .table-item .item-top{
+	background: rgba(153, 153, 153, .8);
+	border-right: 1px solid rgba(255, 0, 0, .0);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	margin: 20px 0 1px;
+	float: left;
+	width: 100%;
+}
+
+.filters-table .table-item .item-top p{
+	line-height: 30px;
+	font-family: 'Gotham-Medium';
+	color: #FFF;
+	font-size: 11px;
+}
+
+.filters-table .table-item .item-top p:first-child{
+	float: left;
+	padding-left: 2%;
+	width: 48%;
+}
+
+.filters-table .table-item .item-top p:last-child{
+	float: right;
+	padding-right: 2%;
+	text-align: right;
+	width: 48%;
+}
+
+.filters-table .table-item .item-top p:last-child span{
+	margin: 0 15px;
+    font-weight: lighter;
+    font-family: Helvetica, Arial;
+}
+
+section > div.table-item > div.prod-list, 
+section > div.table-item > div.prod-list .prod-item{
+	float: left;
+	width: 100%;
+}
+
+section > div.table-item > div.prod-list .prod-item{
+	margin-top: 2px;
+}
+section > div.table-item > div.prod-list > div > div{
+	float: left;
+	height: 40px;
+	font-size: 11px;
+	color: #717272;
+	font-family: 'Gotham-Medium';
+}
+
+section > div.table-item > div.prod-list > div > div:nth-child(1) div{
+	width: 80%;
+	float: left;
+	padding-left: 20%;
+}
+
+section > div.table-item > div.prod-list > div > div:nth-child(1) div img{
+	width: 6%;
+    max-width: 30px;
+    max-height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 1.5%;
+    float: left;
+    margin-right: 5%;	
+}
+
+section > div.table-item > div.prod-list > div > div.prod-det > div > p.name{
+	-webkit-box-shadow: 1px 1px 1px 0 #999;
+	box-shadow: 1px 1px 1px 0 #999;
+	background: #FFF;
+	text-align: left;
+	line-height: 40px;
+	padding-left: 4%;
+	float: left;
+	width: 82%;
+}
+
+section > div.table-item > div.prod-list > div > div.prod-det > div > p.name span{
+	float: right;
+	width: 20%;
+	font-size: 12px;
+	line-height: 38px;
+	text-align: center;
+}
+
+section > div.table-item > div.prod-list > div > div:nth-child(2), 
+section > div.table-item > div.prod-list > div > div:nth-child(3), 
+section > div.table-item > div.prod-list > div > div:nth-child(4), 
+section > div.table-item > div.prod-list > div > div:nth-child(5), 
+section > div.table-item > div.prod-list > div > div:nth-child(6), 
+section > div.table-item > div.prod-list > div > div:nth-child(7){
+	-webkit-box-shadow: 1px 1px 1px 0 #999;
+	box-shadow: 1px 1px 1px 0 #999;
+	background: #FFF;
+	line-height: 40px;
+}
+
+section > div.table-item > div.prod-list > div > div p{
+	line-height: 40px;
+	text-align: center;
+}
+
+section > div.table-item > div.prod-list > div > div:nth-child(2){
+	font-size: 12px;
+	font-family: 'Gotham-Bold';
+}
+
+section > div.table-item > div.prod-list > div > div:nth-child(3), 
+section > div.table-item > div.prod-list > div > div:nth-child(4), 
+section > div.table-item > div.prod-list > div > div:nth-child(5), 
+section > div.table-item > div.prod-list > div > div:nth-child(6){
+	font-family: 'Gotham-Book';
+}

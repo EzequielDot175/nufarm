@@ -1,4 +1,6 @@
-<?php include_once('../resources/control.php'); error_reporting(0); header('Content-Type: text/html; charset=utf-8');
+<?php 
+ob_start();
+include_once('../resources/control.php'); error_reporting(0); header('Content-Type: text/html; charset=utf-8');
 
 include_once('helper_titulos.php');
 
@@ -9,6 +11,8 @@ $strDetalle=$_POST['strDetalle'];
 $intCategoria=$_POST['intCategoria'];
 $dblPrecio=$_POST['dblPrecio'];
 $intStock=$_POST['intStock'];
+$intMinCompra=(int)$_POST['intMinCompra'];
+$intMaxCompra=$_POST['intMaxCompra'];
 $strImagen=$_POST['strImagen'];
 $strImagen2=$_POST['strImagen2'];
 $strImagen3=$_POST['strImagen3'];
@@ -119,7 +123,6 @@ include_once('../resources/class.upload.php');
 /* INSERT */
 
 
-
 if($talles!=""){
 	$stockTallesColor=1;
 	//guardo talles en tabla talles_productos
@@ -129,7 +132,9 @@ if($talles!=""){
 	$productos->strNombre=$strNombre;
 	$productos->strDetalle=$strDetalle;
 	$productos->intCategoria=$intCategoria;
-	$productos->intStock=$stockTallesColor;
+      $productos->intStock=$stockTallesColor;
+      $productos->intMinCompra=$intMinCompra;
+	$productos->intMaxCompra=$intMaxCompra;
 	$productos->dblPrecio=$dblPrecio;
 	$productos->strImagen=$strImagen;
 	$productos->strImagen2=$strImagen2;
@@ -170,6 +175,8 @@ else
 	$productos->intCategoria=$intCategoria;
 	$productos->dblPrecio=$dblPrecio;
 	$productos->intStock=$intStock;
+      $productos->intMinCompra=$intMinCompra;
+      $productos->intMaxCompra=$intMaxCompra;
 	$productos->strImagen=$strImagen;
 	$productos->strImagen2=$strImagen2;
 	$productos->strImagen3=$strImagen3;
@@ -178,9 +185,7 @@ else
 }
 
 
-
-
 #echo '<div class="notify"><p>producto Creada!</p><p><a href="v_productos.php">Regresar</a></p></div>';
 $_SESSION['msg_ok'] = 'Producto Creado!';
-header('Location: '.BASEURL.'/productos/v_productos.php');
+header('Location: '.BASEURL.'productos/v_productos.php');
 ?>

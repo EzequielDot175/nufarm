@@ -25,6 +25,16 @@
 <script src="assets/js/eventos.js"></script>
 <script src="assets/js/form.validator.js"></script>
 <script src="assets/js/Chart.min.js"></script>
+<script>
+	jQuery(document).ready(function($) {
+		$('#changeSection').change(function(event) {
+			if ($(this).val() != "") {
+				window.location.href = $(this).val();
+			};
+		});
+
+	});
+</script>
 
 </body>
 </html>

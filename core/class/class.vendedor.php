@@ -17,6 +17,17 @@
 			return $sel->fetchAll();
 		}
 
+		public function getRole($id){
+			$sel = $this->prepare(self::VENDEDOR_GET_ROLE);
+			$sel->bindParam(':id', $id, PDO::PARAM_INT);
+			$sel->execute();
+			$result = $sel->fetch();
+			if($result):
+				return $result->role;
+			else:
+				return 0;
+			endif;
+		}
 
 
 		public static function options($selected = null){

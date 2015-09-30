@@ -86,7 +86,7 @@
 				<!--end / head accordeon-->
 
 				<!--body accordeon-->
-				<div id="collapse<?php echo $keycompras;?>" class="panel-collapse <?php echo ( !isset($_POST['submit']) ? 'collapse' : '' ) ?> <?php if($i == 0){echo 'in';$i++;}; //accordeon abierto ?> ">
+				<div id="collapse<?php echo $keycompras;?>" >
 					<div class="panel-body">
 						<!-- tabla-detalle -->
 						<table class="tabla-detalle">

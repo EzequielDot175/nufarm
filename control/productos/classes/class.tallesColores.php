@@ -24,6 +24,7 @@
 		public $idProducto;
 		public $intMaxCompra;
 		public $intStock;
+		public $message;
 
 
 

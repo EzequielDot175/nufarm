@@ -146,8 +146,14 @@ $(document).ready(function(){
 </div>
 
 <div class="box-form">
-<div class="tiform6">Precio</div>
-<input type="text" name="dblPrecio" class="campo-prod" placeholder="$"/>
+<div class="tiform6">puntos</div>
+<input type="text" name="dblPrecio" class="campo-prod" />
+
+<div class="tiform6">Min</div>
+<input type="text" name="intMinCompra" class="campo-prod" />
+
+<div class="tiform6">Max</div>
+<input type="text" name="intMaxCompra" class="campo-prod" />
 
 <div class="tiform6">Categoría</div>
 <select class="campo-prod" id="item-categorias2" name="intCategoria" onchange="revisar_talles();">
@@ -196,6 +202,39 @@ $(document).ready(function(){
 <?php include_once('../inc/footer.php') ?>	
 </div>
 
+
+
+<script>
+	$(function() {
+		$('#item-categorias').trigger('change');
+		$(document).on('click', '.newColor', function(event) {
+			event.preventDefault();
+			var cat = $('#item-categorias').val();
+			var id = window.location.search.match(/id=.*[0-9].&/ig);
+				id = parseInt(id[0].replace(/id=/ig,'').replace(/&/ig,''));
+			$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+id+'&action=add', function(data) {
+				console.log(data);
+				$('#tipotalles').append(data);
+			});
+		});
+		$(document).on('click', '.removeColor', function(event) {
+			event.preventDefault();
+			var color = $(this).parent().children('input[name=id_color]').val() || null;
+			var prod = $(this).parent().children('input[name=id_prod]').val() || null;
+			var cat = $('#item-categorias').val();
+			
+			if (confirm('¿Esta seguro de borrar este color y talles?')) {
+				if (color != null) {
+					$.get('./talles_by_cat.php?idcategoria='+cat+'&idproducto='+prod+'&action=delete&color='+color, function(data) {
+						console.log(data);
+					});
+				};
+				$(this).parents('.segmentTalleColor').remove();
+				
+			};
+		});
+	});
+</script>
 
 </body>
 </html>

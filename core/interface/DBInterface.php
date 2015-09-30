@@ -36,7 +36,7 @@
 			/**
 			 * @internal Class: Producto
 			 */
-			const PRODUCTO_ALL                  = "SELECT * FROM productos";
+			const PRODUCTO_ALL                  = "SELECT * FROM productos ORDER BY idProducto DESC";
 			const PRODUCTO_ALLBYID 				= "SELECT * FROM productos WHERE idProducto = :id";
 			const PRODUCTO_BYTYPE 				= "SELECT
 			ct.idCategorias as id_cat,
@@ -58,6 +58,7 @@
 			const PRODUCTO_STOCKSUMTALLE 		= "SELECT SUM(IF(ISNULL(talles.nombre_talle), 0 , tal_prod.cantidad)) as stock FROM talles_productos as tal_prod LEFT JOIN talles ON talles.id_talle = tal_prod.id_talle WHERE tal_prod.id_producto = :id";
 			const PRODUCTO_STOCKSUMCOLOR 		= "SELECT SUM(IF(ISNULL(colores.nombre_color), 0 , col_prod.cantidad)) as stock FROM colores_productos as col_prod LEFT JOIN colores ON colores.id_color = col_prod.id_color WHERE col_prod.id_producto = :id";
 			const PRODUCTO_STOCKSUMTALLECOLOR	= "SELECT SUM(cantidad) as stock FROM colores_talles WHERE id_producto = :id";
+			const PRODUCTO_UPD_IMAGE 			= "UPDATE productos SET strImagen = :img WHERE idProducto = :id";
 			/**
 			* @param carrito
 			*/
@@ -89,6 +90,8 @@
 			const MAXCOMPRA_STORESUM            = "UPDATE tempmaxcompra SET used = used + :used WHERE user = :user AND prod = :prod";
 			const MAXCOMPRA_STOREMAINS          = "UPDATE tempmaxcompra SET used = used - :used WHERE user = :user AND prod = :prod";
 			const MAXCOMPRA_MAXPROD             = "SELECT intMaxCompra FROM productos WHERE idProducto = :prod";
+			const MAXCOMPRA_USED 				= "SELECT used FROM `tempmaxcompra` WHERE `user` = :user AND `prod` = :prod ";
+			const MAXCOMPRA_MIN_PROD 			= "SELECT intMinCompra FROM productos WHERE idProducto = :prod";
 			
 			/**
 			* @param class: Compra
@@ -128,7 +131,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto";
+           		productos as prod ON prod.idProducto = dt.id_producto ";
 
            	const COMPRA_ALL_BY_STATE = "SELECT
 			 compra.fthCompra,
@@ -162,7 +165,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE dt.estado_producto = :estado ";
 
 
 
@@ -266,7 +269,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE usr.idUsuario = :id AND dt.estado_producto = :estado ";
 
 
 			
@@ -302,7 +305,7 @@
             LEFT JOIN
             	personal as prs ON prs.id = usr.vendedor
            	LEFT JOIN 
-           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado";
+           		productos as prod ON prod.idProducto = dt.id_producto WHERE prs.id = :id AND dt.estado_producto = :estado ";
 
            	const COMPRA_COUNT = "SELECT COUNT(idCompra) AS count FROM compra";
 			
@@ -338,6 +341,11 @@
 			* @param class: Usuario
 			*/
 			
+			const USUARIO_BY_VENDEDOR 				 = "SELECT * FROM usuarios WHERE vendedor = :id ORDER BY idUsuario DESC";
+			const USUARIO_CHECK_INIT 				 = "SELECT init FROM usuarios WHERE idUsuario = :id";
+			const USUARIO_BY_CLIENTE 				 = "SELECT * FROM usuarios WHERE idUsuario = :id ORDER BY idUsuario DESC";
+			const USUARIO_ALL						 = "SELECT * FROM usuarios  ORDER BY idUsuario DESC  LIMIT :off,:lim";
+			const USUARIO_PAGES 					 = "SELECT ROUND(COUNT(idUsuario) / :lim) as pages FROM usuarios";
 			const USUARIO_SUMCREDITO                 = "UPDATE usuarios SET dblCredito = dblCredito + :num WHERE idUsuario = :user";
 			const USUARIO_EDIT 						 = "UPDATE usuarios :QUERY WHERE idUsuario = :id";
 			const USUARIO_BY_ID 					 = "SELECT * FROM usuarios WHERE idUsuario = :id";
@@ -562,7 +570,8 @@
 			 * Vendores
 			 */
 			
-			const VENDEDOR_OPTIONS = "SELECT id , nombre, apellido FROM personal WHERE role = 3";
+			const VENDEDOR_OPTIONS  = "SELECT id , nombre, apellido FROM personal WHERE role = 3";
+			const VENDEDOR_GET_ROLE = "SELECT role FROM personal WHERE id = :id";
 
 
 			/**
