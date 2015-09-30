@@ -9,7 +9,9 @@ include_once("classes/class.productos.php");
 include_once("classes/class.tallesColores.php");
 require_once('../../libs.php');
 
-// error_reporting(E_ALL);
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+
 
 $idProducto = $_POST['idProducto'];
 $strNombre=$_POST['strNombre'];
@@ -19,10 +21,9 @@ $strDetalle=$_POST['strDetalle'];
 $intCategoria=$_POST['intCategoria'];
 $dblPrecio=$_POST['dblPrecio'];
 $intStock=	$_POST['intStock'];
-$strImagen=	$_POST['strImagen'];
-$strImagen2=$_POST['strImagen2'];
-$strImagen3=$_POST['strImagen3'];
 $destacado=$_POST['destacado'];
+
+$message = (empty($_POST['message']) ? '' : $_POST['message']); 
 
 $talles = $_POST['talle'];
 $color = $_POST['color'];
@@ -31,164 +32,49 @@ $color = $_POST['color'];
 
 
 
+/**
+ * PHP magico....
+ */
+
+
+if(!empty($_FILES['strImagen']['name'])):
+
+
+core\Upload::ifExist('strImagen',function($class){
+	
+	$file = $class::file('strImagen');
+	/**
+	 * Seteo donde se va a guardar
+	 */
+	$producto = new Producto();
+	$id = $_POST['idProducto'];
+
+	
+	
+	$class::$dir = $class::$DIR_IMG_PROD;
+	$class::$randomName = true;
+	if($class->uploadFile($file)):
+		$producto->updImage($class::$uploadedFileName,$id);
+	endif;
+
+
+});
+
+endif;
+
 
 $prod = new Producto();
 $prod->updCategoria($intCategoria, $idProducto);
 
 
-if($_FILES['strImagen']['name']!=""){
-
-      $nombre_final="";
-
-      	$productos= new productos();
-		$productos->select($idProducto);
-      	$imagen=$productos->getstrImagen();
-
-      if($imagen!=""){
-      unlink('../../images_productos/'.$imagen);
-      unlink('../../images_productos/tn_'.$imagen);
-      }
-      include_once('../resources/class.upload.php');
-      $yukle = new upload;
-      $yukle->set_max_size(99999999);
-      $yukle->set_directory('../../images_productos');
-      $yukle->set_tmp_name($_FILES['strImagen']['tmp_name']);
-      $yukle->set_file_size($_FILES['strImagen']['size']);
-      $yukle->set_file_type($_FILES['strImagen']['type']);
-      //random
-      $random = substr(md5(rand()),0,6);
-      $avatarname= $random.'_'.$_FILES['strImagen']['name'];
-      $nombre_final = str_replace(' ','-',$avatarname);
-      $yukle->set_file_name($nombre_final);
-      $yukle->start_copy();
-      $yukle->resize(620,0);
-      $yukle->set_thumbnail_name('tn_'.$nombre_final);
-      $yukle->create_thumbnail();
-      $yukle->set_thumbnail_size(300, 0);
-      if($yukle->is_ok()){
-      /* INSERT */
-
-      /* UPDATE */
-
-			include_once("classes/class.productos.php");
-			$productos= new productos();
-
-			$productos->select($idProducto);
-			$productos->strImagen=$nombre_final;
-			$productos->update($idProducto);
-
-
-      }else{
-      $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen1. Imagen1 no actualizada!</p></div>';
-      }
 
 
 
-}
-
-/**/
-if($_FILES['strImagen2']['name']!=""){
-
-      $nombre_final="";
-
-      	$productos= new productos();
-		$productos->select($idProducto);
-      	$imagen=$productos->getstrImagen2();
-
-      if($imagen!=""){
-      unlink('../../images_productos/'.$imagen);
-      unlink('../../images_productos/tn_'.$imagen);
-      }
-      include_once('../resources/class.upload.php');
-      $yukle = new upload;
-      $yukle->set_max_size(99999999);
-      $yukle->set_directory('../../images_productos');
-      $yukle->set_tmp_name($_FILES['strImagen2']['tmp_name']);
-      $yukle->set_file_size($_FILES['strImagen2']['size']);
-      $yukle->set_file_type($_FILES['strImagen2']['type']);
-      //random
-      $random = substr(md5(rand()),0,6);
-      $avatarname= $random.'_'.$_FILES['strImagen2']['name'];
-      $nombre_final = str_replace(' ','-',$avatarname);
-      $yukle->set_file_name($nombre_final);
-      $yukle->start_copy();
-      $yukle->resize(620,0);
-      $yukle->set_thumbnail_name('tn_'.$nombre_final);
-      $yukle->create_thumbnail();
-      $yukle->set_thumbnail_size(300, 0);
-      if($yukle->is_ok()){
-      /* INSERT */
-
-      /* UPDATE */
-
-			include_once("classes/class.productos.php");
-			$productos= new productos();
-
-			$productos->select($idProducto);
-			$productos->strImagen2=$nombre_final;
-			$productos->update($idProducto);
-
-
-      }else{
-      $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen2. Imagen2 no actualizada!</p></div>';
-      }
-
-
-
-}
-
-/**/
-if($_FILES['strImagen3']['name']!=""){
-	$nombre_final="";
-      
-      	$productos= new productos();
-		$productos->select($idProducto);
-      	$imagen=$productos->getstrImagen3();
-
-      if($imagen!=""){
-      unlink('../../images_productos/'.$imagen);
-      unlink('../../images_productos/tn_'.$imagen);
-      }
-      include_once('../resources/class.upload.php');
-      $yukle = new upload;
-      $yukle->set_max_size(99999999);
-      $yukle->set_directory('../../images_productos');
-      $yukle->set_tmp_name($_FILES['strImagen3']['tmp_name']);
-      $yukle->set_file_size($_FILES['strImagen3']['size']);
-      $yukle->set_file_type($_FILES['strImagen3']['type']);
-      //random
-      $random = substr(md5(rand()),0,6);
-      $avatarname= $random.'_'.$_FILES['strImagen3']['name'];
-      $nombre_final = str_replace(' ','-',$avatarname);
-      $yukle->set_file_name($nombre_final);
-      $yukle->start_copy();
-      $yukle->resize(620,0);
-      $yukle->set_thumbnail_name('tn_'.$nombre_final);
-      $yukle->create_thumbnail();
-      $yukle->set_thumbnail_size(300, 0);
-      if($yukle->is_ok()){
-      /* INSERT */
-
-      /* UPDATE */
-
-			include_once("classes/class.productos.php");
-			$productos= new productos();
-
-			$productos->select($idProducto);
-			$productos->strImagen3=$nombre_final;
-			$productos->update($idProducto);
-
-
-      }else{
-      $msg_final .= '<div class="notify"><p>Ocurrio un error al actualizar la imagen3. Imagen3 no actualizada!</p></div>';
-      }
-
-
-
-}
 
 
 if($talles!=""){
+	die("1");
+
 	//limpio si habia algo en stock
 	$productos= new productos();
 	$productos->select($idProducto);
@@ -219,6 +105,7 @@ if($talles!=""){
 	$productos->intMinCompra=$intMinCompra;	
 	$productos->intMaxCompra=$intMaxCompra;	
 	$productos->update($idProducto);
+	$productos->message = $message;
 	
 	
 	#var_dump($talles);
@@ -239,6 +126,7 @@ if($talles!=""){
 // var_dump($color);
 else if($color)
 {	
+
 	include_once('classes/class.colores_productos.php');
 
 
@@ -246,6 +134,7 @@ else if($color)
 	
 
 
+	
 
 
 	//limpio si habia algo en stock
@@ -259,7 +148,7 @@ else if($color)
 	
 	
 	$productos->intStock = $sumatoria_colores_total;
-		
+	$productos->message = $message;
 	$productos->update($idProducto);
 
 
@@ -281,12 +170,15 @@ else if($color)
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;		
 	$productos->intMaxCompra=$intMaxCompra;		
+	$productos->message = $message;
 	$productos->update($idProducto);
+
 	
 
 
 	$colours = new colores_productos();
 	$colours->updateAllColours($color,$idProducto);
+
 
 	$msg_final .= '<div class="notify"><p>producto actualizado! <a href="../productos/e_producto.php?id='.$idProducto.'&activo=2&sub=d">Ver</a></p></div>';
 }
@@ -306,7 +198,8 @@ elseif (isset($_POST["color_talle"])) {
 	$x->dblPrecio=$dblPrecio;
 	$x->destacado=$destacado;
 	$x->intMinCompra=$intMinCompra;		
-	$x->intMaxCompra=$intMaxCompra;		
+	$x->intMaxCompra=$intMaxCompra;
+	$x->message = $message;	
 	$x->save();
 
 	foreach($_POST["color_talle"] as $k => $v):
@@ -346,6 +239,7 @@ else
 	$productos->destacado=$destacado;
 	$productos->intMinCompra=$intMinCompra;
 	$productos->intMaxCompra= (is_null($intMaxCompra) ? 'NULL' : $intMaxCompra);
+	$productos->message = $message;
 	$productos->update($idProducto);
 
 	$msg_final .= '<div class="notify"><p>producto actualizado!</p></div>';
@@ -357,6 +251,11 @@ else
 	// die();
 
 }
+
+
+
+
+
 // $_SESSION['msg_ok'] = $msg_final;
 @header('Location: ./v_productos.php?activo=2&sub=d');
 exit();
