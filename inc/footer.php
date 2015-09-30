@@ -28,9 +28,11 @@
 <script>
 	jQuery(document).ready(function($) {
 		$('#changeSection').change(function(event) {
-			event.preventDefault();
-			console.info('Reporting value:', $(this).val());
+			if ($(this).val() != "") {
+				window.location.href = $(this).val();
+			};
 		});
+
 	});
 </script>
 
