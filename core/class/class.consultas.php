@@ -134,7 +134,7 @@
 				$vendedores =  ( isset($_POST['vendedores']) ? $_POST['vendedores'] : '');
 				$estado = ( isset($_POST['estado']) ? $_POST['estado'] : '')
 			
-				if(empty(self::getPost('vendedores'))):
+				if(empty($vendedores)):
 					return $this->getAdmin();
 				else:
 					return $this->getAdminByVendedor($vendedores,$estado);
