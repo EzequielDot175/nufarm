@@ -89,6 +89,8 @@
 			const MAXCOMPRA_STORESUM            = "UPDATE tempmaxcompra SET used = used + :used WHERE user = :user AND prod = :prod";
 			const MAXCOMPRA_STOREMAINS          = "UPDATE tempmaxcompra SET used = used - :used WHERE user = :user AND prod = :prod";
 			const MAXCOMPRA_MAXPROD             = "SELECT intMaxCompra FROM productos WHERE idProducto = :prod";
+			const MAXCOMPRA_USED 				= "SELECT used FROM `tempmaxcompra` WHERE `user` = :user AND `prod` = :prod ";
+			const MAXCOMPRA_MIN_PROD 			= "SELECT intMinCompra FROM productos WHERE idProducto = :prod";
 			
 			/**
 			* @param class: Compra

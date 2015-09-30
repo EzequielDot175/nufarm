@@ -31,6 +31,27 @@
 			endif;
 		}
 
+
+		public function checkPoints(){
+			$user = Auth::User();
+			$ShoppingCart = new ShoppingCart();
+			$ShoppingCart->all();
+			$credit = $user->dblCredito;
+			$total = $ShoppingCart->getTotal();
+			if( ($credit - $total) < 0):
+				return false;
+			else:
+				return true;
+			endif;
+
+		
+
+		}
+
+		public static function sCheckPoints(){
+			return self::method('checkPoints');
+		}
+
 		public function getAll($page = 0,$limit = 20){
 			$page = (isset($_GET['page']) && !empty($_GET['page']) ? $_GET['page'] : 0);
 			$offset = ($page != 1 && $page != 0 ? $page*$limit : 0);

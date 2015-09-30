@@ -51,6 +51,9 @@
 		public function total(){
 			echo $this->total;
 		}
+		public function getTotal(){
+			return $this->total;
+		}
 
 		public function cantidad(){
 			echo $this->count;

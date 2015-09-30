@@ -8,8 +8,7 @@
 	$limitCompraProd = $tempMaxCompra->getMaxProd();
 	$limitCompra = $tempMaxCompra->getMaxCompra();
 
-	$intMinCompra = ($limitCompra - $detalles->intMinCompra < 1 ? 1 : $limitCompra - $detalles->intMinCompra  );
-
+	$intMinCompra = $tempMaxCompra->getMinCompra();
 	
 ?>
 <!-- Header -->

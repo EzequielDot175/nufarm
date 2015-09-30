@@ -22,6 +22,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 
+if(!Usuario::sCheckPoints()):
+	@header('Location: carrito.php');
+	exit();
+endif;
+
+
 
 $checkVencimiento = new TempStock();
 $can = $checkVencimiento->fechaVencimiento($_SESSION['MM_IdUsuario']);
@@ -92,6 +98,10 @@ $msg_final = '
  <strong>Enviar un Email con la certificación de tu pago a correo@mail.com o a este Nro de cuenta XXXXXXXXXXXXX</strong>
  
  ';
+
+
+
+
  /**
   * Updateo el dblConsumido directamente desde el carrito de compras
   */

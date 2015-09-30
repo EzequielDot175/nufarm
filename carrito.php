@@ -114,7 +114,8 @@
 
 	<!-- footer carrito -->
 	<div class="footer-carrito col-xs-12 col-sm-12 col-md-12 ol-lg-12">
-
+		
+		<?php if(Usuario::sCheckPoints()): ?>
 		<!-- botones -->
 		<div class="col-xs-12 col-sm-9 col-md-9 ol-lg-9">
 			<a href="catalogo.php">
@@ -123,8 +124,20 @@
 				</div>
 			</a>
 		</div>
+		<?php else: ?>
+		<!-- botones -->
+		<div class="col-xs-12 col-sm-9 col-md-9 ol-lg-9">
+			<a>
+				<div class='block-botones'>
+					<button class="boton" type="">SALDO INSUFICIENTE</button>
+				</div>
+			</a>
+		</div>
+		<?php endif; ?>
+		
+
 		<!--end /  botones -->
-		<?php if(ShoppingCart::sum() > 0): ?>
+		<?php if(ShoppingCart::sum() > 0 && Usuario::sCheckPoints() ): ?>
 		<!-- botones -->
 		<div class="col-xs-12 col-sm-3 col-md-3 ol-lg-3">
 			<div class='block-botones'>

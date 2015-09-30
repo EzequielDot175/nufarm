@@ -139,6 +139,40 @@
 			$this->user = $id;
 		}
 
+		public function getMinCompra($user = null,$prod = null){
+			$user = (is_null($user) ? Auth::id() : $user);
+			$prod = (is_null($prod) ? $_GET['producto'] : $prod);
+			
+			/**
+			 * Tomo los usados por el producto
+			 */
+			$sel = $this->prepare(self::MAXCOMPRA_USED);
+			$sel->bindParam(':user' , $user , PDO::PARAM_INT);
+			$sel->bindParam(':prod' , $prod , PDO::PARAM_INT);
+			$sel->execute();
+
+			$used = $sel->fetch()->used;
+
+			/**
+			 * Tomo el minimo del producto
+			 */
+			$sel = $this->prepare(self::MAXCOMPRA_MIN_PROD);
+			$sel->bindParam(':prod', $prod, PDO::PARAM_INT);
+			$sel->execute();
+			$minCompra = $sel->fetch()->intMinCompra;
+
+			/**
+			 * Compruebo matematicamente si e
+			 */
+			$math = (  (int)$minCompra - (int)$used);
+			if( $math <= 0 ):
+				return 1;
+			else:
+				return $math;
+			endif;
+			
+		}
+
 		/**
 		========= PRIVATE METHODS =========
 		*/
