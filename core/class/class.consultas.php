@@ -131,11 +131,13 @@
 		public function filtro(){
 			if(self::postHas('vendedores') && self::postHas('estado')):
 
+				$vendedores =  ( isset($_POST['vendedores']) ? $_POST['vendedores'] : '');
+				$estado = ( isset($_POST['estado']) ? $_POST['estado'] : '')
 			
 				if(empty(self::getPost('vendedores'))):
 					return $this->getAdmin();
 				else:
-					return $this->getAdminByVendedor(self::getPost('vendedores'),self::getPost('estado'));
+					return $this->getAdminByVendedor($vendedores,$estado);
 				endif;
 			endif;
 		}
