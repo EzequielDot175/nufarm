@@ -66,6 +66,7 @@ ob_start();
 		}
 
 
+
 		public function getUser(){
 			$id = self::id();
 			$user = $this->prepare(self::AUTH_USER);
