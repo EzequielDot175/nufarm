@@ -36,25 +36,27 @@ $color = $_POST['color'];
  * PHP magico....
  */
 
-// core\Upload::ifExist('strImagen',function($class){
+core\Upload::ifExist('strImagen',function($class){
 	
-// 	$file = $class::file('strImagen');
-// 	/**
-// 	 * Seteo donde se va a guardar
-// 	 */
-// 	$class::$dir = $class::$DIR_IMG_PROD;
-// 	$class->uploadFile($file);
+	$file = $class::file('strImagen');
+	/**
+	 * Seteo donde se va a guardar
+	 */
+	$producto = new Producto();
+	$id = $_POST['idProducto'];
 
-// 	// echo "<pre>";
-// 	// print_r($this::$dir);
-// 	// echo "</pre>";
+	
+	
+	$class::$dir = $class::$DIR_IMG_PROD;
+	$class::$randomName = true;
+	if($class->uploadFile($file)):
+		$producto->updImage($class::$uploadedFileName,$id);
+	endif;
 
-// },function(){
 
-// });
+});
 
 
-// die();
 
 $prod = new Producto();
 $prod->updCategoria($intCategoria, $idProducto);

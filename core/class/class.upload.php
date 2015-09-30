@@ -8,7 +8,7 @@
 		public static $dir = "";
 		public static $name = "";
 		public static $randomName = false;
-
+		public static $uploadedFileName;
 		/**
 		 * Sugerencias de direcciones $dir
 		 */
@@ -29,16 +29,19 @@
 		public function uploadFile($file = null){
 			$type = self::type($file['type']);
 			if($type):
+				$tmp = $file['tmp_name'];
 				$name = (self::$randomName ? $this->random() : self::$name);
 				$move = (move_uploaded_file($tmp, self::$dir."/".$name.".".$type) ? true : false);
+				
 				if($move):
 					// return throw new Exception("Error Processing Request", 1);
+					self::$uploadedFileName = $name.".".$type;
 					return true;			
 				else:
-					 throw new Exception("Error, no se pudo guardar la imagen en destino indicado", 1);
+					 throw new \Exception("Error, no se pudo guardar la imagen en destino indicado", 1);
 				endif;
 			else:
-				 throw new Exception("Error Processing Request", 1);
+				 throw new \Exception("Error Processing Request", 1);
 			endif;
 		}
 
@@ -58,6 +61,9 @@
 			return (isset($_FILES[$param]) ? $_FILES[$param] : null);
 		}
 
+		public function random(){
+			return substr(md5(rand().rand().self::JPG.self::PNG.self::GIF), 0, 5);
+		}
 
 
 		public static function type($type){

@@ -142,6 +142,14 @@
 			endif;
 		}
 
+		public function updImage($img, $id){
+			$upd = $this->prepare(self::PRODUCTO_UPD_IMAGE);
+			$upd->bindParam(':img', $img, PDO::PARAM_STR);
+			$upd->bindParam(':id', $id, PDO::PARAM_INT);
+			$upd->execute();
+			return $upd->rowCount();
+		}
+
 		/**
 		 * Obtengo el tipo de producto
 		 * @param  1 - talles
